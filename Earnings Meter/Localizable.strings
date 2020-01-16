@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Earnings Meter
+
+  Created by Shilan Patel on 17/01/2020.
+  Copyright © 2020 Shilan Patel. All rights reserved.
+*/
+
+"settings.navigation.title.edit" = "Settings";
+"settings.navigation.title.welcome" = "Welcome";
+"settings.welcome.message" = "Enter your details below then tap Start";
+"settings.rate.title" = "Daily rate";
+"settings.rate.placeholder" = "Enter amount";
+"settings.workingHours.startTime.title" = "I start work at";
+"settings.workingHours.endTime.title" = "I finish work at";
+"settings.runAtWeekends.title" = "I work weekends";
+"settings.footer.button.title.save" = "Save";
+"settings.footer.button.title.start" = "Start";
+
+"meter.header.earnings.today.title" = "Earnings today";
+"meter.hireStatus.hired" = "Hired";
+"meter.hireStatus.offDuty" = "Off duty";
+

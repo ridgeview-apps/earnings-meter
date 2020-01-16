@@ -1,0 +1,686 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		310276AF24B0E5A50026A2A4 /* MeterDigitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310276AE24B0E5A50026A2A4 /* MeterDigitsView.swift */; };
+		310276B124B20B220026A2A4 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310276B024B20B220026A2A4 /* Formatters.swift */; };
+		310276B324B256750026A2A4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310276B224B256750026A2A4 /* ViewExtensions.swift */; };
+		311A3CDC246AB67200DF5B2E /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3CDB246AB67200DF5B2E /* Styles.swift */; };
+		311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 311A3CDE246C5C3600DF5B2E /* Introspect */; };
+		311A3CE12472A19300DF5B2E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3CE02472A19300DF5B2E /* AppEnvironment.swift */; };
+		31225FDC249F5D990049D14F /* MeterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31225FDB249F5D990049D14F /* MeterViewModel.swift */; };
+		312821C823D0B95E00975F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821C723D0B95E00975F66 /* AppDelegate.swift */; };
+		312821CA23D0B95E00975F66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821C923D0B95E00975F66 /* SceneDelegate.swift */; };
+		312821CC23D0B95E00975F66 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821CB23D0B95E00975F66 /* RootView.swift */; };
+		312821CE23D0B96000975F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821CD23D0B96000975F66 /* Assets.xcassets */; };
+		312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821D023D0B96000975F66 /* Preview Assets.xcassets */; };
+		312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312821D223D0B96000975F66 /* LaunchScreen.storyboard */; };
+		312821EC23D0BA5700975F66 /* MeterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821EB23D0BA5700975F66 /* MeterReader.swift */; };
+		312821EE23D0BAB000975F66 /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821ED23D0BAB000975F66 /* MeterView.swift */; };
+		312EF56E249CAB4500CC71BA /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 312EF56D249CAB4500CC71BA /* digital-7-mono.ttf */; };
+		3152DDA62473CEFB00B6D49E /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152DDA52473CEFB00B6D49E /* KeyValueStorage.swift */; };
+		315C4B4C24829001008F0562 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C4B4B24829001008F0562 /* AppState.swift */; };
+		317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */; };
+		317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */; };
+		3198638A24783F7C009F0C4B /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 3198638924783F7C009F0C4B /* CombineExt */; };
+		31A5570D24B33B2F00A42012 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5570C24B33B2F00A42012 /* UserDataService.swift */; };
+		31A5570F24B33BB400A42012 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5570E24B33BB400A42012 /* RootViewModel.swift */; };
+		31A5571224B349E100A42012 /* MeterDigitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5571124B349E100A42012 /* MeterDigitsViewModel.swift */; };
+		31B2B12E24BDDF6C009858E8 /* MeterReadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B2B12D24BDDF6C009858E8 /* MeterReadingTests.swift */; };
+		31B2B13324BE009A009858E8 /* MeterSettings+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B2B13224BE009A009858E8 /* MeterSettings+TestData.swift */; };
+		31B2E1F224AF5873001C915F /* PublisherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B2E1F124AF5873001C915F /* PublisherExtensions.swift */; };
+		31D1FF9A24951A2B0067B53F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D1FF9924951A2B0067B53F /* Colors.xcassets */; };
+		31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9B24979C120067B53F /* ProgressBarView.swift */; };
+		31D1FF9E249A0FAA0067B53F /* Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9D249A0FAA0067B53F /* Previews.swift */; };
+		31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F8CE3F23D1E13B0011909E /* Localizable.strings */; };
+		31F8CE4223D4D72C0011909E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4123D4D72C0011909E /* SettingsView.swift */; };
+		31F8CE4423D7155D0011909E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4323D7155C0011909E /* DateExtensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		312821DB23D0B96100975F66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 312821BC23D0B95E00975F66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 312821C323D0B95E00975F66;
+			remoteInfo = "Earnings Meter";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		310276AE24B0E5A50026A2A4 /* MeterDigitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDigitsView.swift; sourceTree = "<group>"; };
+		310276B024B20B220026A2A4 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		310276B224B256750026A2A4 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		311A3CDB246AB67200DF5B2E /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		311A3CE02472A19300DF5B2E /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		31225FDB249F5D990049D14F /* MeterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterViewModel.swift; sourceTree = "<group>"; };
+		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		312821C723D0B95E00975F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		312821C923D0B95E00975F66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		312821CB23D0B95E00975F66 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		312821CD23D0B96000975F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		312821D023D0B96000975F66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		312821D323D0B96000975F66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		312821D523D0B96000975F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		312821DA23D0B96100975F66 /* Earnings MeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Earnings MeterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		312821E023D0B96100975F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		312821EB23D0BA5700975F66 /* MeterReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReader.swift; sourceTree = "<group>"; };
+		312821ED23D0BAB000975F66 /* MeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
+		312EF56D249CAB4500CC71BA /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
+		3152DDA52473CEFB00B6D49E /* KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
+		315C4B4B24829001008F0562 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTimePicker.swift; sourceTree = "<group>"; };
+		31A5570C24B33B2F00A42012 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		31A5570E24B33BB400A42012 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		31A5571124B349E100A42012 /* MeterDigitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDigitsViewModel.swift; sourceTree = "<group>"; };
+		31B2B12D24BDDF6C009858E8 /* MeterReadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingTests.swift; sourceTree = "<group>"; };
+		31B2B13224BE009A009858E8 /* MeterSettings+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeterSettings+TestData.swift"; sourceTree = "<group>"; };
+		31B2E1F124AF5873001C915F /* PublisherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtensions.swift; sourceTree = "<group>"; };
+		31D1FF9924951A2B0067B53F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		31D1FF9B24979C120067B53F /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		31D1FF9D249A0FAA0067B53F /* Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previews.swift; sourceTree = "<group>"; };
+		31F8CE3F23D1E13B0011909E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		31F8CE4123D4D72C0011909E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		31F8CE4323D7155C0011909E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		312821C123D0B95E00975F66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3198638A24783F7C009F0C4B /* CombineExt in Frameworks */,
+				311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		312821D723D0B96100975F66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		312821BB23D0B95E00975F66 = {
+			isa = PBXGroup;
+			children = (
+				312821C623D0B95E00975F66 /* Earnings Meter */,
+				312821DD23D0B96100975F66 /* Earnings MeterTests */,
+				312821C523D0B95E00975F66 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		312821C523D0B95E00975F66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				312821C423D0B95E00975F66 /* Earnings Meter.app */,
+				312821DA23D0B96100975F66 /* Earnings MeterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		312821C623D0B95E00975F66 /* Earnings Meter */ = {
+			isa = PBXGroup;
+			children = (
+				312EF56B249CAA9A00CC71BA /* Assets */,
+				315C4B4A24828FE7008F0562 /* AppEnvironment */,
+				315C4B4924828FC0008F0562 /* Services */,
+				31F8CE3C23D1DFED0011909E /* Utilities */,
+				312821EA23D0BA3000975F66 /* Views */,
+				31A5571524B364CA00A42012 /* View Models */,
+				312821E923D0BA2600975F66 /* Calculator */,
+				312821C723D0B95E00975F66 /* AppDelegate.swift */,
+				312821C923D0B95E00975F66 /* SceneDelegate.swift */,
+				312821D223D0B96000975F66 /* LaunchScreen.storyboard */,
+				312821D523D0B96000975F66 /* Info.plist */,
+				312821CF23D0B96000975F66 /* Preview Content */,
+				31F8CE3F23D1E13B0011909E /* Localizable.strings */,
+			);
+			path = "Earnings Meter";
+			sourceTree = "<group>";
+		};
+		312821CF23D0B96000975F66 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				312821D023D0B96000975F66 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		312821DD23D0B96100975F66 /* Earnings MeterTests */ = {
+			isa = PBXGroup;
+			children = (
+				31B2B13124BE0085009858E8 /* Test Data */,
+				31B2B12D24BDDF6C009858E8 /* MeterReadingTests.swift */,
+				312821E023D0B96100975F66 /* Info.plist */,
+			);
+			path = "Earnings MeterTests";
+			sourceTree = "<group>";
+		};
+		312821E923D0BA2600975F66 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				312821EB23D0BA5700975F66 /* MeterReader.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		312821EA23D0BA3000975F66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				312821CB23D0B95E00975F66 /* RootView.swift */,
+				312821ED23D0BAB000975F66 /* MeterView.swift */,
+				310276AE24B0E5A50026A2A4 /* MeterDigitsView.swift */,
+				31F8CE4123D4D72C0011909E /* SettingsView.swift */,
+				317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */,
+				31D1FF9B24979C120067B53F /* ProgressBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		312EF56B249CAA9A00CC71BA /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				31D1FF9924951A2B0067B53F /* Colors.xcassets */,
+				312821CD23D0B96000975F66 /* Assets.xcassets */,
+				312EF56C249CAB4500CC71BA /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		312EF56C249CAB4500CC71BA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				312EF56D249CAB4500CC71BA /* digital-7-mono.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		315C4B4924828FC0008F0562 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				31A5570C24B33B2F00A42012 /* UserDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		315C4B4A24828FE7008F0562 /* AppEnvironment */ = {
+			isa = PBXGroup;
+			children = (
+				315C4B4B24829001008F0562 /* AppState.swift */,
+				311A3CE02472A19300DF5B2E /* AppEnvironment.swift */,
+			);
+			path = AppEnvironment;
+			sourceTree = "<group>";
+		};
+		31A5571524B364CA00A42012 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				31A5570E24B33BB400A42012 /* RootViewModel.swift */,
+				31225FDB249F5D990049D14F /* MeterViewModel.swift */,
+				31A5571124B349E100A42012 /* MeterDigitsViewModel.swift */,
+				317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		31B2B13124BE0085009858E8 /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				31B2B13224BE009A009858E8 /* MeterSettings+TestData.swift */,
+			);
+			path = "Test Data";
+			sourceTree = "<group>";
+		};
+		31F8CE3C23D1DFED0011909E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				31F8CE4323D7155C0011909E /* DateExtensions.swift */,
+				310276B024B20B220026A2A4 /* Formatters.swift */,
+				3152DDA52473CEFB00B6D49E /* KeyValueStorage.swift */,
+				311A3CDB246AB67200DF5B2E /* Styles.swift */,
+				31D1FF9D249A0FAA0067B53F /* Previews.swift */,
+				31B2E1F124AF5873001C915F /* PublisherExtensions.swift */,
+				310276B224B256750026A2A4 /* ViewExtensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		312821C323D0B95E00975F66 /* Earnings Meter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 312821E323D0B96100975F66 /* Build configuration list for PBXNativeTarget "Earnings Meter" */;
+			buildPhases = (
+				312821C023D0B95E00975F66 /* Sources */,
+				312821C123D0B95E00975F66 /* Frameworks */,
+				312821C223D0B95E00975F66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Earnings Meter";
+			packageProductDependencies = (
+				311A3CDE246C5C3600DF5B2E /* Introspect */,
+				3198638924783F7C009F0C4B /* CombineExt */,
+			);
+			productName = "Earnings Meter";
+			productReference = 312821C423D0B95E00975F66 /* Earnings Meter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		312821D923D0B96100975F66 /* Earnings MeterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 312821E623D0B96100975F66 /* Build configuration list for PBXNativeTarget "Earnings MeterTests" */;
+			buildPhases = (
+				312821D623D0B96100975F66 /* Sources */,
+				312821D723D0B96100975F66 /* Frameworks */,
+				312821D823D0B96100975F66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				312821DC23D0B96100975F66 /* PBXTargetDependency */,
+			);
+			name = "Earnings MeterTests";
+			productName = "Earnings MeterTests";
+			productReference = 312821DA23D0B96100975F66 /* Earnings MeterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		312821BC23D0B95E00975F66 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Shilan Patel";
+				TargetAttributes = {
+					312821C323D0B95E00975F66 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					312821D923D0B96100975F66 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 312821C323D0B95E00975F66;
+					};
+				};
+			};
+			buildConfigurationList = 312821BF23D0B95E00975F66 /* Build configuration list for PBXProject "Earnings Meter" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 312821BB23D0B95E00975F66;
+			packageReferences = (
+				311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */,
+			);
+			productRefGroup = 312821C523D0B95E00975F66 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				312821C323D0B95E00975F66 /* Earnings Meter */,
+				312821D923D0B96100975F66 /* Earnings MeterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		312821C223D0B95E00975F66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31D1FF9A24951A2B0067B53F /* Colors.xcassets in Resources */,
+				312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */,
+				31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */,
+				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
+				312EF56E249CAB4500CC71BA /* digital-7-mono.ttf in Resources */,
+				312821CE23D0B96000975F66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		312821D823D0B96100975F66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		312821C023D0B95E00975F66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31225FDC249F5D990049D14F /* MeterViewModel.swift in Sources */,
+				31B2E1F224AF5873001C915F /* PublisherExtensions.swift in Sources */,
+				311A3CDC246AB67200DF5B2E /* Styles.swift in Sources */,
+				31A5571224B349E100A42012 /* MeterDigitsViewModel.swift in Sources */,
+				31F8CE4223D4D72C0011909E /* SettingsView.swift in Sources */,
+				317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */,
+				310276B124B20B220026A2A4 /* Formatters.swift in Sources */,
+				31D1FF9E249A0FAA0067B53F /* Previews.swift in Sources */,
+				312821EC23D0BA5700975F66 /* MeterReader.swift in Sources */,
+				31A5570F24B33BB400A42012 /* RootViewModel.swift in Sources */,
+				310276AF24B0E5A50026A2A4 /* MeterDigitsView.swift in Sources */,
+				31A5570D24B33B2F00A42012 /* UserDataService.swift in Sources */,
+				31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */,
+				3152DDA62473CEFB00B6D49E /* KeyValueStorage.swift in Sources */,
+				312821C823D0B95E00975F66 /* AppDelegate.swift in Sources */,
+				312821EE23D0BAB000975F66 /* MeterView.swift in Sources */,
+				312821CA23D0B95E00975F66 /* SceneDelegate.swift in Sources */,
+				317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */,
+				315C4B4C24829001008F0562 /* AppState.swift in Sources */,
+				312821CC23D0B95E00975F66 /* RootView.swift in Sources */,
+				31F8CE4423D7155D0011909E /* DateExtensions.swift in Sources */,
+				310276B324B256750026A2A4 /* ViewExtensions.swift in Sources */,
+				311A3CE12472A19300DF5B2E /* AppEnvironment.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		312821D623D0B96100975F66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31B2B13324BE009A009858E8 /* MeterSettings+TestData.swift in Sources */,
+				31B2B12E24BDDF6C009858E8 /* MeterReadingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		312821DC23D0B96100975F66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 312821C323D0B95E00975F66 /* Earnings Meter */;
+			targetProxy = 312821DB23D0B96100975F66 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		312821D223D0B96000975F66 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				312821D323D0B96000975F66 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		312821E123D0B96100975F66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		312821E223D0B96100975F66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		312821E423D0B96100975F66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Earnings Meter/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Earnings Meter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ridgeviewapps.Earnings-Meter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		312821E523D0B96100975F66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Earnings Meter/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Earnings Meter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ridgeviewapps.Earnings-Meter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		312821E723D0B96100975F66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Earnings MeterTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ridgeviewapps.Earnings-MeterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Earnings Meter.app/Earnings Meter";
+			};
+			name = Debug;
+		};
+		312821E823D0B96100975F66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Earnings MeterTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ridgeviewapps.Earnings-MeterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Earnings Meter.app/Earnings Meter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		312821BF23D0B95E00975F66 /* Build configuration list for PBXProject "Earnings Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				312821E123D0B96100975F66 /* Debug */,
+				312821E223D0B96100975F66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		312821E323D0B96100975F66 /* Build configuration list for PBXNativeTarget "Earnings Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				312821E423D0B96100975F66 /* Debug */,
+				312821E523D0B96100975F66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		312821E623D0B96100975F66 /* Build configuration list for PBXNativeTarget "Earnings MeterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				312821E723D0B96100975F66 /* Debug */,
+				312821E823D0B96100975F66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		311A3CDE246C5C3600DF5B2E /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		3198638924783F7C009F0C4B /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 312821BC23D0B95E00975F66 /* Project object */;
+}

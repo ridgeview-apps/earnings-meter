@@ -1,0 +1,26 @@
+{
+  "images" : [
+    {
+      "filename" : "meter-background-compact.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "height-class" : "regular",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "width-class" : "regular"
+    },
+    {
+      "filename" : "meter-background-regular.pdf",
+      "height-class" : "regular",
+      "idiom" : "universal",
+      "width-class" : "regular"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
