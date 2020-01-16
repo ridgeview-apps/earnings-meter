@@ -1,0 +1,3 @@
+- No demo user required
+- Type in your daily rate or annual salary and tap Start 
+- Watch your earnings meter to see how much you've earned today

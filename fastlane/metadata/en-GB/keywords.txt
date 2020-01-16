@@ -1,0 +1,1 @@
+earnings,meter,earnings meter,money meter,daily meter,cash meter,salary
