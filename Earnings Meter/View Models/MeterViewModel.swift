@@ -23,29 +23,30 @@ final class MeterViewModel: ObservableObject {
     
     private var cancelBag = Set<AnyCancellable>()
     
-    init(appEnvironment: AppEnvironment,
+    init(appState: AppState,
          actionHandlers: ActionHandlers,
          timeFormatter: DateFormatter = .shortTimeStyle,
          calendar: Calendar = .current,
          dateGenerator: DateGeneratorType = DateGenerator.default) {
         
-        guard let meterSettings = appEnvironment.appState.userData.meterSettings else {
+        guard let meterSettings = appState.userData.meterSettings else {
             progressBarStartTimeText = ""
             progressBarEndTimeText = ""
             currentReading = .offDuty(amountEarned: 0, progress: 0)
             return
         }
         
-        progressBarStartTimeText = timeFormatter.string(from: meterSettings.startTime.asDateTimeToday(in: calendar,
-                                                                                                      dateGenerator: dateGenerator))
-        progressBarEndTimeText = timeFormatter.string(from: meterSettings.endTime.asDateTimeToday(in: calendar,
-                                                                                                  dateGenerator: dateGenerator))
+        progressBarStartTimeText = timeFormatter.string(from: meterSettings.startTime.date)
+        progressBarEndTimeText = timeFormatter.string(from: meterSettings.endTime.date)
         
-        let meterReader = MeterReader(meterSettings: meterSettings)
+        let meterReader = MeterReader(meterSettings: meterSettings,
+                                      calendar: calendar,
+                                      dateGenerator: dateGenerator)
         currentReading = meterReader.currentReading
         
         meterReader
             .$currentReading
+            .removeDuplicates()
             .sink { [weak self] currentReading in
                 guard let self = self else { return }
                 self.hireStatusPickerItems = HireStatusPickerItem.all(selectedValue: currentReading.hireStatusPickerId)

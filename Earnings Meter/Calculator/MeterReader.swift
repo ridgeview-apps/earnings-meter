@@ -36,8 +36,11 @@ final class MeterReader: ObservableObject {
     }
     
     init(meterSettings: AppState.MeterSettings,
-         calendar: Calendar = .current,
-         dateGenerator: DateGeneratorType = DateGenerator.default) {
+         calendar: Calendar,
+         dateGenerator: DateGeneratorType,
+         makePublisher: @escaping () -> Timer.TimerPublisher = {
+            Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .default)
+        }) {
         
         currentReading = Self.calculateReadingNow(for: dateGenerator,
                                                   calendar: calendar,
@@ -45,8 +48,7 @@ final class MeterReader: ObservableObject {
         
         let timer = onStart
             .map { _ in
-                Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .default)
-                    .autoconnect()
+                makePublisher().autoconnect()
             }
             .share()
         
@@ -84,7 +86,7 @@ final class MeterReader: ObservableObject {
                                             calendar: Calendar,
                                             meterSettings: AppState.MeterSettings) -> Reading {
         
-        let startTimeToday = meterSettings.startTime.asDateTimeToday(in: calendar, dateGenerator: dateGenerator)
+        let startTimeToday = meterSettings.startTime.date
         let isWeekend = calendar.isDateInWeekend(startTimeToday)
         
         let isAWorkingDay = !isWeekend || (isWeekend && meterSettings.runAtWeekends)
@@ -92,7 +94,7 @@ final class MeterReader: ObservableObject {
             return .offDuty(amountEarned: 0, progress: 0)
         }
         
-        let secondsElapsedToday = calendar.secondsElapsedToday(for: dateGenerator.now())
+        let secondsElapsedToday = calendar.secondsElapsedToday(for: dateGenerator.now)
         
         let workingDayStatus = WorkingDayStatus(meterSettings: meterSettings,
                                                 secondsElapsedToday: secondsElapsedToday)

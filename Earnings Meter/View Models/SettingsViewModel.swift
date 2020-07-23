@@ -66,8 +66,9 @@ final class SettingsViewModel: ObservableObject {
             .assign(false, to: \.isStartPickerExpanded, on: self, ownership: .weak)
             .store(in: &cancelBag)
                 
-        $formInput
-            .assign(\.isValid, to: \.isSaveButtonEnabled, on: self, ownership: .weak)
+        formInput
+            .$isValid
+            .assign(to: \.isSaveButtonEnabled, on: self, ownership: .weak)
             .store(in: &cancelBag)
                         
         inputs.onTappedTextField
@@ -81,6 +82,7 @@ final class SettingsViewModel: ObservableObject {
         
         inputs.onSave
             .withLatestFrom($formInput)
+            .filter(\.isValid)
             .flatMap {
                 userDataService.save(meterSettings: .init(formInput: $0,
                                                           calendar: calendar))
@@ -151,11 +153,10 @@ extension SettingsViewModel {
         @Published var endTime: Date
         @Published var runAtWeekends: Bool
         
-        private let rateTextFormatter: NumberFormatter
+        @Published private(set) var dailyRate: Double
+        @Published private(set) var isValid: Bool
         
-        var dailyRate: Double {
-            return rateTextFormatter.number(from: rateText) as? Double ?? 0
-        }
+        private var cancelBag = Set<AnyCancellable>()
 
         init(rateText: String,
              startTime: Date,
@@ -166,7 +167,19 @@ extension SettingsViewModel {
             self.startTime = startTime
             self.endTime = endTime
             self.runAtWeekends = runAtWeekends
-            self.rateTextFormatter = rateTextFormatter
+            self.isValid = false
+            self.dailyRate = 0
+            
+            $rateText.map {
+                rateTextFormatter.number(from: $0) as? Double ?? 0
+            }
+            .assign(to: \.dailyRate, on: self, ownership: .weak)
+            .store(in: &cancelBag)
+            
+            $dailyRate
+                .map { $0 > 0 }
+                .assign(to: \.isValid, on: self, ownership: .weak)
+                .store(in: &cancelBag)
         }
         
         convenience init(meter: AppState.MeterSettings,
@@ -174,26 +187,18 @@ extension SettingsViewModel {
                          calendar: Calendar,
                          dateGenerator: DateGeneratorType) {
             self.init(rateText: rateTextFormatter.string(from: meter.dailyRate as NSNumber) ?? "",
-                      startTime: meter.startTime.asDateTimeToday(in: calendar,
-                                                                 dateGenerator: dateGenerator),
-                      endTime: meter.endTime.asDateTimeToday(in: calendar,
-                                                             dateGenerator: dateGenerator),
+                      startTime: meter.startTime.date,
+                      endTime: meter.endTime.date,
                       runAtWeekends: meter.runAtWeekends,
                       rateTextFormatter: rateTextFormatter)
         }
-        
-        var isValid: Bool {
-            return dailyRate > 0
-        }
-        
+                
         static func empty(calendar: Calendar, dateGenerator: DateGeneratorType) -> FormInput {
             return FormInput(rateText: "",
-                             startTime: MeterTime(hour: 9, minute: 0)
-                                            .asDateTimeToday(in: calendar,
-                                                             dateGenerator: dateGenerator),
-                             endTime: MeterTime(hour: 17, minute: 30)
-                                .asDateTimeToday(in: calendar,
-                                                       dateGenerator: dateGenerator),
+                             startTime: MeterTime(hour: 9, minute: 0, calendar: calendar, dateGenerator: dateGenerator)
+                                            .date,
+                             endTime: MeterTime(hour: 17, minute: 30, calendar: calendar, dateGenerator: dateGenerator)
+                                            .date,
                              runAtWeekends: false)
         }
     }

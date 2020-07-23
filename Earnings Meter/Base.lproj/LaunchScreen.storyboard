@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,22 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meter-background" translatesAutoresizingMaskIntoConstraints="NO" id="HoO-Hd-Hy8">
-                                <rect key="frame" x="33.5" y="325" width="347" height="246"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 123" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlK-Hd-OLw">
-                                <rect key="frame" x="172.5" y="431.5" width="69.5" height="33.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" name="redOne"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pM9-hX-g6Y">
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meter-background" translatesAutoresizingMaskIntoConstraints="NO" id="HoO-Hd-Hy8">
+                                        <rect key="frame" x="33.5" y="239" width="347" height="246"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="HoO-Hd-Hy8" firstAttribute="centerX" secondItem="pM9-hX-g6Y" secondAttribute="centerX" id="bgU-EO-xgj"/>
+                                    <constraint firstItem="HoO-Hd-Hy8" firstAttribute="centerY" secondItem="pM9-hX-g6Y" secondAttribute="centerY" id="wXT-DN-LOu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="vlK-Hd-OLw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DU4-Oc-gzz"/>
-                            <constraint firstItem="HoO-Hd-Hy8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PHL-ZW-jW2"/>
-                            <constraint firstItem="HoO-Hd-Hy8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Pww-vz-fi3"/>
-                            <constraint firstItem="vlK-Hd-OLw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qPh-6A-pkP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pM9-hX-g6Y" secondAttribute="bottom" id="9zV-0Q-qfJ"/>
+                            <constraint firstItem="pM9-hX-g6Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ru5-I1-Tsj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pM9-hX-g6Y" secondAttribute="trailing" id="Uw4-fi-NhB"/>
+                            <constraint firstItem="pM9-hX-g6Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="94" id="na2-Dr-Ry1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -43,8 +46,5 @@
     </scenes>
     <resources>
         <image name="meter-background" width="347" height="246"/>
-        <namedColor name="redOne">
-            <color red="0.8901960784313725" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

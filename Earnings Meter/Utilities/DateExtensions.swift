@@ -56,23 +56,22 @@ extension Date {
 
 
 public protocol DateGeneratorType {
-    func now() -> Date
+    var now: Date { get }
 }
 
 public struct DateGenerator: DateGeneratorType {
     
     public static let `default` = DateGenerator()
     
-    public func now() -> Date {
-        return Date()
+    public var now: Date {
+        Date()
     }
 }
 
-struct FakeDateGenerator: DateGeneratorType {
+final class FakeDateGenerator: DateGeneratorType {
+    var now: Date
     
-    var fakeNow: Date
-    
-    func now() -> Date {
-        return fakeNow
+    init(now: Date = Date()) {
+        self.now = now
     }
 }

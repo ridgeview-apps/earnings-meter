@@ -17,7 +17,7 @@ struct MeterView: View {
     
     init(appEnvironment: AppEnvironment,
          onTappedSettings: @escaping ActionHandler = {}) {
-        viewModel = MeterViewModel(appEnvironment: appEnvironment,
+        viewModel = MeterViewModel(appState: appEnvironment.appState,
                                    actionHandlers: .init(onTappedSettings: onTappedSettings))
     }
     

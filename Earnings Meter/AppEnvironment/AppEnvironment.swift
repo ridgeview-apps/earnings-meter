@@ -12,6 +12,7 @@ import Combine
 struct AppEnvironment {
     let appState: AppState
     let services: Services
+    let dateGenerator: DateGeneratorType
     
     private enum AppEnvironmentType {
         case real
@@ -29,12 +30,14 @@ struct AppEnvironment {
             let appState = AppState()
             return .init(appState: appState,
                          services: .init(userData: .init(appState: appState,
-                                                         keyValueStore: UserDefaults.standard)))
+                                                         keyValueStore: UserDefaults.standard)),
+                         dateGenerator: DateGenerator.default)
         case .preview, .unitTest:
             let appState = AppState()
             return .init(appState: appState,
                          services: .init(userData: .init(appState: appState,
-                                                         keyValueStore: InMemoryKeyValueDataStore())))
+                                                         keyValueStore: InMemoryKeyValueDataStore())),
+                        dateGenerator: FakeDateGenerator())
         }
     }
     

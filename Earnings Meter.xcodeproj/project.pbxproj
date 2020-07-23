@@ -23,6 +23,8 @@
 		312821EC23D0BA5700975F66 /* MeterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821EB23D0BA5700975F66 /* MeterReader.swift */; };
 		312821EE23D0BAB000975F66 /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821ED23D0BAB000975F66 /* MeterView.swift */; };
 		312EF56E249CAB4500CC71BA /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 312EF56D249CAB4500CC71BA /* digital-7-mono.ttf */; };
+		3137BDE224C588EF00BC5504 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137BDE124C588EF00BC5504 /* SettingsViewModelTests.swift */; };
+		313A79E924C9C9CA003C4BB4 /* MeterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313A79E824C9C9CA003C4BB4 /* MeterViewModelTests.swift */; };
 		3152DDA62473CEFB00B6D49E /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152DDA52473CEFB00B6D49E /* KeyValueStorage.swift */; };
 		315C4B4C24829001008F0562 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C4B4B24829001008F0562 /* AppState.swift */; };
 		317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */; };
@@ -72,6 +74,8 @@
 		312821EB23D0BA5700975F66 /* MeterReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReader.swift; sourceTree = "<group>"; };
 		312821ED23D0BAB000975F66 /* MeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
 		312EF56D249CAB4500CC71BA /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
+		3137BDE124C588EF00BC5504 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		313A79E824C9C9CA003C4BB4 /* MeterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterViewModelTests.swift; sourceTree = "<group>"; };
 		3152DDA52473CEFB00B6D49E /* KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
 		315C4B4B24829001008F0562 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -160,7 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				31B2B13124BE0085009858E8 /* Test Data */,
+				313A79E824C9C9CA003C4BB4 /* MeterViewModelTests.swift */,
 				31B2B12D24BDDF6C009858E8 /* MeterReadingTests.swift */,
+				3137BDE124C588EF00BC5504 /* SettingsViewModelTests.swift */,
 				312821E023D0B96100975F66 /* Info.plist */,
 			);
 			path = "Earnings MeterTests";
@@ -397,8 +403,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313A79E924C9C9CA003C4BB4 /* MeterViewModelTests.swift in Sources */,
 				31B2B13324BE009A009858E8 /* MeterSettings+TestData.swift in Sources */,
 				31B2B12E24BDDF6C009858E8 /* MeterReadingTests.swift in Sources */,
+				3137BDE224C588EF00BC5504 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
