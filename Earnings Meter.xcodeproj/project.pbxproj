@@ -11,7 +11,7 @@
 		310276B124B20B220026A2A4 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310276B024B20B220026A2A4 /* Formatters.swift */; };
 		310276B324B256750026A2A4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310276B224B256750026A2A4 /* ViewExtensions.swift */; };
 		311A3CDC246AB67200DF5B2E /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3CDB246AB67200DF5B2E /* Styles.swift */; };
-		311A3CDF246C5C3600DF5B2E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 311A3CDE246C5C3600DF5B2E /* SwiftPackageProductDependency */; };
+		311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 311A3CDE246C5C3600DF5B2E /* Introspect */; };
 		311A3CE12472A19300DF5B2E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3CE02472A19300DF5B2E /* AppEnvironment.swift */; };
 		31225FDC249F5D990049D14F /* MeterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31225FDB249F5D990049D14F /* MeterViewModel.swift */; };
 		312821C823D0B95E00975F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312821C723D0B95E00975F66 /* AppDelegate.swift */; };
@@ -29,7 +29,7 @@
 		315C4B4C24829001008F0562 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C4B4B24829001008F0562 /* AppState.swift */; };
 		317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */; };
 		317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */; };
-		3198638A24783F7C009F0C4B /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3198638924783F7C009F0C4B /* SwiftPackageProductDependency */; };
+		3198638A24783F7C009F0C4B /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 3198638924783F7C009F0C4B /* CombineExt */; };
 		31A5570D24B33B2F00A42012 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5570C24B33B2F00A42012 /* UserDataService.swift */; };
 		31A5570F24B33BB400A42012 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5570E24B33BB400A42012 /* RootViewModel.swift */; };
 		31A5571224B349E100A42012 /* MeterDigitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5571124B349E100A42012 /* MeterDigitsViewModel.swift */; };
@@ -39,6 +39,7 @@
 		31D1FF9A24951A2B0067B53F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D1FF9924951A2B0067B53F /* Colors.xcassets */; };
 		31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9B24979C120067B53F /* ProgressBarView.swift */; };
 		31D1FF9E249A0FAA0067B53F /* Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9D249A0FAA0067B53F /* Previews.swift */; };
+		31E7F29E24CAFD9C00138F37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E7F29D24CAFD9C00138F37 /* GoogleService-Info.plist */; };
 		31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F8CE3F23D1E13B0011909E /* Localizable.strings */; };
 		31F8CE4223D4D72C0011909E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4123D4D72C0011909E /* SettingsView.swift */; };
 		31F8CE4423D7155D0011909E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4323D7155C0011909E /* DateExtensions.swift */; };
@@ -92,6 +93,7 @@
 		31D1FF9924951A2B0067B53F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		31D1FF9B24979C120067B53F /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		31D1FF9D249A0FAA0067B53F /* Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previews.swift; sourceTree = "<group>"; };
+		31E7F29D24CAFD9C00138F37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31F8CE3F23D1E13B0011909E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		31F8CE4123D4D72C0011909E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		31F8CE4323D7155C0011909E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -107,8 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3198638A24783F7C009F0C4B /* BuildFile in Frameworks */,
-				311A3CDF246C5C3600DF5B2E /* BuildFile in Frameworks */,
+				3198638A24783F7C009F0C4B /* CombineExt in Frameworks */,
+				311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */,
 				43941B1936EDD6E1A5F47424 /* Pods_Earnings_Meter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +149,7 @@
 		312821C623D0B95E00975F66 /* Earnings Meter */ = {
 			isa = PBXGroup;
 			children = (
+				31E7F29C24CAFD8F00138F37 /* Config */,
 				312EF56B249CAA9A00CC71BA /* Assets */,
 				315C4B4A24828FE7008F0562 /* AppEnvironment */,
 				315C4B4924828FC0008F0562 /* Services */,
@@ -259,6 +262,14 @@
 			path = "Test Data";
 			sourceTree = "<group>";
 		};
+		31E7F29C24CAFD8F00138F37 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				31E7F29D24CAFD9C00138F37 /* GoogleService-Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		31F8CE3C23D1DFED0011909E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +292,6 @@
 				3D57295836C0BA3200F7EDB9 /* Pods-Earnings MeterTests.debug.xcconfig */,
 				ED4095B8F64134A560662F47 /* Pods-Earnings MeterTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -313,8 +323,8 @@
 			);
 			name = "Earnings Meter";
 			packageProductDependencies = (
-				311A3CDE246C5C3600DF5B2E /* SwiftPackageProductDependency */,
-				3198638924783F7C009F0C4B /* SwiftPackageProductDependency */,
+				311A3CDE246C5C3600DF5B2E /* Introspect */,
+				3198638924783F7C009F0C4B /* CombineExt */,
 			);
 			productName = "Earnings Meter";
 			productReference = 312821C423D0B95E00975F66 /* Earnings Meter.app */;
@@ -368,8 +378,8 @@
 			);
 			mainGroup = 312821BB23D0B95E00975F66;
 			packageReferences = (
-				311A3CDD246C5C3600DF5B2E /* RemoteSwiftPackageReference */,
-				3198638824783F7C009F0C4B /* RemoteSwiftPackageReference */,
+				311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */,
 			);
 			productRefGroup = 312821C523D0B95E00975F66 /* Products */;
 			projectDirPath = "";
@@ -387,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31D1FF9A24951A2B0067B53F /* Colors.xcassets in Resources */,
+				31E7F29E24CAFD9C00138F37 /* GoogleService-Info.plist in Resources */,
 				312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */,
 				31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */,
 				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
@@ -655,6 +666,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Earnings Meter/Preview Content\"";
+				DEVELOPMENT_TEAM = 3H5L23529U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Earnings Meter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,8 +685,10 @@
 			baseConfigurationReference = 8020364283847357C52F1D70 /* Pods-Earnings Meter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Earnings Meter/Preview Content\"";
+				DEVELOPMENT_TEAM = 3H5L23529U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Earnings Meter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -683,6 +697,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PARENT_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc $(PRODUCT_BUNDLE_IDENTIFIER)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -765,7 +780,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		311A3CDD246C5C3600DF5B2E /* RemoteSwiftPackageReference */ = {
+		311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/timbersoftware/SwiftUI-Introspect.git";
 			requirement = {
@@ -773,7 +788,7 @@
 				minimumVersion = 0.1.0;
 			};
 		};
-		3198638824783F7C009F0C4B /* RemoteSwiftPackageReference */ = {
+		3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineExt";
 			requirement = {
@@ -784,14 +799,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		311A3CDE246C5C3600DF5B2E /* SwiftPackageProductDependency */ = {
+		311A3CDE246C5C3600DF5B2E /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 311A3CDD246C5C3600DF5B2E /* RemoteSwiftPackageReference */;
+			package = 311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		3198638924783F7C009F0C4B /* SwiftPackageProductDependency */ = {
+		3198638924783F7C009F0C4B /* CombineExt */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3198638824783F7C009F0C4B /* RemoteSwiftPackageReference */;
+			package = 3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */;
 			productName = CombineExt;
 		};
 /* End XCSwiftPackageProductDependency section */

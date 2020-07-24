@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>993259414356-eir9h3i10vn7vanl6e5klsqfhe29lbug.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.993259414356-eir9h3i10vn7vanl6e5klsqfhe29lbug</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDQzWap1k2XLr74hXiuGFRI26F3WiwV_OU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>993259414356</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ridgeviewapps.contract-meter</string>
+	<key>PROJECT_ID</key>
+	<string>ridgeview-ios-apps</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ridgeview-ios-apps.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:993259414356:ios:eb17eaeb199e10333c1ec1</string>
+	<key>DATABASE_URL</key>
+	<string>https://ridgeview-ios-apps.firebaseio.com</string>
+</dict>
+</plist>
