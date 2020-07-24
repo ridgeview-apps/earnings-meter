@@ -85,9 +85,7 @@ platform :ios do
       groups: options[:firebase_test_groups],
       release_notes: changelog,
       # firebase_cli_path: options[:firebase_cli_path], // Bitrise has firebase CLI preinstalled on its OSX image
-      firebase_cli_path: "/Users/shilanpatel/Dev/firebase-cli/8.5.0/firebase",
-      firebase_cli_token: "1//03AWadyUyrLZLCgYIARAAGAMSNwF-L9IrRu42wul6fCInHSlIhCGq8Y9Sbrre3PpX8ruM-mXONKHgdBUp9NwS7s_M7sIarsT1dCE",
-      # firebase_cli_token: options[:firebase_cli_token],
+      firebase_cli_token: options[:firebase_cli_token],
       debug: options[:firebase_debug],
     )
   end
