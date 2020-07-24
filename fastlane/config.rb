@@ -25,8 +25,8 @@ $default_build_config = {
   $firebase_app_ids = {
       # Whenever you add a new app to Firebase console, map the bundle ID to the Firebase app id
   
-      firebase_app_id_beta: "1:993259414356:ios:689c416cc764ba8a3c1ec1",
-      firebase_app_id_prod: "1:993259414356:ios:689c416cc764ba8a3c1ec1"
+      firebase_app_id_beta: "1:993259414356:ios:eb17eaeb199e10333c1ec1",
+      firebase_app_id_prod: "1:993259414356:ios:eb17eaeb199e10333c1ec1"
   }
     
   $beta_config = $default_build_config.merge({    
