@@ -10,14 +10,131 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
+
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+
+require_relative 'config'
 
 default_platform(:ios)
 
 platform :ios do
-  desc "Build for beta"
+
   lane :beta do
-    # add actions here: https://docs.fastlane.tools/actions
+    create_bundle_ids($beta_config)
+#    build_the_app($beta_config)
+ #   upload_to_firebase($beta_config)
+  end
+
+  lane :custom do
+    create_bundle_ids($custom_config)
+    build_the_app($custom_config)
+    #upload_to_firebase($beta_config)
+  end
+
+  lane :app_store do
+    build_the_app($app_store_config)
+    # TODO upload_to_appstore
+  end
+
+  private_lane :build_the_app do |options|
+
+    xcargs = {
+      # PROVISIONING_PROFILE_SPECIFIER: options[:provisioning_profile_name],
+      # CODE_SIGN_STYLE: "Manual",
+      # DEVELOPMENT_TEAM: options[:team_id],
+      PARENT_BUNDLE_ID: options[:parent_bundle_id]
+    }
+
+    xcargs_str = xcargs.map { |key, value| "#{key}='#{value}'" }
+                       .join(" ")
+
+    app_identifiers = app_bundle_identifiers(options).keys.join(",")
+
+    match(
+      git_url: options[:match_git_url],
+      app_identifier: app_identifiers,
+      type: options[:match_type],
+      force_for_new_devices: options[:match_force_for_new_devices],
+      username: options[:app_store_connect_user_id],
+    )
+
+    # run_tests(
+    #   scheme: options[:xcode_scheme],            
+    #   devices: options[:unit_test_devices],
+    # )
+
+    # Build the app and install the specified provisioning profile
+    gym(
+      output_name: options[:output_ipa_file_name],
+      export_method: options[:export_method],
+      scheme: options[:xcode_scheme],
+      configuration: options[:xcode_configuration],
+      export_options: options[:export_options],
+      # codesigning_identity: options[:code_sign_identity], # Set directly in xcode project instead (causes pod-signing issues otherwise)
+      xcargs: xcargs_str,
+      workspace: options[:xcode_workspace],
+    )
+
+  end
+
+  private_lane :upload_to_firebase do |options|
+
+    firebase_app_distribution(
+      app: options[:firebase_app_id],
+      groups: options[:firebase_test_groups],
+      release_notes: changelog,
+      # firebase_cli_path: options[:firebase_cli_path], // Bitrise has firebase CLI preinstalled on its OSX image
+      firebase_cli_path: "/Users/shilanpatel/Dev/firebase-cli/8.5.0/firebase",
+      firebase_cli_token: "1//03AWadyUyrLZLCgYIARAAGAMSNwF-L9IrRu42wul6fCInHSlIhCGq8Y9Sbrre3PpX8ruM-mXONKHgdBUp9NwS7s_M7sIarsT1dCE",
+      # firebase_cli_token: options[:firebase_cli_token],
+      debug: options[:firebase_debug],
+    )
+  end
+
+  ### Grabs the last commit message into a changelog
+  private_lane :changelog do
+    changelog_from_git_commits(
+      commits_count: 1,
+      date_format: "short"
+    )
+  end
+
+  #
+  # To support multiple targets (e.g. watch app, watch extension), do the following:
+  #
+  # Assuming you are trying to build an app whose parent bundle ID is "com.example.app"
+  #
+  #
+  #  1. Set PARENT_BUNDLE_ID to "com.example.app"
+  #  2. Set the iOS app target's PRODUCT_BUNDLE_IDENTIFIER to $(PARENT_BUNDLE_ID)
+  #  3. Set the WATCH app target's PRODUCT_BUNDLE_IDENTIFER to $(PARENT_BUNDLE_ID).watch
+  #  4. Set the WATCH extension target's PRODUCT_BUNDLE_IDENTIFER to $(PARENT_BUNDLE_ID).watch.extension
+  #  5. Add all the bundle IDs to the app_bundle_identifiers lane
+  #  
+  #
+  private_lane :app_bundle_identifiers do |options|
+    parent_bundle_id = options[:parent_bundle_id]
+    parent_bundle_name = options[:parent_bundle_name]
+
+    app_bundle_identifiers = {
+        "#{parent_bundle_id}": parent_bundle_name,
+        # See note above: add these if you are building multiple targets
+        # "#{parent_bundle_id}.watchkitapp": "#{parent_bundle_name} watch",
+        # "#{parent_bundle_id}.watchkitapp.extension": "#{parent_bundle_name} watch extension",
+    }
+  end
+  
+  # One-off actions
+  private_lane :create_bundle_ids do |options|
+    app_bundle_identifiers(options).each do |bundle_id, bundle_name|
+      produce(
+        username: options[:app_store_connect_user_id],
+        app_identifier: bundle_id.to_s,
+        app_name: bundle_name,
+        language: "en-US",
+        skip_itc: true
+      )
+    end
   end
 end
