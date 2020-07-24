@@ -2,7 +2,7 @@ $default_build_config = {
 
     team_id: "3H5L23529U", # Ridgeview Consulting Ltd
     xcode_scheme: "Earnings Meter",
-    #xcode_workspace: "departure-boards.xcworkspace",
+    xcode_workspace: "Earnings Meter.xcworkspace",
     export_options: {},
     output_ipa_file_name: "Earnings Meter",
     
@@ -25,20 +25,20 @@ $default_build_config = {
   $firebase_app_ids = {
       # Whenever you add a new app to Firebase console, map the bundle ID to the Firebase app id
   
-      demo_ci_beta: "1:993259414356:ios:689c416cc764ba8a3c1ec1",
-      demo_ci_prod: "1:993259414356:ios:689c416cc764ba8a3c1ec1"
+      firebase_app_id_beta: "1:993259414356:ios:689c416cc764ba8a3c1ec1",
+      firebase_app_id_prod: "1:993259414356:ios:689c416cc764ba8a3c1ec1"
   }
     
   $beta_config = $default_build_config.merge({    
     match_type: "adhoc",
-    firebase_app_id: $firebase_app_ids[:demo_ci_beta],
+    firebase_app_id: $firebase_app_ids[:firebase_app_id_beta],
     xcode_configuration: "Release",
     export_method: "ad-hoc"
   })
   
   $app_store_config = $default_build_config.merge({
     match_type: "app-store",
-    firebase_app_id: $firebase_app_ids["demo-ci-prod"],
+    firebase_app_id: $firebase_app_ids[:firebase_app_id_prod],
     xcode_configuration: "Release",
     export_method: "app-store",
     export_options: {

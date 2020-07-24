@@ -21,8 +21,8 @@ default_platform(:ios)
 platform :ios do
 
   lane :beta do
-    create_bundle_ids($beta_config)
-#    build_the_app($beta_config)
+#    create_bundle_ids($beta_config)
+   build_the_app($beta_config)
  #   upload_to_firebase($beta_config)
   end
 
