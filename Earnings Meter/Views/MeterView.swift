@@ -28,6 +28,7 @@ struct MeterView: View {
                     .overlay(meterContainerView)
                     .onAppear(perform: viewModel.inputs.appear)
                     .navigationBarItems(trailing: settingsButton)
+                    .offset(y: -64)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -84,7 +85,7 @@ struct MeterView: View {
                     .font(Font.headline.smallCaps())
                     .fontWeight(item.isSelected ? .bold : .regular)
                     .foregroundColor(item.isSelected ? .white : .disabledText)
-                    .lineLimit(nil)
+                    .minimumScaleFactor(0.9)
             }
         }
     }

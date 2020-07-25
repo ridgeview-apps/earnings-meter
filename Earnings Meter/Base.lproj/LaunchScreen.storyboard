@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pM9-hX-g6Y">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="794"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meter-background" translatesAutoresizingMaskIntoConstraints="NO" id="HoO-Hd-Hy8">
-                                        <rect key="frame" x="33.5" y="239" width="347" height="246"/>
+                                        <rect key="frame" x="33.5" y="274" width="347" height="246"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -31,10 +31,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pM9-hX-g6Y" secondAttribute="bottom" id="9zV-0Q-qfJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pM9-hX-g6Y" secondAttribute="bottom" constant="24" id="9zV-0Q-qfJ"/>
                             <constraint firstItem="pM9-hX-g6Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ru5-I1-Tsj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pM9-hX-g6Y" secondAttribute="trailing" id="Uw4-fi-NhB"/>
-                            <constraint firstItem="pM9-hX-g6Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="94" id="na2-Dr-Ry1"/>
+                            <constraint firstItem="pM9-hX-g6Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="na2-Dr-Ry1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

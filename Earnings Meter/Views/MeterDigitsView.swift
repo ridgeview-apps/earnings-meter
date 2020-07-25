@@ -26,10 +26,10 @@ struct MeterDigitsView: View {
 
     var body: some View {
         HStack(alignment: .lastTextBaseline) {
-            Text(viewModel.currencySymbol)
+            Text("£")
                 .foregroundColor(.white)
                 .lineLimit(1)
-                .font(.footnote)
+                .font(.largeTitle)
                 .layoutPriority(0)
                 
             ZStack(alignment: .trailing) {
