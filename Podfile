@@ -1,6 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.2'
 
+pod 'Firebase/Crashlytics'
 pod 'Firebase/Analytics'
 
 target 'Contract Meter' do
