@@ -4,7 +4,7 @@ $default_build_config = {
     xcode_scheme: "Earnings Meter",
     xcode_workspace: "Earnings Meter.xcworkspace",
     export_options: {},
-    output_ipa_file_name: "Earnings Meter",
+    output_ipa_file_name: "Contract Meter",
     
     unit_test_devices: ["iPhone X", "iPad Air"],
   
