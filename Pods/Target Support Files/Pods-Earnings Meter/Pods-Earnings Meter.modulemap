@@ -1,6 +1,0 @@
-framework module Pods_Earnings_Meter {
-  umbrella header "Pods-Earnings Meter-umbrella.h"
-
-  export *
-  module * { export * }
-}

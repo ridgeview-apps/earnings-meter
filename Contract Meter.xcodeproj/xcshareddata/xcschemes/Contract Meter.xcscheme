@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "312821C323D0B95E00975F66"
-               BuildableName = "Earnings Meter.app"
-               BlueprintName = "Earnings Meter"
+               BuildableName = "Contract Meter.app"
+               BlueprintName = "Contract Meter"
                ReferencedContainer = "container:Earnings Meter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,9 +33,19 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "312821D923D0B96100975F66"
-               BuildableName = "Earnings MeterTests.xctest"
-               BlueprintName = "Earnings MeterTests"
+               BuildableName = "Contract MeterTests.xctest"
+               BlueprintName = "Contract MeterTests"
                ReferencedContainer = "container:Earnings Meter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3190F6A124CF057B004303F0"
+               BuildableName = "Contract MeterTests.xctest"
+               BlueprintName = "Contract MeterTests"
+               ReferencedContainer = "container:Contract Meter.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,11 +65,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "312821C323D0B95E00975F66"
-            BuildableName = "Earnings Meter.app"
-            BlueprintName = "Earnings Meter"
-            ReferencedContainer = "container:Earnings Meter.xcodeproj">
+            BuildableName = "Contract Meter.app"
+            BlueprintName = "Contract Meter"
+            ReferencedContainer = "container:Contract Meter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "312821C323D0B95E00975F66"
+            BuildableName = "Contract Meter.app"
+            BlueprintName = "Contract Meter"
+            ReferencedContainer = "container:Earnings Meter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -72,8 +91,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "312821C323D0B95E00975F66"
-            BuildableName = "Earnings Meter.app"
-            BlueprintName = "Earnings Meter"
+            BuildableName = "Contract Meter.app"
+            BlueprintName = "Contract Meter"
             ReferencedContainer = "container:Earnings Meter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

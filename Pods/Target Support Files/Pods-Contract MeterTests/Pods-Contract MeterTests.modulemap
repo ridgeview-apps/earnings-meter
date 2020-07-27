@@ -1,0 +1,6 @@
+framework module Pods_Contract_MeterTests {
+  umbrella header "Pods-Contract MeterTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

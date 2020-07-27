@@ -8,7 +8,7 @@
 
 import XCTest
 import Combine
-@testable import Earnings_Meter
+@testable import Contract_Meter
 
 class MeterViewModelTests: XCTestCase {
     

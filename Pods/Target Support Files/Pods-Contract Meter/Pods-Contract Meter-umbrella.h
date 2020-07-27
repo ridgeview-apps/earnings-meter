@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Earnings_MeterVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Earnings_MeterVersionString[];
+FOUNDATION_EXPORT double Pods_Contract_MeterVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Contract_MeterVersionString[];
 

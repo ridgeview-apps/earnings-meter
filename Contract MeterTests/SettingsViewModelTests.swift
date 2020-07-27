@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Earnings_Meter
+@testable import Contract_Meter
 
 class SettingsViewModelTests: XCTestCase {
     

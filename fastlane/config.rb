@@ -1,8 +1,8 @@
 $default_build_config = {
 
     team_id: "3H5L23529U", # Ridgeview Consulting Ltd
-    xcode_scheme: "Earnings Meter",
-    xcode_workspace: "Earnings Meter.xcworkspace",
+    xcode_scheme: "Contract Meter",
+    xcode_workspace: "Contract Meter.xcworkspace",
     export_options: {},
     output_ipa_file_name: "Contract Meter",
     
