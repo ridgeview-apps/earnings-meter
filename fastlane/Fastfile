@@ -39,7 +39,7 @@ platform :ios do
 
   private_lane :build_the_app do |options|
     increment_build_number(
-      build_number: $BITRISE_BUILD_NUMBER
+      build_number: "$BITRISE_BUILD_NUMBER"
     )
 
     xcargs = {
