@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1140"
+   LastUpgradeVersion = "1230"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3190F6A124CF057B004303F0"
+               BlueprintIdentifier = "3190F6D924CF0B6A004303F0"
                BuildableName = "Contract MeterTests.xctest"
                BlueprintName = "Contract MeterTests"
                ReferencedContainer = "container:Contract Meter.xcodeproj">

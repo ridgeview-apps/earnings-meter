@@ -12,31 +12,28 @@ import Combine
 
 class MeterViewModelTests: XCTestCase {
     
-    private let appState = AppEnvironment.unitTest.appState
-    private let userDataService = AppEnvironment.unitTest.services.userData
-    private let calendar = Calendar.iso8601
     private var cancelBag = Set<AnyCancellable>()
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
     func testCurrentReading() throws {
+        let calendar = Calendar.iso8601
         let fakeNow_10_00_AM = calendar.date(from: .init(year: 2020, month: 7, day: 21, hour: 10, minute: 0))!
         let fakeNow_11_00_AM = calendar.date(from: .init(year: 2020, month: 7, day: 21, hour: 11, minute: 0))!
         
-        let dateGenerator = FakeDateGenerator(now: fakeNow_10_00_AM)
+        var fakeTimeNow = fakeNow_10_00_AM
+        
+        var formatters = Formatters.fake
+        formatters.dateStyles.shortTime = .testShortTimeStyle
+        let environment = AppEnvironment.fake(date: { fakeTimeNow },
+                                              currentCalendar: { calendar },
+                                              formatters: formatters)
         
         // Given
-        appState.userData.meterSettings = AppState.MeterSettings.day_worker_0900_to_1700(withDailyRate: 800,
-                                                                                         calendar: calendar,
-                                                                                         dateGenerator: dateGenerator)
+        let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 800),
+                                        environment: environment)
+        
+        
         // When
-        let meterViewModel = MeterViewModel(appState: appState,
-                                            actionHandlers: .init(onTappedSettings: {}),
-                                            timeFormatter: .testShortTimeStyle,
-                                            calendar: calendar,
-                                            dateGenerator: dateGenerator)
+        let meterViewModel = MeterViewModel(appViewModel: appViewModel)
         
         // Then
         XCTAssertEqual("meter-background", meterViewModel.backgroundImage)
@@ -49,14 +46,14 @@ class MeterViewModelTests: XCTestCase {
         XCTAssertEqual(.hired, meterViewModel.currentReading.status)
         
         // ... start the meter around 11am (reading should update)
-        meterViewModel.inputs.appear() // Starts the meter
-        dateGenerator.now = fakeNow_11_00_AM
+        meterViewModel.inputs.appear.send() // Starts the meter
+        fakeTimeNow = fakeNow_11_00_AM
         
         let expectedReading = expectation(description: "updatedReading")
         
-        meterViewModel.$currentReading.dropFirst().sink { _ in
-            expectedReading.fulfill()
-        }.store(in: &cancelBag)
+        meterViewModel.$currentReading.dropFirst()
+            .sink { _ in expectedReading.fulfill() }
+            .store(in: &cancelBag)
         
         wait(for: [expectedReading], timeout: 1.0)
         
@@ -66,27 +63,36 @@ class MeterViewModelTests: XCTestCase {
     }
     
     func testTapSettings() {
+        let calendar = Calendar.iso8601
         let fakeNow_10_00_AM = calendar.date(from: .init(year: 2020, month: 7, day: 21, hour: 10, minute: 0))!
-        let dateGenerator = FakeDateGenerator(now: fakeNow_10_00_AM)
+        
+        let fakeTimeNow = fakeNow_10_00_AM
+        
+        var formatters = Formatters.fake
+        formatters.dateStyles.shortTime = .testShortTimeStyle
+        let environment = AppEnvironment.fake(date: { fakeTimeNow },
+                                              currentCalendar: { calendar },
+                                              formatters: formatters)
         
         // Given
-        appState.userData.meterSettings = AppState.MeterSettings.day_worker_0900_to_1700(withDailyRate: 800,
-                                                                                         calendar: calendar,
-                                                                                         dateGenerator: dateGenerator)
+        let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 800),
+                                        environment: environment)
+                
         // When
-        let tappedSettingsExpectation = expectation(description: "tappedSettingsExpectation")
-        let meterViewModel = MeterViewModel(appState: appState,
-                                            actionHandlers: .init(onTappedSettings: {
-                                                tappedSettingsExpectation.fulfill()
-                                            }),
-                                            timeFormatter: .testShortTimeStyle,
-                                            calendar: calendar,
-                                            dateGenerator: dateGenerator)
-        meterViewModel.inputs.appear()
-        meterViewModel.inputs.tapSettingsButton()
+        let tappedSettingsOutputAction = expectation(description: "tappedSettingsOutputAction")
+        let meterViewModel = MeterViewModel(appViewModel: appViewModel)
+        meterViewModel
+            .outputActions
+            .didTapSettings
+            .sink { _ in tappedSettingsOutputAction.fulfill() }
+            .store(in: &cancelBag)
+
         
+        meterViewModel.inputs.appear.send()
+        meterViewModel.inputs.tapSettingsButton.send()
+
         // Then
-        wait(for: [tappedSettingsExpectation], timeout: 1.0)
+        wait(for: [tappedSettingsOutputAction], timeout: 1.0)
     }
 }
 

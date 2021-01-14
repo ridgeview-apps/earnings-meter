@@ -35,16 +35,13 @@ final class MeterReader: ObservableObject {
         }
     }
     
-    init(meterSettings: AppState.MeterSettings,
-         calendar: Calendar,
-         dateGenerator: DateGeneratorType,
+    init(environment: AppEnvironment,
+         meterSettings: MeterSettings,         
          makePublisher: @escaping () -> Timer.TimerPublisher = {
             Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .default)
         }) {
         
-        currentReading = Self.calculateReadingNow(for: dateGenerator,
-                                                  calendar: calendar,
-                                                  meterSettings: meterSettings)
+        currentReading = Self.calculateReadingNow(for: meterSettings, in: environment)
         
         let timer = onStart
             .map { _ in
@@ -62,9 +59,7 @@ final class MeterReader: ObservableObject {
         timer
             .switchToLatest()
             .map { _ in
-                Self.calculateReadingNow(for: dateGenerator,
-                                         calendar: calendar,
-                                         meterSettings: meterSettings)
+                Self.calculateReadingNow(for: meterSettings, in: environment)
             }
             .assign(to: \.currentReading, on: self, ownership: .weak)
             .store(in: &cancelBag)
@@ -82,11 +77,11 @@ final class MeterReader: ObservableObject {
     }
     
     // MARK: - Reading calculation
-    private static func calculateReadingNow(for dateGenerator: DateGeneratorType,
-                                            calendar: Calendar,
-                                            meterSettings: AppState.MeterSettings) -> Reading {
+    private static func calculateReadingNow(for meterSettings: MeterSettings,
+                                            in environment: AppEnvironment) -> Reading {
         
-        let startTimeToday = meterSettings.startTime.date
+        let startTimeToday = meterSettings.startTime.asLocalTimeToday(environment: environment)
+        let calendar = environment.currentCalendar()
         let isWeekend = calendar.isDateInWeekend(startTimeToday)
         
         let isAWorkingDay = !isWeekend || (isWeekend && meterSettings.runAtWeekends)
@@ -94,7 +89,7 @@ final class MeterReader: ObservableObject {
             return .offDuty(amountEarned: 0, progress: 0)
         }
         
-        let secondsElapsedToday = calendar.secondsElapsedToday(for: dateGenerator.now)
+        let secondsElapsedToday = calendar.secondsElapsedToday(for: environment.date())
         
         let workingDayStatus = WorkingDayStatus(meterSettings: meterSettings,
                                                 secondsElapsedToday: secondsElapsedToday)
@@ -111,7 +106,7 @@ final class MeterReader: ObservableObject {
     }
 }
 
-private extension AppState.MeterSettings {
+private extension MeterSettings {
     var isOvernightWorker: Bool {
         return endTime.seconds < startTime.seconds
     }
@@ -125,7 +120,7 @@ private struct WorkingDayStatus {
         case afterWork
     }
     
-    var meterSettings: AppState.MeterSettings
+    var meterSettings: MeterSettings
     var secondsElapsedToday: TimeInterval
     
     private let midday: TimeInterval = 12 * 60 * 60

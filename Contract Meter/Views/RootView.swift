@@ -11,64 +11,53 @@ import Combine
 
 struct RootView: View {
 
-    private let appEnvironment: AppEnvironment
     @ObservedObject private var viewModel: RootViewModel
+    @StateObject var appViewModel: AppViewModel
     
-    init(appEnvironment: AppEnvironment) {
-        self.appEnvironment = appEnvironment
-        self.viewModel = RootViewModel(appEnvironment: appEnvironment)
+    init(appViewModel: AppViewModel) {
+        self._appViewModel = .init(wrappedValue: appViewModel)
+        self.viewModel = RootViewModel(appViewModel: appViewModel)
     }
     
     var body: some View {
-        ZStack {
+        NavigationView {
             rootView
-                .id(viewModel.state)
+                .id(viewModel.childViewState)
                 .transition(.opacity)
+                .animation(.default)
+                .onAppear {
+                    viewModel.inputs.appear.send()                    
+                }
         }
-        .animation(.default)
     }
     
     private var rootView: some View {
-        switch viewModel.state {
-        case .showSettings:
-            return SettingsView(appEnvironment: appEnvironment,
-                                onSave: {
-                                    self.viewModel.inputs.handle(action: .didSaveSettings)
+        switch viewModel.childViewState {
+        case .editSettings:
+            return SettingsView(appViewModel: appViewModel,
+                                onSave: { _ in
+                                    self.viewModel.inputs.closeSettings.send()
                                 })
-                                .asAnyView
-        case .showMeter:
-            return MeterView(appEnvironment: appEnvironment,
+                                .eraseToAnyView()
+        case .meterRunning:
+            return MeterView(appViewModel: appViewModel,
                              onTappedSettings: {
-                                self.viewModel.inputs.handle(action: .goToSettings)
+                                self.viewModel.inputs.goToSettings.send()
                              })
-                             .asAnyView
+                             .eraseToAnyView()
         }
     }
 }
 
 // MARK - Previews
+#if DEBUG
 struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            RootView.meterRunningPreview
-            RootView.setupModePreview
+            RootView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            RootView(appViewModel: .preview(meterSettings: nil))
         }
     }
 }
-    
-private extension RootView {
-    static var meterRunningPreview: RootView {
-        let appEnvironment = AppEnvironment.preview
-        appEnvironment.appState.userData.meterSettings = .fake()
-        return RootView(appEnvironment: appEnvironment)
-    }
-    
-    static var setupModePreview: RootView {
-        let appEnvironment = AppEnvironment.preview
-        appEnvironment.appState.userData.meterSettings = nil
-        return RootView(appEnvironment: appEnvironment)
-    }
-    
-}
-
+#endif

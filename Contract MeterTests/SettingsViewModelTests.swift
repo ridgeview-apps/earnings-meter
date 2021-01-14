@@ -7,44 +7,39 @@
 //
 
 import XCTest
+import Combine
 @testable import Contract_Meter
 
 class SettingsViewModelTests: XCTestCase {
     
-    private let appState = AppEnvironment.unitTest.appState
-    private let userDataService = AppEnvironment.unitTest.services.userData
-    private let calendar = Calendar.iso8601
+    private var cancelBag = Set<AnyCancellable>()
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
     func testWelcomeState() throws {
         // Given
-        appState.userData.meterSettings = nil
-        let fakeNow = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        let calendar = Calendar.iso8601
+        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
+        let environment = AppEnvironment.fake(date: fakeNow,
+                                              currentCalendar: { calendar })
+        let appViewModel = AppViewModel(meterSettings: nil,
+                                        environment: environment)
         
         // When
-        let settingsViewModel = SettingsViewModel(appState: appState,
-                                                  userDataService: userDataService,
-                                                  actionHandlers: .init(onSave: {}),
-                                                  calendar: calendar,
-                                                  dateGenerator: FakeDateGenerator(now: fakeNow))
+        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
         
-        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
-        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 30, second: 0, of: fakeNow)!
+        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow())!
+        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 30, second: 0, of: fakeNow())!
         
         // Then
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
 
-        XCTAssertEqual(0, settingsViewModel.formInput.dailyRate)
-        XCTAssertEqual("", settingsViewModel.formInput.rateText)
+        XCTAssertEqual(0, settingsViewModel.formData.dailyRate)
+        XCTAssertEqual("", settingsViewModel.formData.rateText)
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
-        XCTAssertEqual(expectedStartTime, settingsViewModel.formInput.startTime)
-        XCTAssertEqual(expectedEndTime, settingsViewModel.formInput.endTime)
-        XCTAssertFalse(settingsViewModel.formInput.isValid)
+        XCTAssertEqual(expectedStartTime, settingsViewModel.formData.startTime)
+        XCTAssertEqual(expectedEndTime, settingsViewModel.formData.endTime)
+        XCTAssertFalse(settingsViewModel.formData.isValid)
 
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
@@ -62,33 +57,30 @@ class SettingsViewModelTests: XCTestCase {
     
     func testEditState() throws {
         // Given
-        let fakeNow = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
-        let dateGenerator = FakeDateGenerator(now: fakeNow)
-        
+        let calendar = Calendar.iso8601
+        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
+        let environment = AppEnvironment.fake(date: fakeNow,
+                                              currentCalendar: { calendar })
+
         // When
-        appState.userData.meterSettings = AppState.MeterSettings.day_worker_0900_to_1700(withDailyRate: 400,
-                                                                                         calendar: calendar,
-                                                                                         dateGenerator: dateGenerator)
-    
-        let settingsViewModel = SettingsViewModel(appState: appState,
-                                                  userDataService: userDataService,
-                                                  actionHandlers: .init(onSave: {}),
-                                                  calendar: calendar,
-                                                  dateGenerator: FakeDateGenerator(now: fakeNow))
-        
-        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
-        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 0, second: 0, of: fakeNow)!
-        
+        let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 400),
+                                        environment: environment)
+
+        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+
+        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow())!
+        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 0, second: 0, of: fakeNow())!
+
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
 
-        XCTAssertEqual(400, settingsViewModel.formInput.dailyRate)
-        XCTAssertEqual("400.00", settingsViewModel.formInput.rateText)
+        XCTAssertEqual(400, settingsViewModel.formData.dailyRate)
+        XCTAssertEqual("400.00", settingsViewModel.formData.rateText)
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
-        XCTAssertEqual(expectedStartTime, settingsViewModel.formInput.startTime)
-        XCTAssertEqual(expectedEndTime, settingsViewModel.formInput.endTime)
-        XCTAssertTrue(settingsViewModel.formInput.isValid)
+        XCTAssertEqual(expectedStartTime, settingsViewModel.formData.startTime)
+        XCTAssertEqual(expectedEndTime, settingsViewModel.formData.endTime)
+        XCTAssertTrue(settingsViewModel.formData.isValid)
 
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
@@ -98,109 +90,115 @@ class SettingsViewModelTests: XCTestCase {
         XCTAssertEqual("settings.navigation.title.edit", settingsViewModel.navigationBarTitle)
         XCTAssertEqual("settings.footer.button.title.save", settingsViewModel.saveButtonText)
         XCTAssertEqual(.edit, settingsViewModel.viewState)
-        
+
         XCTAssertTrue(settingsViewModel.isSaveButtonEnabled)
         XCTAssertNil(settingsViewModel.firstResponderId)
     }
-    
+
     func testFormInputValidation() {
         // Given
-        appState.userData.meterSettings = nil
-        let fakeNow = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        let calendar = Calendar.iso8601
+        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
+        let environment = AppEnvironment.fake(date: fakeNow,
+                                              currentCalendar: { calendar })
+        let appViewModel = AppViewModel(meterSettings: nil,
+                                        environment: environment)
         
         // When
-        let settingsViewModel = SettingsViewModel(appState: appState,
-                                                  userDataService: userDataService,
-                                                  actionHandlers: .init(onSave: {}),
-                                                  calendar: calendar,
-                                                  dateGenerator: FakeDateGenerator(now: fakeNow))
-        
+        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+
         // Then
         // 1. Form input initially valid
-        XCTAssertFalse(settingsViewModel.formInput.isValid)
+        XCTAssertFalse(settingsViewModel.formData.isValid)
         XCTAssertFalse(settingsViewModel.isSaveButtonEnabled)
-        
+
         // 2. Populate rate (invalid value) - input still invalid
-        settingsViewModel.formInput.rateText = "ABC"
-        XCTAssertFalse(settingsViewModel.formInput.isValid)
-        
+        settingsViewModel.formData.rateText = "ABC"
+        XCTAssertFalse(settingsViewModel.formData.isValid)
+
         // 3. Populate rate (valid value) - input now value
-        settingsViewModel.formInput.rateText = "123"
-        XCTAssertTrue(settingsViewModel.formInput.isValid)
+        settingsViewModel.formData.rateText = "123"
+        XCTAssertTrue(settingsViewModel.formData.isValid)
         XCTAssertTrue(settingsViewModel.isSaveButtonEnabled)
     }
-    
+
     func testTappingTheRateTextField() {
         // Given
-        appState.userData.meterSettings = nil
-        let fakeNow = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
-        
+        let calendar = Calendar.iso8601
+        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
+        let environment = AppEnvironment.fake(date: fakeNow,
+                                              currentCalendar: { calendar })
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .weekdayOnlyMeter),
+                                        environment: environment)
+
         // When
-        let settingsViewModel = SettingsViewModel(appState: appState,
-                                                  userDataService: userDataService,
-                                                  actionHandlers: .init(onSave: {}),
-                                                  calendar: calendar,
-                                                  dateGenerator: FakeDateGenerator(now: fakeNow))
-        settingsViewModel.inputs.tapped(textFieldId: .dailyRate)
+        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        settingsViewModel.inputs.tappedTextField.send(.dailyRate)
         
         // Then
         XCTAssertEqual(.dailyRate, settingsViewModel.firstResponderId)
-        
-        settingsViewModel.inputs.didSetFirstResponder()
+
+        settingsViewModel.inputs.didSetFirstResponder.send()
         XCTAssertNil(settingsViewModel.firstResponderId)
     }
-    
+
     func testSave() {
+        
         // Given
-        appState.userData.meterSettings = nil
-        let fakeNow = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        let calendar = Calendar.iso8601
+        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
+        let environment = AppEnvironment.fake(date: fakeNow,
+                                              currentCalendar: { calendar })
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .weekdayOnlyMeter),
+                                        environment: environment)
         
-        let onSaveExpectation = expectation(description: "Save callback executed")
-        
+        let saveOutputAction = expectation(description: "saveOutputAction")
+
         // When
-        let settingsViewModel = SettingsViewModel(appState: appState,
-                                                  userDataService: userDataService,
-                                                  actionHandlers: .init(onSave: {
-                                                    onSaveExpectation.fulfill()
-                                                  }),
-                                                  calendar: calendar,
-                                                  dateGenerator: FakeDateGenerator(now: fakeNow))
+        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
         
-        settingsViewModel.formInput.rateText = "456"
-        settingsViewModel.inputs.save()
+        settingsViewModel
+            .outputActions
+            .didTapSave
+            .sink { _ in saveOutputAction.fulfill() }
+            .store(in: &cancelBag)
         
+        settingsViewModel.formData.rateText = "456"
+        settingsViewModel.inputs.save.send()
+ 
         // Then
-        wait(for: [onSaveExpectation], timeout: 1.0)
+        wait(for: [saveOutputAction], timeout: 1.0)
     }
-    
+
     func testExpandingDatePickers() {
         // Given
-        appState.userData.meterSettings = nil
-        let fakeNow = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
-        
+        let calendar = Calendar.iso8601
+        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
+        let environment = AppEnvironment.fake(date: fakeNow,
+                                              currentCalendar: { calendar })
+        let appViewModel = AppViewModel(meterSettings: nil,
+                                        environment: environment)
+
+
         // When
-        let settingsViewModel = SettingsViewModel(appState: appState,
-                                                  userDataService: userDataService,
-                                                  actionHandlers: .init(onSave: {}),
-                                                  calendar: calendar,
-                                                  dateGenerator: FakeDateGenerator(now: fakeNow))
-        
+        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+
         // Then
-        
+
         // 1. Both date pickers initially collapsed
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
-        
+
         // 2. Expand the start picker (start = expanded, end = collapsed)
         settingsViewModel.isStartPickerExpanded = true
         XCTAssertTrue(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
-        
+
         // 3. Expand the end picker (start = collapsed, end = expanded)
         settingsViewModel.isEndPickerExpanded = true
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertTrue(settingsViewModel.isEndPickerExpanded)
-        
+
         // 3. Expand the start picker again (start = collapsed, end = expanded)
         settingsViewModel.isStartPickerExpanded = true
         XCTAssertTrue(settingsViewModel.isStartPickerExpanded)
