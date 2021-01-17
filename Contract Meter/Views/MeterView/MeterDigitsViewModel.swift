@@ -1,11 +1,3 @@
-//
-//  MeterDigitsViewModel.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 06/07/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import Foundation
 
 final class MeterDigitsViewModel {
@@ -21,6 +13,6 @@ final class MeterDigitsViewModel {
         amountBackgroundText = amountText
                                 .map { $0.isNumber ? "8" : String($0) }
                                 .joined()
-        currencySymbol = formatter.currencySymbol ?? "$"
+        currencySymbol = formatter.currencySymbol
     }
 }

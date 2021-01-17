@@ -1,11 +1,3 @@
-//
-//  ProgressBarView.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 15/06/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import SwiftUI
 
 struct ProgressBarView: View {

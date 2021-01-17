@@ -1,16 +1,11 @@
-/* 
-  Localizable.strings
-  Earnings Meter
-
-  Created by Shilan Patel on 17/01/2020.
-  Copyright © 2020 Shilan Patel. All rights reserved.
-*/
-
 "settings.navigation.title.edit" = "Settings";
 "settings.navigation.title.welcome" = "Welcome";
-"settings.welcome.message" = "Enter your details below then tap Start";
-"settings.rate.title" = "Daily rate";
-"settings.rate.placeholder" = "Enter amount";
+"settings.welcome.message" = "Please enter your details then tap Start";
+"settings.rate.title" = "I earn";
+"settings.rate.placeholder" = "Salary or daily rate";
+"settings.rate.calculated %@" = "You daily rate is: %@";
+"settings.rate.picker.annual" = "Per year";
+"settings.rate.picker.daily" = "Per day";
 "settings.workingHours.startTime.title" = "I start work at";
 "settings.workingHours.endTime.title" = "I finish work at";
 "settings.runAtWeekends.title" = "I work weekends";

@@ -33,6 +33,7 @@
 		314A48D525AF5AA000FBBF3E /* MeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D425AF5AA000FBBF3E /* MeterSettings.swift */; };
 		314A48D925AF5AF900FBBF3E /* MeterTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D825AF5AF900FBBF3E /* MeterTime.swift */; };
 		314A48E225B094B100FBBF3E /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48E125B094B100FBBF3E /* Formatters.swift */; };
+		315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315234A825B5D53100AE8811 /* StringLocalizer.swift */; };
 		317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */; };
 		317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */; };
 		3190F6E924CF0B8C004303F0 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E424CF0B8C004303F0 /* SettingsViewModelTests.swift */; };
@@ -91,6 +92,7 @@
 		314A48D425AF5AA000FBBF3E /* MeterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettings.swift; sourceTree = "<group>"; };
 		314A48D825AF5AF900FBBF3E /* MeterTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTime.swift; sourceTree = "<group>"; };
 		314A48E125B094B100FBBF3E /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		315234A825B5D53100AE8811 /* StringLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalizer.swift; sourceTree = "<group>"; };
 		317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTimePicker.swift; sourceTree = "<group>"; };
 		3190F6DA24CF0B6A004303F0 /* Contract MeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contract MeterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				314A488B25AF197D00FBBF3E /* Extensions */,
+				315234A825B5D53100AE8811 /* StringLocalizer.swift */,
 				311A3CDB246AB67200DF5B2E /* Styles.swift */,
 				31D1FF9D249A0FAA0067B53F /* Previews.swift */,
 				31B2E1F124AF5873001C915F /* PublisherExtensions.swift */,
@@ -520,6 +523,7 @@
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
 				31A5570D24B33B2F00A42012 /* UserDataService.swift in Sources */,
 				31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */,
+				315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */,
 				314A489D25AF197D00FBBF3E /* SwiftUI+.swift in Sources */,
 				312821EE23D0BAB000975F66 /* MeterView.swift in Sources */,
 				314A489725AF197D00FBBF3E /* Foundation+.swift in Sources */,

@@ -100,7 +100,7 @@ extension View {
             .modifier(OnChangeOfScenePhaseModifier(to: .background, action: action))
     }
     
-    func uiTableViewDismissMode(_ dismissMode: UIScrollView.KeyboardDismissMode) -> some View {
+    func dismissesKeyboardOnDrag() -> some View {
         introspectTableView { tableView in
             tableView.keyboardDismissMode = .onDrag
         }

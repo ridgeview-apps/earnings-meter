@@ -1,11 +1,3 @@
-//
-//  SettingsView.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 19/01/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import Foundation
 import SwiftUI
 import Combine
@@ -25,7 +17,8 @@ struct SettingsView: View {
     var body: some View {
         Form {
             Section(header: sectionHeader) {
-                rateTextField
+                rateDetails
+                    .padding([.top, .bottom], 12)
                 ExpandableTimePicker(title: "settings.workingHours.startTime.title",
                                      selectedTime: $viewModel.formData.startTime,
                                      isExpanded: $viewModel.isStartPickerExpanded)
@@ -33,12 +26,12 @@ struct SettingsView: View {
                                      selectedTime: $viewModel.formData.endTime,
                                      isExpanded: $viewModel.isEndPickerExpanded)
                 runAtWeekendsToggle
+                    .padding(.bottom, 12)
             }
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(trailing: saveButton)
-        .uiTableViewBackgroundColor(.white)
-        .uiTableViewDismissMode(.onDrag)
+        .dismissesKeyboardOnDrag()
         .navigationViewStyle(StackNavigationViewStyle())
         .onReceive(viewModel.outputActions.didTapSave, perform: onSave)
     }
@@ -51,27 +44,51 @@ struct SettingsView: View {
         }
     }
 
+    private var rateDetails: some View {
+        VStack {
+            rateTextField
+            ratePicker
+            if viewModel.isCalculatedRateTextVisible {
+                HStack {
+                    Spacer()
+                    Text(viewModel.calculatedRateText)
+                        .font(.headline)
+                        .foregroundColor(Color.red)
+                }
+                .padding(.top, 8)
+            }
+        }
+    }
+    
     private var rateTextField: some View {
         HStack {
             Text(viewModel.rateTitleText)
+            Text(viewModel.currencySymbol)
             TextField(viewModel.ratePlaceholderText,
                       text: $viewModel.formData.rateText)
-                .multilineTextAlignment(.trailing)
                 .keyboardType(.decimalPad)
                 .asFirstResponder(for: .dailyRate, on: viewModel)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
         }
         .onTapGesture {
             self.viewModel.inputs.tappedTextField.send(.dailyRate)
         }
     }
     
+    private var ratePicker: some View {
+        Picker("", selection: $viewModel.formData.rateType) {
+            ForEach(MeterSettings.Rate.RateType.allCases) { rateType in
+                Text(rateType.localizedStringKey).tag(rateType)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+    
     private var runAtWeekendsToggle: some View {
         Toggle(isOn: $viewModel.formData.runAtWeekends) {
             Text(viewModel.runAtWeekendsTitleText)
         }
-        .introspectSwitch {
-            $0.onTintColor = .redOne
-        }
+        .toggleStyle(SwitchToggleStyle(tint: .redOne))
     }
     
     private var saveButton: some View {
@@ -80,6 +97,19 @@ struct SettingsView: View {
         }
         .disabled(!viewModel.isSaveButtonEnabled)
     }
+}
+
+private extension MeterSettings.Rate.RateType {
+    
+    var localizedStringKey: LocalizedStringKey {
+        switch self {
+        case .daily:
+            return LocalizedStringKey("settings.rate.picker.daily")
+        case .annual:
+            return LocalizedStringKey("settings.rate.picker.annual")
+        }
+    }
+    
 }
 
 private extension View {

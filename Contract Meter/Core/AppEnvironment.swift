@@ -1,11 +1,3 @@
-//
-//  AppEnvironment.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 18/05/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import Foundation
 import Combine
 
@@ -15,6 +7,7 @@ struct AppEnvironment {
     var date: () -> Date
     var currentCalendar: () -> Calendar
     var formatters: Formatters
+    var stringLocalizer: StringLocalizer
 }
 
 // MARK: - Real instance
@@ -24,7 +17,8 @@ extension AppEnvironment {
         .init(services: .real,
               date: Date.init,
               currentCalendar: { Calendar.current },
-              formatters: .real)
+              formatters: .real,
+              stringLocalizer: .real)
     }
 }
 
@@ -39,7 +33,20 @@ enum AppLaunchMode: String {
 #if DEBUG
 extension AppEnvironment {
 
-    static var preview: AppEnvironment = AppEnvironment.fake()
-    static let unitTest = AppEnvironment.fake()
+    static var preview: AppEnvironment {
+        .init(services: .fake,
+              date: Date.init,
+              currentCalendar: { Calendar.current },
+              formatters: .fake,
+              stringLocalizer: .real)
+    }
+    
+    static var unitTest: AppEnvironment {
+        .init(services: .fake,
+              date: Date.init,
+              currentCalendar: { Calendar.iso8601(in: .london) },
+              formatters: .fake,
+              stringLocalizer: .fake)
+    }
 }
 #endif

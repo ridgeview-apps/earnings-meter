@@ -1,11 +1,3 @@
-//
-//  MeterReadingTests.swift
-//  Earnings MeterTests
-//
-//  Created by Shilan Patel on 14/07/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import XCTest
 @testable import Contract_Meter
 
@@ -14,10 +6,8 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_weekday_beforeWork() throws {
         
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekday_0800_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekday_0800_London }
 
         let nineToFiveMeter = MeterSettings.day_worker_0900_to_1700(withDailyRate: 800)
         
@@ -34,10 +24,9 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_weekday_atWork() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekday_1300_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekday_1300_London }
+                
         let nineToFiveMeter = MeterSettings.day_worker_0900_to_1700(withDailyRate: 800)
 
         // When
@@ -53,10 +42,9 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_weekday_afterWork() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekday_1900_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekday_1900_London }
+        
         let nineToFiveMeter = MeterSettings.day_worker_0900_to_1700(withDailyRate: 800)
 
         // When
@@ -72,10 +60,8 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_atWeekend_forWeekendWorker_showsReadingValue() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekend_1300_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekend_1300_London }
         
         let nineToFiveMeter = MeterSettings.day_worker_0900_to_1700(withDailyRate: 800,
                                                                     runAtWeekends: true)
@@ -93,10 +79,9 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_atWeekend_forNonWeekendWorker_showsZeroReading() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekend_1300_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekend_1300_London }
+        
         let nineToFiveMeter = MeterSettings.day_worker_0900_to_1700(withDailyRate: 800,
                                                                     runAtWeekends: false)
 
@@ -113,10 +98,8 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_overnightWorker_beforeWork() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekday_1900_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekday_1900_London }
 
         let overnightMeter = MeterSettings.overnight_worker_2200_to_0600(withDailyRate: 800,
                                                                          runAtWeekends: false)
@@ -134,10 +117,8 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_overnightWorker_atWork() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekday_0200_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekday_0200_London }
         
         let overnightMeter = MeterSettings.overnight_worker_2200_to_0600(withDailyRate: 800,
                                                                          runAtWeekends: false)
@@ -156,10 +137,8 @@ class MeterReadingTests: XCTestCase {
     func testMeterReading_overnightWorker_afterWork() throws {
 
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { Date.weekday_0800_London }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        var environment = AppEnvironment.unitTest
+        environment.date = { Date.weekday_0800_London }
         
         let overnightMeter = MeterSettings.overnight_worker_2200_to_0600(withDailyRate: 800,
                                                                          runAtWeekends: false)

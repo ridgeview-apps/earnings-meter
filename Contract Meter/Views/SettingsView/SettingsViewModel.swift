@@ -1,11 +1,3 @@
-//
-//  SettingsViewModel.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 24/05/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import Foundation
 import SwiftUI
 import Combine
@@ -22,6 +14,8 @@ final class SettingsViewModel: ObservableObject {
     @Published var formData: FormData
     @Published var isSaveButtonEnabled: Bool = false
     @Published var firstResponderId: TextFieldInputId?
+    @Published var calculatedRateText: String = ""
+    @Published var isCalculatedRateTextVisible: Bool = false
 
     let startPickerTitle: LocalizedStringKey = "settings.workingHours.startTime.title"
     let endPickerTitle: LocalizedStringKey = "settings.workingHours.endTime.title"
@@ -32,15 +26,21 @@ final class SettingsViewModel: ObservableObject {
     let navigationBarTitle: LocalizedStringKey
     let saveButtonText: LocalizedStringKey
     let viewState: ViewState
+    let currencySymbol: String
 
     private var cancelBag = Set<AnyCancellable>()
     
     init(appViewModel: AppViewModel) {
+        let rateTextFormatter = appViewModel.environment.formatters.numberStyles.decimal
+        let currencyTextFormatter = appViewModel.environment.formatters.numberStyles.currency
+        let localizer = appViewModel.environment.stringLocalizer
+        
+        self.currencySymbol = rateTextFormatter.currencySymbol
         
         if let savedMeter = appViewModel.meterSettings {
             formData = FormData(meter: savedMeter,
-                                    rateTextFormatter: appViewModel.environment.formatters.numberStyles.decimal,
-                                    environment: appViewModel.environment)
+                                rateTextFormatter: rateTextFormatter,
+                                environment: appViewModel.environment)
             viewState = .edit
         } else {
             formData = FormData.empty(environment: appViewModel.environment)
@@ -63,12 +63,7 @@ final class SettingsViewModel: ObservableObject {
             .when(equalTo: true)
             .assign(false, to: \.isStartPickerExpanded, on: self, ownership: .weak)
             .store(in: &cancelBag)
-                
-        formData
-            .$isValid
-            .assign(to: \.isSaveButtonEnabled, on: self, ownership: .weak)
-            .store(in: &cancelBag)
-                        
+        
         inputs.tappedTextField
             .map { $0 }
             .assign(to: \.firstResponderId, on: self, ownership: .weak)
@@ -77,14 +72,39 @@ final class SettingsViewModel: ObservableObject {
         inputs.didSetFirstResponder
             .assignNil(to: \.firstResponderId, on: self, ownership: .weak)
             .store(in: &cancelBag)
+                
+        $formData
+            .map { $0.rateType == .annual && $0.isValid }
+            .assign(to: \.isCalculatedRateTextVisible, on: self, ownership: .weak)
+            .store(in: &cancelBag)
         
-        inputs.save
-            .withLatestFrom($formData)
+        formData
+            .$isValid
+            .assign(to: \.isSaveButtonEnabled, on: self, ownership: .weak)
+            .store(in: &cancelBag)
+        
+        let validatedForm = $formData
             .filter(\.isValid)
             .map {
-                MeterSettings(formData: $0,
-                              environment: appViewModel.environment)
+                MeterSettings(formData: $0, environment: appViewModel.environment)
             }
+
+        validatedForm
+            .map {
+                switch $0.rate.type {
+                case .annual:
+                    let calculatedRateText = currencyTextFormatter.string(from: $0.dailyRate as NSNumber) ?? ""
+                    let localizedString = String(format: localizer.localized("settings.rate.calculated %@"), calculatedRateText)
+                    return localizedString
+                case .daily:
+                    return ""
+                }
+            }
+            .assign(to: \.calculatedRateText, on: self, ownership: .weak)
+            .store(in: &cancelBag)
+                
+        inputs.save
+            .withLatestFrom(validatedForm)
             .sink {
                 appViewModel.inputs.saveMeterSettings.send($0)
             }
@@ -142,59 +162,66 @@ extension SettingsViewModel {
         }
     }
     
-    final class FormData: ObservableObject {
+    final class FormData {
+        
+        var startTime: Date
+        var endTime: Date
+        var runAtWeekends: Bool
+        var rateType: MeterSettings.Rate.RateType
         
         @Published var rateText: String
-        @Published var startTime: Date
-        @Published var endTime: Date
-        @Published var runAtWeekends: Bool
-        
-        @Published private(set) var dailyRate: Double
-        @Published private(set) var isValid: Bool
+        @Published var rateAmount: Double
+        @Published var isValid: Bool
         
         private var cancelBag = Set<AnyCancellable>()
 
-        init(rateText: String,
-             startTime: Date,
+        init(startTime: Date,
              endTime: Date,
              runAtWeekends: Bool,
-             rateTextFormatter: NumberFormatter = .decimalStyle) {
+             rateText: String,
+             rateType: MeterSettings.Rate.RateType,
+             rateTextFormatter: NumberFormatter) {
             self.rateText = rateText
             self.startTime = startTime
             self.endTime = endTime
             self.runAtWeekends = runAtWeekends
+            self.rateAmount = 0
+            self.rateType = rateType
             self.isValid = false
-            self.dailyRate = 0
             
             $rateText.map {
                 rateTextFormatter.number(from: $0) as? Double ?? 0
             }
-            .assign(to: \.dailyRate, on: self, ownership: .weak)
+            .assign(to: \.rateAmount, on: self, ownership: .weak)
             .store(in: &cancelBag)
             
-            $dailyRate
+            $rateAmount
                 .map { $0 > 0 }
                 .assign(to: \.isValid, on: self, ownership: .weak)
                 .store(in: &cancelBag)
         }
         
+        
         convenience init(meter: MeterSettings,
                          rateTextFormatter: NumberFormatter = .decimalStyle,
                          environment: AppEnvironment) {
-            self.init(rateText: rateTextFormatter.string(from: meter.dailyRate as NSNumber) ?? "",
-                      startTime: meter.startTime.asLocalTimeToday(environment: environment),
+            self.init(startTime: meter.startTime.asLocalTimeToday(environment: environment),
                       endTime: meter.endTime.asLocalTimeToday(environment: environment),
                       runAtWeekends: meter.runAtWeekends,
+                      rateText: rateTextFormatter.string(from: meter.rate.amount as NSNumber) ?? "",
+                      rateType: meter.rate.type,
                       rateTextFormatter: rateTextFormatter)
         }
                 
         static func empty(environment: AppEnvironment) -> FormData {
-            return FormData(rateText: "",
-                             startTime: MeterTime(hour: 9, minute: 0)
+            return FormData(startTime: MeterTime(hour: 9, minute: 0)
                                 .asLocalTimeToday(environment: environment),
-                             endTime: MeterTime(hour: 17, minute: 30)
+                            endTime: MeterTime(hour: 17, minute: 30)
                                 .asLocalTimeToday(environment: environment),
-                             runAtWeekends: false)
+                            runAtWeekends: false,
+                            rateText: "",
+                            rateType: .annual,
+                            rateTextFormatter: environment.formatters.numberStyles.decimal)
         }
     }
 }
@@ -202,7 +229,8 @@ extension SettingsViewModel {
 private extension MeterSettings {
     init(formData: SettingsViewModel.FormData,
          environment: AppEnvironment) {
-        self.init(dailyRate: formData.dailyRate,
+        self.init(rate: .init(amount: formData.rateAmount,
+                              type: formData.rateType),
                   startTime: MeterTime(date: formData.startTime, environment: environment),
                   endTime: MeterTime(date: formData.endTime, environment: environment),
                   runAtWeekends: formData.runAtWeekends)

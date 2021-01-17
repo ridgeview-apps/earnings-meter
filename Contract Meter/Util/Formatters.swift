@@ -21,6 +21,12 @@ extension NumberFormatter {
         numFormatter.maximumFractionDigits = 2
         return numFormatter
     }()
+    
+    static let currencyStyle: NumberFormatter = {
+        let numFormatter = NumberFormatter()
+        numFormatter.numberStyle = .currency
+        return numFormatter
+    }()
 }
 
 
@@ -34,6 +40,7 @@ struct Formatters {
     var numberStyles: NumberFormatters
     struct NumberFormatters {
         var decimal: NumberFormatter = .decimalStyle
+        var currency: NumberFormatter = .currencyStyle
     }
 }
 

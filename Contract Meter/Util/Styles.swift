@@ -1,10 +1,3 @@
-//
-//  Styles.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 12/05/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
 import SwiftUI
 
 extension Color {

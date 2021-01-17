@@ -1,11 +1,3 @@
-//
-//  MeterDigitsView.swift
-//  Earnings Meter
-//
-//  Created by Shilan Patel on 04/07/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import Foundation
 import SwiftUI
 

@@ -1,11 +1,3 @@
-//
-//  SettingsViewModelTests.swift
-//  Earnings MeterTests
-//
-//  Created by Shilan Patel on 20/07/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import XCTest
 import Combine
 @testable import Contract_Meter
@@ -16,30 +8,30 @@ class SettingsViewModelTests: XCTestCase {
     
     func testWelcomeState() throws {
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        let calendar = Calendar.iso8601(in: .london)
+        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeNow }
+        
         let appViewModel = AppViewModel(meterSettings: nil,
                                         environment: environment)
         
         // When
         let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
         
-        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow())!
-        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 30, second: 0, of: fakeNow())!
+        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
+        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 30, second: 0, of: fakeNow)!
         
         // Then
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
 
-        XCTAssertEqual(0, settingsViewModel.formData.dailyRate)
+        XCTAssertEqual(0, settingsViewModel.formData.rateAmount)
         XCTAssertEqual("", settingsViewModel.formData.rateText)
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
         XCTAssertEqual(expectedStartTime, settingsViewModel.formData.startTime)
         XCTAssertEqual(expectedEndTime, settingsViewModel.formData.endTime)
-        XCTAssertFalse(settingsViewModel.formData.isValid)
 
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
@@ -57,10 +49,10 @@ class SettingsViewModelTests: XCTestCase {
     
     func testEditState() throws {
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        let calendar = Calendar.iso8601(in: .london)
+        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeNow }
 
         // When
         let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 400),
@@ -68,19 +60,18 @@ class SettingsViewModelTests: XCTestCase {
 
         let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
 
-        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow())!
-        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 0, second: 0, of: fakeNow())!
+        let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
+        let expectedEndTime = calendar.date(bySettingHour: 17, minute: 0, second: 0, of: fakeNow)!
 
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
 
-        XCTAssertEqual(400, settingsViewModel.formData.dailyRate)
+        XCTAssertEqual(400, settingsViewModel.formData.rateAmount)
         XCTAssertEqual("400.00", settingsViewModel.formData.rateText)
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
         XCTAssertEqual(expectedStartTime, settingsViewModel.formData.startTime)
         XCTAssertEqual(expectedEndTime, settingsViewModel.formData.endTime)
-        XCTAssertTrue(settingsViewModel.formData.isValid)
 
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
@@ -97,10 +88,12 @@ class SettingsViewModelTests: XCTestCase {
 
     func testFormInputValidation() {
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        let calendar = Calendar.iso8601(in: .london)
+        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeNow }
+        environment.currentCalendar = { calendar }
+
         let appViewModel = AppViewModel(meterSettings: nil,
                                         environment: environment)
         
@@ -109,25 +102,25 @@ class SettingsViewModelTests: XCTestCase {
 
         // Then
         // 1. Form input initially valid
-        XCTAssertFalse(settingsViewModel.formData.isValid)
         XCTAssertFalse(settingsViewModel.isSaveButtonEnabled)
 
         // 2. Populate rate (invalid value) - input still invalid
         settingsViewModel.formData.rateText = "ABC"
-        XCTAssertFalse(settingsViewModel.formData.isValid)
+        XCTAssertFalse(settingsViewModel.isSaveButtonEnabled)
 
         // 3. Populate rate (valid value) - input now value
-        settingsViewModel.formData.rateText = "123"
-        XCTAssertTrue(settingsViewModel.formData.isValid)
+        settingsViewModel.formData.rateAmount = 1234
         XCTAssertTrue(settingsViewModel.isSaveButtonEnabled)
     }
 
     func testTappingTheRateTextField() {
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        let calendar = Calendar.iso8601(in: .london)
+        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeNow }
+        environment.currentCalendar = { calendar }
+        
         let appViewModel = AppViewModel(meterSettings: .fake(ofType: .weekdayOnlyMeter),
                                         environment: environment)
 
@@ -145,10 +138,12 @@ class SettingsViewModelTests: XCTestCase {
     func testSave() {
         
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        let calendar = Calendar.iso8601(in: .london)
+        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeNow }
+        environment.currentCalendar = { calendar }
+        
         let appViewModel = AppViewModel(meterSettings: .fake(ofType: .weekdayOnlyMeter),
                                         environment: environment)
         
@@ -172,10 +167,12 @@ class SettingsViewModelTests: XCTestCase {
 
     func testExpandingDatePickers() {
         // Given
-        let calendar = Calendar.iso8601
-        let fakeNow: () -> Date = { calendar.date(from: .init(year: 2020, month: 7, day: 21))! }
-        let environment = AppEnvironment.fake(date: fakeNow,
-                                              currentCalendar: { calendar })
+        let calendar = Calendar.iso8601(in: .london)
+        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeNow }
+        environment.currentCalendar = { calendar }
+        
         let appViewModel = AppViewModel(meterSettings: nil,
                                         environment: environment)
 

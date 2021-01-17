@@ -1,11 +1,3 @@
-//
-//  MeterViewModelTests.swift
-//  Earnings MeterTests
-//
-//  Created by Shilan Patel on 23/07/2020.
-//  Copyright © 2020 Shilan Patel. All rights reserved.
-//
-
 import XCTest
 import Combine
 @testable import Contract_Meter
@@ -15,17 +7,16 @@ class MeterViewModelTests: XCTestCase {
     private var cancelBag = Set<AnyCancellable>()
     
     func testCurrentReading() throws {
-        let calendar = Calendar.iso8601
+        let calendar = Calendar.iso8601(in: .london)
         let fakeNow_10_00_AM = calendar.date(from: .init(year: 2020, month: 7, day: 21, hour: 10, minute: 0))!
         let fakeNow_11_00_AM = calendar.date(from: .init(year: 2020, month: 7, day: 21, hour: 11, minute: 0))!
         
         var fakeTimeNow = fakeNow_10_00_AM
         
-        var formatters = Formatters.fake
-        formatters.dateStyles.shortTime = .testShortTimeStyle
-        let environment = AppEnvironment.fake(date: { fakeTimeNow },
-                                              currentCalendar: { calendar },
-                                              formatters: formatters)
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeTimeNow }
+        environment.currentCalendar = { calendar }
+        environment.formatters.dateStyles.shortTime = .testShortTimeStyle
         
         // Given
         let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 800),
@@ -68,11 +59,10 @@ class MeterViewModelTests: XCTestCase {
         
         let fakeTimeNow = fakeNow_10_00_AM
         
-        var formatters = Formatters.fake
-        formatters.dateStyles.shortTime = .testShortTimeStyle
-        let environment = AppEnvironment.fake(date: { fakeTimeNow },
-                                              currentCalendar: { calendar },
-                                              formatters: formatters)
+        var environment = AppEnvironment.unitTest
+        environment.date = { fakeTimeNow }
+        environment.currentCalendar = { calendar }
+        environment.formatters.dateStyles.shortTime = .testShortTimeStyle
         
         // Given
         let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 800),

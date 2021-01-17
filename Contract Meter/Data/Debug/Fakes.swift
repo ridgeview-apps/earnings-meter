@@ -16,11 +16,11 @@ extension MeterSettings {
         }
     }
     
-    static func fake(dailyRate: Double = 400,
+    static func fake(rate: Rate = .init(amount: 40_000, type: .annual),
                      startTime: MeterTime = .fake(hour: 8, minute: 10),
                      endTime: MeterTime = .fake(hour: 18, minute: 30),
                      runAtWeekends: Bool = false) -> Self {
-        .init(dailyRate: dailyRate,
+        .init(rate: rate,
               startTime: startTime,
               endTime: endTime,
               runAtWeekends: runAtWeekends)
@@ -34,17 +34,4 @@ extension MeterTime {
         .init(hour: hour, minute: minute)
     }
     
-}
-
-extension AppEnvironment {
-    
-    static func fake(services: DataServices = .fake,
-                         date: @escaping () -> Date = Date.init,
-                         currentCalendar: @escaping () -> Calendar = { Calendar.current },
-                         formatters: Formatters = .fake) -> AppEnvironment {
-        .init(services: services,
-              date: date,
-              currentCalendar: currentCalendar,
-              formatters: formatters)
-    }
 }
