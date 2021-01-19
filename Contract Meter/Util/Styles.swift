@@ -3,6 +3,7 @@ import SwiftUI
 extension Color {
     static let redOne = Color("redOne")
     static let redTwo = Color("redTwo")
+    static let redThree = Color("redThree")
     static let greyOne = Color("greyOne")
     static let disabledText = Color.white.opacity(0.25)
 }

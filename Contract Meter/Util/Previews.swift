@@ -11,6 +11,7 @@
      case iPhone_11_Pro_Max = "iPhone 11 Pro Max"
      case iPhone_SE_2nd_generation = "iPhone SE (2nd generation)"
      case iPad_Pro_9_7_inch = "iPad Pro (9.7-inch)"
+     case iPod_touch_7th_generation = "iPod touch (7th generation)"
      
      struct PreviewSizeClass {
          let vertical: UserInterfaceSizeClass
@@ -32,7 +33,7 @@
      
      var sizeClass: PreviewSizeClass {
          switch self {
-         case .iPhone_SE_2nd_generation, .iPhone_11_Pro, .iPhone_11_Pro_Max:
+         case .iPhone_SE_2nd_generation, .iPhone_11_Pro, .iPhone_11_Pro_Max, .iPod_touch_7th_generation:
              return .tallAndThin
          case .iPad_Pro_9_7_inch:
              return .tallAndWide

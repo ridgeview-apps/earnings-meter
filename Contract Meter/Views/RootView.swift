@@ -14,29 +14,37 @@ struct RootView: View {
     var body: some View {
         NavigationView {
             rootView
-                .id(viewModel.childViewState)
-                .transition(.opacity)
-                .animation(.default)
                 .onAppear {
                     viewModel.inputs.appear.send()                    
                 }
+                .animation(.default)
+                .transition(.opacity)
         }
     }
     
-    private var rootView: some View {
-        switch viewModel.childViewState {
-        case .editSettings:
-            return SettingsView(appViewModel: appViewModel,
-                                onSave: { _ in
-                                    self.viewModel.inputs.closeSettings.send()
-                                })
-                                .eraseToAnyView()
-        case .meterRunning:
-            return MeterView(appViewModel: appViewModel,
-                             onTappedSettings: {
-                                self.viewModel.inputs.goToSettings.send()
+    struct View1: View {
+        var body: some View {
+            ZStack {
+                Color.red
+                Text("View 1 View 1 View 1 View 1 View 1")
+            }
+        }
+    }
+    
+    @ViewBuilder var rootView: some View {
+        ZStack {
+            switch viewModel.childViewState {
+            case .editSettings:
+                SettingsView(appViewModel: appViewModel,
+                             onSave: { _ in
+                                self.viewModel.inputs.closeSettings.send()
                              })
-                             .eraseToAnyView()
+            case .meterRunning:
+                MeterView(appViewModel: appViewModel,
+                          onTappedSettings: {
+                            self.viewModel.inputs.goToSettings.send()
+                          })
+            }
         }
     }
 }

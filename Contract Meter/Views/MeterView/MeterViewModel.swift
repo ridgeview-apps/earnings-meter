@@ -13,6 +13,7 @@ final class MeterViewModel: ObservableObject {
 
     let backgroundImage: String = "meter-background"
     let headerTextKey: LocalizedStringKey = "meter.header.earnings.today.title"
+    let navigationTitleKey: LocalizedStringKey = "settings.navigation.title.meter"
     
     let progressBarStartTimeText: String
     let progressBarEndTimeText: String

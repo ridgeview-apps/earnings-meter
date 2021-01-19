@@ -33,6 +33,7 @@ struct SettingsView: View {
         .navigationBarItems(trailing: saveButton)
         .dismissesKeyboardOnDrag()
         .navigationViewStyle(StackNavigationViewStyle())
+        .animation(nil)
         .onReceive(viewModel.outputActions.didTapSave, perform: onSave)
     }
     
@@ -53,7 +54,7 @@ struct SettingsView: View {
                     Spacer()
                     Text(viewModel.calculatedRateText)
                         .font(.headline)
-                        .foregroundColor(Color.red)
+                        .foregroundColor(Color.redThree)
                 }
                 .padding(.top, 8)
             }
@@ -95,6 +96,7 @@ struct SettingsView: View {
         Button(action: viewModel.inputs.save.send) {
             Text(viewModel.saveButtonText)
         }
+        .accentColor(Color.redThree)
         .disabled(!viewModel.isSaveButtonEnabled)
     }
 }

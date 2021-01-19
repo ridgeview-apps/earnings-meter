@@ -18,7 +18,7 @@ struct ProgressBarView: View {
         HStack(spacing: 20) {
             Text(leftLabelText)
                 .foregroundColor(textColor)
-                .font(.caption)
+                .font(.subheadline)
             
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
@@ -38,13 +38,17 @@ struct ProgressBarView: View {
                         Text(self.progressEmoji)
                             .font(.system(size: 18))
                             .offset(x: self.emojiOffset(maxWidth:  geometry.size.width))
+                    } else {
+                        Text(self.progressEmoji)
+                            .font(.system(size: 18))
+                            .hidden()
                     }
                 }
             }
             
             Text(rightLabelText)
                 .foregroundColor(textColor)
-                .font(.caption)
+                .font(.subheadline)
         }
         .padding()
         .frame(height: 30)

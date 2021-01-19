@@ -17,19 +17,21 @@ struct MeterView: View {
     
     var body: some View {
         ZStack {
+            Color.redTwo
             Image(viewModel.backgroundImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .overlay(meterContainerView)
-                .offset(y: -64)
-                .padding([.leading, .trailing])
+                .overlay(
+                    meterContainerView
+                )
         }
+        .edgesIgnoringSafeArea([.top, .bottom])
         .onAppear(perform: viewModel.inputs.appear.send)
         .onDisappear(perform: viewModel.inputs.disappear.send)
         .onReceive(viewModel.outputActions.didTapSettings, perform: onTappedSettings)
         .navigationBarItems(trailing: settingsButton)
+        .navigationTitle(viewModel.navigationTitleKey)
         .navigationViewStyle(StackNavigationViewStyle())
-        
     }
     
     private var meterContainerView: some View {
@@ -40,7 +42,6 @@ struct MeterView: View {
                 MeterDigitsView(amount: viewModel.currentReading.amountEarned,
                                 isEnabled: viewModel.currentReading.progress > 0,
                                 formatter: .decimalStyle)
-                    .animation(.none)
                 hireStatusView
             }
             Spacer()
@@ -57,7 +58,6 @@ struct MeterView: View {
                  horizontalSizeClass == .regular ? 40 : 20)
         .padding(.bottom,
                  horizontalSizeClass == .regular ? 70 : 45)
-
     }
     
     private var titleView: some View {
@@ -66,7 +66,7 @@ struct MeterView: View {
                 .frame(height: 2)
                 .padding(.leading, 20)
             Text(viewModel.headerTextKey)
-                .font(Font.body.smallCaps())
+                .font(.headline)
                 .layoutPriority(1)
             Rectangle()
                 .frame(height: 2)
@@ -79,8 +79,8 @@ struct MeterView: View {
         HStack(spacing: 20) {
             ForEach(viewModel.hireStatusPickerItems) { item in
                 Text(item.textLocalizedKey)
-                    .font(Font.headline.smallCaps())
-                    .fontWeight(item.isSelected ? .bold : .regular)
+                    .font(.headline)
+                    .fontWeight(item.isSelected ? .bold : .light)
                     .foregroundColor(item.isSelected ? .white : .disabledText)
                     .minimumScaleFactor(0.9)
             }
@@ -93,6 +93,7 @@ struct MeterView: View {
                 .imageScale(.large)
                 .padding([.top, .bottom, .leading])
         }
+        .accentColor(Color.redThree)
     }
 }
 
@@ -103,11 +104,22 @@ struct MeterView_Previews: PreviewProvider {
         Group {
             MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
                 .embeddedInNavigationView()
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .sevenDayMeter)))
+                .previewOption(deviceType: .iPhone_11_Pro)
+                .previewDisplayName("iPhone 11 Pro")
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
                 .embeddedInNavigationView()
+                .previewOption(deviceType: .iPod_touch_7th_generation)
+                .previewDisplayName("iPod")
             MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
                 .embeddedInNavigationView()
                 .previewOption(colorScheme: .dark)
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+                .previewOption(deviceType: .iPad_Pro_9_7_inch)
+                .previewDisplayName("iPad")
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+                .embeddedInNavigationView()
+                .previewOption(contentSize: .extraExtraExtraLarge)
+                .previewDisplayName("XXL Text")
         }
     }
 }

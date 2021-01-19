@@ -1,9 +1,10 @@
 "settings.navigation.title.edit" = "Settings";
 "settings.navigation.title.welcome" = "Welcome";
+"settings.navigation.title.meter" = "Earnings meter";
 "settings.welcome.message" = "Please enter your details then tap Start";
 "settings.rate.title" = "I earn";
 "settings.rate.placeholder" = "Salary or daily rate";
-"settings.rate.calculated %@" = "You daily rate is: %@";
+"settings.rate.calculated %@" = "Your daily rate is: %@";
 "settings.rate.picker.annual" = "Per year";
 "settings.rate.picker.daily" = "Per day";
 "settings.workingHours.startTime.title" = "I start work at";
@@ -12,7 +13,7 @@
 "settings.footer.button.title.save" = "Save";
 "settings.footer.button.title.start" = "Start";
 
-"meter.header.earnings.today.title" = "Earnings today";
-"meter.hireStatus.hired" = "Hired";
-"meter.hireStatus.offDuty" = "Off duty";
+"meter.header.earnings.today.title" = "EARNINGS TODAY";
+"meter.hireStatus.hired" = "HIRED";
+"meter.hireStatus.offDuty" = "OFF DUTY";
 
