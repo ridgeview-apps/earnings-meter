@@ -1,44 +1,45 @@
-$default_build_config = {
+require_relative 'config_secrets'
 
+# Base
+$base_build_config = $base_config_secrets
+  .merge({
     team_id: "3H5L23529U", # Ridgeview Consulting Ltd
-    xcode_scheme: "Contract Meter",
-    xcode_workspace: "Contract Meter.xcworkspace",
+    xcode_scheme: "EarningsMeter",
     export_options: {},
-    output_ipa_file_name: "Contract Meter",
+    output_name: "EarningsMeter",
     
     unit_test_devices: ["iPhone X", "iPad Air"],
-  
+
     match_type: "adhoc", # adhoc, app-store (don't need "development", use automatic provisioning for development)
     match_git_url: "git@github.com:ridgeview-apps/ridgeview-certs.git",
     match_force_for_new_devices: true,
-  
-    app_store_connect_user_id: "ci.ridgeview@gmail.com", # TODO: move this to ENV variable
-  
-    firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
-    firebase_test_groups: "QA",
-    firebase_debug: false,
 
-    parent_bundle_id: "com.ridgeviewapps.contract-meter",
-    parent_bundle_name: "Contract Meter"
-  }
-  
-  $firebase_app_ids = {
-      # Whenever you add a new app to Firebase console, map the bundle ID to the Firebase app id
-  
-      firebase_app_id_beta: "1:993259414356:ios:eb17eaeb199e10333c1ec1",
-      firebase_app_id_prod: "1:993259414356:ios:eb17eaeb199e10333c1ec1"
-  }
+    app_center_owner_name: "RidgeviewApps",
+    app_center_owner_type: "organization",
+    app_center_app_name: "EarningsMeter",
+    app_center_notify_testers: true,  
+})
     
-  $beta_config = $default_build_config.merge({    
+# Beta
+$beta_config = $base_build_config
+  .merge($beta_config_secrets)
+  .merge({
+    main_target_bundle_id: "com.ridgeviewapps.earnings-meter.beta",
     match_type: "adhoc",
-    firebase_app_id: $firebase_app_ids[:firebase_app_id_beta],
+    provisioning_profile_specifier: "match AdHoc $(PRODUCT_BUNDLE_IDENTIFIER)",
     xcode_configuration: "Release",
-    export_method: "ad-hoc"
+    export_method: "ad-hoc",
+    shield_prefix: "Beta",
+    shield_colour: "blue",    
   })
   
-  $app_store_config = $default_build_config.merge({
-    match_type: "app-store",
-    firebase_app_id: $firebase_app_ids[:firebase_app_id_prod],
+# Prod
+$prod_config = $base_build_config
+  .merge($prod_config_secrets)
+  .merge({
+    main_target_bundle_id: "com.ridgeviewapps.earnings-meter",
+    match_type: "appstore",
+    provisioning_profile_specifier: "match AppStore $(PRODUCT_BUNDLE_IDENTIFIER)",
     xcode_configuration: "Release",
     export_method: "app-store",
     export_options: {

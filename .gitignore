@@ -87,3 +87,12 @@ fastlane/test_output
 iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/swift
+
+# Generated code
+BuildSettings.generated.swift
+
+.gitsecret/keys/random_seed
+!*.secret
+fastlane/app_store_api_key_393B4NK7BM.p8
+fastlane/config_secrets.rb
+Config/Base.secret.xcconfig

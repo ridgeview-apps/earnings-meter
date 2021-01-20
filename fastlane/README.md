@@ -21,14 +21,29 @@ or alternatively using `brew install fastlane`
 fastlane ios beta
 ```
 
-### ios custom
+### ios prod
 ```
-fastlane ios custom
+fastlane ios prod
 ```
 
-### ios app_store
+### ios create_bundle_ids_beta
 ```
-fastlane ios app_store
+fastlane ios create_bundle_ids_beta
+```
+
+### ios create_bundle_ids_prod
+```
+fastlane ios create_bundle_ids_prod
+```
+
+### ios upload_screenshots
+```
+fastlane ios upload_screenshots
+```
+
+### ios submit_for_review
+```
+fastlane ios submit_for_review
 ```
 
 
