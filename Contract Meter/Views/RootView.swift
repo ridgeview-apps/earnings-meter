@@ -35,7 +35,7 @@ struct RootView: View {
         ZStack {
             switch viewModel.childViewState {
             case .editSettings:
-                SettingsView(appViewModel: appViewModel,
+                MeterSettingsView(appViewModel: appViewModel,
                              onSave: { _ in
                                 self.viewModel.inputs.closeSettings.send()
                              })

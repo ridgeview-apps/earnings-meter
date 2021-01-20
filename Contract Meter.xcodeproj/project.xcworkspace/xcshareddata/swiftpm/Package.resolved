@@ -2,12 +2,39 @@
   "object": {
     "pins": [
       {
+        "package": "AppCenter",
+        "repositoryURL": "https://github.com/microsoft/appcenter-sdk-apple.git",
+        "state": {
+          "branch": null,
+          "revision": "484dead179e6d7edd534d0d7defdf65c14a5b426",
+          "version": "4.1.0"
+        }
+      },
+      {
         "package": "CombineExt",
         "repositoryURL": "https://github.com/CombineCommunity/CombineExt",
         "state": {
           "branch": null,
           "revision": "6664678135c6aec049c887a51c9da2545f184882",
           "version": "1.2.0"
+        }
+      },
+      {
+        "package": "DeviceKit",
+        "repositoryURL": "https://github.com/devicekit/DeviceKit",
+        "state": {
+          "branch": null,
+          "revision": "dbddb0296e3ee4f83d52f9681e42705020a533e4",
+          "version": "4.2.1"
+        }
+      },
+      {
+        "package": "PLCrashReporter",
+        "repositoryURL": "https://github.com/microsoft/PLCrashReporter.git",
+        "state": {
+          "branch": null,
+          "revision": "de6b8f9db4b2a0aa859a5507550a70548e4da936",
+          "version": "1.8.1"
         }
       },
       {

@@ -34,7 +34,14 @@
 		314A48D925AF5AF900FBBF3E /* MeterTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D825AF5AF900FBBF3E /* MeterTime.swift */; };
 		314A48E225B094B100FBBF3E /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48E125B094B100FBBF3E /* Formatters.swift */; };
 		315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315234A825B5D53100AE8811 /* StringLocalizer.swift */; };
-		317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */; };
+		3152350225B83CE400AE8811 /* AppInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152350125B83CE400AE8811 /* AppInfoViewModel.swift */; };
+		3152350725B83D4800AE8811 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3152350625B83D4800AE8811 /* DeviceKit */; };
+		3152350C25B83DDB00AE8811 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 3152350B25B83DDB00AE8811 /* AppCenterCrashes */; };
+		3152350E25B83DDB00AE8811 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3152350D25B83DDB00AE8811 /* AppCenterAnalytics */; };
+		3152351425B83E0A00AE8811 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152351325B83E0A00AE8811 /* AppInfoView.swift */; };
+		3152351F25B843A500AE8811 /* MailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152351E25B843A500AE8811 /* MailButton.swift */; };
+		3152352325B8475200AE8811 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152352225B8475200AE8811 /* AppConfig.swift */; };
+		317F82D4247AD3E500B8C7AB /* MeterSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* MeterSettingsViewModel.swift */; };
 		317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */; };
 		3190F6E924CF0B8C004303F0 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E424CF0B8C004303F0 /* SettingsViewModelTests.swift */; };
 		3190F6EA24CF0B8C004303F0 /* MeterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E524CF0B8C004303F0 /* MeterViewModelTests.swift */; };
@@ -49,7 +56,7 @@
 		31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9B24979C120067B53F /* ProgressBarView.swift */; };
 		31D1FF9E249A0FAA0067B53F /* Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9D249A0FAA0067B53F /* Previews.swift */; };
 		31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F8CE3F23D1E13B0011909E /* Localizable.strings */; };
-		31F8CE4223D4D72C0011909E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4123D4D72C0011909E /* SettingsView.swift */; };
+		31F8CE4223D4D72C0011909E /* MeterSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4123D4D72C0011909E /* MeterSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +100,11 @@
 		314A48D825AF5AF900FBBF3E /* MeterTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTime.swift; sourceTree = "<group>"; };
 		314A48E125B094B100FBBF3E /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		315234A825B5D53100AE8811 /* StringLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalizer.swift; sourceTree = "<group>"; };
-		317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3152350125B83CE400AE8811 /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
+		3152351325B83E0A00AE8811 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		3152351E25B843A500AE8811 /* MailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailButton.swift; sourceTree = "<group>"; };
+		3152352225B8475200AE8811 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		317F82D3247AD3E500B8C7AB /* MeterSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettingsViewModel.swift; sourceTree = "<group>"; };
 		317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTimePicker.swift; sourceTree = "<group>"; };
 		3190F6DA24CF0B6A004303F0 /* Contract MeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contract MeterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3190F6DE24CF0B6A004303F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,7 +120,7 @@
 		31D1FF9B24979C120067B53F /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		31D1FF9D249A0FAA0067B53F /* Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previews.swift; sourceTree = "<group>"; };
 		31F8CE3F23D1E13B0011909E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		31F8CE4123D4D72C0011909E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		31F8CE4123D4D72C0011909E /* MeterSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettingsView.swift; sourceTree = "<group>"; };
 		36D115BA65CC26E3CDE45D13 /* Pods-Earnings Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earnings Meter.debug.xcconfig"; path = "Target Support Files/Pods-Earnings Meter/Pods-Earnings Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		3CD582947C71E1A803A0446F /* Pods_Contract_MeterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_MeterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8020364283847357C52F1D70 /* Pods-Earnings Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earnings Meter.release.xcconfig"; path = "Target Support Files/Pods-Earnings Meter/Pods-Earnings Meter.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +136,9 @@
 			files = (
 				3198638A24783F7C009F0C4B /* CombineExt in Frameworks */,
 				311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */,
+				3152350725B83D4800AE8811 /* DeviceKit in Frameworks */,
+				3152350E25B83DDB00AE8811 /* AppCenterAnalytics in Frameworks */,
+				3152350C25B83DDB00AE8811 /* AppCenterCrashes in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,9 +202,10 @@
 		312821EA23D0BA3000975F66 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				315234FA25B83C2B00AE8811 /* AppInfo */,
 				314A48DE25AF6F4D00FBBF3E /* Common */,
 				314A48DC25AF6F1900FBBF3E /* MeterView */,
-				314A48DD25AF6F3000FBBF3E /* SettingsView */,
+				314A48DD25AF6F3000FBBF3E /* MeterSettingsView */,
 				312821CB23D0B95E00975F66 /* RootView.swift */,
 				31A5570E24B33BB400A42012 /* RootViewModel.swift */,
 				314A48AC25AF21E900FBBF3E /* AppViewModel.swift */,
@@ -252,9 +267,10 @@
 		314A47C925ACD5AD00FBBF3E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3152352225B8475200AE8811 /* AppConfig.swift */,
+				311A3CE02472A19300DF5B2E /* AppEnvironment.swift */,
 				312821EB23D0BA5700975F66 /* MeterReader.swift */,
 				314A47CA25ACD5B900FBBF3E /* KeyValueStore.swift */,
-				311A3CE02472A19300DF5B2E /* AppEnvironment.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -292,13 +308,13 @@
 			path = MeterView;
 			sourceTree = "<group>";
 		};
-		314A48DD25AF6F3000FBBF3E /* SettingsView */ = {
+		314A48DD25AF6F3000FBBF3E /* MeterSettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				31F8CE4123D4D72C0011909E /* SettingsView.swift */,
-				317F82D3247AD3E500B8C7AB /* SettingsViewModel.swift */,
+				31F8CE4123D4D72C0011909E /* MeterSettingsView.swift */,
+				317F82D3247AD3E500B8C7AB /* MeterSettingsViewModel.swift */,
 			);
-			path = SettingsView;
+			path = MeterSettingsView;
 			sourceTree = "<group>";
 		};
 		314A48DE25AF6F4D00FBBF3E /* Common */ = {
@@ -306,8 +322,18 @@
 			children = (
 				317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */,
 				31D1FF9B24979C120067B53F /* ProgressBarView.swift */,
+				3152351E25B843A500AE8811 /* MailButton.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		315234FA25B83C2B00AE8811 /* AppInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3152351325B83E0A00AE8811 /* AppInfoView.swift */,
+				3152350125B83CE400AE8811 /* AppInfoViewModel.swift */,
+			);
+			path = AppInfo;
 			sourceTree = "<group>";
 		};
 		3190F6DB24CF0B6A004303F0 /* Contract MeterTests */ = {
@@ -384,6 +410,9 @@
 			packageProductDependencies = (
 				311A3CDE246C5C3600DF5B2E /* Introspect */,
 				3198638924783F7C009F0C4B /* CombineExt */,
+				3152350625B83D4800AE8811 /* DeviceKit */,
+				3152350B25B83DDB00AE8811 /* AppCenterCrashes */,
+				3152350D25B83DDB00AE8811 /* AppCenterAnalytics */,
 			);
 			productName = "Earnings Meter";
 			productReference = 312821C423D0B95E00975F66 /* Contract Meter.app */;
@@ -438,6 +467,8 @@
 			packageReferences = (
 				311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */,
+				3152350525B83D4800AE8811 /* XCRemoteSwiftPackageReference "DeviceKit" */,
+				3152350A25B83DDB00AE8811 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
 			);
 			productRefGroup = 312821C523D0B95E00975F66 /* Products */;
 			projectDirPath = "";
@@ -479,10 +510,11 @@
 			files = (
 				31225FDC249F5D990049D14F /* MeterViewModel.swift in Sources */,
 				314A489A25AF197D00FBBF3E /* Color+.swift in Sources */,
+				3152351F25B843A500AE8811 /* MailButton.swift in Sources */,
 				31B2E1F224AF5873001C915F /* PublisherExtensions.swift in Sources */,
 				311A3CDC246AB67200DF5B2E /* Styles.swift in Sources */,
 				31A5571224B349E100A42012 /* MeterDigitsViewModel.swift in Sources */,
-				31F8CE4223D4D72C0011909E /* SettingsView.swift in Sources */,
+				31F8CE4223D4D72C0011909E /* MeterSettingsView.swift in Sources */,
 				314A48AD25AF21E900FBBF3E /* AppViewModel.swift in Sources */,
 				314A47CB25ACD5B900FBBF3E /* KeyValueStore.swift in Sources */,
 				314A48D925AF5AF900FBBF3E /* MeterTime.swift in Sources */,
@@ -501,12 +533,15 @@
 				31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */,
 				315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */,
 				314A489D25AF197D00FBBF3E /* SwiftUI+.swift in Sources */,
+				3152351425B83E0A00AE8811 /* AppInfoView.swift in Sources */,
 				312821EE23D0BAB000975F66 /* MeterView.swift in Sources */,
 				314A489725AF197D00FBBF3E /* Foundation+.swift in Sources */,
 				314A489925AF197D00FBBF3E /* Bundle+.swift in Sources */,
-				317F82D4247AD3E500B8C7AB /* SettingsViewModel.swift in Sources */,
+				317F82D4247AD3E500B8C7AB /* MeterSettingsViewModel.swift in Sources */,
 				312821CC23D0B95E00975F66 /* RootView.swift in Sources */,
+				3152352325B8475200AE8811 /* AppConfig.swift in Sources */,
 				311A3CE12472A19300DF5B2E /* AppEnvironment.swift in Sources */,
+				3152350225B83CE400AE8811 /* AppInfoViewModel.swift in Sources */,
 				314A48D525AF5AA000FBBF3E /* MeterSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,6 +820,22 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		3152350525B83D4800AE8811 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.1;
+			};
+		};
+		3152350A25B83DDB00AE8811 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 		3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineExt";
@@ -800,6 +851,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 311A3CDD246C5C3600DF5B2E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		3152350625B83D4800AE8811 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3152350525B83D4800AE8811 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
+		3152350B25B83DDB00AE8811 /* AppCenterCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3152350A25B83DDB00AE8811 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterCrashes;
+		};
+		3152350D25B83DDB00AE8811 /* AppCenterAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3152350A25B83DDB00AE8811 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterAnalytics;
 		};
 		3198638924783F7C009F0C4B /* CombineExt */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -3,14 +3,16 @@ import SwiftUI
 import Combine
 import Introspect
 
-struct SettingsView: View {
+struct MeterSettingsView: View {
     
-    @ObservedObject private var viewModel: SettingsViewModel
+    @ObservedObject private var viewModel: MeterSettingsViewModel
     private let onSave: (MeterSettings?) -> Void
+    private let appViewModel: AppViewModel
     
     init(appViewModel: AppViewModel,
          onSave: @escaping (MeterSettings?) -> Void = { _ in }) {
-        viewModel = SettingsViewModel(appViewModel: appViewModel)
+        viewModel = MeterSettingsViewModel(appViewModel: appViewModel)
+        self.appViewModel = appViewModel
         self.onSave = onSave
     }
     
@@ -27,13 +29,20 @@ struct SettingsView: View {
                                      isExpanded: $viewModel.isEndPickerExpanded)
                 runAtWeekendsToggle
             }
+            if viewModel.viewState != .welcome {
+                Section {
+                    NavigationLink(destination: AppInfoView(appViewModel: appViewModel)) {
+                        Text("settings.about.this.app.title")
+                    }
+                }
+            }
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(trailing: saveButton)
         .dismissesKeyboardOnDrag()
         .navigationViewStyle(StackNavigationViewStyle())
         .animation(nil)
-        .onReceive(viewModel.outputActions.didTapSave, perform: onSave)
+        .onReceive(viewModel.outputActions.didSave, perform: onSave)
     }
     
     private var sectionHeader: some View {
@@ -117,8 +126,8 @@ private extension MeterSettings.Rate.RateType {
 
 private extension View {
     
-    func asFirstResponder(for textFieldInputId: SettingsViewModel.TextFieldInputId,
-                          on viewModel: SettingsViewModel) -> some View {
+    func asFirstResponder(for textFieldInputId: MeterSettingsViewModel.TextFieldInputId,
+                          on viewModel: MeterSettingsViewModel) -> some View {
         introspectTextField { textField in
             if viewModel.firstResponderId == textFieldInputId {
                 textField.becomeFirstResponder()
@@ -133,13 +142,13 @@ private extension View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SettingsView(appViewModel: .preview(meterSettings: nil))
+            MeterSettingsView(appViewModel: .preview(meterSettings: nil))
                 .embeddedInNavigationView()
                 .previewDisplayName("Welcome state")
-            SettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
                 .embeddedInNavigationView()
                 .previewDisplayName("Edit state")
-            SettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
                 .embeddedInNavigationView()
                 .previewDisplayName("Dark mode")
                 .previewOption(colorScheme: .dark)

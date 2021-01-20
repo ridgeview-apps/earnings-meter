@@ -3,7 +3,7 @@ import SwiftUI
 import Combine
 import CombineExt
 
-final class SettingsViewModel: ObservableObject {
+final class MeterSettingsViewModel: ObservableObject {
     
     let inputs: Inputs = Inputs()
     let outputActions: OutputActions
@@ -51,7 +51,7 @@ final class SettingsViewModel: ObservableObject {
         saveButtonText = viewState.saveButtonText
         
         self.outputActions = OutputActions(
-            didTapSave: appViewModel.outputActions.didSaveMeterSettings.eraseToAnyPublisher()
+            didSave: appViewModel.outputActions.didSaveMeterSettings.eraseToAnyPublisher()
         )
         
         $isStartPickerExpanded
@@ -114,7 +114,7 @@ final class SettingsViewModel: ObservableObject {
 }
 
 // MARK: - Inputs
-extension SettingsViewModel {
+extension MeterSettingsViewModel {
     
     struct Inputs {
         let tappedTextField = PassthroughSubject<TextFieldInputId, Never>()
@@ -124,16 +124,16 @@ extension SettingsViewModel {
 }
 
 // MARK: - OutputActions
-extension SettingsViewModel {
+extension MeterSettingsViewModel {
     
     struct OutputActions {
-        let didTapSave: AnyPublisher<MeterSettings?, Never>
+        let didSave: AnyPublisher<MeterSettings?, Never>
     }
 
 }
 
 // MARK: - View model types
-extension SettingsViewModel {
+extension MeterSettingsViewModel {
     
     enum TextFieldInputId {
         case dailyRate
@@ -227,7 +227,7 @@ extension SettingsViewModel {
 }
 
 private extension MeterSettings {
-    init(formData: SettingsViewModel.FormData,
+    init(formData: MeterSettingsViewModel.FormData,
          environment: AppEnvironment) {
         self.init(rate: .init(amount: formData.rateAmount,
                               type: formData.rateType),

@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import DeviceKit
 
 struct AppEnvironment {
 
@@ -8,6 +9,10 @@ struct AppEnvironment {
     var currentCalendar: () -> Calendar
     var formatters: Formatters
     var stringLocalizer: StringLocalizer
+    var mainBundle: Bundle
+    var currentLocale: Locale
+    var currentDevice: Device
+    var appConfig: AppConfig
 }
 
 // MARK: - Real instance
@@ -18,7 +23,11 @@ extension AppEnvironment {
               date: Date.init,
               currentCalendar: { Calendar.current },
               formatters: .real,
-              stringLocalizer: .real)
+              stringLocalizer: .real,
+              mainBundle: Bundle.main,
+              currentLocale: .current,
+              currentDevice: Device.current,
+              appConfig: .real)
     }
 }
 
@@ -38,7 +47,11 @@ extension AppEnvironment {
               date: Date.init,
               currentCalendar: { Calendar.current },
               formatters: .fake,
-              stringLocalizer: .real)
+              stringLocalizer: .real,
+              mainBundle: Bundle.main,
+              currentLocale: .current,
+              currentDevice: Device.current,
+              appConfig: .fake)
     }
     
     static var unitTest: AppEnvironment {
@@ -46,7 +59,11 @@ extension AppEnvironment {
               date: Date.init,
               currentCalendar: { Calendar.iso8601(in: .london) },
               formatters: .fake,
-              stringLocalizer: .fake)
+              stringLocalizer: .fake,
+              mainBundle: Bundle.main,
+              currentLocale: .current,
+              currentDevice: Device.current,
+              appConfig: .fake)
     }
 }
 #endif

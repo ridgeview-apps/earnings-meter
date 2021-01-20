@@ -17,7 +17,7 @@ class SettingsViewModelTests: XCTestCase {
                                         environment: environment)
         
         // When
-        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
         
         let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
         let expectedEndTime = calendar.date(bySettingHour: 17, minute: 30, second: 0, of: fakeNow)!
@@ -58,7 +58,7 @@ class SettingsViewModelTests: XCTestCase {
         let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 400),
                                         environment: environment)
 
-        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
         let expectedEndTime = calendar.date(bySettingHour: 17, minute: 0, second: 0, of: fakeNow)!
@@ -98,7 +98,7 @@ class SettingsViewModelTests: XCTestCase {
                                         environment: environment)
         
         // When
-        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         // Then
         // 1. Form input initially valid
@@ -125,7 +125,7 @@ class SettingsViewModelTests: XCTestCase {
                                         environment: environment)
 
         // When
-        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
         settingsViewModel.inputs.tappedTextField.send(.dailyRate)
         
         // Then
@@ -150,11 +150,11 @@ class SettingsViewModelTests: XCTestCase {
         let saveOutputAction = expectation(description: "saveOutputAction")
 
         // When
-        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
         
         settingsViewModel
             .outputActions
-            .didTapSave
+            .didSave
             .sink { _ in saveOutputAction.fulfill() }
             .store(in: &cancelBag)
         
@@ -178,7 +178,7 @@ class SettingsViewModelTests: XCTestCase {
 
 
         // When
-        let settingsViewModel = SettingsViewModel(appViewModel: appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         // Then
 
