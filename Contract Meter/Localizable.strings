@@ -4,7 +4,7 @@
 "settings.welcome.message" = "Please enter your details then tap Start";
 "settings.rate.title" = "I earn";
 "settings.rate.placeholder" = "Salary or daily rate";
-"settings.rate.calculated %@" = "Your daily rate is: %@";
+"settings.rate.calculated %@" = "You earn approximately %@ per day";
 "settings.rate.picker.annual" = "Per year";
 "settings.rate.picker.daily" = "Per day";
 "settings.workingHours.startTime.title" = "I start work at";

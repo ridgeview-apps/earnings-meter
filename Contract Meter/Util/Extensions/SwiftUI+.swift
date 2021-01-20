@@ -113,6 +113,26 @@ extension View {
     }
 }
 
+// See: https://stackoverflow.com/questions/58200555/swiftui-add-clearbutton-to-textfield
+// Until SwiftUI supports clear button natively (if ever??)
+struct TextFieldClearButton: ViewModifier {
+    @Binding var text: String
+
+    public func body(content: Content) -> some View {
+        HStack {
+            content
+            Spacer()
+            if !text.isEmpty {
+                // Tried using a Button here but it didn't work inside a form (hence onTapGesture instead)
+                Image(systemName: "multiply.circle.fill")
+                    .foregroundColor(.secondary)
+                    .opacity(text == "" ? 0 : 1)
+                    .onTapGesture { self.text = "" }
+            }
+        }
+    }
+}
+
 struct OnChangeOfScenePhaseModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase
     

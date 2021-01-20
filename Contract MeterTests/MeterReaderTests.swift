@@ -1,7 +1,7 @@
 import XCTest
 @testable import Contract_Meter
 
-class MeterReadingTests: XCTestCase {
+class MeterReaderTests: XCTestCase {
     
     func testMeterReading_weekday_beforeWork() throws {
         

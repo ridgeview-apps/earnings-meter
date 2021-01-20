@@ -26,7 +26,6 @@ struct SettingsView: View {
                                      selectedTime: $viewModel.formData.endTime,
                                      isExpanded: $viewModel.isEndPickerExpanded)
                 runAtWeekendsToggle
-                    .padding(.bottom, 12)
             }
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
@@ -51,10 +50,11 @@ struct SettingsView: View {
             ratePicker
             if viewModel.isCalculatedRateTextVisible {
                 HStack {
-                    Spacer()
                     Text(viewModel.calculatedRateText)
                         .font(.headline)
                         .foregroundColor(Color.redThree)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
                 }
                 .padding(.top, 8)
             }
@@ -70,6 +70,7 @@ struct SettingsView: View {
                 .keyboardType(.decimalPad)
                 .asFirstResponder(for: .dailyRate, on: viewModel)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .modifier(TextFieldClearButton(text: $viewModel.formData.rateText))                
         }
         .onTapGesture {
             self.viewModel.inputs.tappedTextField.send(.dailyRate)

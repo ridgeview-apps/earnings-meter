@@ -38,7 +38,7 @@
 		317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */; };
 		3190F6E924CF0B8C004303F0 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E424CF0B8C004303F0 /* SettingsViewModelTests.swift */; };
 		3190F6EA24CF0B8C004303F0 /* MeterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E524CF0B8C004303F0 /* MeterViewModelTests.swift */; };
-		3190F6EB24CF0B8C004303F0 /* MeterReadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E624CF0B8C004303F0 /* MeterReadingTests.swift */; };
+		3190F6EB24CF0B8C004303F0 /* MeterReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E624CF0B8C004303F0 /* MeterReaderTests.swift */; };
 		3190F6EC24CF0B8C004303F0 /* MeterSettings+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E824CF0B8C004303F0 /* MeterSettings+TestData.swift */; };
 		3198638A24783F7C009F0C4B /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 3198638924783F7C009F0C4B /* CombineExt */; };
 		31A5570D24B33B2F00A42012 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5570C24B33B2F00A42012 /* UserDataService.swift */; };
@@ -99,7 +99,7 @@
 		3190F6DE24CF0B6A004303F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3190F6E424CF0B8C004303F0 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		3190F6E524CF0B8C004303F0 /* MeterViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterViewModelTests.swift; sourceTree = "<group>"; };
-		3190F6E624CF0B8C004303F0 /* MeterReadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterReadingTests.swift; sourceTree = "<group>"; };
+		3190F6E624CF0B8C004303F0 /* MeterReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterReaderTests.swift; sourceTree = "<group>"; };
 		3190F6E824CF0B8C004303F0 /* MeterSettings+TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeterSettings+TestData.swift"; sourceTree = "<group>"; };
 		31A5570C24B33B2F00A42012 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		31A5570E24B33BB400A42012 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
@@ -167,10 +167,7 @@
 				314A47C625ACD4B000FBBF3E /* Localization */,
 				314A48CD25AF5A5A00FBBF3E /* Model */,
 				31F8CE3C23D1DFED0011909E /* Util */,
-				31E7F29C24CAFD8F00138F37 /* Config */,
 				312821EA23D0BA3000975F66 /* Views */,
-				31A5571524B364CA00A42012 /* View Models */,
-				312821E923D0BA2600975F66 /* Calculator */,
 				312821D223D0B96000975F66 /* LaunchScreen.storyboard */,
 				312821D523D0B96000975F66 /* Info.plist */,
 				312821CF23D0B96000975F66 /* Preview Content */,
@@ -186,14 +183,6 @@
 				312821D023D0B96000975F66 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		312821E923D0BA2600975F66 /* Calculator */ = {
-			isa = PBXGroup;
-			children = (
-				312821EB23D0BA5700975F66 /* MeterReader.swift */,
-			);
-			path = Calculator;
 			sourceTree = "<group>";
 		};
 		312821EA23D0BA3000975F66 /* Views */ = {
@@ -263,6 +252,7 @@
 		314A47C925ACD5AD00FBBF3E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				312821EB23D0BA5700975F66 /* MeterReader.swift */,
 				314A47CA25ACD5B900FBBF3E /* KeyValueStore.swift */,
 				311A3CE02472A19300DF5B2E /* AppEnvironment.swift */,
 			);
@@ -323,7 +313,7 @@
 		3190F6DB24CF0B6A004303F0 /* Contract MeterTests */ = {
 			isa = PBXGroup;
 			children = (
-				3190F6E624CF0B8C004303F0 /* MeterReadingTests.swift */,
+				3190F6E624CF0B8C004303F0 /* MeterReaderTests.swift */,
 				3190F6E524CF0B8C004303F0 /* MeterViewModelTests.swift */,
 				3190F6E424CF0B8C004303F0 /* SettingsViewModelTests.swift */,
 				3190F6E724CF0B8C004303F0 /* Test Data */,
@@ -338,20 +328,6 @@
 				3190F6E824CF0B8C004303F0 /* MeterSettings+TestData.swift */,
 			);
 			path = "Test Data";
-			sourceTree = "<group>";
-		};
-		31A5571524B364CA00A42012 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
-		31E7F29C24CAFD8F00138F37 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 		31F8CE3C23D1DFED0011909E /* Util */ = {
@@ -540,7 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3190F6EC24CF0B8C004303F0 /* MeterSettings+TestData.swift in Sources */,
-				3190F6EB24CF0B8C004303F0 /* MeterReadingTests.swift in Sources */,
+				3190F6EB24CF0B8C004303F0 /* MeterReaderTests.swift in Sources */,
 				3190F6EA24CF0B8C004303F0 /* MeterViewModelTests.swift in Sources */,
 				3190F6E924CF0B8C004303F0 /* SettingsViewModelTests.swift in Sources */,
 			);
