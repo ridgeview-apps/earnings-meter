@@ -104,7 +104,7 @@ platform :ios do
       owner_type: options[:app_center_owner_type],
       app_name: options[:app_center_app_name],
       notify_testers: options[:app_center_notify_testers],
-      destinations: options[:app_center_destinations],
+      # destinations: options[:app_center_destinations],
       release_notes: changelog
     )
   end
