@@ -44,6 +44,7 @@ struct MeterView: View {
                                 formatter: .decimalStyle)
                 hireStatusView
             }
+
             Spacer()
             ProgressBarView(leftLabelText: viewModel.progressBarStartTimeText,
                             rightLabelText: viewModel.progressBarEndTimeText,

@@ -55,19 +55,28 @@ struct MeterSettingsView: View {
 
     private var rateDetails: some View {
         VStack {
+            if viewModel.isCalculatedRateTextVisible {
+                calculatedDailyRateText
+                    .padding(.bottom, 8)
+            }
             rateTextField
             ratePicker
-            if viewModel.isCalculatedRateTextVisible {
-                HStack {
-                    Text(viewModel.calculatedRateText)
-                        .font(.headline)
-                        .foregroundColor(Color.redThree)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.6)
-                }
-                .padding(.top, 8)
-            }
         }
+        .animation(.default)
+    }
+    
+    private var calculatedDailyRateText: some View {
+        HStack {
+            Image(systemName: "info.circle.fill")
+                .foregroundColor(.redThree)
+            Text(viewModel.calculatedRateText)
+                .font(.headline)
+                .foregroundColor(.redThree)
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+        }
+        .padding(8)
+        .roundedBorder(Color.redThree, lineWidth: 2)
     }
     
     private var rateTextField: some View {

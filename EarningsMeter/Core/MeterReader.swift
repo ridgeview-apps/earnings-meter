@@ -29,15 +29,19 @@ final class MeterReader: ObservableObject {
     
     init(environment: AppEnvironment,
          meterSettings: MeterSettings,         
-         makePublisher: @escaping () -> Timer.TimerPublisher = {
-            Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .default)
-        }) {
+         makeMeterTimer: (() -> Timer.TimerPublisher)? = nil) {
+        
+        let defaultTimer: () -> Timer.TimerPublisher = {
+            return Timer.publish(every: meterSettings.defaultMeterSpeed, tolerance: 0.5, on: .main, in: .default)
+        }
+        
+        let meterTimer = makeMeterTimer ?? defaultTimer
         
         currentReading = Self.calculateReadingNow(for: meterSettings, in: environment)
         
         let timer = onStart
             .map { _ in
-                makePublisher().autoconnect()
+                meterTimer().autoconnect()
             }
             .share()
         
@@ -102,6 +106,27 @@ private extension MeterSettings {
     var isOvernightWorker: Bool {
         return endTime.seconds < startTime.seconds
     }
+    
+    var workDayDuration: TimeInterval {
+        let duration: TimeInterval
+        if isOvernightWorker {
+            duration = (24.hours - startTime.seconds) + endTime.seconds
+        } else {
+            duration = endTime.seconds - startTime.seconds
+        }
+        return duration
+    }
+    
+    var defaultMeterSpeed: TimeInterval {
+        // Default meter speed will try to increment the meter by 1 "unit" per second (e.g. 1 pence, cent etc per second)
+        // Min meter speed is 0.3 to prevent the meter ticking too quickly (e.g. an insanely high earner!)
+        let minMeterSpeed: TimeInterval = 0.3
+        var desiredSpeed: TimeInterval = 1
+        if dailyRate > 0 {
+            desiredSpeed = workDayDuration / (dailyRate * 100)
+        }
+        return max(minMeterSpeed, desiredSpeed)
+    }
 }
 
 private struct WorkingDayStatus {
@@ -141,7 +166,7 @@ private struct WorkingDayStatus {
         let endTime = meterSettings.endTime.seconds
         
         if secondsElapsedToday > startTime || secondsElapsedToday < endTime {
-            let duration = (twentyFourHours - startTime) + endTime
+            let duration = (24.hours - startTime) + endTime
             let amountWorked: Double
             if secondsElapsedToday > startTime {
                 amountWorked = secondsElapsedToday - startTime

@@ -1,5 +1,5 @@
 import Foundation
-@testable import EarningsMeter
+@testable import Earnings_Meter
 
 extension MeterSettings {
 

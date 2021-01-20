@@ -1,6 +1,6 @@
 import XCTest
 import Combine
-@testable import EarningsMeter
+@testable import Earnings_Meter
 
 class MeterViewModelTests: XCTestCase {
     

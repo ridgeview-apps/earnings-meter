@@ -1,5 +1,5 @@
 import XCTest
-@testable import EarningsMeter
+@testable import Earnings_Meter
 
 class MeterReaderTests: XCTestCase {
     
