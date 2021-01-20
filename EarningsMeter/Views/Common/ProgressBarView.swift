@@ -9,7 +9,6 @@ struct ProgressBarView: View {
     private(set) var enabledTextColor: Color = .primary
     private(set) var disabledTextColor: Color = .disabledText
     
-    private(set) var fontSize: CGFloat = 20
     private(set) var isEnabled: Bool = true
     
     private let progressBarHeight: CGFloat = 4

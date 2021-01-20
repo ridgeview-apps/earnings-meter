@@ -50,7 +50,6 @@ struct MeterView: View {
                             rightLabelText: viewModel.progressBarEndTimeText,
                             value: viewModel.currentReading.progress,
                             enabledTextColor: .white,
-                            fontSize: 4,
                             isEnabled: viewModel.currentReading.progress > 0)
                 .frame(maxWidth: 500)
 
@@ -65,14 +64,13 @@ struct MeterView: View {
         HStack {
             Rectangle()
                 .frame(height: 2)
-                .padding(.leading, 20)
             Text(viewModel.headerTextKey)
-                .font(.headline)
+                .font(.subheadline)
                 .layoutPriority(1)
             Rectangle()
                 .frame(height: 2)
-                .padding(.trailing, 20)
         }
+        .padding([.leading, .trailing], 20)
         .foregroundColor(.white)
     }
     
