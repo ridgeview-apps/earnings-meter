@@ -57,9 +57,11 @@ struct AppInfoView: View {
     }
 }
 
+#if DEBUG
 struct AppInfoView_Previews: PreviewProvider {
     static var previews: some View {
         AppInfoView(appViewModel: .preview())
             .embeddedInNavigationView()
     }
 }
+#endif

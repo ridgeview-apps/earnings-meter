@@ -29,7 +29,7 @@ private extension AppLaunchMode {
             appEnv = .unitTest
         }
     #else
-        rootEnv = .real
+        appEnv = .real
     #endif
         
         return AppViewModel(meterSettings: nil, environment: appEnv)

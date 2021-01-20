@@ -17,7 +17,8 @@ $base_build_config = $base_config_secrets
     app_center_owner_name: "RidgeviewApps",
     app_center_owner_type: "organization",
     app_center_app_name: "EarningsMeter",
-    app_center_notify_testers: true,  
+    app_center_notify_testers: true, 
+    app_center_destinations: "Beta Testers",
 })
     
 # Beta
