@@ -8,11 +8,14 @@ struct MeterView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     private var onTappedSettings: () -> Void
+    private var onTappedInfo: () -> Void
     
     init(appViewModel: AppViewModel,
-         onTappedSettings: @escaping () -> Void = {}) {
+         onTappedSettings: @escaping () -> Void = {},
+         onTappedInfo: @escaping () -> Void = {}) {
         viewModel = MeterViewModel(appViewModel: appViewModel)
         self.onTappedSettings = onTappedSettings
+        self.onTappedInfo = onTappedInfo
     }
     
     var body: some View {
@@ -29,7 +32,8 @@ struct MeterView: View {
         .onAppear(perform: viewModel.inputs.appear.send)
         .onDisappear(perform: viewModel.inputs.disappear.send)
         .onReceive(viewModel.outputActions.didTapSettings, perform: onTappedSettings)
-        .navigationBarItems(trailing: settingsButton)
+        .onReceive(viewModel.outputActions.didTapInfo, perform: onTappedInfo)
+        .navigationBarItems(leading: infoButton, trailing: settingsButton)
         .navigationTitle(viewModel.navigationTitleKey)
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -84,6 +88,15 @@ struct MeterView: View {
                     .minimumScaleFactor(0.9)
             }
         }
+    }
+    
+    private var infoButton: some View {
+        Button(action: viewModel.inputs.tapInfoButton.send) {
+            Image(systemName: "info.circle")
+                .imageScale(.large)
+                .padding([.top, .bottom, .trailing])
+        }
+        .accentColor(Color.redThree)
     }
     
     private var settingsButton: some View {

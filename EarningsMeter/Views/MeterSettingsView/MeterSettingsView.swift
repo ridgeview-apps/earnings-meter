@@ -29,13 +29,6 @@ struct MeterSettingsView: View {
                                      isExpanded: $viewModel.isEndPickerExpanded)
                 runAtWeekendsToggle
             }
-            if viewModel.viewState != .welcome {
-                Section {
-                    NavigationLink(destination: AppInfoView(appViewModel: appViewModel)) {
-                        Text("settings.about.this.app.title")
-                    }
-                }
-            }
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(trailing: saveButton)

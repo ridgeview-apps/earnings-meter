@@ -31,7 +31,8 @@ final class MeterViewModel: ObservableObject {
         }
         
         self.outputActions = .init(
-            didTapSettings: inputs.tapSettingsButton.eraseToAnyPublisher()
+            didTapSettings: inputs.tapSettingsButton.eraseToAnyPublisher(),
+            didTapInfo: inputs.tapInfoButton.eraseToAnyPublisher()
         )
         
         let timeFormatter = appViewModel.environment.formatters.dateStyles.shortTime
@@ -70,6 +71,7 @@ extension MeterViewModel {
         let appear = PassthroughSubject<Void, Never>()
         let disappear = PassthroughSubject<Void, Never>()
         let tapSettingsButton = PassthroughSubject<Void, Never>()
+        let tapInfoButton = PassthroughSubject<Void, Never>()
     }
 }
 
@@ -78,8 +80,12 @@ extension MeterViewModel {
         
     struct OutputActions {
         let didTapSettings: AnyPublisher<Void, Never>
+        let didTapInfo: AnyPublisher<Void, Never>
         
-        static let empty = OutputActions(didTapSettings: Empty(completeImmediately: true).eraseToAnyPublisher())
+        static let empty = OutputActions(
+            didTapSettings: Empty(completeImmediately: true).eraseToAnyPublisher(),
+            didTapInfo: Empty(completeImmediately: true).eraseToAnyPublisher()
+        )
     }
 
 }

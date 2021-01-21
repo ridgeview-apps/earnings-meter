@@ -48,12 +48,10 @@ struct AppInfoView: View {
     }
     
     @ViewBuilder private var doneButton: some View {
-        if viewModel.isDoneButtonVisible {
-            Button(action: viewModel.inputs.tapDone.send) {
-                Text("button.done" )
-            }
-            .accentColor(Color.redThree)
+        Button(action: viewModel.inputs.tapDone.send) {
+            Text("button.done" )
         }
+        .accentColor(Color.redThree)
     }
 }
 

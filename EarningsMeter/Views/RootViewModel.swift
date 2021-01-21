@@ -12,6 +12,7 @@ final class RootViewModel: ObservableObject {
     }
     
     @Published var childViewState: ChildViewState = .editSettings
+    @Published var isAppInfoPresented = false
     
     private var bag = [AnyCancellable]()
     
@@ -41,6 +42,16 @@ final class RootViewModel: ObservableObject {
             .closeSettings
             .assign(ChildViewState.meterRunning, to: \.childViewState, on: self, ownership: .weak)
             .store(in: &bag)
+        
+        inputs
+            .goToAppInfo
+            .assign(true, to: \.isAppInfoPresented, on: self, ownership: .weak)
+            .store(in: &bag)
+        
+        inputs
+            .closeAppInfo
+            .assign(false, to: \.isAppInfoPresented, on: self, ownership: .weak)
+            .store(in: &bag)
     }
 }
 
@@ -50,5 +61,8 @@ extension RootViewModel {
         let appear = PassthroughSubject<Void, Never>()
         let goToSettings = PassthroughSubject<Void, Never>()
         let closeSettings = PassthroughSubject<Void, Never>()
+        let goToAppInfo = PassthroughSubject<Void, Never>()
+        let closeAppInfo = PassthroughSubject<Void, Never>()
+
     }
 }

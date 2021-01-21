@@ -17,6 +17,11 @@ struct RootView: View {
                 .onAppear {
                     viewModel.inputs.appear.send()                    
                 }
+                .sheet(isPresented: $viewModel.isAppInfoPresented) {
+                    AppInfoView(appViewModel: appViewModel,
+                                onDone: viewModel.inputs.closeAppInfo.send)
+                        .embeddedInNavigationView()
+                }
                 .animation(.default)
                 .transition(.opacity)
         }
@@ -37,13 +42,12 @@ struct RootView: View {
             case .editSettings:
                 MeterSettingsView(appViewModel: appViewModel,
                              onSave: { _ in
-                                self.viewModel.inputs.closeSettings.send()
+                                viewModel.inputs.closeSettings.send()
                              })
             case .meterRunning:
                 MeterView(appViewModel: appViewModel,
-                          onTappedSettings: {
-                            self.viewModel.inputs.goToSettings.send()
-                          })
+                          onTappedSettings: viewModel.inputs.goToSettings.send,
+                          onTappedInfo: viewModel.inputs.goToAppInfo.send)
             }
         }
     }

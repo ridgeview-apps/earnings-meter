@@ -12,7 +12,6 @@ final class AppInfoViewModel: ObservableObject {
     let appVersionNumber: String
     let contactUs: ContactUs
     let submitAppReviewURL: URL
-    let isDoneButtonVisible: Bool
     
     private var cancelBag = Set<AnyCancellable>()
     
@@ -22,8 +21,6 @@ final class AppInfoViewModel: ObservableObject {
         outputActions = OutputActions(
             done: inputs.tapDone.eraseToAnyPublisher()
         )
-        
-        isDoneButtonVisible = false
         
         contactUs = .init(email: appViewModel.environment.appConfig.contactUsEmail,
                           bundle: appViewModel.environment.mainBundle,
