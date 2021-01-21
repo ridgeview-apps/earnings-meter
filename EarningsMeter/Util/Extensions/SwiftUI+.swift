@@ -39,8 +39,13 @@ extension Binding {
 
 extension View {
     
-    func embeddedInNavigationView() -> some View {
-        NavigationView { self }
+    @ViewBuilder func embeddedInNavigationView(stackStyle: Bool = true) -> some View {
+        if stackStyle {
+            NavigationView { self }
+                .navigationViewStyle(StackNavigationViewStyle())
+        } else {
+            NavigationView { self }
+        }
     }
     
     func eraseToAnyView() -> AnyView {

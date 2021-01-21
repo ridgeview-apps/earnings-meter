@@ -21,7 +21,7 @@
                                                    horizontal: .regular)
          
          static let tallAndThin = PreviewSizeClass(vertical: .regular,
-                                                     horizontal: .compact)
+                                                   horizontal: .compact)
          
          static let shortAndWide = PreviewSizeClass(vertical: .compact,
                                                     horizontal: .regular)
@@ -40,17 +40,27 @@
          }
      }
  }
+ 
+ enum PreviewOption {
+    case iPad_Pro_9_7_inch_Portrait
+    case iPad_Pro_9_7_inch_Landscape
+ }
 
 
  // MARK: - Preview options
+ #if DEBUG
  extension View {
      
-     func previewOption(deviceType: PreviewOptionDeviceType) -> some View {
-         self.previewDevice(.init(rawValue: deviceType.rawValue))
-             .previewDisplayName(deviceType.rawValue)
-             .environment(\.verticalSizeClass, deviceType.sizeClass.vertical)
-             .environment(\.horizontalSizeClass, deviceType.sizeClass.horizontal)
+     func previewLandscapeIPad() -> some View {
+        self.previewLayout(.fixed(width: 1024, height: 768))
      }
+    
+    func previewOption(deviceType: PreviewOptionDeviceType) -> some View {
+        self.previewDevice(.init(rawValue: deviceType.rawValue))
+            .previewDisplayName(deviceType.rawValue)
+            .environment(\.verticalSizeClass, deviceType.sizeClass.vertical)
+            .environment(\.horizontalSizeClass, deviceType.sizeClass.horizontal)
+    }
      
      func previewOption(colorScheme: ColorScheme) -> some View {
          self.environment(\.colorScheme, colorScheme)
@@ -60,3 +70,4 @@
          self.environment(\.sizeCategory, contentSize)
      }
  }
+ #endif

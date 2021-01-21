@@ -33,7 +33,6 @@ struct MeterSettingsView: View {
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(trailing: saveButton)
         .dismissesKeyboardOnDrag()
-        .navigationViewStyle(StackNavigationViewStyle())
         .animation(nil)
         .onReceive(viewModel.outputActions.didSave, perform: onSave)
     }

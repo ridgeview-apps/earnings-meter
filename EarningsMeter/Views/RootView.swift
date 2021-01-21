@@ -25,15 +25,7 @@ struct RootView: View {
                 .animation(.default)
                 .transition(.opacity)
         }
-    }
-    
-    struct View1: View {
-        var body: some View {
-            ZStack {
-                Color.red
-                Text("View 1 View 1 View 1 View 1 View 1")
-            }
-        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     @ViewBuilder var rootView: some View {

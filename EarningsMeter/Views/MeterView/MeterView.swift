@@ -21,34 +21,32 @@ struct MeterView: View {
     var body: some View {
         ZStack {
             Color.redTwo
+                .edgesIgnoringSafeArea(.all)
             Image(viewModel.backgroundImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .overlay(
                     meterContainerView
                 )
+                .padding([.leading, .trailing], 8)
+                .frame(maxWidth: 502,maxHeight: 712)
         }
-        .edgesIgnoringSafeArea([.top, .bottom])
         .onAppear(perform: viewModel.inputs.appear.send)
         .onDisappear(perform: viewModel.inputs.disappear.send)
         .onReceive(viewModel.outputActions.didTapSettings, perform: onTappedSettings)
         .onReceive(viewModel.outputActions.didTapInfo, perform: onTappedInfo)
         .navigationBarItems(leading: infoButton, trailing: settingsButton)
         .navigationTitle(viewModel.navigationTitleKey)
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private var meterContainerView: some View {
         VStack {
             titleView
             Spacer()
-            VStack(spacing: horizontalSizeClass == .regular ? 40 : 10) {
-                MeterDigitsView(amount: viewModel.currentReading.amountEarned,
-                                isEnabled: viewModel.currentReading.progress > 0,
-                                formatter: .decimalStyle)
-                hireStatusView
-            }
-
+            MeterDigitsView(amount: viewModel.currentReading.amountEarned,
+                            isEnabled: viewModel.currentReading.progress > 0,
+                            formatter: .decimalStyle)
+            hireStatusView
             Spacer()
             ProgressBarView(leftLabelText: viewModel.progressBarStartTimeText,
                             rightLabelText: viewModel.progressBarEndTimeText,
@@ -126,8 +124,13 @@ struct MeterView_Previews: PreviewProvider {
                 .embeddedInNavigationView()
                 .previewOption(colorScheme: .dark)
             MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+                .embeddedInNavigationView()
                 .previewOption(deviceType: .iPad_Pro_9_7_inch)
                 .previewDisplayName("iPad")
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+                .embeddedInNavigationView()
+                .previewLandscapeIPad()
+                .previewDisplayName("Landscape iPad")
             MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
                 .embeddedInNavigationView()
                 .previewOption(contentSize: .extraExtraExtraLarge)
