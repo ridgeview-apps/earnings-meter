@@ -19,7 +19,7 @@ class MeterViewModelTests: XCTestCase {
         environment.formatters.dateStyles.shortTime = .testShortTimeStyle
         
         // Given
-        let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 800),
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
                                         environment: environment)
         
         
@@ -65,7 +65,7 @@ class MeterViewModelTests: XCTestCase {
         environment.formatters.dateStyles.shortTime = .testShortTimeStyle
         
         // Given
-        let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 800),
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
                                         environment: environment)
                 
         // When

@@ -35,11 +35,11 @@ struct RootView: View {
                 MeterSettingsView(appViewModel: appViewModel,
                              onSave: { _ in
                                 viewModel.inputs.closeSettings.send()
-                             })
+                             },
+                             onTappedInfo: viewModel.inputs.goToAppInfo.send)
             case .meterRunning:
                 MeterView(appViewModel: appViewModel,
-                          onTappedSettings: viewModel.inputs.goToSettings.send,
-                          onTappedInfo: viewModel.inputs.goToAppInfo.send)
+                          onTappedSettings: viewModel.inputs.goToSettings.send)
             }
         }
     }
@@ -51,7 +51,7 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            RootView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            RootView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
             RootView(appViewModel: .preview(meterSettings: nil))
         }
     }

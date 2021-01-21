@@ -41,29 +41,33 @@ enum AppLaunchMode: String {
 // MARK: - Fake instance(s)
 #if DEBUG
 extension AppEnvironment {
-
-    static var preview: AppEnvironment {
-        .init(services: .fake,
-              date: Date.init,
-              currentCalendar: { Calendar.current },
-              formatters: .fake,
-              stringLocalizer: .real,
-              mainBundle: Bundle.main,
-              currentLocale: .current,
-              currentDevice: Device.current,
-              appConfig: .fake)
+    
+    static func fake(services: DataServices = .fake,
+                     date: @escaping () -> Date = Date.init,
+                     currentCalendar: @escaping () -> Calendar = { Calendar.current },
+                     formatters: Formatters = .fake,
+                     stringLocalizer: StringLocalizer = .fake,
+                     mainBundle: Bundle = .main,
+                     currentLocale: Locale = .current,
+                     currentDevice: Device = .current,
+                     appConfig: AppConfig = .fake) -> Self {
+        .init(services: services,
+              date: date,
+              currentCalendar: currentCalendar,
+              formatters: formatters,
+              stringLocalizer: stringLocalizer,
+              mainBundle: mainBundle,
+              currentLocale: currentLocale,
+              currentDevice: currentDevice,
+              appConfig: appConfig)
     }
     
-    static var unitTest: AppEnvironment {
-        .init(services: .fake,
-              date: Date.init,
-              currentCalendar: { Calendar.iso8601(in: .london) },
-              formatters: .fake,
-              stringLocalizer: .fake,
-              mainBundle: Bundle.main,
-              currentLocale: .current,
-              currentDevice: Device.current,
-              appConfig: .fake)
+    static var preview: Self {
+        .fake(stringLocalizer: .real)
+    }
+    
+    static var unitTest: Self {
+        .fake(stringLocalizer: .fake)
     }
 }
 #endif

@@ -8,34 +8,32 @@ struct MeterView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     private var onTappedSettings: () -> Void
-    private var onTappedInfo: () -> Void
     
     init(appViewModel: AppViewModel,
-         onTappedSettings: @escaping () -> Void = {},
-         onTappedInfo: @escaping () -> Void = {}) {
-        viewModel = MeterViewModel(appViewModel: appViewModel)
+         onTappedSettings: @escaping () -> Void = {}) {
+        self.viewModel = MeterViewModel(appViewModel: appViewModel)
         self.onTappedSettings = onTappedSettings
-        self.onTappedInfo = onTappedInfo
     }
     
     var body: some View {
         ZStack {
             Color.redTwo
                 .edgesIgnoringSafeArea(.all)
-            Image(viewModel.backgroundImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .overlay(
-                    meterContainerView
-                )
-                .padding([.leading, .trailing], 8)
-                .frame(maxWidth: 502,maxHeight: 712)
+            VStack {
+                Image(viewModel.backgroundImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .overlay(
+                        meterContainerView
+                    )
+                    .padding([.leading, .trailing], 8)
+                    .frame(maxWidth: 502)
+            }
+            .onAppear(perform: viewModel.inputs.appear.send)
+            .onDisappear(perform: viewModel.inputs.disappear.send)
         }
-        .onAppear(perform: viewModel.inputs.appear.send)
-        .onDisappear(perform: viewModel.inputs.disappear.send)
         .onReceive(viewModel.outputActions.didTapSettings, perform: onTappedSettings)
-        .onReceive(viewModel.outputActions.didTapInfo, perform: onTappedInfo)
-        .navigationBarItems(leading: infoButton, trailing: settingsButton)
+        .navigationBarItems(trailing: settingsButton)
         .navigationTitle(viewModel.navigationTitleKey)
     }
     
@@ -87,16 +85,7 @@ struct MeterView: View {
             }
         }
     }
-    
-    private var infoButton: some View {
-        Button(action: viewModel.inputs.tapInfoButton.send) {
-            Image(systemName: "info.circle")
-                .imageScale(.large)
-                .padding([.top, .bottom, .trailing])
-        }
-        .accentColor(Color.redThree)
-    }
-    
+        
     private var settingsButton: some View {
         Button(action: viewModel.inputs.tapSettingsButton.send) {
             Image(systemName: "gear")
@@ -112,26 +101,34 @@ struct MeterView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewOption(deviceType: .iPhone_11_Pro)
-                .previewDisplayName("iPhone 11 Pro")
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+                .previewDisplayName("iPhone 11 Pro (meter running)")
+            MeterView(appViewModel: .fake(ofType: .meterNotYetStarted))
+                .embeddedInNavigationView()
+                .previewOption(deviceType: .iPhone_11_Pro)
+                .previewDisplayName("iPhone 11 Pro (before work)")
+            MeterView(appViewModel: .fake(ofType: .meterFinished))
+                .embeddedInNavigationView()
+                .previewOption(deviceType: .iPhone_11_Pro)
+                .previewDisplayName("iPhone 11 Pro (after work)")
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewOption(deviceType: .iPod_touch_7th_generation)
                 .previewDisplayName("iPod")
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewOption(colorScheme: .dark)
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewOption(deviceType: .iPad_Pro_9_7_inch)
                 .previewDisplayName("iPad")
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewLandscapeIPad()
                 .previewDisplayName("Landscape iPad")
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewOption(contentSize: .extraExtraExtraLarge)
                 .previewDisplayName("XXL Text")

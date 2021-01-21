@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "312821C323D0B95E00975F66"
-            BuildableName = "EarningsMeter.app"
+            BuildableName = "Earnings Meter.app"
             BlueprintName = "EarningsMeter"
             ReferencedContainer = "container:EarningsMeter.xcodeproj">
          </BuildableReference>

@@ -7,13 +7,16 @@ struct MeterSettingsView: View {
     
     @ObservedObject private var viewModel: MeterSettingsViewModel
     private let onSave: (MeterSettings?) -> Void
+    private let onTappedInfo: () -> Void
     private let appViewModel: AppViewModel
     
     init(appViewModel: AppViewModel,
-         onSave: @escaping (MeterSettings?) -> Void = { _ in }) {
+         onSave: @escaping (MeterSettings?) -> Void = { _ in },
+         onTappedInfo: @escaping () -> Void = {}) {
         viewModel = MeterSettingsViewModel(appViewModel: appViewModel)
         self.appViewModel = appViewModel
         self.onSave = onSave
+        self.onTappedInfo = onTappedInfo
     }
     
     var body: some View {
@@ -31,10 +34,10 @@ struct MeterSettingsView: View {
             }
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
-        .navigationBarItems(trailing: saveButton)
+        .navigationBarItems(leading: infoButton, trailing: saveButton)
         .dismissesKeyboardOnDrag()
-        .animation(nil)
         .onReceive(viewModel.outputActions.didSave, perform: onSave)
+        .onReceive(viewModel.outputActions.didTapInfo, perform: onTappedInfo)
     }
     
     private var sectionHeader: some View {
@@ -54,7 +57,6 @@ struct MeterSettingsView: View {
             rateTextField
             ratePicker
         }
-        .animation(.default)
     }
     
     private var calculatedDailyRateText: some View {
@@ -110,6 +112,15 @@ struct MeterSettingsView: View {
         .accentColor(Color.redThree)
         .disabled(!viewModel.isSaveButtonEnabled)
     }
+    
+    private var infoButton: some View {
+        Button(action: viewModel.inputs.tapInfo.send) {
+            Image(systemName: "info.circle")
+                .imageScale(.large)
+                .padding([.top, .bottom, .trailing])
+        }
+        .accentColor(Color.redThree)
+    }
 }
 
 private extension MeterSettings.Rate.RateType {
@@ -146,10 +157,10 @@ struct SettingsView_Previews: PreviewProvider {
             MeterSettingsView(appViewModel: .preview(meterSettings: nil))
                 .embeddedInNavigationView()
                 .previewDisplayName("Welcome state")
-            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewDisplayName("Edit state")
-            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .weekdayOnlyMeter)))
+            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewDisplayName("Dark mode")
                 .previewOption(colorScheme: .dark)

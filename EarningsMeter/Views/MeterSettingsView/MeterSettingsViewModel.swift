@@ -51,7 +51,8 @@ final class MeterSettingsViewModel: ObservableObject {
         saveButtonText = viewState.saveButtonText
         
         self.outputActions = OutputActions(
-            didSave: appViewModel.outputActions.didSaveMeterSettings.eraseToAnyPublisher()
+            didSave: appViewModel.outputActions.didSaveMeterSettings.eraseToAnyPublisher(),
+            didTapInfo: inputs.tapInfo.eraseToAnyPublisher()
         )
         
         $isStartPickerExpanded
@@ -120,6 +121,7 @@ extension MeterSettingsViewModel {
         let tappedTextField = PassthroughSubject<TextFieldInputId, Never>()
         let didSetFirstResponder = PassthroughSubject<Void, Never>()
         let save = PassthroughSubject<Void, Never>()
+        let tapInfo = PassthroughSubject<Void, Never>()
     }
 }
 
@@ -128,6 +130,8 @@ extension MeterSettingsViewModel {
     
     struct OutputActions {
         let didSave: AnyPublisher<MeterSettings?, Never>
+        let didTapInfo: AnyPublisher<Void, Never>
+
     }
 
 }

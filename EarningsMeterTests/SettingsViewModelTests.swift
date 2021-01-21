@@ -55,7 +55,7 @@ class SettingsViewModelTests: XCTestCase {
         environment.date = { fakeNow }
 
         // When
-        let appViewModel = AppViewModel(meterSettings: .day_worker_0900_to_1700(withDailyRate: 400),
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
                                         environment: environment)
 
         let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
@@ -66,8 +66,8 @@ class SettingsViewModelTests: XCTestCase {
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
 
-        XCTAssertEqual(400, settingsViewModel.formData.rateAmount)
-        XCTAssertEqual("400.00", settingsViewModel.formData.rateText)
+        XCTAssertEqual(800, settingsViewModel.formData.rateAmount)
+        XCTAssertEqual("800.00", settingsViewModel.formData.rateText)
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
         XCTAssertEqual(expectedStartTime, settingsViewModel.formData.startTime)
@@ -121,7 +121,7 @@ class SettingsViewModelTests: XCTestCase {
         environment.date = { fakeNow }
         environment.currentCalendar = { calendar }
         
-        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .weekdayOnlyMeter),
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
                                         environment: environment)
 
         // When
@@ -144,7 +144,7 @@ class SettingsViewModelTests: XCTestCase {
         environment.date = { fakeNow }
         environment.currentCalendar = { calendar }
         
-        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .weekdayOnlyMeter),
+        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
                                         environment: environment)
         
         let saveOutputAction = expectation(description: "saveOutputAction")
