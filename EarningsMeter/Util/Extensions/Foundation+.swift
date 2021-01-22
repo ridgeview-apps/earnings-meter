@@ -64,4 +64,11 @@ extension ProcessInfo {
         
         return .normal
     }
+    
+}
+
+extension CommandLine {
+    static var isRunningUITests: Bool {
+        arguments.contains("UITests")
+    }
 }

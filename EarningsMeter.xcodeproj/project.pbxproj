@@ -33,6 +33,11 @@
 		314A48D525AF5AA000FBBF3E /* MeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D425AF5AA000FBBF3E /* MeterSettings.swift */; };
 		314A48D925AF5AF900FBBF3E /* MeterTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D825AF5AF900FBBF3E /* MeterTime.swift */; };
 		314A48E225B094B100FBBF3E /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48E125B094B100FBBF3E /* Formatters.swift */; };
+		314A715B25BAF8F90062D050 /* EarningsMeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A715A25BAF8F90062D050 /* EarningsMeterUITests.swift */; };
+		314A716625BAFAF20062D050 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716525BAFAF20062D050 /* SnapshotHelper.swift */; };
+		314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
+		314A717525BB050F0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
+		314A718225BB1ED80062D050 /* UITestScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A718125BB1ED80062D050 /* UITestScreens.swift */; };
 		315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315234A825B5D53100AE8811 /* StringLocalizer.swift */; };
 		3152350225B83CE400AE8811 /* AppInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152350125B83CE400AE8811 /* AppInfoViewModel.swift */; };
 		3152350725B83D4800AE8811 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3152350625B83D4800AE8811 /* DeviceKit */; };
@@ -61,6 +66,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		314A715D25BAF8F90062D050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 312821BC23D0B95E00975F66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 312821C323D0B95E00975F66;
+			remoteInfo = EarningsMeter;
+		};
 		3190F6DF24CF0B6A004303F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 312821BC23D0B95E00975F66 /* Project object */;
@@ -100,6 +112,12 @@
 		314A48D425AF5AA000FBBF3E /* MeterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettings.swift; sourceTree = "<group>"; };
 		314A48D825AF5AF900FBBF3E /* MeterTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTime.swift; sourceTree = "<group>"; };
 		314A48E125B094B100FBBF3E /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		314A715A25BAF8F90062D050 /* EarningsMeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsMeterUITests.swift; sourceTree = "<group>"; };
+		314A715C25BAF8F90062D050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		314A716525BAFAF20062D050 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		314A716D25BB02FF0062D050 /* UITestScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScenario.swift; sourceTree = "<group>"; };
+		314A718125BB1ED80062D050 /* UITestScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScreens.swift; sourceTree = "<group>"; };
 		315234A825B5D53100AE8811 /* StringLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalizer.swift; sourceTree = "<group>"; };
 		3152350125B83CE400AE8811 /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
 		3152351325B83E0A00AE8811 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
@@ -149,6 +167,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		314A715525BAF8F80062D050 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3190F6D724CF0B6A004303F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,6 +190,7 @@
 				3152354025B8544400AE8811 /* Config */,
 				312821C623D0B95E00975F66 /* EarningsMeter */,
 				3190F6DB24CF0B6A004303F0 /* EarningsMeterTests */,
+				314A715925BAF8F90062D050 /* EarningsMeterUITests */,
 				312821C523D0B95E00975F66 /* Products */,
 				5C8DA82789848998B5B0F6FC /* Pods */,
 				F858EC30A238121FBBD1C004 /* Frameworks */,
@@ -176,6 +202,7 @@
 			children = (
 				312821C423D0B95E00975F66 /* Earnings Meter.app */,
 				3190F6DA24CF0B6A004303F0 /* EarningsMeterTests.xctest */,
+				314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				314A47C025ACD48600FBBF3E /* Fakes.swift */,
+				314A718125BB1ED80062D050 /* UITestScreens.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -333,6 +361,17 @@
 				3152351E25B843A500AE8811 /* MailButton.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		314A715925BAF8F90062D050 /* EarningsMeterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				314A716D25BB02FF0062D050 /* UITestScenario.swift */,
+				314A716525BAFAF20062D050 /* SnapshotHelper.swift */,
+				314A715A25BAF8F90062D050 /* EarningsMeterUITests.swift */,
+				314A715C25BAF8F90062D050 /* Info.plist */,
+			);
+			path = EarningsMeterUITests;
 			sourceTree = "<group>";
 		};
 		315234FA25B83C2B00AE8811 /* AppInfo */ = {
@@ -440,6 +479,24 @@
 			productReference = 312821C423D0B95E00975F66 /* Earnings Meter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		314A715725BAF8F80062D050 /* EarningsMeterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 314A716125BAF8F90062D050 /* Build configuration list for PBXNativeTarget "EarningsMeterUITests" */;
+			buildPhases = (
+				314A715425BAF8F80062D050 /* Sources */,
+				314A715525BAF8F80062D050 /* Frameworks */,
+				314A715625BAF8F80062D050 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				314A715E25BAF8F90062D050 /* PBXTargetDependency */,
+			);
+			name = EarningsMeterUITests;
+			productName = EarningsMeterUITests;
+			productReference = 314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		3190F6D924CF0B6A004303F0 /* EarningsMeterTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3190F6E124CF0B6A004303F0 /* Build configuration list for PBXNativeTarget "EarningsMeterTests" */;
@@ -464,12 +521,16 @@
 		312821BC23D0B95E00975F66 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Shilan Patel";
 				TargetAttributes = {
 					312821C323D0B95E00975F66 = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					314A715725BAF8F80062D050 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 312821C323D0B95E00975F66;
 					};
 					3190F6D924CF0B6A004303F0 = {
 						CreatedOnToolsVersion = 11.5;
@@ -498,6 +559,7 @@
 			targets = (
 				312821C323D0B95E00975F66 /* EarningsMeter */,
 				3190F6D924CF0B6A004303F0 /* EarningsMeterTests */,
+				314A715725BAF8F80062D050 /* EarningsMeterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -513,6 +575,13 @@
 				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
 				312EF56E249CAB4500CC71BA /* digital-7-mono.ttf in Resources */,
 				312821CE23D0B96000975F66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		314A715625BAF8F80062D050 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,10 +652,22 @@
 				314A489925AF197D00FBBF3E /* Bundle+.swift in Sources */,
 				317F82D4247AD3E500B8C7AB /* MeterSettingsViewModel.swift in Sources */,
 				312821CC23D0B95E00975F66 /* RootView.swift in Sources */,
+				314A718225BB1ED80062D050 /* UITestScreens.swift in Sources */,
+				314A717525BB050F0062D050 /* UITestScenario.swift in Sources */,
 				3152352325B8475200AE8811 /* AppConfig.swift in Sources */,
 				311A3CE12472A19300DF5B2E /* AppEnvironment.swift in Sources */,
 				3152350225B83CE400AE8811 /* AppInfoViewModel.swift in Sources */,
 				314A48D525AF5AA000FBBF3E /* MeterSettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		314A715425BAF8F80062D050 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */,
+				314A715B25BAF8F90062D050 /* EarningsMeterUITests.swift in Sources */,
+				314A716625BAFAF20062D050 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +685,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		314A715E25BAF8F90062D050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 312821C323D0B95E00975F66 /* EarningsMeter */;
+			targetProxy = 314A715D25BAF8F90062D050 /* PBXContainerItemProxy */;
+		};
 		3190F6E024CF0B6A004303F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 312821C323D0B95E00975F66 /* EarningsMeter */;
@@ -781,6 +867,44 @@
 			};
 			name = Release;
 		};
+		314A715F25BAF8F90062D050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EarningsMeterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ridgeviewapps.EarningsMeterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EarningsMeter;
+			};
+			name = Debug;
+		};
+		314A716025BAF8F90062D050 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EarningsMeterUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ridgeviewapps.EarningsMeterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EarningsMeter;
+			};
+			name = Release;
+		};
 		3190F6E224CF0B6A004303F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -836,6 +960,15 @@
 			buildConfigurations = (
 				312821E423D0B96100975F66 /* Debug */,
 				312821E523D0B96100975F66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		314A716125BAF8F90062D050 /* Build configuration list for PBXNativeTarget "EarningsMeterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				314A715F25BAF8F90062D050 /* Debug */,
+				314A716025BAF8F90062D050 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

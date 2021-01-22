@@ -34,7 +34,7 @@ class MeterReaderTests: XCTestCase {
         meterReader.start()
 
         // Then
-        XCTAssertEqual(400, meterReader.currentReading.amountEarned)
+        XCTAssertEqual(200, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
         XCTAssertEqual(.working, meterReader.currentReading.status)
     }
@@ -52,7 +52,7 @@ class MeterReaderTests: XCTestCase {
         meterReader.start()
 
         // Then
-        XCTAssertEqual(800, meterReader.currentReading.amountEarned)
+        XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
         XCTAssertEqual(.toPay, meterReader.currentReading.status)
     }
@@ -64,7 +64,7 @@ class MeterReaderTests: XCTestCase {
         environment.date = { Date.weekend_1300_London }
         
         let nineToFiveMeter = MeterSettings.fake(ofType: .day_worker_0900_to_1700,
-                                                 rate: .init(amount: 800, type: .daily),
+                                                 rate: .init(amount: 400, type: .daily),
                                                  runAtWeekends: true)
 
         // When
@@ -72,7 +72,7 @@ class MeterReaderTests: XCTestCase {
         meterReader.start()
 
         // Then
-        XCTAssertEqual(400, meterReader.currentReading.amountEarned)
+        XCTAssertEqual(200, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
         XCTAssertEqual(.working, meterReader.currentReading.status)
     }
@@ -130,7 +130,7 @@ class MeterReaderTests: XCTestCase {
         meterReader.start()
         
         // Then
-        XCTAssertEqual(400, meterReader.currentReading.amountEarned)
+        XCTAssertEqual(200, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
         XCTAssertEqual(.working, meterReader.currentReading.status)
 
@@ -150,7 +150,7 @@ class MeterReaderTests: XCTestCase {
         meterReader.start()
         
         // Then
-        XCTAssertEqual(800, meterReader.currentReading.amountEarned)
+        XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
         XCTAssertEqual(.toPay, meterReader.currentReading.status)
 

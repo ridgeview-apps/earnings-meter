@@ -8,7 +8,7 @@ extension MeterSettings {
     }
     
     static func fake(ofType fakeType: FakeType,
-                     rate: MeterSettings.Rate = .init(amount: 800, type: .daily),
+                     rate: MeterSettings.Rate = .init(amount: 400, type: .daily),
                      runAtWeekends: Bool = false) -> Self {
         switch fakeType {
         case .day_worker_0900_to_1700:
@@ -39,11 +39,12 @@ extension AppViewModel {
     
     enum FakeType {
         case meterNotYetStarted
-        case meterRunning
+        case meterRunningAtMiddleOfDay
         case meterFinished
+        case welcomeState
     }
     
-    static func fake(meterSettings: MeterSettings = .fake(),
+    static func fake(meterSettings: MeterSettings? = .fake(),
                      environment: AppEnvironment = .preview) -> Self {
         .init(meterSettings: meterSettings,
               environment: environment)
@@ -55,7 +56,7 @@ extension AppViewModel {
             let meterSettings = MeterSettings.fake(ofType: .day_worker_0900_to_1700)
             let environment = AppEnvironment.fake(date: { Date.weekday_0200_London })
             return .fake(meterSettings: meterSettings, environment: environment)
-        case .meterRunning:
+        case .meterRunningAtMiddleOfDay:
             let meterSettings = MeterSettings.fake(ofType: .day_worker_0900_to_1700)
             let environment = AppEnvironment.fake(date: { Date.weekday_1300_London })
             return .fake(meterSettings: meterSettings, environment: environment)
@@ -63,6 +64,9 @@ extension AppViewModel {
             let meterSettings = MeterSettings.fake(ofType: .day_worker_0900_to_1700)
             let environment = AppEnvironment.fake(date: { Date.weekday_1900_London })
             return .fake(meterSettings: meterSettings, environment: environment)
+        case .welcomeState:
+            let environment = AppEnvironment.fake()
+            return .fake(meterSettings: nil, environment: environment)
         }
     }
 }

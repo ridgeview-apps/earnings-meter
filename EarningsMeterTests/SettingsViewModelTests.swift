@@ -66,8 +66,8 @@ class SettingsViewModelTests: XCTestCase {
         XCTAssertFalse(settingsViewModel.isStartPickerExpanded)
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
 
-        XCTAssertEqual(800, settingsViewModel.formData.rateAmount)
-        XCTAssertEqual("800.00", settingsViewModel.formData.rateText)
+        XCTAssertEqual(400, settingsViewModel.formData.rateAmount)
+        XCTAssertEqual("400.00", settingsViewModel.formData.rateText)
         XCTAssertEqual("settings.workingHours.startTime.title", settingsViewModel.startPickerTitle)
         XCTAssertEqual("settings.workingHours.endTime.title", settingsViewModel.endPickerTitle)
         XCTAssertEqual(expectedStartTime, settingsViewModel.formData.startTime)

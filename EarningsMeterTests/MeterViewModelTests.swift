@@ -32,7 +32,7 @@ class MeterViewModelTests: XCTestCase {
         XCTAssertEqual("09:00", meterViewModel.progressBarStartTimeText)
         XCTAssertEqual("17:00", meterViewModel.progressBarEndTimeText)
         
-        XCTAssertEqual(100, meterViewModel.currentReading.amountEarned)
+        XCTAssertEqual(50, meterViewModel.currentReading.amountEarned)
         XCTAssertEqual(1/8, meterViewModel.currentReading.progress)
         XCTAssertEqual(.working, meterViewModel.currentReading.status)
         
@@ -48,7 +48,7 @@ class MeterViewModelTests: XCTestCase {
         
         wait(for: [expectedReading], timeout: 1.0)
         
-        XCTAssertEqual(200, meterViewModel.currentReading.amountEarned)
+        XCTAssertEqual(100, meterViewModel.currentReading.amountEarned)
         XCTAssertEqual(2/8, meterViewModel.currentReading.progress)
         XCTAssertEqual(.working, meterViewModel.currentReading.status)
     }

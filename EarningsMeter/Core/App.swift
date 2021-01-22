@@ -6,11 +6,23 @@ struct AppScene: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView(
-                appViewModel: ProcessInfo.launchMode.appViewModel
-            )
-            .launchModeOverlay()
+            if CommandLine.isRunningUITests {
+                uiTestLaunchView
+            } else {
+                RootView(
+                    appViewModel: ProcessInfo.launchMode.appViewModel
+                )
+                .launchModeOverlay()
+            }
         }
+    }
+    
+    private var uiTestLaunchView: some View {
+        guard let rawValue = ProcessInfo.processInfo.environment["uiTestScenario"],
+              let testScenario = UITestScenario(rawValue: rawValue) else {
+            fatalError("Please set a test scenario before running your UI test")
+        }
+        return testScenario.launchView
     }
 }
 

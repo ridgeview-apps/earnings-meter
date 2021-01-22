@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "312821C323D0B95E00975F66"
-               BuildableName = "Contract Meter.app"
-               BlueprintName = "Contract Meter"
-               ReferencedContainer = "container:Earnings Meter.xcodeproj">
+               BuildableName = "Earnings Meter.app"
+               BlueprintName = "EarningsMeter"
+               ReferencedContainer = "container:EarningsMeter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "314A715725BAF8F80062D050"
+               BuildableName = "EarningsMeterUITests.xctest"
+               BlueprintName = "EarningsMeterUITests"
+               ReferencedContainer = "container:EarningsMeter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,16 +42,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3190F6D924CF0B6A004303F0"
-               BuildableName = "EarningsMeterTests.xctest"
-               BlueprintName = "EarningsMeterTests"
-               ReferencedContainer = "container:EarningsMeter.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -70,15 +74,6 @@
             ReferencedContainer = "container:EarningsMeter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "312821C323D0B95E00975F66"
-            BuildableName = "Contract Meter.app"
-            BlueprintName = "Contract Meter"
-            ReferencedContainer = "container:Earnings Meter.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -91,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "312821C323D0B95E00975F66"
-            BuildableName = "Contract Meter.app"
-            BlueprintName = "Contract Meter"
-            ReferencedContainer = "container:Earnings Meter.xcodeproj">
+            BuildableName = "Earnings Meter.app"
+            BlueprintName = "EarningsMeter"
+            ReferencedContainer = "container:EarningsMeter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
