@@ -18,7 +18,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(0, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0, meterReader.currentReading.progress)
-        XCTAssertEqual(.offDuty, meterReader.currentReading.status)
+        XCTAssertEqual(.free, meterReader.currentReading.status)
     }
     
     func testMeterReading_weekday_atWork() throws {
@@ -36,7 +36,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
-        XCTAssertEqual(.hired, meterReader.currentReading.status)
+        XCTAssertEqual(.working, meterReader.currentReading.status)
     }
 
     func testMeterReading_weekday_afterWork() throws {
@@ -54,7 +54,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(800, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
-        XCTAssertEqual(.offDuty, meterReader.currentReading.status)
+        XCTAssertEqual(.toPay, meterReader.currentReading.status)
     }
 
     func testMeterReading_atWeekend_forWeekendWorker_showsReadingValue() throws {
@@ -74,7 +74,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
-        XCTAssertEqual(.hired, meterReader.currentReading.status)
+        XCTAssertEqual(.working, meterReader.currentReading.status)
     }
 
     func testMeterReading_atWeekend_forNonWeekendWorker_showsZeroReading() throws {
@@ -93,7 +93,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(0, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0, meterReader.currentReading.progress)
-        XCTAssertEqual(.offDuty, meterReader.currentReading.status)
+        XCTAssertEqual(.free, meterReader.currentReading.status)
     }
 
     func testMeterReading_overnightWorker_beforeWork() throws {
@@ -113,7 +113,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(0, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0, meterReader.currentReading.progress)
-        XCTAssertEqual(.offDuty, meterReader.currentReading.status)
+        XCTAssertEqual(.free, meterReader.currentReading.status)
     }
 
     func testMeterReading_overnightWorker_atWork() throws {
@@ -132,7 +132,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
-        XCTAssertEqual(.hired, meterReader.currentReading.status)
+        XCTAssertEqual(.working, meterReader.currentReading.status)
 
     }
 
@@ -152,7 +152,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(800, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
-        XCTAssertEqual(.offDuty, meterReader.currentReading.status)
+        XCTAssertEqual(.toPay, meterReader.currentReading.status)
 
     }
 }

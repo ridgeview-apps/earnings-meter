@@ -8,7 +8,7 @@ final class MeterViewModel: ObservableObject {
     let outputActions: OutputActions
     
     // MARK: - State
-    @Published var hireStatusPickerItems: [HireStatusPickerItem] = []
+    @Published var statusPickerItems: [MeterStatusPickerItem] = []
     @Published var currentReading: MeterReader.Reading
 
     let backgroundImage: String = "meter-background"
@@ -25,7 +25,7 @@ final class MeterViewModel: ObservableObject {
         guard let meterSettings = appViewModel.meterSettings else {
             progressBarStartTimeText = ""
             progressBarEndTimeText = ""
-            currentReading = .offDuty(amountEarned: 0, progress: 0)
+            currentReading = .free
             outputActions = .empty
             return
         }
@@ -46,7 +46,7 @@ final class MeterViewModel: ObservableObject {
             .removeDuplicates()
             .sink { [weak self] currentReading in
                 guard let self = self else { return }
-                self.hireStatusPickerItems = HireStatusPickerItem.all(selectedValue: currentReading.hireStatusPickerId)
+                self.statusPickerItems = MeterStatusPickerItem.all(selectedValue: currentReading.status)
                 self.currentReading = currentReading
             }
             .store(in: &cancelBag)
@@ -89,41 +89,26 @@ extension MeterViewModel {
 // MARK: - Data structures
 extension MeterViewModel {
     
-    struct HireStatusPickerItem: Identifiable {
+    struct MeterStatusPickerItem: Identifiable {
         
-        enum PickerId: String, CaseIterable {
-            case hired
-            case offDuty
-        }
-        
-        let id: PickerId
+        let id: MeterReaderStatus
         let isSelected: Bool
         
         var textLocalizedKey: LocalizedStringKey {
             switch id {
-            case .hired:
-                return LocalizedStringKey("meter.hireStatus.hired")
-            case .offDuty:
-                return LocalizedStringKey("meter.hireStatus.offDuty")
+            case .free:
+                return LocalizedStringKey("meter.hireStatus.free")
+            case .working:
+                return LocalizedStringKey("meter.hireStatus.working")
+            case .toPay:
+                return LocalizedStringKey("meter.hireStatus.toPay")
             }
         }
         
-        static func all(selectedValue: HireStatusPickerItem.PickerId) -> [HireStatusPickerItem] {
-            PickerId.allCases.map {
-                HireStatusPickerItem(id: $0, isSelected: $0 == selectedValue)
+        static func all(selectedValue: MeterReaderStatus) -> [MeterStatusPickerItem] {
+            MeterReaderStatus.allCases.map {
+                MeterStatusPickerItem(id: $0, isSelected: $0 == selectedValue)
             }
-        }
-    }
-}
-
-private extension MeterReader.Reading {
-    
-    var hireStatusPickerId: MeterViewModel.HireStatusPickerItem.PickerId {
-        switch status {
-        case .hired:
-            return .hired
-        case .offDuty:
-            return .offDuty
         }
     }
 }

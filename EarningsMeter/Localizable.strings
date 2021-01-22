@@ -14,8 +14,9 @@
 "settings.footer.button.title.start" = "Start";
 
 "meter.header.earnings.today.title" = "EARNINGS TODAY";
-"meter.hireStatus.hired" = "HIRED";
-"meter.hireStatus.offDuty" = "OFF DUTY";
+"meter.hireStatus.free" = "FREE";
+"meter.hireStatus.working" = "AT WORK";
+"meter.hireStatus.toPay" = "TO PAY";
 
 "appInfo.navigation.title" = "About this app";
 "appInfo.app.version.title" = "App version";

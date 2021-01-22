@@ -1,6 +1,12 @@
 import Foundation
 import Combine
 
+enum MeterReaderStatus: CaseIterable, Equatable {
+    case free
+    case working
+    case toPay
+}
+
 final class MeterReader: ObservableObject {
     
     @Published private(set) var currentReading: Reading
@@ -9,21 +15,20 @@ final class MeterReader: ObservableObject {
     
     struct Reading: Equatable {
         
-        enum Status {
-            case offDuty
-            case hired
-        }
-        
         let amountEarned: Double
         let progress: Double
-        let status: Status
+        let status: MeterReaderStatus
         
-        static func offDuty(amountEarned: Double, progress: Double) -> Reading {
-            Reading(amountEarned: amountEarned, progress: progress, status: .offDuty)
+        static var free: Reading {
+            Reading(amountEarned: 0, progress: 0, status: .free)
         }
         
-        static func hired(amountEarned: Double, progress: Double) -> Reading {
-            Reading(amountEarned: amountEarned, progress: progress, status: .hired)
+        static func working(amountEarned: Double, progress: Double) -> Reading {
+            Reading(amountEarned: amountEarned, progress: progress, status: .working)
+        }
+        
+        static func toPay(amountEarned: Double) -> Reading {
+            Reading(amountEarned: amountEarned, progress: 1, status: .toPay)
         }
     }
     
@@ -72,33 +77,11 @@ final class MeterReader: ObservableObject {
         onStop.send()
     }
     
-    // MARK: - Reading calculation
     private static func calculateReadingNow(for meterSettings: MeterSettings,
                                             in environment: AppEnvironment) -> Reading {
-        
-        let startTimeToday = meterSettings.startTime.asLocalTimeToday(environment: environment)
-        let calendar = environment.currentCalendar()
-        let isWeekend = calendar.isDateInWeekend(startTimeToday)
-        
-        let isAWorkingDay = !isWeekend || (isWeekend && meterSettings.runAtWeekends)
-        guard isAWorkingDay else {
-            return .offDuty(amountEarned: 0, progress: 0)
-        }
-        
-        let secondsElapsedToday = calendar.secondsElapsedToday(for: environment.date())
-        
-        let workingDayStatus = WorkingDayStatus(meterSettings: meterSettings,
-                                                secondsElapsedToday: secondsElapsedToday)
-        
-        switch workingDayStatus.read() {
-        case .beforeWork:
-            return .offDuty(amountEarned: 0, progress: 0)
-        case .afterWork:
-            return .offDuty(amountEarned: meterSettings.dailyRate, progress: 1)
-        case let .atWork(progress):
-            let amountEarned = progress * meterSettings.dailyRate
-            return .hired(amountEarned: amountEarned, progress: progress)
-        }
+        let calculator = ReadingCalculator(meterSettings: meterSettings,
+                                           environment: environment)
+        return calculator.read()
     }
 }
 
@@ -129,25 +112,33 @@ private extension MeterSettings {
     }
 }
 
-private struct WorkingDayStatus {
+// MARK: - Reading calculator
+private struct ReadingCalculator {
     
-    enum Status {
-        case beforeWork
-        case atWork(progress: Double)
-        case afterWork
+    let meterSettings: MeterSettings
+    let environment: AppEnvironment
+    
+    var secondsElapsedToday: TimeInterval {
+        environment.currentCalendar().secondsElapsedToday(for: environment.date())
     }
-    
-    var meterSettings: MeterSettings
-    var secondsElapsedToday: TimeInterval
     
     private let midday: TimeInterval = 12 * 60 * 60
     private let twentyFourHours: TimeInterval = 24 * 60 * 60
     
-    func read() -> Status {
-        meterSettings.isOvernightWorker ? nightWorkerStatus : dayWorkerStatus
+    func read() -> MeterReader.Reading {
+        let startTimeToday = meterSettings.startTime.asLocalTimeToday(environment: environment)
+        let calendar = environment.currentCalendar()
+        let isWeekend = calendar.isDateInWeekend(startTimeToday)
+        
+        let isAWorkingDay = !isWeekend || (isWeekend && meterSettings.runAtWeekends)
+        guard isAWorkingDay else {
+            return .free
+        }
+        
+        return meterSettings.isOvernightWorker ? nightWorkerReading : dayWorkerReading
     }
     
-    private var dayWorkerStatus: Status {
+    private var dayWorkerReading: MeterReader.Reading {
         let startTime = meterSettings.startTime.seconds
         let endTime = meterSettings.endTime.seconds
 
@@ -155,13 +146,14 @@ private struct WorkingDayStatus {
             let duration = endTime - startTime
             let amountWorked = secondsElapsedToday - startTime
             let progress = amountWorked / duration
-            return .atWork(progress: progress)
+            let amountEarned = progress * meterSettings.dailyRate
+            return .working(amountEarned: amountEarned, progress: progress)
         } else {
-            return secondsElapsedToday < startTime ? .beforeWork : .afterWork
+            return secondsElapsedToday < startTime ? .free : .toPay(amountEarned: meterSettings.dailyRate)
         }
     }
     
-    private var nightWorkerStatus: Status {
+    private var nightWorkerReading: MeterReader.Reading {
         let startTime = meterSettings.startTime.seconds
         let endTime = meterSettings.endTime.seconds
         
@@ -174,7 +166,8 @@ private struct WorkingDayStatus {
                 amountWorked = (twentyFourHours - startTime) + secondsElapsedToday
             }
             let progress = amountWorked / duration
-            return .atWork(progress: progress)
+            let amountEarned = progress * meterSettings.dailyRate
+            return .working(amountEarned: amountEarned, progress: progress)
         } else {
             let meterResetTime: TimeInterval
                 
@@ -184,7 +177,7 @@ private struct WorkingDayStatus {
                 meterResetTime = endTime + ((startTime - endTime) / 2)
             }
             
-            return secondsElapsedToday < meterResetTime ? .afterWork : .beforeWork
+            return secondsElapsedToday < meterResetTime ? .toPay(amountEarned: meterSettings.dailyRate) : .free
         }
     }
 }

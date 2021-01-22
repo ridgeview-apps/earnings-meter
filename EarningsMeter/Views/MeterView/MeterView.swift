@@ -75,13 +75,14 @@ struct MeterView: View {
     }
     
     private var hireStatusView: some View {
-        HStack(spacing: 20) {
-            ForEach(viewModel.hireStatusPickerItems) { item in
+        HStack {
+            ForEach(viewModel.statusPickerItems) { item in
                 Text(item.textLocalizedKey)
                     .font(.headline)
                     .fontWeight(item.isSelected ? .bold : .light)
                     .foregroundColor(item.isSelected ? .white : .disabledText)
                     .minimumScaleFactor(0.9)
+                    .padding(8)
             }
         }
     }
