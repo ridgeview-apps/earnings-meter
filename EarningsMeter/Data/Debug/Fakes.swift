@@ -76,7 +76,7 @@ extension MeterTime {
     
 }
 
-private extension Date {
+extension Date {
     
     static func weekday(hour: Int,
                         minute: Int,
