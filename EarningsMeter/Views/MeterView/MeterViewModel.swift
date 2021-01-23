@@ -93,6 +93,7 @@ extension MeterViewModel {
         
         let id: MeterReaderStatus
         let isSelected: Bool
+        let flashesWhenSelected: Bool
         
         var textLocalizedKey: LocalizedStringKey {
             switch id {
@@ -107,7 +108,9 @@ extension MeterViewModel {
         
         static func all(selectedValue: MeterReaderStatus) -> [MeterStatusPickerItem] {
             MeterReaderStatus.allCases.map {
-                MeterStatusPickerItem(id: $0, isSelected: $0 == selectedValue)
+                MeterStatusPickerItem(id: $0,
+                                      isSelected: $0 == selectedValue,
+                                      flashesWhenSelected: $0 == .working)
             }
         }
     }

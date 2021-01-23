@@ -74,6 +74,7 @@ struct MeterView: View {
         .foregroundColor(.white)
     }
     
+    @State private var animateHireStatus: Bool = false
     private var hireStatusView: some View {
         HStack {
             ForEach(viewModel.statusPickerItems) { item in
@@ -83,7 +84,14 @@ struct MeterView: View {
                     .foregroundColor(item.isSelected ? .white : .disabledText)
                     .minimumScaleFactor(0.9)
                     .padding(8)
+                    .animation(nil)
+                    .opacity(animateHireStatus && item.flashesWhenSelected ? 0.5 : 1)
+                    .animation(animateHireStatus ? Animation.easeInOut(duration: 1.2)
+                        .repeatForever(autoreverses: true) : nil)
             }
+        }
+        .onReceive(viewModel.$currentReading) { reading in
+            animateHireStatus = reading.status == .working
         }
     }
         
@@ -102,7 +110,7 @@ struct MeterView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+            MeterView(appViewModel: .fake(ofType: .meterRunningAtMiddleOfDay))
                 .embeddedInNavigationView()
                 .previewDisplayName("iPhone 11 Pro (meter running)")
                 .previewOption(deviceType: .iPhone_11_Pro)
