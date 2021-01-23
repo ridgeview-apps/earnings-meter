@@ -18,15 +18,11 @@ struct AppScene: App {
     }
     
     private var uiTestLaunchView: some View {
-    #if DEBUG
         guard let rawValue = ProcessInfo.processInfo.environment["uiTestScenario"],
               let testScenario = UITestScenario(rawValue: rawValue) else {
             fatalError("Please set a test scenario before running your UI test")
         }
         return testScenario.launchView
-    #else
-        return EmptyView()
-    #endif
     }
 }
 

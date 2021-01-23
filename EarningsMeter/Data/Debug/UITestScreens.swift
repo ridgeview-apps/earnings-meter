@@ -3,6 +3,7 @@ import SwiftUI
 extension UITestScenario {
     
     @ViewBuilder var launchView: some View {
+    #if DEBUG
         switch self {
         case .meterViewBeforeWork:
             MeterView(appViewModel: .fake(ofType: .meterNotYetStarted))
@@ -17,5 +18,8 @@ extension UITestScenario {
             MeterSettingsView(appViewModel: .fake(ofType: .welcomeState))
                 .embeddedInNavigationView()
         }
+    #else
+        EmptyView()
+    #endif
     }
 }
