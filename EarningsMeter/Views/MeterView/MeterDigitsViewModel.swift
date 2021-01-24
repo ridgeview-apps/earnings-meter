@@ -9,7 +9,7 @@ final class MeterDigitsViewModel {
     
     init(amount: Double,
          formatter: NumberFormatter = .decimalStyle) {
-        amountText = formatter.string(from: amount as NSNumber) ?? ""
+        amountText = formatter.string(from: amount as NSNumber) ?? "0.00"
         amountBackgroundText = amountText
                                 .map { $0.isNumber ? "8" : String($0) }
                                 .joined()
