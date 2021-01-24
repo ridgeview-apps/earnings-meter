@@ -16,24 +16,14 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios beta
+### ios build_and_distribute
 ```
-fastlane ios beta
-```
-
-### ios prod
-```
-fastlane ios prod
+fastlane ios build_and_distribute
 ```
 
-### ios create_bundle_ids_beta
+### ios create_bundle_ids
 ```
-fastlane ios create_bundle_ids_beta
-```
-
-### ios create_bundle_ids_prod
-```
-fastlane ios create_bundle_ids_prod
+fastlane ios create_bundle_ids
 ```
 
 ### ios upload_screenshots

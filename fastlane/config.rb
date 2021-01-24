@@ -31,7 +31,9 @@ $beta_config = $base_build_config
     xcode_configuration: "Release",
     export_method: "ad-hoc",
     shield_prefix: "Beta",
-    shield_colour: "blue",    
+    shield_colour: "blue",
+    upload_to_appcenter: true,
+    upload_to_testflight: false,
   })
   
 # Prod
@@ -43,6 +45,8 @@ $prod_config = $base_build_config
     provisioning_profile_specifier: "match AppStore $(PRODUCT_BUNDLE_IDENTIFIER)",
     xcode_configuration: "Release",
     export_method: "app-store",
+    upload_to_appcenter: false,
+    upload_to_testflight: true,
     export_options: {
       includeBitcode: true,
       compileBitcode: true

@@ -20,19 +20,29 @@ default_platform(:ios)
 
 platform :ios do
 
-  lane :beta do
-    load_app_store_connect_api_key($beta_config)
-    add_app_icon_shield($beta_config)
-    build_the_app($beta_config)    
-    upload_to_appcenter($beta_config)    
-  end
+  lane :build_and_distribute do |options|
 
-  lane :prod do
-    load_app_store_connect_api_key($prod_config)
-    build_the_app($prod_config)
-    upload_to_testflight(
-      skip_waiting_for_build_processing: true
-    )
+    config = load_config(options)
+    # puts(config)
+
+    load_app_store_connect_api_key(config)
+    
+    if config[:shield_colour]
+      add_app_icon_shield(config)
+    end
+    
+    build_the_app(config)
+    
+    if config[:upload_to_appcenter]
+      upload_to_appcenter(config)
+    end
+    
+    if config[:upload_to_testflight]
+      upload_to_testflight(
+        skip_waiting_for_build_processing: true
+      )
+    end
+    
   end
 
   # Private lanes
@@ -97,6 +107,17 @@ platform :ios do
     )
   end
 
+  private_lane :load_config do |options|
+    case options[:config]
+    when "beta"
+      $beta_config
+    when "prod"
+      $prod_config
+    else
+      UI.user_error!("ERROR: please specify a config to run e.g. fastlane build_and_distribute config:beta")      
+    end
+  end
+
   private_lane :upload_to_appcenter do |options|
     appcenter_upload(
       api_token: options[:app_center_api_token],
@@ -123,12 +144,9 @@ platform :ios do
   end
 
   # Ad-hoc / non-CI actions
-  lane :create_bundle_ids_beta do
-    create_bundle_ids($beta_config)
-  end
-
-  lane :create_bundle_ids_prod do
-    create_bundle_ids($prod_config)
+  lane :create_bundle_ids do |options|
+    config = load_config(options)
+    produce_bundle_ids(config)
   end
 
   #
@@ -155,7 +173,7 @@ platform :ios do
     ]
   end
 
-  private_lane :create_bundle_ids do |options|
+  private_lane :produce_bundle_ids do |options|
 
     all_bundle_types(options).each do |bundle_id|
       puts("********************************")
