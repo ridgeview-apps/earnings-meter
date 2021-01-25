@@ -4,7 +4,6 @@ import Combine
 enum MeterReaderStatus: CaseIterable, Equatable {
     case free
     case atWork
-    case finished
 }
 
 final class MeterReader: ObservableObject {
@@ -19,16 +18,12 @@ final class MeterReader: ObservableObject {
         let progress: Double
         let status: MeterReaderStatus
         
-        static var free: Reading {
-            Reading(amountEarned: 0, progress: 0, status: .free)
+        static func free(amountEarned: Double, progress: Double) -> Reading {
+            Reading(amountEarned: amountEarned, progress: progress, status: .free)
         }
         
         static func atWork(amountEarned: Double, progress: Double) -> Reading {
             Reading(amountEarned: amountEarned, progress: progress, status: .atWork)
-        }
-        
-        static func finished(amountEarned: Double) -> Reading {
-            Reading(amountEarned: amountEarned, progress: 1, status: .finished)
         }
     }
     
@@ -132,7 +127,7 @@ private struct ReadingCalculator {
         
         let isAWorkingDay = !isWeekend || (isWeekend && meterSettings.runAtWeekends)
         guard isAWorkingDay else {
-            return .free
+            return .free(amountEarned: 0, progress: 0)
         }
         
         return meterSettings.isOvernightWorker ? nightWorkerReading : dayWorkerReading
@@ -149,7 +144,9 @@ private struct ReadingCalculator {
             let amountEarned = progress * meterSettings.dailyRate
             return .atWork(amountEarned: amountEarned, progress: progress)
         } else {
-            return secondsElapsedToday < startTime ? .free : .finished(amountEarned: meterSettings.dailyRate)
+            return secondsElapsedToday < startTime
+                ? .free(amountEarned: 0, progress: 0)
+                : .free(amountEarned: meterSettings.dailyRate, progress: 1)
         }
     }
     
@@ -177,7 +174,9 @@ private struct ReadingCalculator {
                 meterResetTime = endTime + ((startTime - endTime) / 2)
             }
             
-            return secondsElapsedToday < meterResetTime ? .finished(amountEarned: meterSettings.dailyRate) : .free
+            return secondsElapsedToday < meterResetTime
+                ? .free(amountEarned: meterSettings.dailyRate, progress: 1)
+                : .free(amountEarned: 0, progress: 0)
         }
     }
 }

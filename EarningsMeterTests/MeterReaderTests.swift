@@ -54,7 +54,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
-        XCTAssertEqual(.finished, meterReader.currentReading.status)
+        XCTAssertEqual(.free, meterReader.currentReading.status)
     }
 
     func testMeterReading_atWeekend_forWeekendWorker_showsReadingValue() throws {
@@ -152,7 +152,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
-        XCTAssertEqual(.finished, meterReader.currentReading.status)
+        XCTAssertEqual(.free, meterReader.currentReading.status)
 
     }
 }

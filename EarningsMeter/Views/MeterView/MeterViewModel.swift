@@ -25,7 +25,7 @@ final class MeterViewModel: ObservableObject {
         guard let meterSettings = appViewModel.meterSettings else {
             progressBarStartTimeText = ""
             progressBarEndTimeText = ""
-            currentReading = .free
+            currentReading = .free(amountEarned: 0, progress: 0)
             outputActions = .empty
             return
         }
@@ -101,8 +101,6 @@ extension MeterViewModel {
                 return LocalizedStringKey("meter.hireStatus.free")
             case .atWork:
                 return LocalizedStringKey("meter.hireStatus.atWork")
-            case .finished:
-                return LocalizedStringKey("meter.hireStatus.finished")
             }
         }
         
