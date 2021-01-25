@@ -36,7 +36,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(200, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
-        XCTAssertEqual(.working, meterReader.currentReading.status)
+        XCTAssertEqual(.atWork, meterReader.currentReading.status)
     }
 
     func testMeterReading_weekday_afterWork() throws {
@@ -54,7 +54,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
-        XCTAssertEqual(.toPay, meterReader.currentReading.status)
+        XCTAssertEqual(.finished, meterReader.currentReading.status)
     }
 
     func testMeterReading_atWeekend_forWeekendWorker_showsReadingValue() throws {
@@ -74,7 +74,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(200, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
-        XCTAssertEqual(.working, meterReader.currentReading.status)
+        XCTAssertEqual(.atWork, meterReader.currentReading.status)
     }
 
     func testMeterReading_atWeekend_forNonWeekendWorker_showsZeroReading() throws {
@@ -132,7 +132,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(200, meterReader.currentReading.amountEarned)
         XCTAssertEqual(0.5, meterReader.currentReading.progress)
-        XCTAssertEqual(.working, meterReader.currentReading.status)
+        XCTAssertEqual(.atWork, meterReader.currentReading.status)
 
     }
 
@@ -152,7 +152,7 @@ class MeterReaderTests: XCTestCase {
         // Then
         XCTAssertEqual(400, meterReader.currentReading.amountEarned)
         XCTAssertEqual(1, meterReader.currentReading.progress)
-        XCTAssertEqual(.toPay, meterReader.currentReading.status)
+        XCTAssertEqual(.finished, meterReader.currentReading.status)
 
     }
 }

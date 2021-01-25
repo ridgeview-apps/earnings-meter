@@ -99,10 +99,10 @@ extension MeterViewModel {
             switch id {
             case .free:
                 return LocalizedStringKey("meter.hireStatus.free")
-            case .working:
-                return LocalizedStringKey("meter.hireStatus.working")
-            case .toPay:
-                return LocalizedStringKey("meter.hireStatus.toPay")
+            case .atWork:
+                return LocalizedStringKey("meter.hireStatus.atWork")
+            case .finished:
+                return LocalizedStringKey("meter.hireStatus.finished")
             }
         }
         
@@ -110,7 +110,7 @@ extension MeterViewModel {
             MeterReaderStatus.allCases.map {
                 MeterStatusPickerItem(id: $0,
                                       isSelected: $0 == selectedValue,
-                                      flashesWhenSelected: $0 == .working)
+                                      flashesWhenSelected: $0 == .atWork)
             }
         }
     }

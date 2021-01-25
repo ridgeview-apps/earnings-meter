@@ -91,7 +91,7 @@ struct MeterView: View {
             }
         }
         .onReceive(viewModel.$currentReading) { reading in
-            animateHireStatus = reading.status == .working
+            animateHireStatus = reading.status == .atWork
         }
     }
         
@@ -131,8 +131,8 @@ struct MeterView_Previews: PreviewProvider {
                 .previewOption(colorScheme: .dark)
             MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
-                .previewOption(deviceType: .iPad_Pro_9_7_inch)
                 .previewDisplayName("iPad")
+                .previewOption(deviceType: .iPad_Pro_9_7_inch)
             MeterView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewLandscapeIPad()

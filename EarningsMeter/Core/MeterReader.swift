@@ -3,8 +3,8 @@ import Combine
 
 enum MeterReaderStatus: CaseIterable, Equatable {
     case free
-    case working
-    case toPay
+    case atWork
+    case finished
 }
 
 final class MeterReader: ObservableObject {
@@ -23,12 +23,12 @@ final class MeterReader: ObservableObject {
             Reading(amountEarned: 0, progress: 0, status: .free)
         }
         
-        static func working(amountEarned: Double, progress: Double) -> Reading {
-            Reading(amountEarned: amountEarned, progress: progress, status: .working)
+        static func atWork(amountEarned: Double, progress: Double) -> Reading {
+            Reading(amountEarned: amountEarned, progress: progress, status: .atWork)
         }
         
-        static func toPay(amountEarned: Double) -> Reading {
-            Reading(amountEarned: amountEarned, progress: 1, status: .toPay)
+        static func finished(amountEarned: Double) -> Reading {
+            Reading(amountEarned: amountEarned, progress: 1, status: .finished)
         }
     }
     
@@ -147,9 +147,9 @@ private struct ReadingCalculator {
             let amountWorked = secondsElapsedToday - startTime
             let progress = amountWorked / duration
             let amountEarned = progress * meterSettings.dailyRate
-            return .working(amountEarned: amountEarned, progress: progress)
+            return .atWork(amountEarned: amountEarned, progress: progress)
         } else {
-            return secondsElapsedToday < startTime ? .free : .toPay(amountEarned: meterSettings.dailyRate)
+            return secondsElapsedToday < startTime ? .free : .finished(amountEarned: meterSettings.dailyRate)
         }
     }
     
@@ -167,7 +167,7 @@ private struct ReadingCalculator {
             }
             let progress = amountWorked / duration
             let amountEarned = progress * meterSettings.dailyRate
-            return .working(amountEarned: amountEarned, progress: progress)
+            return .atWork(amountEarned: amountEarned, progress: progress)
         } else {
             let meterResetTime: TimeInterval
                 
@@ -177,7 +177,7 @@ private struct ReadingCalculator {
                 meterResetTime = endTime + ((startTime - endTime) / 2)
             }
             
-            return secondsElapsedToday < meterResetTime ? .toPay(amountEarned: meterSettings.dailyRate) : .free
+            return secondsElapsedToday < meterResetTime ? .finished(amountEarned: meterSettings.dailyRate) : .free
         }
     }
 }

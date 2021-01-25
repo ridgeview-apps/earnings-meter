@@ -34,7 +34,7 @@ class MeterViewModelTests: XCTestCase {
         
         XCTAssertEqual(50, meterViewModel.currentReading.amountEarned)
         XCTAssertEqual(1/8, meterViewModel.currentReading.progress)
-        XCTAssertEqual(.working, meterViewModel.currentReading.status)
+        XCTAssertEqual(.atWork, meterViewModel.currentReading.status)
         
         // ... start the meter around 11am (reading should update)
         meterViewModel.inputs.appear.send() // Starts the meter
@@ -50,7 +50,7 @@ class MeterViewModelTests: XCTestCase {
         
         XCTAssertEqual(100, meterViewModel.currentReading.amountEarned)
         XCTAssertEqual(2/8, meterViewModel.currentReading.progress)
-        XCTAssertEqual(.working, meterViewModel.currentReading.status)
+        XCTAssertEqual(.atWork, meterViewModel.currentReading.status)
     }
     
     func testTapSettings() {

@@ -1,6 +1,6 @@
 import XCTest
 
-class EarningsMeterUITests: XCTestCase {
+class GenerateScreenshots: XCTestCase {
     
     private var app: XCUIApplication!
     private var isRunningOnIPhone = false
@@ -19,25 +19,26 @@ class EarningsMeterUITests: XCTestCase {
         //   app.navigationBars.buttons.element(boundBy: 0).tap()
     }
 
-    func testScreenshot_welcomeView() throws {
-        app = .launched(with: .welcomeView, snapshotMode: true)
-        snapshot("01-Welcome")
-    }
-    
     func testScreenshot_meterViewBeforeWork() throws {
         app = .launched(with: .meterViewBeforeWork, snapshotMode: true)
-        snapshot("02-MeterBeforeWork")
+        snapshot("01-MeterBeforeWork")
     }
     
     func testScreenshot_meterViewAtWork() throws {
         app = .launched(with: .meterViewAtWork, snapshotMode: true)
-        snapshot("03-MeterAtWork")
+        snapshot("02-MeterAtWork")
     }
     
     func testScreenshot_meterViewAfterWork() throws {
         app = .launched(with: .meterViewAfterWork, snapshotMode: true)
-        snapshot("04-MeterAfterWork")
+        snapshot("03-MeterAfterWork")
     }
+    
+    func testScreenshot_welcomeView() throws {
+        app = .launched(with: .welcomeView, snapshotMode: true)
+        snapshot("04-Welcome")
+    }
+
 }
 
 

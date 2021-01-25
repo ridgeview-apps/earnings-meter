@@ -33,7 +33,7 @@
 		314A48D525AF5AA000FBBF3E /* MeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D425AF5AA000FBBF3E /* MeterSettings.swift */; };
 		314A48D925AF5AF900FBBF3E /* MeterTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48D825AF5AF900FBBF3E /* MeterTime.swift */; };
 		314A48E225B094B100FBBF3E /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48E125B094B100FBBF3E /* Formatters.swift */; };
-		314A715B25BAF8F90062D050 /* EarningsMeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A715A25BAF8F90062D050 /* EarningsMeterUITests.swift */; };
+		314A715B25BAF8F90062D050 /* GenerateScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A715A25BAF8F90062D050 /* GenerateScreenshots.swift */; };
 		314A716625BAFAF20062D050 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716525BAFAF20062D050 /* SnapshotHelper.swift */; };
 		314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
 		314A717525BB050F0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
@@ -113,7 +113,7 @@
 		314A48D825AF5AF900FBBF3E /* MeterTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTime.swift; sourceTree = "<group>"; };
 		314A48E125B094B100FBBF3E /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		314A715A25BAF8F90062D050 /* EarningsMeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsMeterUITests.swift; sourceTree = "<group>"; };
+		314A715A25BAF8F90062D050 /* GenerateScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScreenshots.swift; sourceTree = "<group>"; };
 		314A715C25BAF8F90062D050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		314A716525BAFAF20062D050 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		314A716D25BB02FF0062D050 /* UITestScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScenario.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 			children = (
 				314A716D25BB02FF0062D050 /* UITestScenario.swift */,
 				314A716525BAFAF20062D050 /* SnapshotHelper.swift */,
-				314A715A25BAF8F90062D050 /* EarningsMeterUITests.swift */,
+				314A715A25BAF8F90062D050 /* GenerateScreenshots.swift */,
 				314A715C25BAF8F90062D050 /* Info.plist */,
 			);
 			path = EarningsMeterUITests;
@@ -666,7 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */,
-				314A715B25BAF8F90062D050 /* EarningsMeterUITests.swift in Sources */,
+				314A715B25BAF8F90062D050 /* GenerateScreenshots.swift in Sources */,
 				314A716625BAFAF20062D050 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

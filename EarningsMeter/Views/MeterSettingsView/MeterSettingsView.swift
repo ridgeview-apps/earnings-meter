@@ -40,11 +40,11 @@ struct MeterSettingsView: View {
         .onReceive(viewModel.outputActions.didTapInfo, perform: onTappedInfo)
     }
     
-    private var sectionHeader: some View {
+    @ViewBuilder private var sectionHeader: some View {
         if viewModel.viewState == .welcome {
-            return Text(viewModel.welcomeMessageTitle).eraseToAnyView()
+            Text(viewModel.welcomeMessageTitle)
         } else {
-            return EmptyView().eraseToAnyView()
+            EmptyView()
         }
     }
 
@@ -154,7 +154,7 @@ private extension View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MeterSettingsView(appViewModel: .preview(meterSettings: nil))
+            MeterSettingsView(appViewModel: .fake(ofType: .welcomeState))
                 .embeddedInNavigationView()
                 .previewDisplayName("Welcome state")
             MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
@@ -164,6 +164,10 @@ struct SettingsView_Previews: PreviewProvider {
                 .embeddedInNavigationView()
                 .previewDisplayName("Dark mode")
                 .previewOption(colorScheme: .dark)
+            MeterSettingsView(appViewModel: .preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+                .embeddedInNavigationView()
+                .previewDisplayName("iPad")
+                .previewOption(deviceType: .iPad_Pro_9_7_inch)
         }
     }    
 }

@@ -1,25 +1,12 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 require_relative 'config'
 
 default_platform(:ios)
 
 platform :ios do
 
+  #
+  # Builds the app and uploads it to App Center (beta distribution) or TestFlight (prod distribution)
+  #
   lane :build_and_distribute do |options|
 
     config = load_config(options)
@@ -86,7 +73,7 @@ platform :ios do
     #   devices: options[:unit_test_devices],
     # )
 
-    gym(
+    build_app(
       output_name: options[:output_name],
       export_method: options[:export_method],
       scheme: options[:xcode_scheme],
