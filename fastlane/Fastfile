@@ -32,7 +32,54 @@ platform :ios do
     
   end
 
-  # Private lanes
+  lane :upload_screenshots do
+    load_app_store_connect_api_key($prod_config)
+    deliver(
+      app_identifier: $prod_config[:main_target_bundle_id],
+      automatic_release: false,
+      submit_for_review: false,
+      overwrite_screenshots: true,
+      precheck_include_in_app_purchases: false,
+      force: true, # Skips the interactive preview of html file before uploading
+    )
+  end
+  
+  lane :submit_for_review do
+    load_app_store_connect_api_key($prod_config)
+    main_bundle_id = $prod_config[:main_target_bundle_id]
+    tf_build_no = latest_testflight_build_number(app_identifier: main_bundle_id).to_s
+
+    # TODO: revisit later - for now, just input this data directly into App Store Connect
+    # upload_app_privacy_details_to_app_store(
+    #   app_identifier: main_bundle_id,
+    #   username: $prod_config[:app_store_connect_user_id],
+    #   json_path: "./fastlane/metadata/app_privacy_details.json",
+    # )
+    
+    deliver(
+      app_identifier: main_bundle_id,
+      automatic_release: false,
+      submit_for_review: true,
+      build_number: tf_build_no,
+      precheck_include_in_app_purchases: false,
+      app_rating_config_path: "./fastlane/metadata/rating_config.json",
+      force: true, # Skips the interactive preview of html file before uploading
+      price_tier: 0,
+      submission_information: {
+        add_id_info_uses_idfa: true,
+        add_id_info_serves_ads: false,
+        add_id_info_tracks_action: false,
+        add_id_info_tracks_install: false,
+        add_id_info_limits_tracking: true,
+        # content_rights_contains_third_party_content: true,
+        # content_rights_has_rights: true,
+      }
+    )
+  end
+
+  #################################################################
+  ##  Private lanes
+  #################################################################
   private_lane :load_app_store_connect_api_key do |options|
     app_store_connect_api_key(
       key_id: options[:app_store_connect_api_key_id],
@@ -182,35 +229,4 @@ platform :ios do
     end
   end
 
-  lane :upload_screenshots do
-    load_app_store_connect_api_key($prod_config)
-    deliver(
-      app_identifier: $prod_config[:main_target_bundle_id],
-      automatic_release: false,
-      submit_for_review: false,
-      overwrite_screenshots: true,
-      precheck_include_in_app_purchases: false,
-      force: true, # Skips the interactive preview of html file before uploading
-    )
-  end
-  
-  lane :submit_for_review do
-    load_app_store_connect_api_key($prod_config)
-    deliver(
-      app_identifier: $prod_config[:main_target_bundle_id],
-      automatic_release: false,
-      submit_for_review: true,
-      build_number: latest_testflight_build_number,
-      precheck_include_in_app_purchases: false,
-      force: true, # Skips the interactive preview of html file before uploading
-      submission_information: {
-        add_id_info_uses_idfa: true,
-        add_id_info_serves_ads: false,
-        add_id_info_tracks_action: false,
-        add_id_info_tracks_install: false,
-        add_id_info_limits_tracking: true,
-      }
-    )
-  end
-  
 end

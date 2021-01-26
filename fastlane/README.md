@@ -21,11 +21,6 @@ or alternatively using `brew install fastlane`
 fastlane ios build_and_distribute
 ```
 
-### ios create_bundle_ids
-```
-fastlane ios create_bundle_ids
-```
-
 ### ios upload_screenshots
 ```
 fastlane ios upload_screenshots
@@ -34,6 +29,11 @@ fastlane ios upload_screenshots
 ### ios submit_for_review
 ```
 fastlane ios submit_for_review
+```
+
+### ios create_bundle_ids
+```
+fastlane ios create_bundle_ids
 ```
 
 
