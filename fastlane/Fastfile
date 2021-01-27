@@ -44,12 +44,19 @@ platform :ios do
     )
   end
   
-  lane :submit_for_review do
+  lane :submit_for_review do |options|
     load_app_store_connect_api_key($prod_config)
     main_bundle_id = $prod_config[:main_target_bundle_id]
-    tf_build_no = latest_testflight_build_number(app_identifier: main_bundle_id).to_s
+    
+    testflight_build_no = options[:build_no].to_s
+    # testflight_build_no = latest_testflight_build_number(app_identifier: main_bundle_id).to_s
 
-    # TODO: revisit later - for now, just input this data directly into App Store Connect
+    unless testflight_build_no
+      UI.user_error!("ERROR: please specify a build number to submit e.g. fastlane submit_for_review build_no:123")      
+    end
+
+    # TODO: Dec 2020. Revisit privacy upload later (too new & flaky right)
+    #
     # upload_app_privacy_details_to_app_store(
     #   app_identifier: main_bundle_id,
     #   username: $prod_config[:app_store_connect_user_id],
@@ -60,7 +67,7 @@ platform :ios do
       app_identifier: main_bundle_id,
       automatic_release: false,
       submit_for_review: true,
-      build_number: tf_build_no,
+      build_number: testflight_build_no,
       precheck_include_in_app_purchases: false,
       app_rating_config_path: "./fastlane/metadata/rating_config.json",
       force: true, # Skips the interactive preview of html file before uploading
