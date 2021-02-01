@@ -22,7 +22,7 @@ class RootViewModelTests: XCTestCase {
         let viewModel = RootViewModel()
         
         // When
-        viewModel.inputs.envObjects.send(appViewModel)
+        viewModel.inputs.environmentObjects.send(appViewModel)
         viewModel.inputs.appear.send()
         
         // Then
@@ -110,7 +110,7 @@ extension RootViewModelTests {
         
         let viewModel = RootViewModel()
 
-        viewModel.inputs.envObjects.send(appViewModel)
+        viewModel.inputs.environmentObjects.send(appViewModel)
         viewModel.inputs.appear.send()
         
         return viewModel

@@ -18,7 +18,7 @@ final class RootViewModel: ObservableObject {
     
     init() {
         
-        let appViewModel = inputs.envObjects
+        let appViewModel = inputs.environmentObjects
 
         let onFirstAppearance = inputs.appear.first()
         
@@ -39,7 +39,7 @@ final class RootViewModel: ObservableObject {
             .assign(to: \.childViewState, on: self, ownership: .weak)
             .store(in: &bag)
         
-        // 3. React to inputs
+        // 3. React to all other inputs
         inputs
             .goToSettings
             .assign(.editSettings, to: \.childViewState, on: self, ownership: .weak)
@@ -66,7 +66,7 @@ final class RootViewModel: ObservableObject {
 extension RootViewModel {
     struct Inputs {
         let appear = PassthroughSubject<Void, Never>()
-        let envObjects = PassthroughSubject<AppViewModel, Never>()
+        let environmentObjects = PassthroughSubject<AppViewModel, Never>()
         let goToSettings = PassthroughSubject<Void, Never>()
         let closeSettings = PassthroughSubject<Void, Never>()
         let goToAppInfo = PassthroughSubject<Void, Never>()

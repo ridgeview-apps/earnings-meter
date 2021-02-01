@@ -10,7 +10,7 @@ struct RootView: View {
         NavigationView {
             rootView
                 .onAppear {
-                    viewModel.inputs.envObjects.send(appViewModel)
+                    viewModel.inputs.environmentObjects.send(appViewModel)
                     viewModel.inputs.appear.send()
                 }
                 .sheet(isPresented: $viewModel.isAppInfoPresented) {

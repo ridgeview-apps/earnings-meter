@@ -22,12 +22,12 @@ struct MeterView: View {
                     .padding([.leading, .trailing], 8)
                     .frame(maxWidth: 502)
             }
-            .onAppear {
-                viewModel.inputs.environmentObjects.send(appViewModel)
-                viewModel.inputs.appear.send()
-            }
-            .onDisappear(perform: viewModel.inputs.disappear.send)
         }
+        .onAppear {
+            viewModel.inputs.environmentObjects.send(appViewModel)
+            viewModel.inputs.appear.send()
+        }
+        .onDisappear(perform: viewModel.inputs.disappear.send)
         .onReceive(viewModel.outputActions.didTapSettings, perform: onTappedSettings)
         .navigationBarItems(trailing: settingsButton)
         .navigationTitle(viewModel.navigationTitleKey)
