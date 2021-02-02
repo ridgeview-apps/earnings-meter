@@ -115,6 +115,7 @@ struct MeterView_Previews: PreviewProvider {
                 .environmentObject(AppViewModel.fake(ofType: .meterNotYetStarted))
                 .embeddedInNavigationView()
                 .previewDisplayName("iPhone 11 Pro (before work)")
+                .previewOption(colorScheme: .dark)
                 .previewOption(deviceType: .iPhone_11_Pro)
             MeterView()
                 .environmentObject(AppViewModel.fake(ofType: .meterFinished))
