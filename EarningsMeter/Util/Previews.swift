@@ -51,9 +51,9 @@
  #if DEBUG
  extension View {
      
-     func previewLandscapeIPad() -> some View {
+    func previewLandscapeIPad() -> some View {
         self.previewLayout(.fixed(width: 1024, height: 768))
-     }
+    }
     
     func previewOption(deviceType: PreviewOptionDeviceType) -> some View {
         self.previewDevice(.init(rawValue: deviceType.rawValue))
@@ -61,13 +61,18 @@
             .environment(\.verticalSizeClass, deviceType.sizeClass.vertical)
             .environment(\.horizontalSizeClass, deviceType.sizeClass.horizontal)
     }
-     
-     func previewOption(colorScheme: ColorScheme) -> some View {
-         self.environment(\.colorScheme, colorScheme)
-     }
-     
-     func previewOption(contentSize: ContentSizeCategory) -> some View {
-         self.environment(\.sizeCategory, contentSize)
-     }
+    
+    func previewOption(colorScheme: ColorScheme) -> some View {
+        self.environment(\.colorScheme, colorScheme)
+    }
+    
+    func previewOption(contentSize: ContentSizeCategory) -> some View {
+        self.environment(\.sizeCategory, contentSize)
+    }
+    
+    func previewOption(locale: Locale) -> some View {
+        self.environment(\.locale, locale)
+    }
+    
  }
  #endif

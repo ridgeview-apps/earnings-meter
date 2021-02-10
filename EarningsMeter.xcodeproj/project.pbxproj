@@ -64,7 +64,9 @@
 		31D1FF9A24951A2B0067B53F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D1FF9924951A2B0067B53F /* Colors.xcassets */; };
 		31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9B24979C120067B53F /* ProgressBarView.swift */; };
 		31D1FF9E249A0FAA0067B53F /* Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1FF9D249A0FAA0067B53F /* Previews.swift */; };
-		31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F8CE3F23D1E13B0011909E /* Localizable.strings */; };
+		31F28ED325D3F91400AC523A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28ED525D3F91400AC523A /* Localizable.strings */; };
+		31F28EE425D408BE00AC523A /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F28EE325D408BE00AC523A /* Locale+.swift */; };
+		31F28EF325D4251300AC523A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28EF525D4251300AC523A /* InfoPlist.strings */; };
 		31F8CE4223D4D72C0011909E /* MeterSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4123D4D72C0011909E /* MeterSettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,7 +153,15 @@
 		31D1FF9924951A2B0067B53F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		31D1FF9B24979C120067B53F /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		31D1FF9D249A0FAA0067B53F /* Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previews.swift; sourceTree = "<group>"; };
-		31F8CE3F23D1E13B0011909E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		31F28ED425D3F91400AC523A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		31F28ED925D3F97900AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		31F28EDA25D3F97900AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		31F28EDE25D3F98A00AC523A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		31F28EDF25D3F98B00AC523A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		31F28EE325D408BE00AC523A /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
+		31F28EF425D4251300AC523A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		31F28EF925D4251700AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		31F28EFA25D4251900AC523A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		31F8CE4123D4D72C0011909E /* MeterSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettingsView.swift; sourceTree = "<group>"; };
 		36D115BA65CC26E3CDE45D13 /* Pods-Earnings Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Earnings Meter.debug.xcconfig"; path = "Target Support Files/Pods-Earnings Meter/Pods-Earnings Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		3CD582947C71E1A803A0446F /* Pods_Contract_MeterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_MeterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,7 +311,8 @@
 		314A47C625ACD4B000FBBF3E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				31F8CE3F23D1E13B0011909E /* Localizable.strings */,
+				31F28ED525D3F91400AC523A /* Localizable.strings */,
+				31F28EF525D4251300AC523A /* InfoPlist.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -321,13 +332,14 @@
 		314A488B25AF197D00FBBF3E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				314A489025AF197D00FBBF3E /* Bundle+.swift */,
 				314A489125AF197D00FBBF3E /* Color+.swift */,
 				314A489325AF197D00FBBF3E /* Date+.swift */,
-				314A488D25AF197D00FBBF3E /* Timer+.swift */,
 				314A488E25AF197D00FBBF3E /* Foundation+.swift */,
-				314A489025AF197D00FBBF3E /* Bundle+.swift */,
-				314A489425AF197D00FBBF3E /* SwiftUI+.swift */,
+				31F28EE325D408BE00AC523A /* Locale+.swift */,
 				31B2E1F124AF5873001C915F /* Publisher+.swift */,
+				314A489425AF197D00FBBF3E /* SwiftUI+.swift */,
+				314A488D25AF197D00FBBF3E /* Timer+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -564,6 +576,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
 			);
 			mainGroup = 312821BB23D0B95E00975F66;
 			packageReferences = (
@@ -589,8 +603,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				31D1FF9A24951A2B0067B53F /* Colors.xcassets in Resources */,
+				31F28EF325D4251300AC523A /* InfoPlist.strings in Resources */,
 				312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */,
-				31F8CE4023D1E13B0011909E /* Localizable.strings in Resources */,
+				31F28ED325D3F91400AC523A /* Localizable.strings in Resources */,
 				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
 				312EF56E249CAB4500CC71BA /* digital-7-mono.ttf in Resources */,
 				312821CE23D0B96000975F66 /* Assets.xcassets in Resources */,
@@ -642,6 +657,7 @@
 				31225FDC249F5D990049D14F /* MeterViewModel.swift in Sources */,
 				314A489A25AF197D00FBBF3E /* Color+.swift in Sources */,
 				3152351F25B843A500AE8811 /* MailButton.swift in Sources */,
+				31F28EE425D408BE00AC523A /* Locale+.swift in Sources */,
 				31B2E1F224AF5873001C915F /* Publisher+.swift in Sources */,
 				311A3CDC246AB67200DF5B2E /* Styles.swift in Sources */,
 				31A5571224B349E100A42012 /* MeterDigitsViewModel.swift in Sources */,
@@ -724,8 +740,30 @@
 			isa = PBXVariantGroup;
 			children = (
 				312821D323D0B96000975F66 /* Base */,
+				31F28ED925D3F97900AC523A /* fr */,
+				31F28EDE25D3F98A00AC523A /* es */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		31F28ED525D3F91400AC523A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31F28ED425D3F91400AC523A /* en */,
+				31F28EDA25D3F97900AC523A /* fr */,
+				31F28EDF25D3F98B00AC523A /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		31F28EF525D4251300AC523A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31F28EF425D4251300AC523A /* en */,
+				31F28EF925D4251700AC523A /* fr */,
+				31F28EFA25D4251900AC523A /* es */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -736,6 +774,7 @@
 			baseConfigurationReference = 3152354225B8544400AE8811 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -798,6 +837,7 @@
 			baseConfigurationReference = 3152354325B8544400AE8811 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -932,6 +972,7 @@
 			baseConfigurationReference = 314A71AD25C1A46D0062D050 /* Adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -45,6 +45,7 @@ platform :ios do
     load_app_store_connect_api_key(options)
     deliver(
       app_identifier: options[:main_target_bundle_id],
+      app_version: options[:app_version],
       automatic_release: false,
       submit_for_review: false,
       overwrite_screenshots: true,
@@ -78,6 +79,7 @@ platform :ios do
     
     deliver(
       app_identifier: main_bundle_id,
+      app_version: options[:app_version],
       automatic_release: false,
       submit_for_review: true,
       build_number: testflight_build_no,

@@ -1,0 +1,1 @@
+ganancias,sueldo,dia laboral,jornada laboral,ingresos,salario

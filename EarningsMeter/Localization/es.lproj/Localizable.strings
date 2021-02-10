@@ -1,0 +1,31 @@
+"settings.navigation.title.edit" = "Ajustes";
+"settings.navigation.title.welcome" = "Empecemos";
+"settings.navigation.title.meter" = "Ganancias";
+"settings.welcome.message" = "Rellene sus detalles y pulse Inicio";
+"settings.rate.title" = "Gano";
+"settings.rate.placeholder" = "Salario";
+"settings.rate.calculated %@" = "Usted gana %@ por día (aprox.)";
+"settings.rate.picker.annual" = "Por día";
+"settings.rate.picker.daily" = "Por año";
+"settings.workingHours.startTime.title" = "Hora de inicio";
+"settings.workingHours.endTime.title" = "Hora de fin";
+"settings.runAtWeekends.title" = "Trabajo los fines de semana";
+"settings.footer.button.title.save" = "Guardar";
+"settings.footer.button.title.start" = "Inicio";
+
+"meter.header.earnings.today.title" = "GANANCIAS HOY";
+"meter.hireStatus.free" = "LIBRE";
+"meter.hireStatus.atWork" = "TRABAJANDO";
+
+"appInfo.navigation.title" = "Esta aplicación";
+"appInfo.app.version.title" = "Versión";
+"appInfo.contact.us.title" = "Enviar comentarios";
+"appInfo.rate.this.app.title" = "Valorar la aplicación";
+
+"contact.us.subject %@" = "Comentarios sobre %@";
+"contact.us.body.diagnostic.info" = "Esta información nos ayuda a contestar a sus preguntas:";
+"contact.us.body.app.version" = "Versión";
+"contact.us.body.device.info" = "Dispositivo";
+"contact.us.body.locale.info" = "Idioma/Región";
+
+"button.done" = "OK";

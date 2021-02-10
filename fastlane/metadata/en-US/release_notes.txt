@@ -1,0 +1,3 @@
+Welcome to Earnings Meter! An app that helps you get through the working day by telling you how much you've earned so far.
+
+$$ Happy earning! $$

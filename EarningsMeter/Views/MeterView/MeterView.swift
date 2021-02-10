@@ -141,12 +141,10 @@ struct MeterView_Previews: PreviewProvider {
                 .embeddedInNavigationView()
                 .previewLandscapeIPad()
                 .previewDisplayName("Landscape iPad")
-            MeterView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
-                .embeddedInNavigationView()
-                .previewOption(contentSize: .extraExtraExtraLarge)
-                .previewDisplayName("XXL Text")
         }
+//        .previewOption(locale: .fr) /* French language */
+//        .previewOption(locale: .es) /*/ Spanish language */
+//        .previewOption(contentSize: .extraExtraExtraLarge) /* XXL text */
     }
 }
 #endif

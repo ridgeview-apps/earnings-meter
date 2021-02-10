@@ -1,0 +1,1 @@
+Ganancias es una aplicación para mejorar su día de trabajo. Rellene su salario y su horario laboral, y la aplicacíon mostrará cuánto dinero usted ha ganado hoy, hasta el momento actual.

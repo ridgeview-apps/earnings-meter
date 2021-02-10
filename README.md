@@ -81,8 +81,8 @@ fastlane build_and_distribute config:beta
 # Build and distribute the prod app via Testflight
 fastlane build_and_distribute config:prod
 
-# Submit testflight build 123 for review (note: can omit "build_no" to submit the latest build)
-fastlane submit_for_review build_no:123
+# Submit app versin 1.1 (build 123) for review (note: can omit "build_no" to submit the latest Testflight build)
+fastlane submit_for_review app_version:1.1 build_no:123 
 
 # Generate screenshots & upload to App Store Connect
 fastlane snapshot

@@ -167,6 +167,9 @@ struct SettingsView_Previews: PreviewProvider {
                 .previewDisplayName("iPad")
                 .previewOption(deviceType: .iPad_Pro_9_7_inch)
         }
-    }    
+//        .previewOption(locale: .fr) /* French language */
+//        .previewOption(locale: .es) /*/ Spanish language */
+//        .previewOption(contentSize: .extraExtraExtraLarge) /* XXL text */
+    }
 }
 #endif

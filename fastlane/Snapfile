@@ -6,7 +6,9 @@ devices([
 ])
 
 languages([
-  "en-GB"
+  "en-GB", "en-US",
+  "es-ES", "es-MX",
+  "fr-CA", "fr-FR",
 ])
 
 clear_previous_screenshots(true)

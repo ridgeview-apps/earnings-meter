@@ -35,6 +35,8 @@ class GenerateScreenshots: XCTestCase {
     }
     
     func testScreenshot_welcomeView() throws {
+        guard isRunningOnIPhone else { return } // Ignore this screenshot on iPad
+        
         app = .launched(with: .welcomeView, snapshotMode: true)
         snapshot("04-Welcome")
     }
