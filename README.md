@@ -16,7 +16,7 @@ The app uses MVVM and [Combine](https://developer.apple.com/documentation/combin
 
 1. Install Xcode 12.
 1. Clone this repository.
-1. Run `Scripts/quickstart.sh`
+1. Run `Scripts/quick-start.sh`
 1. Open the Xcode project file
 1. Clean and build the app (Cmd-Shift-K, Cmd-B)
 
