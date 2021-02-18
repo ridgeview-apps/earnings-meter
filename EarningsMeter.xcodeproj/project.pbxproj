@@ -22,11 +22,8 @@
 		314A47C125ACD48600FBBF3E /* Fakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A47C025ACD48600FBBF3E /* Fakes.swift */; };
 		314A47CB25ACD5B900FBBF3E /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A47CA25ACD5B900FBBF3E /* KeyValueStore.swift */; };
 		314A488625AF169900FBBF3E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A488525AF169900FBBF3E /* App.swift */; };
-		314A489625AF197D00FBBF3E /* Timer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A488D25AF197D00FBBF3E /* Timer+.swift */; };
-		314A489725AF197D00FBBF3E /* Foundation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A488E25AF197D00FBBF3E /* Foundation+.swift */; };
-		314A489925AF197D00FBBF3E /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A489025AF197D00FBBF3E /* Bundle+.swift */; };
-		314A489A25AF197D00FBBF3E /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A489125AF197D00FBBF3E /* Color+.swift */; };
-		314A489C25AF197D00FBBF3E /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A489325AF197D00FBBF3E /* Date+.swift */; };
+		314A489725AF197D00FBBF3E /* ProcessInfo+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A488E25AF197D00FBBF3E /* ProcessInfo+.swift */; };
+		314A489C25AF197D00FBBF3E /* TimeZone+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A489325AF197D00FBBF3E /* TimeZone+.swift */; };
 		314A489D25AF197D00FBBF3E /* SwiftUI+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A489425AF197D00FBBF3E /* SwiftUI+.swift */; };
 		314A48A925AF1F1A00FBBF3E /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48A825AF1F1A00FBBF3E /* DataServices.swift */; };
 		314A48AD25AF21E900FBBF3E /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A48AC25AF21E900FBBF3E /* AppViewModel.swift */; };
@@ -41,7 +38,6 @@
 		314EF82B25C43BE300BE15AA /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314EF82A25C43BE300BE15AA /* DebugSettings.swift */; };
 		314EF83725C4493800BE15AA /* AppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314EF83625C4493800BE15AA /* AppViewModelTests.swift */; };
 		314EF84225C44ACC00BE15AA /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314EF84125C44ACC00BE15AA /* RootViewModelTests.swift */; };
-		315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315234A825B5D53100AE8811 /* StringLocalizer.swift */; };
 		3152350225B83CE400AE8811 /* AppInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152350125B83CE400AE8811 /* AppInfoViewModel.swift */; };
 		3152350725B83D4800AE8811 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3152350625B83D4800AE8811 /* DeviceKit */; };
 		3152350C25B83DDB00AE8811 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 3152350B25B83DDB00AE8811 /* AppCenterCrashes */; };
@@ -68,6 +64,7 @@
 		31F28EE425D408BE00AC523A /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F28EE325D408BE00AC523A /* Locale+.swift */; };
 		31F28EF325D4251300AC523A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28EF525D4251300AC523A /* InfoPlist.strings */; };
 		31F8CE4223D4D72C0011909E /* MeterSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8CE4123D4D72C0011909E /* MeterSettingsView.swift */; };
+		31FC208225DEBDC20084D78E /* RidgeviewCore in Frameworks */ = {isa = PBXBuildFile; productRef = 31FC208125DEBDC20084D78E /* RidgeviewCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,11 +103,8 @@
 		314A47C025ACD48600FBBF3E /* Fakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fakes.swift; sourceTree = "<group>"; };
 		314A47CA25ACD5B900FBBF3E /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
 		314A488525AF169900FBBF3E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		314A488D25AF197D00FBBF3E /* Timer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+.swift"; sourceTree = "<group>"; };
-		314A488E25AF197D00FBBF3E /* Foundation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+.swift"; sourceTree = "<group>"; };
-		314A489025AF197D00FBBF3E /* Bundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
-		314A489125AF197D00FBBF3E /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
-		314A489325AF197D00FBBF3E /* Date+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		314A488E25AF197D00FBBF3E /* ProcessInfo+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+.swift"; sourceTree = "<group>"; };
+		314A489325AF197D00FBBF3E /* TimeZone+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeZone+.swift"; sourceTree = "<group>"; };
 		314A489425AF197D00FBBF3E /* SwiftUI+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftUI+.swift"; sourceTree = "<group>"; };
 		314A48A825AF1F1A00FBBF3E /* DataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 		314A48AC25AF21E900FBBF3E /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -127,7 +121,6 @@
 		314EF82A25C43BE300BE15AA /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		314EF83625C4493800BE15AA /* AppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelTests.swift; sourceTree = "<group>"; };
 		314EF84125C44ACC00BE15AA /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
-		315234A825B5D53100AE8811 /* StringLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalizer.swift; sourceTree = "<group>"; };
 		3152350125B83CE400AE8811 /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
 		3152351325B83E0A00AE8811 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		3152351E25B843A500AE8811 /* MailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailButton.swift; sourceTree = "<group>"; };
@@ -178,6 +171,7 @@
 			files = (
 				3198638A24783F7C009F0C4B /* CombineExt in Frameworks */,
 				311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */,
+				31FC208225DEBDC20084D78E /* RidgeviewCore in Frameworks */,
 				3152350725B83D4800AE8811 /* DeviceKit in Frameworks */,
 				3152350E25B83DDB00AE8811 /* AppCenterAnalytics in Frameworks */,
 				3152350C25B83DDB00AE8811 /* AppCenterCrashes in Frameworks */,
@@ -332,14 +326,11 @@
 		314A488B25AF197D00FBBF3E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				314A489025AF197D00FBBF3E /* Bundle+.swift */,
-				314A489125AF197D00FBBF3E /* Color+.swift */,
-				314A489325AF197D00FBBF3E /* Date+.swift */,
-				314A488E25AF197D00FBBF3E /* Foundation+.swift */,
+				314A489325AF197D00FBBF3E /* TimeZone+.swift */,
+				314A488E25AF197D00FBBF3E /* ProcessInfo+.swift */,
 				31F28EE325D408BE00AC523A /* Locale+.swift */,
 				31B2E1F124AF5873001C915F /* Publisher+.swift */,
 				314A489425AF197D00FBBF3E /* SwiftUI+.swift */,
-				314A488D25AF197D00FBBF3E /* Timer+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,7 +443,6 @@
 			isa = PBXGroup;
 			children = (
 				314A488B25AF197D00FBBF3E /* Extensions */,
-				315234A825B5D53100AE8811 /* StringLocalizer.swift */,
 				311A3CDB246AB67200DF5B2E /* Styles.swift */,
 				31D1FF9D249A0FAA0067B53F /* Previews.swift */,
 				314A48E125B094B100FBBF3E /* Formatters.swift */,
@@ -505,6 +495,7 @@
 				3152350625B83D4800AE8811 /* DeviceKit */,
 				3152350B25B83DDB00AE8811 /* AppCenterCrashes */,
 				3152350D25B83DDB00AE8811 /* AppCenterAnalytics */,
+				31FC208125DEBDC20084D78E /* RidgeviewCore */,
 			);
 			productName = "Earnings Meter";
 			productReference = 312821C423D0B95E00975F66 /* Earnings Meter.app */;
@@ -585,6 +576,7 @@
 				3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */,
 				3152350525B83D4800AE8811 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				3152350A25B83DDB00AE8811 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				31FC208025DEBDC20084D78E /* XCRemoteSwiftPackageReference "ridgeview-core" */,
 			);
 			productRefGroup = 312821C523D0B95E00975F66 /* Products */;
 			projectDirPath = "";
@@ -655,7 +647,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31225FDC249F5D990049D14F /* MeterViewModel.swift in Sources */,
-				314A489A25AF197D00FBBF3E /* Color+.swift in Sources */,
 				3152351F25B843A500AE8811 /* MailButton.swift in Sources */,
 				31F28EE425D408BE00AC523A /* Locale+.swift in Sources */,
 				31B2E1F224AF5873001C915F /* Publisher+.swift in Sources */,
@@ -671,21 +662,18 @@
 				314A47C125ACD48600FBBF3E /* Fakes.swift in Sources */,
 				312821EC23D0BA5700975F66 /* MeterReader.swift in Sources */,
 				31A5570F24B33BB400A42012 /* RootViewModel.swift in Sources */,
-				314A489C25AF197D00FBBF3E /* Date+.swift in Sources */,
+				314A489C25AF197D00FBBF3E /* TimeZone+.swift in Sources */,
 				310276AF24B0E5A50026A2A4 /* MeterDigitsView.swift in Sources */,
 				314A48A925AF1F1A00FBBF3E /* DataServices.swift in Sources */,
 				314EF82B25C43BE300BE15AA /* DebugSettings.swift in Sources */,
-				314A489625AF197D00FBBF3E /* Timer+.swift in Sources */,
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
 				31A5570D24B33B2F00A42012 /* MeterSettingsService.swift in Sources */,
 				31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */,
-				315234A925B5D53100AE8811 /* StringLocalizer.swift in Sources */,
 				314A489D25AF197D00FBBF3E /* SwiftUI+.swift in Sources */,
 				3152351425B83E0A00AE8811 /* AppInfoView.swift in Sources */,
 				3152355025B8554800AE8811 /* BuildSettings.generated.swift in Sources */,
 				312821EE23D0BAB000975F66 /* MeterView.swift in Sources */,
-				314A489725AF197D00FBBF3E /* Foundation+.swift in Sources */,
-				314A489925AF197D00FBBF3E /* Bundle+.swift in Sources */,
+				314A489725AF197D00FBBF3E /* ProcessInfo+.swift in Sources */,
 				317F82D4247AD3E500B8C7AB /* MeterSettingsViewModel.swift in Sources */,
 				312821CC23D0B95E00975F66 /* RootView.swift in Sources */,
 				314A718225BB1ED80062D050 /* UITestScreens.swift in Sources */,
@@ -1198,6 +1186,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		31FC208025DEBDC20084D78E /* XCRemoteSwiftPackageReference "ridgeview-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ridgeview-apps/ridgeview-core";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1225,6 +1221,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3198638824783F7C009F0C4B /* XCRemoteSwiftPackageReference "CombineExt" */;
 			productName = CombineExt;
+		};
+		31FC208125DEBDC20084D78E /* RidgeviewCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31FC208025DEBDC20084D78E /* XCRemoteSwiftPackageReference "ridgeview-core" */;
+			productName = RidgeviewCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

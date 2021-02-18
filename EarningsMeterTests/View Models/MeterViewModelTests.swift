@@ -55,7 +55,7 @@ class MeterViewModelTests: XCTestCase {
     }
     
     func testTapSettings() {
-        let calendar = Calendar.iso8601
+        let calendar = Calendar.iso8601()
         let fakeNow_10_00_AM = calendar.date(from: .init(year: 2020, month: 7, day: 21, hour: 10, minute: 0))!
         
         let fakeTimeNow = fakeNow_10_00_AM

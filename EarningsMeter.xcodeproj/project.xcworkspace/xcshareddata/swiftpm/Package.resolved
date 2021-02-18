@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/devicekit/DeviceKit",
         "state": {
           "branch": null,
-          "revision": "dbddb0296e3ee4f83d52f9681e42705020a533e4",
-          "version": "4.2.1"
+          "revision": "4cf9f057db69104851634269f7839f8d0bd346a3",
+          "version": "4.3.0"
         }
       },
       {
@@ -35,6 +35,15 @@
           "branch": null,
           "revision": "de6b8f9db4b2a0aa859a5507550a70548e4da936",
           "version": "1.8.1"
+        }
+      },
+      {
+        "package": "RidgeviewCore",
+        "repositoryURL": "https://github.com/ridgeview-apps/ridgeview-core",
+        "state": {
+          "branch": "main",
+          "revision": "f17a3a9f93f7fdc66c903db8574985c19224600d",
+          "version": null
         }
       },
       {

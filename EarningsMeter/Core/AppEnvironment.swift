@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import DeviceKit
+import RidgeviewCore
 
 struct AppEnvironment {
 

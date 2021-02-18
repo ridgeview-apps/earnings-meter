@@ -213,3 +213,12 @@ class MeterSettingsViewModelTests: XCTestCase {
         XCTAssertFalse(settingsViewModel.isEndPickerExpanded)
     }
 }
+
+extension Calendar {
+
+    static func iso8601(in timeZone: TimeZone = .UTC) -> Calendar {
+        var cal = Calendar(identifier: .iso8601)
+        cal.timeZone = timeZone
+        return cal
+    }
+}

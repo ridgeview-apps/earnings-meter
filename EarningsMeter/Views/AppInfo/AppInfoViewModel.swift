@@ -2,6 +2,7 @@ import Combine
 import CombineExt
 import DeviceKit
 import Foundation
+import RidgeviewCore
 
 final class AppInfoViewModel: ObservableObject {
     
