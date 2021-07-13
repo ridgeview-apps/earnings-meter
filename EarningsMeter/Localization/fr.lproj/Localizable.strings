@@ -5,8 +5,10 @@
 "settings.rate.title" = "Je gagne";
 "settings.rate.placeholder" = "Salaire";
 "settings.rate.calculated %@" = "Vous gagnez %@ par jour (approx.)";
+"settings.rate.calculated.exact %@" = "Vous gagnez %@ par jour";
 "settings.rate.picker.annual" = "Par an";
 "settings.rate.picker.daily" = "Par jour";
+"settings.rate.picker.hour" = "Par heure";
 "settings.workingHours.startTime.title" = "Heure de début";
 "settings.workingHours.endTime.title" = "Heure de fin";
 "settings.runAtWeekends.title" = "Je travaille le week-end";

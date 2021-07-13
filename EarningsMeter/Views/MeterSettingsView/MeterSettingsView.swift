@@ -125,6 +125,8 @@ private extension MeterSettings.Rate.RateType {
             return LocalizedStringKey("settings.rate.picker.daily")
         case .annual:
             return LocalizedStringKey("settings.rate.picker.annual")
+        case .hourly:
+            return LocalizedStringKey("settings.rate.picker.hour")
         }
     }
     

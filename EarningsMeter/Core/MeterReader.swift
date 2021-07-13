@@ -30,8 +30,8 @@ final class MeterReader: ObservableObject {
     }
     
     convenience init(environment: AppEnvironment,
-         meterSettings: MeterSettings,         
-         makeMeterTimer: (() -> Timer.TimerPublisher)? = nil) {
+                     meterSettings: MeterSettings,
+                     makeMeterTimer: (() -> Timer.TimerPublisher)? = nil) {
         
         self.init()
         
@@ -84,7 +84,7 @@ extension MeterReader {
     }
 }
 
-private extension MeterSettings {
+extension MeterSettings {
     var isOvernightWorker: Bool {
         return endTime.seconds < startTime.seconds
     }

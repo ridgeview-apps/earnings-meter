@@ -69,7 +69,7 @@ final class MeterSettingsViewModel: ObservableObject {
             .store(in: &cancelBag)
                 
         $formData
-            .map { $0.rateType == .annual && $0.isValid }
+            .map { [.annual, .hourly].contains($0.rateType) && $0.isValid }
             .assign(to: \.isCalculatedRateTextVisible, on: self, ownership: .weak)
             .store(in: &cancelBag)
         
@@ -89,12 +89,16 @@ final class MeterSettingsViewModel: ObservableObject {
             .combineLatest(appViewModel)
             .map { form, appViewModel in
                 switch form.rate.type {
-                case .annual:
+                case .annual, .hourly:
                     let currencyTextFormatter = appViewModel.environment.formatters.numberStyles.currency
                     let localizer = appViewModel.environment.stringLocalizer
                     let calculatedRateText = currencyTextFormatter.string(from: form.dailyRate as NSNumber) ?? ""
-                    let localizedString = String(format: localizer.localized("settings.rate.calculated %@"), calculatedRateText)
-                    return localizedString
+                    
+                    if form.rate.type == .annual {
+                        return String(format: localizer.localized("settings.rate.calculated %@"), calculatedRateText)
+                    } else {
+                        return String(format: localizer.localized("settings.rate.calculated.exact %@"), calculatedRateText)
+                    }
                 case .daily:
                     return ""
                 }

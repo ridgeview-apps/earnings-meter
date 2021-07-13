@@ -8,6 +8,9 @@ struct MeterSettings: Codable, Equatable {
         switch rate.type {
         case .daily:
             return rate.amount
+        case .hourly:
+            let hoursWorked = workDayDuration / (60 * 60)
+            return hoursWorked * rate.amount
         case .annual:
             // N.B. Deliberately an approximate calculation that doesn't support leap years.
             let workingDays = runAtWeekends ? 365.0 : 261.0
@@ -20,7 +23,7 @@ extension MeterSettings {
     
     struct Rate: Codable, Equatable {
         enum RateType: Int, Codable, CaseIterable, Identifiable {
-            case annual, daily
+            case annual, daily, hourly
             
             var id: RateType { self }
         }
