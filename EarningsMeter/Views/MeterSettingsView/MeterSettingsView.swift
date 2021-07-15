@@ -62,6 +62,7 @@ struct MeterSettingsView: View {
                 .foregroundColor(.redThree)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
+            Spacer()
         }
         .padding(8)
         .roundedBorder(Color.redThree, lineWidth: 2)
