@@ -10,7 +10,7 @@ struct MeterView: View {
 
     var body: some View {
         ZStack {
-            Color.redTwo
+            Color.greyOne
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Image(viewModel.backgroundImage)
