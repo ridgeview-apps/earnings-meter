@@ -44,7 +44,7 @@ To minimise commmunication with the outside world (e.g. API calls or anything th
 
 ## Config
 
-My preferred approach to config is to use `.xcconfig` files since they make it easier to handle merge (vs trying to resolve conflicts in a `.pbxproj` file). It also allows potentially sensitive data to be stored in separate `secret.xcconfig` files (which can be decrypted via [`git secret`](https://git-secret.io) to authorised users and CI environments).
+My preferred approach to config is to use `.xcconfig` files since they make it easier to handle merge  conflicts (vs trying to resolve impossible conflicts in a `.pbxproj` file). It also allows potentially sensitive data to be stored in separate `secret.xcconfig` files (which can be decrypted via [`git secret`](https://git-secret.io) to authorised users and CI environments).
 
 The app's config files are set up as follows:
 
