@@ -3,7 +3,7 @@
 "settings.navigation.title.meter" = "Earnings meter";
 "settings.welcome.message" = "Please enter your details then tap Start";
 "settings.rate.title" = "I earn";
-"settings.rate.placeholder" = "Salary or daily rate";
+"settings.rate.placeholder" = "Salary or rate";
 "settings.rate.calculated %@" = "You earn approximately %@ per day";
 "settings.rate.calculated.exact %@" = "You earn %@ per day";
 "settings.rate.picker.annual" = "Per year";
