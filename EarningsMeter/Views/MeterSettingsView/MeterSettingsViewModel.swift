@@ -13,7 +13,6 @@ final class MeterSettingsViewModel: ObservableObject {
     @Published var isEndPickerExpanded: Bool = false
     @Published var formData: FormData = .empty
     @Published var isSaveButtonEnabled: Bool = false
-    @Published var firstResponderId: TextFieldInputId?
     @Published var calculatedRateText: String = ""
     @Published var isCalculatedRateTextVisible: Bool = false
     @Published private(set) var currencySymbol: String = ""
@@ -57,15 +56,6 @@ final class MeterSettingsViewModel: ObservableObject {
         $isEndPickerExpanded
             .when(equalTo: true)
             .assign(false, to: \.isStartPickerExpanded, on: self, ownership: .weak)
-            .store(in: &cancelBag)
-        
-        inputs.tappedTextField
-            .map { $0 }
-            .assign(to: \.firstResponderId, on: self, ownership: .weak)
-            .store(in: &cancelBag)
-        
-        inputs.didSetFirstResponder
-            .assignNil(to: \.firstResponderId, on: self, ownership: .weak)
             .store(in: &cancelBag)
                 
         $formData
@@ -141,8 +131,6 @@ extension MeterSettingsViewModel {
     
     struct Inputs {
         let environmentObjects = PassthroughSubject<AppViewModel, Never>()
-        let tappedTextField = PassthroughSubject<TextFieldInputId, Never>()
-        let didSetFirstResponder = PassthroughSubject<Void, Never>()
         let save = PassthroughSubject<Void, Never>()
         let tapInfo = PassthroughSubject<Void, Never>()
     }
@@ -160,10 +148,6 @@ extension MeterSettingsViewModel {
 
 // MARK: - View model types
 extension MeterSettingsViewModel {
-    
-    enum TextFieldInputId {
-        case dailyRate
-    }
     
     enum ViewState {
         case welcome

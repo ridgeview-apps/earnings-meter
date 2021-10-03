@@ -9,6 +9,7 @@ struct MeterSettingsView: View {
     @StateObject private var viewModel: MeterSettingsViewModel = .init()
     private(set) var onSave: (MeterSettings?) -> Void = { _ in }
     private(set) var onTappedInfo: () -> Void = {}
+    @FocusState private var isRateTextFieldFocused: Bool
     
     var body: some View {
         Form {
@@ -51,6 +52,7 @@ struct MeterSettingsView: View {
             rateTextField
             ratePicker
         }
+        .animation(.default, value: viewModel.isCalculatedRateTextVisible)
     }
     
     private var calculatedDailyRateText: some View {
@@ -64,6 +66,12 @@ struct MeterSettingsView: View {
                 .minimumScaleFactor(0.6)
             Spacer()
         }
+        .transition(
+            .asymmetric(insertion: .scale(scale: 0.1,
+                                          anchor: .top),
+                        removal: .scale(scale: 0.1,
+                                        anchor: .top))
+        )
         .padding(8)
         .roundedBorder(Color.redThree, lineWidth: 2)
     }
@@ -75,12 +83,12 @@ struct MeterSettingsView: View {
             TextField(viewModel.ratePlaceholderText,
                       text: $viewModel.formData.rateText)
                 .keyboardType(.decimalPad)
-                .asFirstResponder(for: .dailyRate, on: viewModel)
+                .focused($isRateTextFieldFocused)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .modifier(TextFieldClearButton(text: $viewModel.formData.rateText))                
         }
         .onTapGesture {
-            self.viewModel.inputs.tappedTextField.send(.dailyRate)
+            isRateTextFieldFocused = true
         }
     }
     
@@ -131,19 +139,6 @@ private extension MeterSettings.Rate.RateType {
         }
     }
     
-}
-
-private extension View {
-    
-    func asFirstResponder(for textFieldInputId: MeterSettingsViewModel.TextFieldInputId,
-                          on viewModel: MeterSettingsViewModel) -> some View {
-        introspectTextField { textField in
-            if viewModel.firstResponderId == textFieldInputId {
-                textField.becomeFirstResponder()
-                viewModel.inputs.didSetFirstResponder.send()
-            }
-        }
-    }
 }
 
 // MARK: - Previews

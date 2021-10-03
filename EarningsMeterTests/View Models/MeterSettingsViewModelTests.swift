@@ -46,7 +46,6 @@ class MeterSettingsViewModelTests: XCTestCase {
         XCTAssertEqual(.welcome, settingsViewModel.viewState)
         
         XCTAssertFalse(settingsViewModel.isSaveButtonEnabled)
-        XCTAssertNil(settingsViewModel.firstResponderId)
     }
     
     func testEditState() throws {
@@ -86,7 +85,6 @@ class MeterSettingsViewModelTests: XCTestCase {
         XCTAssertEqual(.edit, settingsViewModel.viewState)
 
         XCTAssertTrue(settingsViewModel.isSaveButtonEnabled)
-        XCTAssertNil(settingsViewModel.firstResponderId)
     }
 
     func testFormInputValidation() {
@@ -119,29 +117,6 @@ class MeterSettingsViewModelTests: XCTestCase {
         updatedForm.rateText = "ABC"
         settingsViewModel.formData = updatedForm
         XCTAssertFalse(settingsViewModel.isSaveButtonEnabled)
-    }
-
-    func testTappingTheRateTextField() {
-        // Given
-        let calendar = Calendar.iso8601(in: .london)
-        let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
-        var environment = AppEnvironment.unitTest
-        environment.date = { fakeNow }
-        environment.currentCalendar = { calendar }
-        
-        let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
-                                        environment: environment)
-
-        // When
-        let settingsViewModel = MeterSettingsViewModel()
-        settingsViewModel.inputs.environmentObjects.send(appViewModel)
-        settingsViewModel.inputs.tappedTextField.send(.dailyRate)
-        
-        // Then
-        XCTAssertEqual(.dailyRate, settingsViewModel.firstResponderId)
-
-        settingsViewModel.inputs.didSetFirstResponder.send()
-        XCTAssertNil(settingsViewModel.firstResponderId)
     }
 
     func testSave() {
