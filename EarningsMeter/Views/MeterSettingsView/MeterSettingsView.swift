@@ -60,7 +60,7 @@ struct MeterSettingsView: View {
             Text(viewModel.calculatedRateText)
                 .font(.headline)
                 .foregroundColor(.redThree)
-                .lineLimit(1)
+                .lineLimit(2)
                 .minimumScaleFactor(0.6)
             Spacer()
         }

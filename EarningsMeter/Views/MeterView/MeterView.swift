@@ -37,10 +37,12 @@ struct MeterView: View {
         VStack {
             titleView
             Spacer()
-            MeterDigitsView(amount: viewModel.currentReading.amountEarned,
-                            isEnabled: viewModel.currentReading.progress > 0,
-                            formatter: .decimalStyle)
-            hireStatusView
+            VStack(spacing: 0) {
+                MeterDigitsView(amount: viewModel.currentReading.amountEarned,
+                                isEnabled: viewModel.currentReading.progress > 0,
+                                formatter: .decimalStyle)
+                hireStatusView
+            }
             Spacer()
             ProgressBarView(leftLabelText: viewModel.progressBarStartTimeText,
                             rightLabelText: viewModel.progressBarEndTimeText,
@@ -80,10 +82,11 @@ struct MeterView: View {
                     .foregroundColor(item.isSelected ? .white : .disabledText)
                     .minimumScaleFactor(0.9)
                     .padding(8)
-                    .animation(nil)
+                    .animation(nil, value: animateHireStatus)
                     .opacity(animateHireStatus && item.flashesWhenSelected ? 0.5 : 1)
                     .animation(animateHireStatus ? Animation.easeInOut(duration: 1.2)
-                        .repeatForever(autoreverses: true) : nil)
+                                .repeatForever(autoreverses: true) : nil,
+                               value: animateHireStatus)
             }
         }
         .onReceive(viewModel.$currentReading) { reading in

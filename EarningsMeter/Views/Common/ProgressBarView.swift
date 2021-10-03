@@ -19,20 +19,34 @@ struct ProgressBarView: View {
                 .foregroundColor(textColor)
                 .font(.subheadline)
             
-            GeometryReader { geometry in
+            centralProgressBar
+                .frame(height: 14)
+            
+            Text(rightLabelText)
+                .foregroundColor(textColor)
+                .font(.subheadline)
+        }
+        .padding()
+        .frame(height: 30)
+    }
+    
+    private var centralProgressBar: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
                 ZStack(alignment: .leading) {
-                    ZStack(alignment: .leading) {
-                        self.backgroundFill(width: geometry.size.width)
-                        self.progressFill(maxWidth: geometry.size.width)
-                    }
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(self.progressFillColor,
-                                    lineWidth: self.progressBarStrokeWidth)
-                            .frame(width: geometry.size.width,
-                                   height: self.progressBarHeight)
-                    )
+                    self.backgroundFill(width: geometry.size.width)
+                    self.progressFill(maxWidth: geometry.size.width)
+                }
+                .cornerRadius(20)
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .stroke(self.progressFillColor,
+//                                lineWidth: self.progressBarStrokeWidth)
+//                        .frame(width: geometry.size.width,
+//                               height: progressBarHeight)
+//                )
+//
+                Group {
                     if self.isEnabled {
                         Text(self.progressEmoji)
                             .font(.system(size: 18))
@@ -42,15 +56,10 @@ struct ProgressBarView: View {
                             .font(.system(size: 18))
                             .hidden()
                     }
-                }
+                }.frame(height: 14)
             }
             
-            Text(rightLabelText)
-                .foregroundColor(textColor)
-                .font(.subheadline)
         }
-        .padding()
-        .frame(height: 30)
     }
     
     private var progressBarStrokeWidth: CGFloat {
@@ -145,7 +154,7 @@ struct ProgressBarView_Previews: PreviewProvider {
                             enabledTextColor: .white,
                             isEnabled: false)
         }
-        .background(Color.black)
+        .background(Color.cyan)
     }
 }
 #endif

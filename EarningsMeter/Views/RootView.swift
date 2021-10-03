@@ -19,8 +19,11 @@ struct RootView: View {
                         .embeddedInNavigationView()
                 }
                 .environmentObject(appViewModel)
-                .animation(.default)
+                .animation(.default, value: viewModel.childViewState)
                 .transition(.opacity)
+        }
+        .onAppear {
+            UITableView.appearance().sectionHeaderTopPadding = 0
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
