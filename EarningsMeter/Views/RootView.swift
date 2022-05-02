@@ -3,14 +3,18 @@ import Combine
 
 struct RootView: View {
 
-    @StateObject private var viewModel: RootViewModel = .init()
-    @EnvironmentObject var appViewModel: AppViewModel
+    @StateObject private var viewModel: RootViewModel
+    let appViewModel: AppViewModel
+    
+    init(appViewModel: AppViewModel) {
+        self.appViewModel = appViewModel
+        self._viewModel = StateObject(wrappedValue: RootViewModel(appViewModel: appViewModel))
+    }
     
     var body: some View {
         NavigationView {
             rootView
                 .onAppear {
-                    viewModel.inputs.environmentObjects.send(appViewModel)
                     viewModel.inputs.appear.send()
                 }
                 .sheet(isPresented: $viewModel.isAppInfoPresented) {
@@ -18,7 +22,6 @@ struct RootView: View {
                                 onDone: viewModel.inputs.closeAppInfo.send)
                         .embeddedInNavigationView()
                 }
-                .environmentObject(appViewModel)
                 .animation(.default, value: viewModel.childViewState)
                 .transition(.opacity)
         }
@@ -33,13 +36,17 @@ struct RootView: View {
             switch viewModel.childViewState {
             case .editSettings:
                 MeterSettingsView(
+                    appViewModel: appViewModel,
                     onSave: { _ in
                         viewModel.inputs.closeSettings.send()
                     },
                     onTappedInfo: viewModel.inputs.goToAppInfo.send
                 )
             case .meterRunning:
-                MeterView(onTappedSettings: viewModel.inputs.goToSettings.send)
+                MeterView(
+                    appViewModel: appViewModel,
+                    onTappedSettings: viewModel.inputs.goToSettings.send
+                )
             }
         }
     }
@@ -51,10 +58,14 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            RootView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
-            RootView()
-                .environmentObject(AppViewModel.preview(meterSettings: nil))
+            RootView(
+                appViewModel: AppViewModel.preview(
+                    meterSettings: .fake(ofType: .day_worker_0900_to_1700)
+                )
+            )
+            RootView(
+                appViewModel: AppViewModel.preview(meterSettings: nil)
+            )
         }
     }
 }

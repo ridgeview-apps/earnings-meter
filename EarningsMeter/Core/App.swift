@@ -9,8 +9,7 @@ struct AppScene: App {
             if CommandLine.isRunningUITests {
                 uiTestLaunchView
             } else {
-                RootView()
-                    .environmentObject(ProcessInfo.launchMode.appViewModel)
+                RootView(appViewModel: ProcessInfo.launchMode.appViewModel)
                     .launchModeOverlay()
             }
         }

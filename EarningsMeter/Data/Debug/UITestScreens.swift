@@ -6,17 +6,13 @@ extension UITestScenario {
         NavigationView {
             switch self {
             case .meterViewBeforeWork:
-                MeterView()
-                    .environmentObject(AppViewModel.fake(ofType: .meterNotYetStarted))
+                MeterView(appViewModel: AppViewModel.fake(ofType: .meterNotYetStarted))
             case .meterViewAtWork:
-                MeterView()
-                    .environmentObject(AppViewModel.fake(ofType: .meterRunningAtMiddleOfDay))
+                MeterView(appViewModel: AppViewModel.fake(ofType: .meterRunningAtMiddleOfDay))
             case .meterViewAfterWork:
-                MeterView()
-                    .environmentObject(AppViewModel.fake(ofType: .meterFinished))
+                MeterView(appViewModel: AppViewModel.fake(ofType: .meterFinished))
             case .welcomeView:
-                MeterSettingsView()
-                    .environmentObject(AppViewModel.fake(ofType: .welcomeState))
+                MeterSettingsView(appViewModel: .fake(ofType: .welcomeState))
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

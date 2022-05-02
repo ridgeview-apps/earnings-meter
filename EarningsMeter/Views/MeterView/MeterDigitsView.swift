@@ -17,13 +17,12 @@ struct MeterDigitsView: View {
     }
 
     var body: some View {
-        HStack(alignment: .lastTextBaseline) {
+        HStack(alignment: .center) {
             Text(viewModel.currencySymbol)
                 .foregroundColor(.white)
                 .lineLimit(1)
-                .font(.largeTitle)
+                .font(.title)
                 .layoutPriority(0)
-                
             ZStack(alignment: .trailing) {
                 Text(viewModel.amountText)
                 Text(viewModel.amountBackgroundText).opacity(0.1)

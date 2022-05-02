@@ -19,10 +19,9 @@ class RootViewModelTests: XCTestCase {
         environment.services.meterSettings = .init(keyValueStore: keyValueStore)
         let appViewModel = AppViewModel.empty(with: environment)
         
-        let viewModel = RootViewModel()
+        let viewModel = RootViewModel(appViewModel: appViewModel)
         
         // When
-        viewModel.inputs.environmentObjects.send(appViewModel)
         viewModel.inputs.appear.send()
         
         // Then
@@ -108,9 +107,8 @@ extension RootViewModelTests {
         environment.services.meterSettings = .init(keyValueStore: keyValueStore)
         let appViewModel = AppViewModel.empty(with: environment)
         
-        let viewModel = RootViewModel()
+        let viewModel = RootViewModel(appViewModel: appViewModel)
 
-        viewModel.inputs.environmentObjects.send(appViewModel)
         viewModel.inputs.appear.send()
         
         return viewModel

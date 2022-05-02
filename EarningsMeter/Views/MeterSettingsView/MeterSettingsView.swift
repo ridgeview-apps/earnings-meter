@@ -5,14 +5,26 @@ import Introspect
 
 struct MeterSettingsView: View {
     
-    @EnvironmentObject var appViewModel: AppViewModel
-    @StateObject private var viewModel: MeterSettingsViewModel = .init()
-    private(set) var onSave: (MeterSettings?) -> Void = { _ in }
-    private(set) var onTappedInfo: () -> Void = {}
+    let appViewModel: AppViewModel
+    let onSave: (MeterSettings?) -> Void
+    let onTappedInfo: () -> Void
+
+    @StateObject private var viewModel: MeterSettingsViewModel
     @FocusState private var isRateTextFieldFocused: Bool
     
+    init(
+        appViewModel: AppViewModel,
+        onSave: @escaping (MeterSettings?) -> Void = { _ in },
+        onTappedInfo: @escaping () -> Void = {}
+    ) {
+        self.appViewModel = appViewModel
+        self.onSave = onSave
+        self.onTappedInfo = onTappedInfo
+        self._viewModel = StateObject(wrappedValue: MeterSettingsViewModel(appViewModel: appViewModel))
+    }
+    
     var body: some View {
-        Form {
+        List {
             Section(header: sectionHeader) {
                 rateDetails
                     .padding([.top, .bottom], 12)
@@ -24,9 +36,6 @@ struct MeterSettingsView: View {
                                      isExpanded: $viewModel.isEndPickerExpanded)
                 runAtWeekendsToggle
             }
-        }
-        .onAppear {
-            viewModel.inputs.environmentObjects.send(appViewModel)
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(leading: infoButton, trailing: saveButton)
@@ -66,12 +75,6 @@ struct MeterSettingsView: View {
                 .minimumScaleFactor(0.6)
             Spacer()
         }
-        .transition(
-            .asymmetric(insertion: .scale(scale: 0.1,
-                                          anchor: .top),
-                        removal: .scale(scale: 0.1,
-                                        anchor: .top))
-        )
         .padding(8)
         .roundedBorder(Color.redThree, lineWidth: 2)
     }
@@ -146,21 +149,28 @@ private extension MeterSettings.Rate.RateType {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MeterSettingsView()
-                .environmentObject(AppViewModel.fake(ofType: .welcomeState))
-                .embeddedInNavigationView()
-                .previewDisplayName("Welcome state")
-            MeterSettingsView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
-                .embeddedInNavigationView()
-                .previewDisplayName("Edit state")
-            MeterSettingsView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
-                .embeddedInNavigationView()
-                .previewDisplayName("Dark mode")
-                .previewOption(colorScheme: .dark)
-            MeterSettingsView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+            MeterSettingsView(
+                appViewModel: AppViewModel.fake(ofType: .welcomeState)
+            )
+            .embeddedInNavigationView()
+            .previewDisplayName("Welcome state")
+            
+            MeterSettingsView(
+                appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700))
+            )
+            .embeddedInNavigationView()
+            .previewDisplayName("Edit state")
+            
+            MeterSettingsView(
+                appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700))
+            )
+            .embeddedInNavigationView()
+            .previewDisplayName("Dark mode")
+            .previewOption(colorScheme: .dark)
+            
+            MeterSettingsView(
+                appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700))
+            )
                 .embeddedInNavigationView()
                 .previewDisplayName("iPad")
                 .previewOption(deviceType: .iPad_Pro_9_7_inch)

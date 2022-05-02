@@ -21,28 +21,25 @@ final class MeterViewModel: ObservableObject {
     
     private var cancelBag = Set<AnyCancellable>()
         
-    init() {
+    init(appViewModel: AppViewModel) {
         
         self.outputActions = .init(
             didTapSettings: inputs.tapSettingsButton.eraseToAnyPublisher()
         )
         
-        let appViewModel = inputs.environmentObjects
-        
         // Once appViewModel environment is injected, start configuring things and reacting to state changes
-        appViewModel
-            .sink { [weak self] appViewModel in
-                self?.setUpInitialViewState(for: appViewModel)
-            }
-            .store(in: &cancelBag)
+        setUpInitialViewState(for: appViewModel)
         
         appViewModel
-            .compactMap { appViewModel -> MeterReader? in
-                guard let meterSettings = appViewModel.meterSettings else { return nil }
-                return MeterReader(environment: appViewModel.environment, meterSettings: meterSettings)
+            .$meterSettings
+            .compactMap { $0 }
+            .map {
+                MeterReader(environment: appViewModel.environment,
+                            meterSettings: $0)
             }
             .assign(to: \.meterReader, on: self, ownership: .weak)
             .store(in: &cancelBag)
+        
         
         $meterReader
             .flatMap { $0.$currentReading }
@@ -85,7 +82,6 @@ final class MeterViewModel: ObservableObject {
 extension MeterViewModel {
 
     struct Inputs {
-        let environmentObjects = PassthroughSubject<AppViewModel, Never>()
         let appear = PassthroughSubject<Void, Never>()
         let disappear = PassthroughSubject<Void, Never>()
         let tapSettingsButton = PassthroughSubject<Void, Never>()

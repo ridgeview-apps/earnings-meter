@@ -1,7 +1,7 @@
 import Combine
 
 //
-// This is the app-wide source of truth and is available as an @EnvironmentObject throughout the app.
+// This is the app-wide source of truth
 //
 // Global state mutation is handled by triggering an input (e.g. inputs.refreshData.send) which are then mapped
 // to outputs (e.g. @Published properties). The input-output mapping is all done in the init method via reactive

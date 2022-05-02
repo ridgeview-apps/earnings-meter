@@ -17,8 +17,7 @@ class MeterSettingsViewModelTests: XCTestCase {
                                         environment: environment)
         
         // When
-        let settingsViewModel = MeterSettingsViewModel()
-        settingsViewModel.inputs.environmentObjects.send(appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         
         let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
@@ -59,8 +58,7 @@ class MeterSettingsViewModelTests: XCTestCase {
         let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),
                                         environment: environment)
 
-        let settingsViewModel = MeterSettingsViewModel()
-        settingsViewModel.inputs.environmentObjects.send(appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         let expectedStartTime = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: fakeNow)!
         let expectedEndTime = calendar.date(bySettingHour: 17, minute: 0, second: 0, of: fakeNow)!
@@ -99,8 +97,7 @@ class MeterSettingsViewModelTests: XCTestCase {
                                         environment: environment)
         
         // When
-        let settingsViewModel = MeterSettingsViewModel()
-        settingsViewModel.inputs.environmentObjects.send(appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         // Then
         // 1. Form input initially valid (save button DISABLED)
@@ -134,15 +131,13 @@ class MeterSettingsViewModelTests: XCTestCase {
         let saveOutputAction = expectation(description: "saveOutputAction")
 
         // When
-        let settingsViewModel = MeterSettingsViewModel()
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
         settingsViewModel
             .outputActions
             .didSave
             .sink { _ in saveOutputAction.fulfill() }
             .store(in: &cancelBag)
-        
-        settingsViewModel.inputs.environmentObjects.send(appViewModel)
-        
+                
         settingsViewModel.formData.rateText = "456"
         settingsViewModel.inputs.save.send()
  
@@ -163,8 +158,7 @@ class MeterSettingsViewModelTests: XCTestCase {
 
 
         // When
-        let settingsViewModel = MeterSettingsViewModel()
-        settingsViewModel.inputs.environmentObjects.send(appViewModel)
+        let settingsViewModel = MeterSettingsViewModel(appViewModel: appViewModel)
 
         // Then
 

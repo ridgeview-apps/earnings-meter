@@ -24,8 +24,7 @@ class MeterViewModelTests: XCTestCase {
         
         
         // When
-        let meterViewModel = MeterViewModel()
-        meterViewModel.inputs.environmentObjects.send(appViewModel)
+        let meterViewModel = MeterViewModel(appViewModel: appViewModel)
         
         // Then
         XCTAssertEqual("meter-background", meterViewModel.backgroundImage)
@@ -71,8 +70,7 @@ class MeterViewModelTests: XCTestCase {
                 
         // When
         let tappedSettingsOutputAction = expectation(description: "tappedSettingsOutputAction")
-        let meterViewModel = MeterViewModel()
-        meterViewModel.inputs.environmentObjects.send(appViewModel)
+        let meterViewModel = MeterViewModel(appViewModel: appViewModel)
         meterViewModel
             .outputActions
             .didTapSettings

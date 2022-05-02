@@ -17,14 +17,14 @@ struct ProgressBarView: View {
         HStack(spacing: 20) {
             Text(leftLabelText)
                 .foregroundColor(textColor)
-                .font(.subheadline)
+                .font(.footnote)
             
             centralProgressBar
                 .frame(height: 14)
             
             Text(rightLabelText)
                 .foregroundColor(textColor)
-                .font(.subheadline)
+                .font(.footnote)
         }
         .padding()
         .frame(height: 30)

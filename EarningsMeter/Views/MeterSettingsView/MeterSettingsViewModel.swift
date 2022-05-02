@@ -30,23 +30,12 @@ final class MeterSettingsViewModel: ObservableObject {
 
     private var cancelBag = Set<AnyCancellable>()
     
-    init() {
+    init(appViewModel: AppViewModel) {
 
-        let appViewModel = inputs.environmentObjects
-        
-        let didSaveMeterSettings = appViewModel
-                                    .flatMap { $0.outputActions.didSaveMeterSettings }
-                                    .eraseToAnyPublisher()
-        
-        self.outputActions = OutputActions(didSave: didSaveMeterSettings,
+        self.outputActions = OutputActions(didSave: appViewModel.outputActions.didSaveMeterSettings.eraseToAnyPublisher(),
                                            didTapInfo: inputs.tapInfo.eraseToAnyPublisher())
         
-        // Once appViewModel (environment object) has been injected, set up initial view state and start reacting to changes
-        appViewModel
-            .sink { [weak self] appViewModel in
-                self?.setUpInitialViewState(for: appViewModel)
-            }
-            .store(in: &cancelBag)
+        setUpInitialViewState(for: appViewModel)
         
         $isStartPickerExpanded
             .when(equalTo: true)
@@ -70,14 +59,12 @@ final class MeterSettingsViewModel: ObservableObject {
         
         let validatedMeterSettings = $formData
             .filter(\.isValid)
-            .combineLatest(appViewModel)
-            .map { validatedForm, appViewModel in
+            .map { validatedForm in
                 MeterSettings(formData: validatedForm, environment: appViewModel.environment)
             }
 
         validatedMeterSettings
-            .combineLatest(appViewModel)
-            .map { form, appViewModel in
+            .map { form in
                 switch form.rate.type {
                 case .annual, .hourly:
                     let currencyTextFormatter = appViewModel.environment.formatters.numberStyles.currency
@@ -98,8 +85,7 @@ final class MeterSettingsViewModel: ObservableObject {
                 
         inputs.save
             .withLatestFrom(validatedMeterSettings)
-            .combineLatest(appViewModel)
-            .sink { validatedMeterSettings, appViewModel in
+            .sink { validatedMeterSettings in
                 appViewModel.inputs.saveMeterSettings.send(validatedMeterSettings)
             }
             .store(in: &cancelBag)
@@ -130,7 +116,6 @@ final class MeterSettingsViewModel: ObservableObject {
 extension MeterSettingsViewModel {
     
     struct Inputs {
-        let environmentObjects = PassthroughSubject<AppViewModel, Never>()
         let save = PassthroughSubject<Void, Never>()
         let tapInfo = PassthroughSubject<Void, Never>()
     }

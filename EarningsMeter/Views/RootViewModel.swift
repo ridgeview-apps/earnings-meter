@@ -16,20 +16,16 @@ final class RootViewModel: ObservableObject {
     
     private var bag = [AnyCancellable]()
     
-    init() {
+    init(appViewModel: AppViewModel) {
         
-        let appViewModel = inputs.environmentObjects
-
         let onFirstAppearance = inputs.appear.first()
         
         // 1. Trigger a refresh on first appearance
         onFirstAppearance
-            .withLatestFrom(appViewModel)
-            .sink { appViewModel in appViewModel.inputs.refreshData.send() }
+            .sink { appViewModel.inputs.refreshData.send() }
             .store(in: &bag)
         
-        let onFirstRefresh = appViewModel
-                                .flatMap { $0.outputActions.didRefreshData.first() }
+        let onFirstRefresh = appViewModel.outputActions.didRefreshData.first()
         
         // 2. When it's done, set up the initial child view state
         onFirstRefresh
@@ -66,7 +62,6 @@ final class RootViewModel: ObservableObject {
 extension RootViewModel {
     struct Inputs {
         let appear = PassthroughSubject<Void, Never>()
-        let environmentObjects = PassthroughSubject<AppViewModel, Never>()
         let goToSettings = PassthroughSubject<Void, Never>()
         let closeSettings = PassthroughSubject<Void, Never>()
         let goToAppInfo = PassthroughSubject<Void, Never>()

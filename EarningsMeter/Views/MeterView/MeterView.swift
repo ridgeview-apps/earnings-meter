@@ -4,9 +4,16 @@ import Combine
 struct MeterView: View {
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @EnvironmentObject var appViewModel: AppViewModel
-    @StateObject private var viewModel: MeterViewModel = .init()
-    private(set) var onTappedSettings: () -> Void = {}
+    let appViewModel: AppViewModel
+    let onTappedSettings: () -> Void
+    @StateObject private var viewModel: MeterViewModel
+    
+    init(appViewModel: AppViewModel,
+         onTappedSettings: @escaping () -> Void = {}) {
+        self.appViewModel = appViewModel
+        self._viewModel = StateObject(wrappedValue: MeterViewModel(appViewModel: appViewModel))
+        self.onTappedSettings = onTappedSettings
+    }
 
     var body: some View {
         ZStack {
@@ -24,7 +31,6 @@ struct MeterView: View {
             }
         }
         .onAppear {
-            viewModel.inputs.environmentObjects.send(appViewModel)
             viewModel.inputs.appear.send()
         }
         .onDisappear(perform: viewModel.inputs.disappear.send)
@@ -36,14 +42,14 @@ struct MeterView: View {
     private var meterContainerView: some View {
         VStack {
             titleView
-            Spacer()
-            VStack(spacing: 0) {
+            Spacer(minLength: 12)
+            VStack(spacing: 8) {
                 MeterDigitsView(amount: viewModel.currentReading.amountEarned,
                                 isEnabled: viewModel.currentReading.progress > 0,
                                 formatter: .decimalStyle)
                 hireStatusView
             }
-            Spacer()
+            Spacer(minLength: 12)
             ProgressBarView(leftLabelText: viewModel.progressBarStartTimeText,
                             rightLabelText: viewModel.progressBarEndTimeText,
                             value: viewModel.currentReading.progress,
@@ -59,38 +65,20 @@ struct MeterView: View {
     }
     
     private var titleView: some View {
-        HStack {
-            Rectangle()
-                .frame(height: 2)
-            Text(viewModel.headerTextKey)
-                .font(.subheadline)
-                .layoutPriority(1)
-            Rectangle()
-                .frame(height: 2)
-        }
-        .padding([.leading, .trailing], 20)
-        .foregroundColor(.white)
+        Text(viewModel.headerTextKey)
+            .font(.subheadline)
+            .padding([.leading, .trailing], 20)
+            .foregroundColor(.white)
     }
     
-    @State private var animateHireStatus: Bool = false
     private var hireStatusView: some View {
-        HStack {
+        HStack(spacing: 16) {
             ForEach(viewModel.statusPickerItems) { item in
                 Text(item.textLocalizedKey)
                     .font(.headline)
-                    .fontWeight(item.isSelected ? .bold : .light)
                     .foregroundColor(item.isSelected ? .white : .disabledText)
                     .minimumScaleFactor(0.9)
-                    .padding(8)
-                    .animation(nil, value: animateHireStatus)
-                    .opacity(animateHireStatus && item.flashesWhenSelected ? 0.5 : 1)
-                    .animation(animateHireStatus ? Animation.easeInOut(duration: 1.2)
-                                .repeatForever(autoreverses: true) : nil,
-                               value: animateHireStatus)
             }
-        }
-        .onReceive(viewModel.$currentReading) { reading in
-            animateHireStatus = reading.status == .atWork
         }
     }
         
@@ -109,38 +97,33 @@ struct MeterView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            MeterView()
-                .environmentObject(AppViewModel.fake(ofType: .meterRunningAtMiddleOfDay))
+            MeterView(
+                appViewModel: AppViewModel.fake(ofType: .meterRunningAtMiddleOfDay)
+            )
                 .embeddedInNavigationView()
                 .previewDisplayName("iPhone 11 Pro (meter running)")
                 .previewOption(deviceType: .iPhone_11_Pro)
-            MeterView()
-                .environmentObject(AppViewModel.fake(ofType: .meterNotYetStarted))
+            MeterView(appViewModel: AppViewModel.fake(ofType: .meterNotYetStarted))
                 .embeddedInNavigationView()
                 .previewDisplayName("iPhone 11 Pro (before work)")
                 .previewOption(colorScheme: .dark)
                 .previewOption(deviceType: .iPhone_11_Pro)
-            MeterView()
-                .environmentObject(AppViewModel.fake(ofType: .meterFinished))
+            MeterView(appViewModel: AppViewModel.fake(ofType: .meterFinished))
                 .embeddedInNavigationView()
                 .previewDisplayName("iPhone 11 Pro (after work)")
                 .previewOption(deviceType: .iPhone_11_Pro)
-            MeterView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+            MeterView(appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewDisplayName("iPod")
                 .previewOption(deviceType: .iPod_touch_7th_generation)
-            MeterView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+            MeterView(appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewOption(colorScheme: .dark)
-            MeterView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+            MeterView(appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewDisplayName("iPad")
                 .previewOption(deviceType: .iPad_Pro_9_7_inch)
-            MeterView()
-                .environmentObject(AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
+            MeterView(appViewModel: AppViewModel.preview(meterSettings: .fake(ofType: .day_worker_0900_to_1700)))
                 .embeddedInNavigationView()
                 .previewLandscapeIPad()
                 .previewDisplayName("Landscape iPad")
