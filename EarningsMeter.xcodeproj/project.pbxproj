@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		310276AF24B0E5A50026A2A4 /* MeterDigitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310276AE24B0E5A50026A2A4 /* MeterDigitsView.swift */; };
+		311302DB284B94D8007514EA /* InfoPlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311302DA284B94D8007514EA /* InfoPlistReader.swift */; };
 		311A3CDC246AB67200DF5B2E /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3CDB246AB67200DF5B2E /* Styles.swift */; };
 		311A3CDF246C5C3600DF5B2E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 311A3CDE246C5C3600DF5B2E /* Introspect */; };
 		311A3CE12472A19300DF5B2E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A3CE02472A19300DF5B2E /* AppEnvironment.swift */; };
@@ -45,7 +46,6 @@
 		3152351425B83E0A00AE8811 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152351325B83E0A00AE8811 /* AppInfoView.swift */; };
 		3152351F25B843A500AE8811 /* MailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152351E25B843A500AE8811 /* MailButton.swift */; };
 		3152352325B8475200AE8811 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152352225B8475200AE8811 /* AppConfig.swift */; };
-		3152355025B8554800AE8811 /* BuildSettings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152354F25B8554800AE8811 /* BuildSettings.generated.swift */; };
 		317F82D4247AD3E500B8C7AB /* MeterSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D3247AD3E500B8C7AB /* MeterSettingsViewModel.swift */; };
 		317F82D6247C706500B8C7AB /* ExpandableTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */; };
 		3190F6E924CF0B8C004303F0 /* MeterSettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E424CF0B8C004303F0 /* MeterSettingsViewModelTests.swift */; };
@@ -88,6 +88,7 @@
 		1E82D5FD997C117E47AED734 /* Pods_Contract_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25CF2BB4F3276029F44F9AF3 /* Pods-Contract MeterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contract MeterTests.release.xcconfig"; path = "Target Support Files/Pods-Contract MeterTests/Pods-Contract MeterTests.release.xcconfig"; sourceTree = "<group>"; };
 		310276AE24B0E5A50026A2A4 /* MeterDigitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterDigitsView.swift; sourceTree = "<group>"; };
+		311302DA284B94D8007514EA /* InfoPlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlistReader.swift; sourceTree = "<group>"; };
 		311A3CDB246AB67200DF5B2E /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		311A3CE02472A19300DF5B2E /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		31225FDB249F5D990049D14F /* MeterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterViewModel.swift; sourceTree = "<group>"; };
@@ -128,9 +129,7 @@
 		3152354125B8544400AE8811 /* Base.secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.secret.xcconfig; sourceTree = "<group>"; };
 		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		3152354425B8544400AE8811 /* BuildSettings.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BuildSettings.sh; sourceTree = "<group>"; };
 		3152354625B8544400AE8811 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
-		3152354F25B8554800AE8811 /* BuildSettings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSettings.generated.swift; sourceTree = "<group>"; };
 		317F82D3247AD3E500B8C7AB /* MeterSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettingsViewModel.swift; sourceTree = "<group>"; };
 		317F82D5247C706500B8C7AB /* ExpandableTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTimePicker.swift; sourceTree = "<group>"; };
 		3190F6DA24CF0B6A004303F0 /* EarningsMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -414,8 +413,6 @@
 				3152354625B8544400AE8811 /* Base.xcconfig */,
 				3152354225B8544400AE8811 /* Debug.xcconfig */,
 				3152354325B8544400AE8811 /* Release.xcconfig */,
-				3152354F25B8554800AE8811 /* BuildSettings.generated.swift */,
-				3152354425B8544400AE8811 /* BuildSettings.sh */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -446,6 +443,7 @@
 				311A3CDB246AB67200DF5B2E /* Styles.swift */,
 				31D1FF9D249A0FAA0067B53F /* Previews.swift */,
 				314A48E125B094B100FBBF3E /* Formatters.swift */,
+				311302DA284B94D8007514EA /* InfoPlistReader.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -479,7 +477,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 312821E323D0B96100975F66 /* Build configuration list for PBXNativeTarget "EarningsMeter" */;
 			buildPhases = (
-				3152354B25B854F700AE8811 /* ShellScript */,
 				312821C023D0B95E00975F66 /* Sources */,
 				312821C123D0B95E00975F66 /* Frameworks */,
 				312821C223D0B95E00975F66 /* Resources */,
@@ -620,27 +617,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3152354B25B854F700AE8811 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${PROJECT_DIR}/Config/BuildSettings.generated.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PROJECT_DIR/Config/BuildSettings.sh\" > \"${PROJECT_DIR}/Config/BuildSettings.generated.swift\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		312821C023D0B95E00975F66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -668,10 +644,10 @@
 				314EF82B25C43BE300BE15AA /* DebugSettings.swift in Sources */,
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
 				31A5570D24B33B2F00A42012 /* MeterSettingsService.swift in Sources */,
+				311302DB284B94D8007514EA /* InfoPlistReader.swift in Sources */,
 				31D1FF9C24979C120067B53F /* ProgressBarView.swift in Sources */,
 				314A489D25AF197D00FBBF3E /* SwiftUI+.swift in Sources */,
 				3152351425B83E0A00AE8811 /* AppInfoView.swift in Sources */,
-				3152355025B8554800AE8811 /* BuildSettings.generated.swift in Sources */,
 				312821EE23D0BAB000975F66 /* MeterView.swift in Sources */,
 				314A489725AF197D00FBBF3E /* ProcessInfo+.swift in Sources */,
 				317F82D4247AD3E500B8C7AB /* MeterSettingsViewModel.swift in Sources */,
@@ -889,11 +865,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_TARGET_BUNDLE_ID)";
 				PRODUCT_NAME = "Earnings Meter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -909,11 +885,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_TARGET_BUNDLE_ID)";
 				PRODUCT_NAME = "Earnings Meter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1024,11 +1000,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_TARGET_BUNDLE_ID)";
 				PRODUCT_NAME = "Earnings Meter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Adhoc;
 		};

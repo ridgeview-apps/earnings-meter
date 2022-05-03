@@ -13,9 +13,9 @@ platform :ios do
 
     load_app_store_connect_api_key(options)
     
-    if options["shield_colour"]
-      add_app_icon_shield(options)
-    end
+    # if options["shield_colour"]
+    #   add_app_icon_shield(options)
+    # end
     
     build_the_app(options)
     
@@ -133,7 +133,7 @@ platform :ios do
   private_lane :build_the_app do |options|
 
     increment_build_number(
-      build_number: "$BITRISE_BUILD_NUMBER"
+      build_number: 1
     )
 
     app_identifiers = all_bundle_types(options).join(",")

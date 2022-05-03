@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(MARKETING_VERSION)</string>
+	<string>1.5</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>1</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
@@ -50,5 +50,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>appConfig</key>
+    <dict>
+        <key>appCenterAppSecret</key>
+        <string>$(APPCENTER_APP_SECRET)</string>
+        <key>contactUsEmail</key>
+        <string>$(CONTACT_US_EMAIL)</string>
+        <key>appStoreProductUrl</key>
+        <string>$(APP_STORE_PRODUCT_URL)</string>
+    </dict>
 </dict>
 </plist>

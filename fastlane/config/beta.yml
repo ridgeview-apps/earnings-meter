@@ -1,4 +1,10 @@
-main_target_bundle_id: com.ridgeviewapps.earnings-meter.beta
 shield_prefix: Beta
 shield_colour: blue
-upload_to_appcenter: true
+main_target_bundle_id: com.ridgeviewapps.earnings-meter.beta
+match_type: appstore
+xcode_configuration: Release
+export_method: app-store
+upload_to_testflight: true
+export_options:
+  includeBitcode: true
+  compileBitcode: true
