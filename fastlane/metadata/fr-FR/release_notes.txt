@@ -1,1 +1,1 @@
-- Mise à jour iOS 15
+- Correction de bugs mineurs
