@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/appcenter-sdk-apple.git",
       "state" : {
-        "revision" : "484dead179e6d7edd534d0d7defdf65c14a5b426",
-        "version" : "4.1.0"
+        "revision" : "8354a50fe01a7e54e196d3b5493b5ab53dd5866a",
+        "version" : "4.4.2"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CombineCommunity/CombineExt",
       "state" : {
-        "revision" : "6664678135c6aec049c887a51c9da2545f184882",
-        "version" : "1.2.0"
+        "revision" : "38a4d4cb01f8c7750671c786d33dfbea00cbd131",
+        "version" : "1.6.1"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "4cf9f057db69104851634269f7839f8d0bd346a3",
-        "version" : "4.3.0"
+        "revision" : "cc49d42dafd69c96abbf695cedbefab6441f1afa",
+        "version" : "4.6.0"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/PLCrashReporter.git",
       "state" : {
-        "revision" : "de6b8f9db4b2a0aa859a5507550a70548e4da936",
-        "version" : "1.8.1"
+        "revision" : "6b27393cad517c067dceea85fadf050e70c4ceaa",
+        "version" : "1.10.1"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/timbersoftware/SwiftUI-Introspect.git",
       "state" : {
-        "revision" : "36ecf80429d00a4cd1e81fbfe4655b1d99ebd651",
-        "version" : "0.1.2"
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
       }
     }
   ],
