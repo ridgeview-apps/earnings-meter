@@ -1,12 +1,15 @@
-import Foundation
-import SwiftUI
 import Combine
+import Foundation
 import Introspect
+import Model
+import SwiftUI
+import ViewComponents
+
 
 struct MeterSettingsView: View {
     
     let appViewModel: AppViewModel
-    let onSave: (MeterSettings?) -> Void
+    let onDidSave: () -> Void
     let onTappedInfo: () -> Void
 
     @StateObject private var viewModel: MeterSettingsViewModel
@@ -14,11 +17,11 @@ struct MeterSettingsView: View {
     
     init(
         appViewModel: AppViewModel,
-        onSave: @escaping (MeterSettings?) -> Void = { _ in },
+        onDidSave: @escaping () -> Void = {},
         onTappedInfo: @escaping () -> Void = {}
     ) {
         self.appViewModel = appViewModel
-        self.onSave = onSave
+        self.onDidSave = onDidSave
         self.onTappedInfo = onTappedInfo
         self._viewModel = StateObject(wrappedValue: MeterSettingsViewModel(appViewModel: appViewModel))
     }
@@ -40,8 +43,6 @@ struct MeterSettingsView: View {
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(leading: infoButton, trailing: saveButton)
         .dismissesKeyboardOnDrag()
-        .onReceive(viewModel.outputActions.didSave, perform: onSave)
-        .onReceive(viewModel.outputActions.didTapInfo, perform: onTappedInfo)
     }
     
     @ViewBuilder private var sectionHeader: some View {
@@ -112,15 +113,24 @@ struct MeterSettingsView: View {
     }
     
     private var saveButton: some View {
-        Button(action: viewModel.inputs.save.send) {
+        Button {
+            saveAction()
+        } label: {
             Text(viewModel.saveButtonText)
         }
         .accentColor(Color.redThree)
         .disabled(!viewModel.isSaveButtonEnabled)
     }
     
+    private func saveAction() {
+        viewModel.save()
+        if viewModel.validatedMeterSettings != nil {
+            onDidSave()
+        }
+    }
+    
     private var infoButton: some View {
-        Button(action: viewModel.inputs.tapInfo.send) {
+        Button(action: onTappedInfo) {
             Image(systemName: "info.circle")
                 .imageScale(.large)
                 .padding([.top, .bottom, .trailing])

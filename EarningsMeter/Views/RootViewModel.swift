@@ -1,70 +1,66 @@
-import Foundation
 import Combine
+import Foundation
+import Model
+import SwiftUI
 
 final class RootViewModel: ObservableObject {
     
-    let inputs = Inputs()
-    
     // MARK: - State
-    enum ChildViewState: String {
-        case editSettings
-        case meterRunning
+    
+    enum NavigationState: Equatable {
+        case settingsHome
+        case meterHome(MeterSettings)
     }
     
-    @Published var childViewState: ChildViewState = .editSettings
+    @Published var navigationState: NavigationState = .settingsHome
     @Published var isAppInfoPresented = false
     
     private var bag = [AnyCancellable]()
     
+    let appViewModel: AppViewModel
+    
+    private var initialFetchDone = false
+    
     init(appViewModel: AppViewModel) {
-        
-        let onFirstAppearance = inputs.appear.first()
-        
-        // 1. Trigger a refresh on first appearance
-        onFirstAppearance
-            .sink { appViewModel.inputs.refreshData.send() }
-            .store(in: &bag)
-        
-        let onFirstRefresh = appViewModel.outputActions.didRefreshData.first()
-        
-        // 2. When it's done, set up the initial child view state
-        onFirstRefresh
-            .map { meterSettings -> ChildViewState in
-                meterSettings == nil ? .editSettings : .meterRunning
-            }
-            .assign(to: \.childViewState, on: self, ownership: .weak)
-            .store(in: &bag)
-        
-        // 3. React to all other inputs
-        inputs
-            .goToSettings
-            .assign(.editSettings, to: \.childViewState, on: self, ownership: .weak)
-            .store(in: &bag)
-        
-        inputs
-            .closeSettings
-            .assign(.meterRunning, to: \.childViewState, on: self, ownership: .weak)
-            .store(in: &bag)
-        
-        inputs
-            .goToAppInfo
-            .assign(true, to: \.isAppInfoPresented, on: self, ownership: .weak)
-            .store(in: &bag)
-        
-        inputs
-            .closeAppInfo
-            .assign(false, to: \.isAppInfoPresented, on: self, ownership: .weak)
-            .store(in: &bag)
+        self.appViewModel = appViewModel
     }
-}
-
-// MARK: - Inputs
-extension RootViewModel {
-    struct Inputs {
-        let appear = PassthroughSubject<Void, Never>()
-        let goToSettings = PassthroughSubject<Void, Never>()
-        let closeSettings = PassthroughSubject<Void, Never>()
-        let goToAppInfo = PassthroughSubject<Void, Never>()
-        let closeAppInfo = PassthroughSubject<Void, Never>()
+    
+    
+    // MARK: - Inputs
+    
+    func fetchInitialDataIfNeeded() {
+        if !initialFetchDone {
+            fetchData()
+            initialFetchDone = true
+        }
+    }
+    
+    func fetchData() {
+        appViewModel.refreshData()
+        
+        if let meterSettings = appViewModel.meterSettings {
+            navigationState = .meterHome(meterSettings)
+        } else {
+            navigationState = .settingsHome
+        }
+    }
+        
+    func goToSettings() {
+        navigationState = .settingsHome
+    }
+    
+    func goToMeterHome() {
+        guard let meterSettings = appViewModel.meterSettings else {
+            return
+        }
+        navigationState = .meterHome(meterSettings)
+    }
+    
+    func goToAppInfo() {
+        isAppInfoPresented = true
+    }
+    
+    func closeAppInfo() {
+        isAppInfoPresented = false
     }
 }

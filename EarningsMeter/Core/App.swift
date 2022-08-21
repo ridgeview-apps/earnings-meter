@@ -3,6 +3,12 @@ import SwiftUI
 @main
 struct AppScene: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    @StateObject private var appViewModel: AppViewModel
+    
+    init() {
+        _appViewModel = .init(wrappedValue: ProcessInfo.launchMode.appViewModel)
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -46,7 +52,7 @@ private extension AppLaunchMode {
         appEnv = .real
     #endif
         
-        return AppViewModel.empty(with: appEnv)
+        return AppViewModel(environment: appEnv)
     }
 }
 
@@ -69,12 +75,15 @@ private extension View {
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
+import ViewComponents
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         startServices()
+        
+        Font.registerCustomFonts()
         
         return true
     }

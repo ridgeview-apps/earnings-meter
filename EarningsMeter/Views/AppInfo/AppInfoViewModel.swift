@@ -1,3 +1,4 @@
+import AppConfig
 import Combine
 import CombineExt
 import DeviceKit
@@ -83,7 +84,7 @@ private extension AppInfoViewModel.ContactUs {
 
         \(localizer.localized("contact.us.body.app.version")): \(bundle.appVersionNumber)
         \(localizer.localized("contact.us.body.device.info")): \(device)
-        \(localizer.localized("contact.us.body.locale.info")): \(locale.identifier) - \(locale.languageCode ?? "")
+        \(localizer.localized("contact.us.body.locale.info")): \(locale.identifier) - \(locale.language.languageCode?.identifier ?? "")
         """
     }
 }

@@ -2,50 +2,59 @@ import SwiftUI
 import Combine
 
 struct RootView: View {
-
+    
     @StateObject private var viewModel: RootViewModel
-    let appViewModel: AppViewModel
+    @StateObject private var  appViewModel: AppViewModel
+    @Environment(\.scenePhase) var scenePhase
+    
+    let sceneChangeHandler = ScenePhaseHandler()
     
     init(appViewModel: AppViewModel) {
-        self.appViewModel = appViewModel
+        self._appViewModel = StateObject(wrappedValue: appViewModel)
         self._viewModel = StateObject(wrappedValue: RootViewModel(appViewModel: appViewModel))
     }
     
     var body: some View {
         NavigationView {
             rootView
-                .onAppear {
-                    viewModel.inputs.appear.send()
-                }
                 .sheet(isPresented: $viewModel.isAppInfoPresented) {
                     AppInfoView(appViewModel: appViewModel,
-                                onDone: viewModel.inputs.closeAppInfo.send)
+                                onDone: { viewModel.closeAppInfo() })
                         .embeddedInNavigationView()
                 }
-                .animation(.default, value: viewModel.childViewState)
+                .animation(.default, value: viewModel.navigationState)
                 .transition(.opacity)
+
         }
         .onAppear {
+            viewModel.fetchInitialDataIfNeeded()
             UITableView.appearance().sectionHeaderTopPadding = 0
+        }
+        .onChange(of: scenePhase) { scenePhase in
+            sceneChangeHandler.scenePhaseChanged(to: scenePhase)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
     @ViewBuilder var rootView: some View {
         ZStack {
-            switch viewModel.childViewState {
-            case .editSettings:
+            switch viewModel.navigationState {
+            case .settingsHome:
                 MeterSettingsView(
                     appViewModel: appViewModel,
-                    onSave: { _ in
-                        viewModel.inputs.closeSettings.send()
+                    onDidSave: {
+                        viewModel.goToMeterHome()
                     },
-                    onTappedInfo: viewModel.inputs.goToAppInfo.send
+                    onTappedInfo: {
+                        viewModel.goToAppInfo()
+                    }
                 )
-            case .meterRunning:
-                MeterView(
-                    appViewModel: appViewModel,
-                    onTappedSettings: viewModel.inputs.goToSettings.send
+            case let .meterHome(settings):
+                MeterHomeView(
+                    viewModel: .init(meterSettings: settings),
+                    onTappedSettings: {
+                        viewModel.navigationState = .settingsHome
+                    }
                 )
             }
         }

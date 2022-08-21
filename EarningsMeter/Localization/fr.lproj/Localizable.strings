@@ -15,9 +15,9 @@
 "settings.footer.button.title.save" = "Enregistrer";
 "settings.footer.button.title.start" = "Démarrer";
 
-"meter.header.earnings.today.title" = "REVENUS QUOTIDIENS";
-"meter.hireStatus.free" = "LIBRE";
-"meter.hireStatus.atWork" = "AU TRAVAIL";
+//"meter.header.earnings.today.title" = "REVENUS QUOTIDIENS";
+//"meter.hireStatus.free" = "LIBRE";
+//"meter.hireStatus.atWork" = "AU TRAVAIL";
 
 "appInfo.navigation.title" = "Cette app";
 "appInfo.app.version.title" = "Version";

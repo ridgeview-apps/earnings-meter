@@ -47,15 +47,8 @@ struct Formatters {
 // MARK: - Real instance
 extension Formatters {
     
-    static let real = Formatters(
+    static let `default` = Formatters(
         dateStyles: .init(shortTime: .shortTimeStyle),
         numberStyles: .init(decimal: .decimalStyle)
     )
 }
-
-// MARK: - Fake instance
-#if DEBUG
-extension Formatters {
-    static var fake = real
-}
-#endif

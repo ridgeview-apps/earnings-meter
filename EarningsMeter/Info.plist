@@ -24,10 +24,12 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIAppFonts</key>
+	<key>NSUserActivityTypes</key>
 	<array>
-		<string>digital-7-mono.ttf</string>
+		<string>ConfigurationIntent</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -50,14 +52,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>appConfig</key>
-    <dict>
-        <key>appCenterAppSecret</key>
-        <string>$(APPCENTER_APP_SECRET)</string>
-        <key>contactUsEmail</key>
-        <string>$(CONTACT_US_EMAIL)</string>
-        <key>appStoreProductUrl</key>
-        <string>$(APP_STORE_PRODUCT_URL)</string>
-    </dict>
+	<key>appConfig</key>
+	<dict>
+		<key>appCenterAppSecret</key>
+		<string>$(APPCENTER_APP_SECRET)</string>
+		<key>appGroupName</key>
+		<string>$(APP_GROUP_NAME)</string>
+		<key>appStoreProductUrl</key>
+		<string>$(APP_STORE_PRODUCT_URL)</string>
+		<key>contactUsEmail</key>
+		<string>$(CONTACT_US_EMAIL)</string>
+	</dict>
 </dict>
 </plist>

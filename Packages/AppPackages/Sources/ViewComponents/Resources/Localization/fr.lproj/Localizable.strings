@@ -1,0 +1,34 @@
+//"settings.navigation.title.edit" = "Réglages";
+//"settings.navigation.title.welcome" = "Bienvenue";
+//"settings.navigation.title.meter" = "Revenus";
+//"settings.welcome.message" = "Veuillez remplir vos détails et appuyer sur Démarrer";
+//"settings.rate.title" = "Je gagne";
+//"settings.rate.placeholder" = "Salaire";
+//"settings.rate.calculated %@" = "Vous gagnez %@ par jour (approx.)";
+//"settings.rate.calculated.exact %@" = "Vous gagnez %@ par jour";
+//"settings.rate.picker.annual" = "Par an";
+//"settings.rate.picker.daily" = "Par jour";
+//"settings.rate.picker.hour" = "Par heure";
+//"settings.workingHours.startTime.title" = "Heure de début";
+//"settings.workingHours.endTime.title" = "Heure de fin";
+//"settings.runAtWeekends.title" = "Je travaille le week-end";
+//"settings.footer.button.title.save" = "Enregistrer";
+//"settings.footer.button.title.start" = "Démarrer";
+//
+"meter.header.earnings.today.title" = "REVENUS QUOTIDIENS";
+"meter.hireStatus.free" = "LIBRE";
+"meter.hireStatus.atWork" = "AU TRAVAIL";
+
+//
+//"appInfo.navigation.title" = "Cette app";
+//"appInfo.app.version.title" = "Version";
+//"appInfo.contact.us.title" = "Envoyer des commentaires";
+//"appInfo.rate.this.app.title" = "Noter cette app";
+//
+//"contact.us.subject %@" = "Commentaires sur %@";
+//"contact.us.body.diagnostic.info" = "Cette information nous aidera à répondre à vos questions:";
+//"contact.us.body.app.version" = "Version";
+//"contact.us.body.device.info" = "Appareil";
+//"contact.us.body.locale.info" = "Langue/Région";
+//
+//"button.done" = "OK";

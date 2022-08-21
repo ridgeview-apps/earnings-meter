@@ -1,12 +1,11 @@
-import Foundation
-import SwiftUI
 import Combine
 import CombineExt
+import Foundation
+import Model
+import SwiftUI
+
 
 final class MeterSettingsViewModel: ObservableObject {
-    
-    let inputs: Inputs = Inputs()
-    let outputActions: OutputActions
     
     // MARK: - State
     @Published var isStartPickerExpanded: Bool = false
@@ -17,6 +16,8 @@ final class MeterSettingsViewModel: ObservableObject {
     @Published var isCalculatedRateTextVisible: Bool = false
     @Published private(set) var currencySymbol: String = ""
     @Published private(set) var viewState: ViewState = .welcome
+    
+    @Published private(set) var validatedMeterSettings: MeterSettings?
 
     let startPickerTitle: LocalizedStringKey = "settings.workingHours.startTime.title"
     let endPickerTitle: LocalizedStringKey = "settings.workingHours.endTime.title"
@@ -30,11 +31,12 @@ final class MeterSettingsViewModel: ObservableObject {
 
     private var cancelBag = Set<AnyCancellable>()
     
+    let appViewModel: AppViewModel
+    
     init(appViewModel: AppViewModel) {
-
-        self.outputActions = OutputActions(didSave: appViewModel.outputActions.didSaveMeterSettings.eraseToAnyPublisher(),
-                                           didTapInfo: inputs.tapInfo.eraseToAnyPublisher())
         
+        self.appViewModel = appViewModel
+
         setUpInitialViewState(for: appViewModel)
         
         $isStartPickerExpanded
@@ -57,13 +59,15 @@ final class MeterSettingsViewModel: ObservableObject {
             .assign(to: \.isSaveButtonEnabled, on: self, ownership: .weak)
             .store(in: &cancelBag)
         
-        let validatedMeterSettings = $formData
+        $formData
             .filter(\.isValid)
             .map { validatedForm in
                 MeterSettings(formData: validatedForm, environment: appViewModel.environment)
             }
+            .assign(to: &$validatedMeterSettings)
 
-        validatedMeterSettings
+        $validatedMeterSettings
+            .compactMap { $0 }
             .map { form in
                 switch form.rate.type {
                 case .annual, .hourly:
@@ -82,13 +86,6 @@ final class MeterSettingsViewModel: ObservableObject {
             }
             .assign(to: \.calculatedRateText, on: self, ownership: .weak)
             .store(in: &cancelBag)
-                
-        inputs.save
-            .withLatestFrom(validatedMeterSettings)
-            .sink { validatedMeterSettings in
-                appViewModel.inputs.saveMeterSettings.send(validatedMeterSettings)
-            }
-            .store(in: &cancelBag)
     }
     
     private func setUpInitialViewState(for appViewModel: AppViewModel) {
@@ -100,35 +97,28 @@ final class MeterSettingsViewModel: ObservableObject {
         if let savedMeter = appViewModel.meterSettings {
             self.formData = FormData(meter: savedMeter,
                                      rateTextFormatter: rateTextFormatter,
-                                     environment: environment)
+                                     now: environment.date(),
+                                     calendar: environment.currentCalendar())
             self.viewState = .edit
         } else {
-            self.formData = FormData.welcome(environment: environment)
+            self.formData = FormData.welcome(now: environment.date(),
+                                             calendar: environment.currentCalendar(),
+                                             rateTextFormatter: rateTextFormatter)
             self.viewState = .welcome
         }
         
         self.navigationBarTitle = viewState.navigationBarTitle
         self.saveButtonText = viewState.saveButtonText
     }
-}
-
-// MARK: - Inputs
-extension MeterSettingsViewModel {
     
-    struct Inputs {
-        let save = PassthroughSubject<Void, Never>()
-        let tapInfo = PassthroughSubject<Void, Never>()
-    }
-}
-
-// MARK: - OutputActions
-extension MeterSettingsViewModel {
     
-    struct OutputActions {
-        let didSave: AnyPublisher<MeterSettings?, Never>
-        let didTapInfo: AnyPublisher<Void, Never>
+    // MARK: - Inputs
+    func save() {
+        guard let validatedMeterSettings = validatedMeterSettings else {
+            return
+        }
+        appViewModel.save(meterSettings: validatedMeterSettings)
     }
-
 }
 
 // MARK: - View model types
@@ -201,9 +191,10 @@ extension MeterSettingsViewModel {
         
         convenience init(meter: MeterSettings,
                          rateTextFormatter: NumberFormatter = .decimalStyle,
-                         environment: AppEnvironment) {
-            self.init(startTime: meter.startTime.asLocalTimeToday(environment: environment),
-                      endTime: meter.endTime.asLocalTimeToday(environment: environment),
+                         now: Date,
+                         calendar: Calendar) {
+            self.init(startTime: meter.startTime.asLocalTimeToday(now: now, calendar: calendar),
+                      endTime: meter.endTime.asLocalTimeToday(now: now, calendar: calendar),
                       runAtWeekends: meter.runAtWeekends,
                       rateText: rateTextFormatter.string(from: meter.rate.amount as NSNumber) ?? "",
                       rateType: meter.rate.type,
@@ -217,15 +208,15 @@ extension MeterSettingsViewModel {
                                     rateType: .annual,
                                     rateTextFormatter: .decimalStyle)
                 
-        static func welcome(environment: AppEnvironment) -> FormData {
-            return FormData(startTime: MeterTime(hour: 9, minute: 0)
-                                .asLocalTimeToday(environment: environment),
-                            endTime: MeterTime(hour: 17, minute: 30)
-                                .asLocalTimeToday(environment: environment),
+        static func welcome(now: Date, calendar: Calendar, rateTextFormatter: NumberFormatter) -> FormData {
+            return FormData(startTime: MeterSettings.MeterTime(hour: 9, minute: 0)
+                                .asLocalTimeToday(now: now, calendar: calendar),
+                            endTime: MeterSettings.MeterTime(hour: 17, minute: 30)
+                                .asLocalTimeToday(now: now, calendar: calendar),
                             runAtWeekends: false,
                             rateText: "",
                             rateType: .annual,
-                            rateTextFormatter: environment.formatters.numberStyles.decimal)
+                            rateTextFormatter: rateTextFormatter)
         }
     }
 }
@@ -242,11 +233,11 @@ private extension MeterSettings {
 }
 
 
-private extension MeterTime {
+private extension MeterSettings.MeterTime {
     init(date: Date,
          environment: AppEnvironment) {
         let comps = environment.currentCalendar().dateComponents([.hour, .minute], from: date)
-        self.hour = comps.hour ?? 0
-        self.minute = comps.minute ?? 0
+        self = .init(hour: comps.hour ?? 0,
+                     minute: comps.minute ?? 0)
     }
 }

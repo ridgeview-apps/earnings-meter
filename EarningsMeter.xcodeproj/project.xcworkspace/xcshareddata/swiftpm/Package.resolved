@@ -1,59 +1,61 @@
 {
-  "pins" : [
-    {
-      "identity" : "appcenter-sdk-apple",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/microsoft/appcenter-sdk-apple.git",
-      "state" : {
-        "revision" : "8354a50fe01a7e54e196d3b5493b5ab53dd5866a",
-        "version" : "4.4.2"
+  "object": {
+    "pins": [
+      {
+        "package": "AppCenter",
+        "repositoryURL": "https://github.com/microsoft/appcenter-sdk-apple.git",
+        "state": {
+          "branch": null,
+          "revision": "8354a50fe01a7e54e196d3b5493b5ab53dd5866a",
+          "version": "4.4.2"
+        }
+      },
+      {
+        "package": "CombineExt",
+        "repositoryURL": "https://github.com/CombineCommunity/CombineExt",
+        "state": {
+          "branch": null,
+          "revision": "38a4d4cb01f8c7750671c786d33dfbea00cbd131",
+          "version": "1.6.1"
+        }
+      },
+      {
+        "package": "DeviceKit",
+        "repositoryURL": "https://github.com/devicekit/DeviceKit",
+        "state": {
+          "branch": null,
+          "revision": "cc49d42dafd69c96abbf695cedbefab6441f1afa",
+          "version": "4.6.0"
+        }
+      },
+      {
+        "package": "PLCrashReporter",
+        "repositoryURL": "https://github.com/microsoft/PLCrashReporter.git",
+        "state": {
+          "branch": null,
+          "revision": "6b27393cad517c067dceea85fadf050e70c4ceaa",
+          "version": "1.10.1"
+        }
+      },
+      {
+        "package": "RidgeviewCore",
+        "repositoryURL": "https://github.com/ridgeview-apps/ridgeview-core",
+        "state": {
+          "branch": "main",
+          "revision": "f17a3a9f93f7fdc66c903db8574985c19224600d",
+          "version": null
+        }
+      },
+      {
+        "package": "Introspect",
+        "repositoryURL": "https://github.com/timbersoftware/SwiftUI-Introspect.git",
+        "state": {
+          "branch": null,
+          "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
+          "version": "0.1.4"
+        }
       }
-    },
-    {
-      "identity" : "combineext",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CombineCommunity/CombineExt",
-      "state" : {
-        "revision" : "38a4d4cb01f8c7750671c786d33dfbea00cbd131",
-        "version" : "1.6.1"
-      }
-    },
-    {
-      "identity" : "devicekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/devicekit/DeviceKit",
-      "state" : {
-        "revision" : "cc49d42dafd69c96abbf695cedbefab6441f1afa",
-        "version" : "4.6.0"
-      }
-    },
-    {
-      "identity" : "plcrashreporter",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/microsoft/PLCrashReporter.git",
-      "state" : {
-        "revision" : "6b27393cad517c067dceea85fadf050e70c4ceaa",
-        "version" : "1.10.1"
-      }
-    },
-    {
-      "identity" : "ridgeview-core",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ridgeview-apps/ridgeview-core",
-      "state" : {
-        "branch" : "main",
-        "revision" : "f17a3a9f93f7fdc66c903db8574985c19224600d"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/timbersoftware/SwiftUI-Introspect.git",
-      "state" : {
-        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
-        "version" : "0.1.4"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }

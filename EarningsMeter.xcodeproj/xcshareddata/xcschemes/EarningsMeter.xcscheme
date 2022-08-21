@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1230"
+   LastUpgradeVersion = "1400"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -46,6 +46,16 @@
                BuildableName = "EarningsMeterUITests.xctest"
                BlueprintName = "EarningsMeterUITests"
                ReferencedContainer = "container:EarningsMeter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DataSourcesTests"
+               BuildableName = "DataSourcesTests"
+               BlueprintName = "DataSourcesTests"
+               ReferencedContainer = "container:Packages/EarningsMeterLibrary">
             </BuildableReference>
          </TestableReference>
       </Testables>

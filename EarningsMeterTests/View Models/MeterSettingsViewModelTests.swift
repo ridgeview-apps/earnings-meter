@@ -12,6 +12,7 @@ class MeterSettingsViewModelTests: XCTestCase {
         let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
         var environment = AppEnvironment.unitTest
         environment.date = { fakeNow }
+        environment.currentCalendar =  { calendar }
         
         let appViewModel = AppViewModel(meterSettings: nil,
                                         environment: environment)
@@ -53,6 +54,7 @@ class MeterSettingsViewModelTests: XCTestCase {
         let fakeNow: Date = calendar.date(from: .init(year: 2020, month: 7, day: 21))!
         var environment = AppEnvironment.unitTest
         environment.date = { fakeNow }
+        environment.currentCalendar = { calendar }
 
         // When
         let appViewModel = AppViewModel(meterSettings: .fake(ofType: .day_worker_0900_to_1700),

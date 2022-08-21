@@ -1,11 +1,13 @@
 import Foundation
+import AppConfig
 import Combine
+import DataSources
 import DeviceKit
 import RidgeviewCore
 
 struct AppEnvironment {
 
-    var services: DataServices
+    var services: AppDataSources
     var date: () -> Date
     var currentCalendar: () -> Calendar
     var formatters: Formatters
@@ -18,17 +20,19 @@ struct AppEnvironment {
 
 // MARK: - Real instance
 extension AppEnvironment {
-
+    
     static var real: AppEnvironment {
-        .init(services: .real,
-              date: Date.init,
-              currentCalendar: { Calendar.current },
-              formatters: .real,
-              stringLocalizer: .real,
-              mainBundle: Bundle.main,
-              currentLocale: .current,
-              currentDevice: Device.current,
-              appConfig: .real)
+        let appConfig = AppConfig.loaded(fromBundle: .main)
+        
+        return .init(services: .real(appGroupName: appConfig.appGroupName),
+                     date: Date.init,
+                     currentCalendar: { Calendar.current },
+                     formatters: .default,
+                     stringLocalizer: .real,
+                     mainBundle: Bundle.main,
+                     currentLocale: .current,
+                     currentDevice: Device.current,
+                     appConfig: appConfig)
     }
 }
 
@@ -43,10 +47,10 @@ enum AppLaunchMode: String {
 #if DEBUG
 extension AppEnvironment {
     
-    static func fake(services: DataServices = .fake,
+    static func fake(services: AppDataSources = .fake,
                      date: @escaping () -> Date = Date.init,
                      currentCalendar: @escaping () -> Calendar = { Calendar.current },
-                     formatters: Formatters = .fake,
+                     formatters: Formatters = .default,
                      stringLocalizer: StringLocalizer = .fake,
                      mainBundle: Bundle = .main,
                      currentLocale: Locale = .current,
