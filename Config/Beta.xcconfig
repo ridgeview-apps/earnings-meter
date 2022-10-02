@@ -1,7 +1,7 @@
-MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.debug
-// PROVISIONING_PROFILE_SPECIFIER = Automatic
-CODE_SIGN_IDENTITY = Apple Development
-CODE_SIGN_STYLE = Automatic
+MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.beta
+// PROVISIONING_PROFILE_SPECIFIER = match AppStore $(PRODUCT_BUNDLE_IDENTIFIER)
+CODE_SIGN_IDENTITY = Apple Distribution
+CODE_SIGN_STYLE = Manual
 DEVELOPMENT_TEAM = 3H5L23529U
 
 // App config

@@ -72,29 +72,14 @@ private extension View {
 }
 
 // MARK: - AppDelegate
-import AppCenter
-import AppCenterAnalytics
-import AppCenterCrashes
 import ViewComponents
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        startServices()
-        
         Font.registerCustomFonts()
         
         return true
     }
-    
-    private func startServices() {
-        
-    #if RELEASE_BUILD || ADHOC_BUILD
-        let config = AppConfig.real
-        AppCenter.start(withAppSecret: config.appCenter.appSecret, services: [Analytics.self, Crashes.self])
-    #endif
-        
-    }
-    
 }

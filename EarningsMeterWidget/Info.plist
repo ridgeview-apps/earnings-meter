@@ -11,16 +11,14 @@
 	<array>
 		<string>digital-7-mono.ttf</string>
 	</array>
-    <key>appConfig</key>
-    <dict>
-        <key>appCenterAppSecret</key>
-        <string>$(APPCENTER_APP_SECRET)</string>
-        <key>appGroupName</key>
-        <string>$(APP_GROUP_NAME)</string>
-        <key>appStoreProductUrl</key>
-        <string>$(APP_STORE_PRODUCT_URL)</string>
-        <key>contactUsEmail</key>
-        <string>$(CONTACT_US_EMAIL)</string>
-    </dict>
+	<key>appConfig</key>
+	<dict>
+		<key>appGroupName</key>
+		<string>$(APP_GROUP_NAME)</string>
+		<key>appStoreProductUrl</key>
+		<string>$(APP_STORE_PRODUCT_URL)</string>
+		<key>contactUsEmail</key>
+		<string>$(CONTACT_US_EMAIL)</string>
+	</dict>
 </dict>
 </plist>

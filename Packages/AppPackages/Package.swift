@@ -22,7 +22,6 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/devicekit/DeviceKit", from: "4.6.0"),
         .package(url: "https://github.com/ridgeview-apps/ridgeview-core", branch: "main"),
-        .package(url: "https://github.com/microsoft/appcenter-sdk-apple.git", from: "4.4.0"),
         .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.6.0"),
         .package(url: "https://github.com/timbersoftware/SwiftUI-Introspect.git", from: "0.1.0")
     ],
@@ -39,8 +38,6 @@ let package = Package(
             name: "AppTargetLibrary",
             dependencies: [
                 .product(name: "RidgeviewCore", package: "ridgeview-core"),
-                .product(name: "AppCenterAnalytics", package: "appcenter-sdk-apple"),
-                .product(name: "AppCenterCrashes", package: "appcenter-sdk-apple"),
                 .product(name: "CombineExt", package: "CombineExt"),
                 .product(name: "Introspect", package: "SwiftUI-Introspect"),
                 .product(name: "DeviceKit", package: "DeviceKit"),
@@ -57,12 +54,6 @@ let package = Package(
         .target(
             name: "AppWidgetLibrary",
             dependencies: [
-//                .product(name: "RidgeviewCore", package: "ridgeview-core"),
-//                .product(name: "AppCenterAnalytics", package: "appcenter-sdk-apple"),
-//                .product(name: "AppCenterCrashes", package: "appcenter-sdk-apple"),
-//                .product(name: "CombineExt", package: "CombineExt"),
-//                .product(name: "Introspect", package: "SwiftUI-Introspect"),
-//                .product(name: "DeviceKit", package: "DeviceKit"),
                 "AppConfig",
                 "ViewComponents",
                 "Model",
@@ -115,7 +106,7 @@ let package = Package(
         .target(
             name: "SharedViewStates",
             dependencies: [
-                "DataSources"
+                "ViewComponents", "DataSources"
             ]
         ),
 

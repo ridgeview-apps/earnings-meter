@@ -1,7 +1,0 @@
-#include "Base.secret.xcconfig"
-
-DEVELOPMENT_TEAM = 3H5L23529U
-
-APP_STORE_PRODUCT_URL = https:/$()/apps.apple.com/app/id1549867514
-CONTACT_US_EMAIL = feedback@ridgeviewconsulting.co.uk
-APP_GROUP_NAME = group.${MAIN_TARGET_BUNDLE_ID}.sharedData

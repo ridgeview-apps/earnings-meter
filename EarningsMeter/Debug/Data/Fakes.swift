@@ -2,6 +2,7 @@ import Foundation
 import Model
 import ModelStubs
 
+#if DEBUG
 extension AppViewModel {
     
     enum FakeType {
@@ -38,3 +39,4 @@ extension AppViewModel {
         }
     }
 }
+#endif
