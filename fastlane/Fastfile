@@ -43,7 +43,7 @@ lane :prod_to_testflight do
   build_and_upload_to_testflight(
     app_identifiers: [
         "com.ridgeviewapps.earnings-meter", 
-        "com.ridgeviewapps.earnings-meter.widget.extension"
+        "com.ridgeviewapps.earnings-meter.widgetExtension"
     ],
     xcconfig: "./Config/Release.xcconfig",
     # profile_name: "match AppStore com.ridgeviewapps.earnings-meter",
@@ -55,7 +55,7 @@ lane :beta_to_testflight do
   build_and_upload_to_testflight(
     app_identifiers: [
         "com.ridgeviewapps.earnings-meter.beta", 
-        "com.ridgeviewapps.earnings-meter.beta.widget.extension"
+        "com.ridgeviewapps.earnings-meter.beta.widgetExtension"
     ],
     xcconfig: "./Config/Beta.xcconfig",
     # profile_name: "match AppStore com.ridgeviewapps.earnings-meter.beta",
