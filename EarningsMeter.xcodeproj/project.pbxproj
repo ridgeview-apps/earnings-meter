@@ -230,7 +230,6 @@
 				314A47C925ACD5AD00FBBF3E /* Core */,
 				314A47BC25ACD3E300FBBF3E /* Debug */,
 				314A47C625ACD4B000FBBF3E /* Localization */,
-				314A48CD25AF5A5A00FBBF3E /* Model */,
 				31F8CE3C23D1DFED0011909E /* Util */,
 				312821EA23D0BA3000975F66 /* Views */,
 				312821D223D0B96000975F66 /* LaunchScreen.storyboard */,
@@ -305,13 +304,6 @@
 				31B2E1F124AF5873001C915F /* Publisher+.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		314A48CD25AF5A5A00FBBF3E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		314A48DC25AF6F1900FBBF3E /* MeterView */ = {

@@ -31,7 +31,7 @@ public struct MeterProgressBarView: View {
     
     public var body: some View {
         
-        Gauge(value: gaugeValue) {
+        Gauge(value: value) {
             Text("")
         } currentValueLabel: {
             Text("")
@@ -44,11 +44,6 @@ public struct MeterProgressBarView: View {
         .foregroundColor(isEnabled ? .white : disabledFillColor)
         .tint(isEnabled ? .redOne : disabledFillColor)
         .gaugeStyle(.accessoryLinearCapacity)
-    }
-    
-    private var gaugeValue: Double {
-        let disabledFillValue = 1.0 //
-        return isEnabled ? value : disabledFillValue
     }
 }
 

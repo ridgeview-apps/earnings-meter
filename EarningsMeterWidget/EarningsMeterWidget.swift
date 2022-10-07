@@ -35,8 +35,7 @@ struct EarningsMeterWidget: Widget {
         .supportedFamilies([.systemSmall,
                             .systemMedium,
                             .accessoryCircular,
-                            .accessoryRectangular,
-                            .accessoryInline])
+                            .accessoryRectangular])
         .configurationDisplayName(Text("meter.widget.configuration.display.name"))
         .description(Text("meter.widget.configuration.description"))
     }

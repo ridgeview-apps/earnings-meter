@@ -1,6 +1,7 @@
 devices([
-    "iPhone 12 Pro Max",
-    "iPhone 8 Plus",
+    # "iPhone 14 Pro Max", # 6.7 inch (Sep 2022 - optional)
+    "iPhone 14 Plus", # 6.5 inch
+    "iPhone 8 Plus", # 5.5 incy
     "iPad Pro (12.9-inch) (5th generation)",
     "iPad Pro (12.9-inch) (2nd generation)",
 ])

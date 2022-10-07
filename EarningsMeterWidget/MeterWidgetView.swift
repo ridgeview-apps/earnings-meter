@@ -105,7 +105,7 @@ public struct MeterWidgetView: View {
             Color.darkGrey1
             VStack(spacing: 12) {
                 circularHireStatusGauge
-                    .tint(isEnabled ? .redOne : .redTwo)
+                    .tint(.redOne)
                 digitsView(style: .small)
             }
             .padding([.leading, .trailing], 12)

@@ -160,7 +160,7 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             MeterSettingsView(
-                appViewModel: AppViewModel.fake(ofType: .welcomeState)
+                appViewModel: AppViewModel.preview(meterSettings: nil)
             )
             .embeddedInNavigationView()
             .previewDisplayName("Welcome state")
