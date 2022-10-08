@@ -1,1 +1,2 @@
-- Correction de bugs mineurs
+- Nouveaux widgets! On peut voir les revenus directement de l'écran d'accueil ou de l'écran de verouillage (pour plus d'informations, voir: https://support.apple.com/fr-fr/HT207122)
+- Optimisations iOS 16

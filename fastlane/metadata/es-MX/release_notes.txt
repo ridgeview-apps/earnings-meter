@@ -1,1 +1,2 @@
-- Corrección de errores menores
+- Nuevos widgets! Se puede ver las ganancias directamente desde la pantalla de inicio o la pantalla de bloqueo (más información: https://support.apple.com/es-mx/HT207122)
+- Adaptada para iOS 16
