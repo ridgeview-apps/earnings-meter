@@ -44,6 +44,7 @@ public struct MeterProgressBarView: View {
         .foregroundColor(isEnabled ? .white : disabledFillColor)
         .tint(isEnabled ? .redOne : disabledFillColor)
         .gaugeStyle(.accessoryLinearCapacity)
+        .frame(maxHeight: 20)
     }
 }
 

@@ -40,9 +40,9 @@ public struct MeterView: View {
             titleView
             VStack(spacing: 4) {
                 digitsView
-                progressBarView
                 hireStatusView
-            }            
+            }
+            progressBarView
         }
         .padding(.init(top: 20, leading: 20, bottom: 20, trailing: 20))
         .background(Color.darkGrey1)

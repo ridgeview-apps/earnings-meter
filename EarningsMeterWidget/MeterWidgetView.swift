@@ -115,14 +115,14 @@ public struct MeterWidgetView: View {
     private var standardMediumWidget: some View {
         ZStack {
             Color.darkGrey1
-            VStack {
-                Spacer()
+            VStack(spacing: 4) {
                 digitsView(style: .medium)
-                progressBarView(showTextLabels: true)
-                hireStatusView(font: .subheadline,
-                               showStatusText: true,
-                               showEmoji: true)
-                Spacer()
+                VStack(spacing: 8) {
+                    hireStatusView(font: .subheadline,
+                                   showStatusText: true,
+                                   showEmoji: true)
+                    progressBarView(showTextLabels: true)
+                }
             }
             .padding([.top, .bottom], 12)
             .padding([.leading, .trailing], 20)
