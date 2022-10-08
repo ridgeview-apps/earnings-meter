@@ -47,9 +47,7 @@ struct MeterTimeLineProvider: TimelineProvider {
     private func makeTimeLineEntry(at date: Date) -> MeterTimeLineEntry?  {
         meterDataSource.load()
         
-        guard let meterSettings = meterDataSource.meterSettings else {
-            return nil
-        }
+        let meterSettings = meterDataSource.meterSettings ?? .placeholder
         
         let calculator = MeterCalculator(meterSettings: meterSettings)
         let reading = calculator.calculateReading(at: date)
@@ -72,7 +70,7 @@ struct MeterTimeLineEntry: TimelineEntry {
 }
 
 extension MeterCalculator.Reading {
-    static let placeholder = MeterCalculator.Reading(amountEarned: 75, progress: 0.75, status: .atWork)
+    static let placeholder = MeterCalculator.Reading(amountEarned: 25, progress: 0.25, status: .atWork)
 }
 
 extension MeterSettings {
