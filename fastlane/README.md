@@ -29,42 +29,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### all_tests
+### add_badge_overlay
 
 ```sh
-[bundle exec] fastlane all_tests
+[bundle exec] fastlane add_badge_overlay
 ```
 
 
 
-### prod_to_testflight
+### build_and_upload
 
 ```sh
-[bundle exec] fastlane prod_to_testflight
-```
-
-
-
-### beta_to_testflight
-
-```sh
-[bundle exec] fastlane beta_to_testflight
-```
-
-
-
-### upload_screenshots
-
-```sh
-[bundle exec] fastlane upload_screenshots
-```
-
-
-
-### submit_for_review
-
-```sh
-[bundle exec] fastlane submit_for_review
+[bundle exec] fastlane build_and_upload
 ```
 
 

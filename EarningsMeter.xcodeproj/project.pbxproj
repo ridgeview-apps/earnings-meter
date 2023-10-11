@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -106,6 +106,8 @@
 		312821D323D0B96000975F66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		312821D523D0B96000975F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3128E0DE28D374CD008A55DB /* AppPackages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AppPackages; path = Packages/AppPackages; sourceTree = "<group>"; };
+		313DCA8A2AD6D39A00FF4271 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
+		313DCA8B2AD6D3D100FF4271 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		314A488525AF169900FBBF3E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		314A488E25AF197D00FBBF3E /* ProcessInfo+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+.swift"; sourceTree = "<group>"; };
 		314A48AC25AF21E900FBBF3E /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -115,15 +117,14 @@
 		314A716525BAFAF20062D050 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		314A716D25BB02FF0062D050 /* UITestScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScenario.swift; sourceTree = "<group>"; };
 		314A718125BB1ED80062D050 /* UITestScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScreens.swift; sourceTree = "<group>"; };
-		314A71AD25C1A46D0062D050 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		314EF82A25C43BE300BE15AA /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		314EF83625C4493800BE15AA /* AppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelTests.swift; sourceTree = "<group>"; };
 		314EF84125C44ACC00BE15AA /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
 		3152350125B83CE400AE8811 /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
 		3152351325B83E0A00AE8811 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		3152351E25B843A500AE8811 /* MailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailButton.swift; sourceTree = "<group>"; };
-		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		3152354225B8544400AE8811 /* Debug-Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-Defaults.xcconfig"; sourceTree = "<group>"; };
+		3152354325B8544400AE8811 /* Release-Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release-Defaults.xcconfig"; sourceTree = "<group>"; };
 		3163B87128DF0D4D00796BED /* AppDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataSources.swift; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31658F9028D37759005466C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -269,6 +270,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		313DCA892AD6D39A00FF4271 /* CI */ = {
+			isa = PBXGroup;
+			children = (
+				313DCA8A2AD6D39A00FF4271 /* Beta.xcconfig */,
+				313DCA8B2AD6D3D100FF4271 /* Prod.xcconfig */,
+			);
+			path = CI;
+			sourceTree = "<group>";
+		};
 		314A47BC25ACD3E300FBBF3E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,10 +379,10 @@
 		3152354025B8544400AE8811 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				313DCA892AD6D39A00FF4271 /* CI */,
 				318AD0F128E0D556002B3E88 /* Entitlements */,
-				314A71AD25C1A46D0062D050 /* Beta.xcconfig */,
-				3152354225B8544400AE8811 /* Debug.xcconfig */,
-				3152354325B8544400AE8811 /* Release.xcconfig */,
+				3152354225B8544400AE8811 /* Debug-Defaults.xcconfig */,
+				3152354325B8544400AE8811 /* Release-Defaults.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -761,7 +771,7 @@
 /* Begin XCBuildConfiguration section */
 		312821E123D0B96100975F66 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3152354225B8544400AE8811 /* Debug.xcconfig */;
+			baseConfigurationReference = 3152354225B8544400AE8811 /* Debug-Defaults.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -824,7 +834,7 @@
 		};
 		312821E223D0B96100975F66 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3152354325B8544400AE8811 /* Release.xcconfig */;
+			baseConfigurationReference = 3152354325B8544400AE8811 /* Release-Defaults.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -893,7 +903,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_TARGET_BUNDLE_ID)";
 				PRODUCT_NAME = "Earnings Meter";
 				SWIFT_VERSION = 5.0;
@@ -915,7 +925,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_TARGET_BUNDLE_ID)";
 				PRODUCT_NAME = "Earnings Meter";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore $(PRODUCT_BUNDLE_IDENTIFIER)";

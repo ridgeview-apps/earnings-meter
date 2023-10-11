@@ -15,6 +15,8 @@ struct MeterSettingsView: View {
     @StateObject private var viewModel: MeterSettingsViewModel
     @FocusState private var isRateTextFieldFocused: Bool
     
+    @State private var showDebugSection = false
+    
     init(
         appViewModel: AppViewModel,
         onDidSave: @escaping () -> Void = {},
@@ -39,6 +41,12 @@ struct MeterSettingsView: View {
                                      isExpanded: $viewModel.isEndPickerExpanded)
                 runAtWeekendsToggle
             }
+            if showDebugSection {
+                debugSection
+            }
+        }
+        .onTapGesture(count: 10) {
+            showDebugSection = true
         }
         .navigationBarTitle(viewModel.navigationBarTitle)
         .navigationBarItems(leading: infoButton, trailing: saveButton)
@@ -136,6 +144,14 @@ struct MeterSettingsView: View {
                 .padding([.top, .bottom, .trailing])
         }
         .accentColor(Color.redThree)
+    }
+    
+    private var debugSection: some View {
+        Section {
+            Text(appViewModel.environment.appConfig.appGroupName)
+        } header: {
+            Text("Debug info")
+        }
     }
 }
 

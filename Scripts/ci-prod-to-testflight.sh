@@ -1,3 +1,5 @@
+export XCODE_CONFIG=Prod
+
 bundle install
 bundle update fastlane
-bundle exec fastlane prod_to_testflight
+bundle exec fastlane build_and_upload

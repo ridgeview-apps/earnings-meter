@@ -1,5 +1,4 @@
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.debug
-// PROVISIONING_PROFILE_SPECIFIER = Automatic
 CODE_SIGN_IDENTITY = Apple Development
 CODE_SIGN_STYLE = Automatic
 DEVELOPMENT_TEAM = 3H5L23529U
@@ -7,4 +6,4 @@ DEVELOPMENT_TEAM = 3H5L23529U
 // App config
 APP_STORE_PRODUCT_URL = https:/$()/apps.apple.com/app/id1549867514
 CONTACT_US_EMAIL = feedback@ridgeviewconsulting.co.uk
-APP_GROUP_NAME = group.${MAIN_TARGET_BUNDLE_ID}.sharedData
+APP_GROUP_NAME = group.$(MAIN_TARGET_BUNDLE_ID).sharedData
