@@ -123,8 +123,8 @@
 		3152350125B83CE400AE8811 /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
 		3152351325B83E0A00AE8811 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		3152351E25B843A500AE8811 /* MailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailButton.swift; sourceTree = "<group>"; };
-		3152354225B8544400AE8811 /* Debug-Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-Defaults.xcconfig"; sourceTree = "<group>"; };
-		3152354325B8544400AE8811 /* Release-Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release-Defaults.xcconfig"; sourceTree = "<group>"; };
+		3152354225B8544400AE8811 /* Debug-defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-defaults.xcconfig"; sourceTree = "<group>"; };
+		3152354325B8544400AE8811 /* Release-defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release-defaults.xcconfig"; sourceTree = "<group>"; };
 		3163B87128DF0D4D00796BED /* AppDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataSources.swift; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31658F9028D37759005466C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -381,8 +381,8 @@
 			children = (
 				313DCA892AD6D39A00FF4271 /* CI */,
 				318AD0F128E0D556002B3E88 /* Entitlements */,
-				3152354225B8544400AE8811 /* Debug-Defaults.xcconfig */,
-				3152354325B8544400AE8811 /* Release-Defaults.xcconfig */,
+				3152354225B8544400AE8811 /* Debug-defaults.xcconfig */,
+				3152354325B8544400AE8811 /* Release-defaults.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -771,7 +771,7 @@
 /* Begin XCBuildConfiguration section */
 		312821E123D0B96100975F66 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3152354225B8544400AE8811 /* Debug-Defaults.xcconfig */;
+			baseConfigurationReference = 3152354225B8544400AE8811 /* Debug-defaults.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -834,7 +834,7 @@
 		};
 		312821E223D0B96100975F66 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3152354325B8544400AE8811 /* Release-Defaults.xcconfig */;
+			baseConfigurationReference = 3152354325B8544400AE8811 /* Release-defaults.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
