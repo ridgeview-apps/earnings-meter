@@ -3,59 +3,50 @@ import XCTest
 class GenerateScreenshots: XCTestCase {
     
     private var app: XCUIApplication!
-    private var isRunningOnIPhone = false
-    private var isRunningOnIPad = false
 
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        continueAfterFailure = false
         
-        isRunningOnIPhone = UIDevice.current.userInterfaceIdiom == .phone
-        isRunningOnIPad = UIDevice.current.userInterfaceIdiom == .pad
-
-        XCUIDevice.shared.orientation = isRunningOnIPad ? .landscapeLeft : .portrait
-
-        // Use accessibility ids where possible to tap buttons etc e.g.
-        //   app.buttons["Status"].tap()
-        //   app.navigationBars.buttons.element(boundBy: 0).tap()
-    }
-
-    func testScreenshot_meterViewBeforeWork() throws {
-        app = .launched(with: .meterViewBeforeWork, snapshotMode: true)
-        snapshot("01-MeterBeforeWork")
+        app = XCUIApplication()
+        app.launchArguments = ["UITests"]
+        setupSnapshot(app)
+        app.launch()
     }
     
-    func testScreenshot_meterViewAtWork() throws {
-        app = .launched(with: .meterViewAtWork, snapshotMode: true)
-        snapshot("02-MeterAtWork")
-    }
-    
-    func testScreenshot_meterViewAfterWork() throws {
-        app = .launched(with: .meterViewAfterWork, snapshotMode: true)
-        snapshot("03-MeterAfterWork")
-    }
-    
-    func testScreenshot_welcomeView() throws {
-        guard isRunningOnIPhone else { return } // Ignore this screenshot on iPad
+
+    func testGenerateAppScreenshots() throws {
+        var screenshotNumber = 0
+        func captureScreenshot(_ name: String) {
+            screenshotNumber += 1
+            let numPrefix = String(format: "%02d", screenshotNumber)
+            snapshot("\(numPrefix)-\(name)")
+        }
         
-        app = .launched(with: .welcomeView, snapshotMode: true)
-        snapshot("04-Welcome")
+        let iPhone = UIDevice.current.userInterfaceIdiom == .phone
+        let iPad = UIDevice.current.userInterfaceIdiom == .pad
+        
+        XCUIDevice.shared.orientation = iPad ? .landscapeLeft : .portrait
+        
+        captureScreenshot("Setup")
+        
+        app.textFields["acc.id.rate.textfield"].tap()
+        app.typeText("400")
+        app.buttons["acc.id.save.button"].tap()
+                
+        captureScreenshot("DailyEarnings")
+        
+        app.buttons["acc.id.tab.title.accumulated.earnings"].tap()
+        
+        captureScreenshot("AccumulatedEarnings")
     }
 
 }
 
 
-extension XCUIApplication {
-    
-    static func launched(with testScenario: UITestScenario,
-                         snapshotMode: Bool = false) -> XCUIApplication {
-        
-        let app = XCUIApplication()
-        app.launchArguments = ["UITests"]
-        app.launchEnvironment["uiTestScenario"] = testScenario.rawValue
-        if snapshotMode {
-            setupSnapshot(app)
+extension XCUIElement {
+    func tapUnhittable() {
+        XCTContext.runActivity(named: "Tap \(self) by coordinate") { _ in
+            coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         }
-        app.launch()
-        return app
     }
 }

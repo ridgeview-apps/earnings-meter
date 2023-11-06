@@ -1,17 +1,17 @@
 devices([
-    # "iPhone 14 Pro Max", # 6.7 inch (Sep 2022 - optional)
-    "iPhone 14 Plus", # 6.5 inch
-    "iPhone 8 Plus", # 5.5 incy
-    "iPad Pro (12.9-inch) (5th generation)",
-    "iPad Pro (12.9-inch) (2nd generation)",
+  "iPhone 15 Pro Max",
+  "iPhone 8 Plus",
+  "iPad Pro (12.9-inch) (6th generation)",
+  "iPad Pro (12.9-inch) (2nd generation)",
 ])
 
 languages([
-  "en-GB", "en-US",
+  "en-GB", 
+  "en-US",
   "es-ES", "es-MX",
   "fr-CA", "fr-FR",
 ])
 
 clear_previous_screenshots(true)
 override_status_bar(true)
-#erase_simulator(true)
+erase_simulator(true)

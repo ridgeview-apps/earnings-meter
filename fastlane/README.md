@@ -37,10 +37,34 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### build_and_upload
+### build
 
 ```sh
-[bundle exec] fastlane build_and_upload
+[bundle exec] fastlane build
+```
+
+
+
+### distribute
+
+```sh
+[bundle exec] fastlane distribute
+```
+
+
+
+### upload_screenshots
+
+```sh
+[bundle exec] fastlane upload_screenshots
+```
+
+
+
+### submit_for_review
+
+```sh
+[bundle exec] fastlane submit_for_review
 ```
 
 

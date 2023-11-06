@@ -1,4 +1,4 @@
-#include "../Release-defaults.xcconfig"
+#include "../Release.xcconfig"
 
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.beta
 
@@ -6,3 +6,4 @@ MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.beta
 APP_STORE_PRODUCT_URL = https:/$()/apps.apple.com/app/id1549867514
 CONTACT_US_EMAIL = feedback@ridgeviewconsulting.co.uk
 APP_GROUP_NAME = group.$(MAIN_TARGET_BUNDLE_ID).sharedData
+WIDGET_OVERLAY_TITLE = Beta

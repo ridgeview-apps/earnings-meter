@@ -1,2 +1,2 @@
-- New widgets! You can now view your earnings directly from the home screen or the lock screen without even opening the app. For more info on widgets, please see: https://support.apple.com/en-gb/HT207122
-- iOS 16 fixes
+- New feature: accumulated earnings! Select a date and the app will show your total earnings since then
+- iOS 17 fixes

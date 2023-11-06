@@ -1,78 +1,22 @@
+import DataStores
 import SwiftUI
 
 @main
 struct AppScene: App {
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var appModel = AppModel.real()
     
-    @StateObject private var appViewModel: AppViewModel
-    
-    init() {
-        _appViewModel = .init(wrappedValue: ProcessInfo.launchMode.appViewModel)
-    }
-
     var body: some Scene {
         WindowGroup {
-            if CommandLine.isRunningUITests {
-                uiTestLaunchView
-            } else {
-                RootView(appViewModel: ProcessInfo.launchMode.appViewModel)
-                    .launchModeOverlay()
-            }
+            RootScreen()
+                .environmentObject(appModel)
+                .withEnvironmentObjects(userPreferences: appModel.userPreferences)
         }
-    }
-    
-    private var uiTestLaunchView: some View {
-    #if DEBUG
-        guard let rawValue = ProcessInfo.processInfo.environment["uiTestScenario"],
-              let testScenario = UITestScenario(rawValue: rawValue) else {
-            fatalError("Please set a test scenario before running your UI test")
-        }
-        return testScenario.launchView
-    #else
-        return EmptyView()
-    #endif
     }
 }
-
-private extension AppLaunchMode {
-    
-    var appViewModel: AppViewModel {
-        let appEnv: AppEnvironment
-        
-    #if DEBUG
-        switch self {
-        case .normal:
-            appEnv = .real
-        case .preview:
-            appEnv = .preview
-        case .unitTest:
-            appEnv = .unitTest
-        }
-    #else
-        appEnv = .real
-    #endif
-        
-        return AppViewModel(environment: appEnv)
-    }
-}
-
-private extension View {
-    func launchModeOverlay() -> some View {
-        #if DEBUG
-        if ProcessInfo.launchMode != .normal {
-            return self.overlay(
-                Text("\(ProcessInfo.launchMode.rawValue.uppercased()) MODE")
-                    .font(.title)
-            ).eraseToAnyView()
-        }
-        #endif
-        
-        return self.eraseToAnyView()
-    }
-}
-
 // MARK: - AppDelegate
-import ViewComponents
+import PresentationViews
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
@@ -81,5 +25,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Font.registerCustomFonts()
         
         return true
+    }
+}
+
+
+extension View {
+    
+    func withEnvironmentObjects(userPreferences: UserPreferencesDataStore) -> some View {
+        self
+            .environmentObject(userPreferences)
     }
 }
