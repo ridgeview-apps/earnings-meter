@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "1520DBDD-B0E9-4376-97C9-F172C52651D0",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "PresentationViewsTests",
+        "name" : "PresentationViewsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

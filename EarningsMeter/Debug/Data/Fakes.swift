@@ -1,6 +1,6 @@
 //import Foundation
-//import Model
-//import ModelStubs
+//import Models
+//import ModelsStubs
 //
 //#if DEBUG
 //extension AppViewModel {
