@@ -108,7 +108,6 @@ private extension MeterCalculator.Reading {
 
 // MARK: - Previews
 
-//#if DEBUG
 #Preview {
     VStack {
         MeterHireStatusView(reading: .init(amountEarned: 1, status: .atWork(progress: 0.1)))
@@ -122,4 +121,3 @@ private extension MeterCalculator.Reading {
     }
     .background(Color.darkGrey1)
 }
-//#endif

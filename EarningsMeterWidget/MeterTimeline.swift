@@ -8,10 +8,6 @@ struct MeterTimeLineProvider: TimelineProvider {
     
     let userPreferences: UserPreferencesDataStore
     
-    init(userPreferences: UserPreferencesDataStore) {
-        self.userPreferences = userPreferences
-    }
-    
     func placeholder(in context: Context) -> MeterTimeLineEntry {
         return .placeholder
     }
@@ -67,7 +63,7 @@ struct MeterTimeLineProvider: TimelineProvider {
     
     
     private func makeTimeLineEntry(at date: Date,
-                                   with calculator: MeterCalculator) -> MeterTimeLineEntry  {
+                                   with calculator: MeterCalculator) -> MeterTimeLineEntry {
         let reading = calculator.dailyReading(at: date)
         
         return MeterTimeLineEntry(date: date,

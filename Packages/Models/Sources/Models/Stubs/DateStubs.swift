@@ -1,6 +1,8 @@
 import Foundation
 import RidgeviewCore
 
+// swiftlint:disable identifier_name
+
 public enum DateStubs {} // Namespace
 
 public extension DateStubs {
@@ -47,3 +49,5 @@ private extension Date {
 public extension TimeZone {
     static let london = TimeZone(identifier: "Europe/London")!
 }
+
+// swiftlint:enable identifier_name

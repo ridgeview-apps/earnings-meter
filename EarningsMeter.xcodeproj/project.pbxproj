@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3118F43728D0D585003950B3 /* Fakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118F43628D0D585003950B3 /* Fakes.swift */; };
 		311C3DBD28E0D7E500E0C63F /* EarningsMeterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */; };
 		312749C42AF9639C007905B2 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 312749C32AF9639C007905B2 /* DeviceKit */; };
 		312821CE23D0B96000975F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821CD23D0B96000975F66 /* Assets.xcassets */; };
@@ -27,7 +26,6 @@
 		314A716625BAFAF20062D050 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716525BAFAF20062D050 /* SnapshotHelper.swift */; };
 		314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
 		314A717525BB050F0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
-		314A718225BB1ED80062D050 /* UITestScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A718125BB1ED80062D050 /* UITestScreens.swift */; };
 		316520B12AF95F9400E44FF5 /* AppConfig in Resources */ = {isa = PBXBuildFile; fileRef = 316520A32AF95F9400E44FF5 /* AppConfig */; };
 		31658F9128D37759005466C2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31658F9028D37759005466C2 /* WidgetKit.framework */; };
 		31658F9328D37759005466C2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31658F9228D37759005466C2 /* SwiftUI.framework */; };
@@ -50,7 +48,6 @@
 		31F28ED325D3F91400AC523A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28ED525D3F91400AC523A /* Localizable.strings */; };
 		31F28EF325D4251300AC523A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28EF525D4251300AC523A /* InfoPlist.strings */; };
 		31FF686D28E89B6C0049560B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31FF686A28E89AF80049560B /* Localizable.strings */; };
-		31FF686F28E9C1370049560B /* MeterWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF686E28E9C1370049560B /* MeterWidgetView.swift */; };
 		31FF687228E9D6890049560B /* MeterTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF687028E9D64A0049560B /* MeterTimeline.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +91,6 @@
 
 /* Begin PBXFileReference section */
 		1E82D5FD997C117E47AED734 /* Pods_Contract_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3118F43628D0D585003950B3 /* Fakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fakes.swift; sourceTree = "<group>"; };
 		311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningsMeterWidget.swift; sourceTree = "<group>"; };
 		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		312821CD23D0B96000975F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,7 +109,6 @@
 		314A715C25BAF8F90062D050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		314A716525BAFAF20062D050 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		314A716D25BB02FF0062D050 /* UITestScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScenario.swift; sourceTree = "<group>"; };
-		314A718125BB1ED80062D050 /* UITestScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScreens.swift; sourceTree = "<group>"; };
 		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		316520A32AF95F9400E44FF5 /* AppConfig */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppConfig; sourceTree = "<group>"; };
@@ -151,7 +146,6 @@
 		31FF686928E89AF80049560B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31FF686B28E89AFB0049560B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31FF686C28E89AFE0049560B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		31FF686E28E9C1370049560B /* MeterWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterWidgetView.swift; sourceTree = "<group>"; };
 		31FF687028E9D64A0049560B /* MeterTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTimeline.swift; sourceTree = "<group>"; };
 		3CD582947C71E1A803A0446F /* Pods_Contract_MeterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_MeterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -284,8 +278,6 @@
 		314A47BC25ACD3E300FBBF3E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				31892EA328BB6AED00261685 /* Data */,
-				31892EA028BB65A800261685 /* Previews */,
 				31C639F12B023ECD0050340C /* View+Debug.swift */,
 				31C639F32B023F140050340C /* UserPreferencesDataStore+Stub.swift */,
 			);
@@ -372,7 +364,6 @@
 				31D82C9F2B0797A800D2CE6E /* Components */,
 				311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */,
 				31FF687028E9D64A0049560B /* MeterTimeline.swift */,
-				31FF686E28E9C1370049560B /* MeterWidgetView.swift */,
 				31E4035228D8D23D00CC71B6 /* Fonts */,
 				31658F9828D3775A005466C2 /* Assets.xcassets */,
 				31658F9A28D3775A005466C2 /* Info.plist */,
@@ -386,22 +377,6 @@
 			children = (
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		31892EA028BB65A800261685 /* Previews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Previews;
-			sourceTree = "<group>";
-		};
-		31892EA328BB6AED00261685 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				3118F43628D0D585003950B3 /* Fakes.swift */,
-				314A718125BB1ED80062D050 /* UITestScreens.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		318AD0F128E0D556002B3E88 /* Entitlements */ = {
@@ -465,6 +440,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 312821E323D0B96100975F66 /* Build configuration list for PBXNativeTarget "EarningsMeter" */;
 			buildPhases = (
+				3145BA7D2B4EBA1900AE1DDE /* Swiftlint */,
 				312821C023D0B95E00975F66 /* Sources */,
 				312821C123D0B95E00975F66 /* Frameworks */,
 				312821C223D0B95E00975F66 /* Resources */,
@@ -639,6 +615,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3145BA7D2B4EBA1900AE1DDE /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --strict\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		312821C023D0B95E00975F66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -648,13 +646,11 @@
 				31C639EC2AFFC2990050340C /* MeterSettingsScreen.swift in Sources */,
 				31C639F42B023F140050340C /* UserPreferencesDataStore+Stub.swift in Sources */,
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
-				3118F43728D0D585003950B3 /* Fakes.swift in Sources */,
 				31C639F02B021B170050340C /* RootScreen.swift in Sources */,
 				31C639EE2AFFD85B0050340C /* AppModel.swift in Sources */,
 				31B5EDA22B1748D80025A05C /* TabContentScreen.swift in Sources */,
 				31BC54D628E60CE50037823B /* ScenePhaseHandler.swift in Sources */,
 				31C639F22B023ECD0050340C /* View+Debug.swift in Sources */,
-				314A718225BB1ED80062D050 /* UITestScreens.swift in Sources */,
 				314A717525BB050F0062D050 /* UITestScenario.swift in Sources */,
 				3185541B2B0916AB0061AD11 /* AppInfoScreen.swift in Sources */,
 				318554202B0920220061AD11 /* ToolbarItems.swift in Sources */,
@@ -676,7 +672,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31FF686F28E9C1370049560B /* MeterWidgetView.swift in Sources */,
 				31FF687228E9D6890049560B /* MeterTimeline.swift in Sources */,
 				31D82CA22B079A8600D2CE6E /* CircularHireStatusGauge.swift in Sources */,
 				31D82CA62B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift in Sources */,
@@ -891,6 +886,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_ASSET_PATHS = "\"EarningsMeter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = EarningsMeter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -912,6 +908,7 @@
 				CODE_SIGN_ENTITLEMENTS = Config/Entitlements/EarningsMeter.entitlements;
 				DEVELOPMENT_ASSET_PATHS = "\"EarningsMeter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = EarningsMeter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -970,6 +967,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = Config/Entitlements/EarningsMeterWidgetExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EarningsMeterWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EarningsMeterWidget;
@@ -997,6 +995,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = Config/Entitlements/EarningsMeterWidgetExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EarningsMeterWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EarningsMeterWidget;

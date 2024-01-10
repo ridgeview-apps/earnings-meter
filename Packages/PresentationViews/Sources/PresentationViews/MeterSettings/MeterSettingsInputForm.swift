@@ -95,9 +95,6 @@ public extension MeterSettingsInputForm {
                      rateAmountFormat: rateAmountFormat,
                      calendar: calendar)
     }
-    
-    
-    
 }
 
 public extension FormatStyle where Self == FloatingPointFormatStyle<Double> {
