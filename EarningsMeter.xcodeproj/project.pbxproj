@@ -134,6 +134,7 @@
 		31C639F32B023F140050340C /* UserPreferencesDataStore+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferencesDataStore+Stub.swift"; sourceTree = "<group>"; };
 		31D82CA02B07983400D2CE6E /* CircularHireStatusGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularHireStatusGauge.swift; sourceTree = "<group>"; };
 		31D82CA52B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EarningMeterWidget+iOS16Preview.swift"; sourceTree = "<group>"; };
+		31DDEDF92B4FF6E800CC2B8E /* Global.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Global.xcconfig; sourceTree = "<group>"; };
 		31E4035328D8D31400CC71B6 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
 		31F28ED425D3F91400AC523A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31F28ED925D3F97900AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -343,6 +344,7 @@
 				318AD0F128E0D556002B3E88 /* Entitlements */,
 				3152354225B8544400AE8811 /* Debug.xcconfig */,
 				3152354325B8544400AE8811 /* Release.xcconfig */,
+				31DDEDF92B4FF6E800CC2B8E /* Global.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -806,8 +808,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = "$(APP_VERSION_NUMBER)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -866,8 +868,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = "$(APP_VERSION_NUMBER)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

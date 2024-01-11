@@ -1,11 +1,11 @@
-import Combine
 import Foundation
 import Models
+import Observation
 
-public final class UserPreferencesDataStore: ObservableObject {
+@Observable public final class UserPreferencesDataStore {
     
-    @Published public private(set) var savedMeterSettings: MeterSettings?
-    @Published public private(set) var earningsSince: Date?
+    public private(set) var savedMeterSettings: MeterSettings?
+    public private(set) var earningsSince: Date?
     
     public var isSetUpRequired: Bool { savedMeterSettings == nil }
 

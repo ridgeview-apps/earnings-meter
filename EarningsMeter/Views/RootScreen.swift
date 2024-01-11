@@ -12,7 +12,7 @@ enum TabContentSheetItem: Identifiable {
 struct RootScreen: View {
     
     @Environment(\.scenePhase) var scenePhase
-    @EnvironmentObject var userPreferences: UserPreferencesDataStore
+    @Environment(UserPreferencesDataStore.self) var userPreferences: UserPreferencesDataStore
     
     let sceneChangeHandler = ScenePhaseHandler()
     
@@ -29,7 +29,7 @@ struct RootScreen: View {
                 activeSheetItem = .settings
             }
         }
-        .onChange(of: scenePhase) { scenePhase in
+        .onChange(of: scenePhase) { _, scenePhase in
             sceneChangeHandler.scenePhaseChanged(to: scenePhase)
         }
     }
@@ -61,7 +61,7 @@ struct RootScreen: View {
 #if DEBUG
 #Preview {
     RootScreen()
-        .environmentObject(UserPreferencesDataStore.stub(savedSettings: .placeholder))
+        .environment(UserPreferencesDataStore.stub(savedSettings: .placeholder))
         .withStubbedEnvironment()
 }
 #endif

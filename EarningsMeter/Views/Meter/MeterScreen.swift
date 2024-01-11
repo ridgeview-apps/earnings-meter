@@ -7,7 +7,7 @@ struct MeterScreen: View {
     
     // MARK: - Properties
     
-    @EnvironmentObject var userPreferences: UserPreferencesDataStore
+    @Environment(UserPreferencesDataStore.self) var userPreferences: UserPreferencesDataStore
     
     let style: MeterView.Style
     let navigationTitle: LocalizedStringKey
@@ -35,10 +35,10 @@ struct MeterScreen: View {
         .onDisappear {
             stopMeter()
         }
-        .onChange(of: savedMeterSettings) { _ in
+        .onChange(of: savedMeterSettings) {
             startMeter()
         }
-        .onChange(of: selectedDate) { newValue in
+        .onChange(of: selectedDate) { _, newValue in
             userPreferences.save(accumulatedEarningsSince: newValue)
             startMeter()
         }
@@ -93,7 +93,7 @@ struct MeterScreen: View {
     MeterScreen(style: .today,
                 navigationTitle: "Preview")
         .styledPreview()
-        .environmentObject(UserPreferencesDataStore.stub(savedSettings: .placeholder))
+        .environment(UserPreferencesDataStore.stub(savedSettings: .placeholder))
         .withStubbedEnvironment()
 }
 #endif

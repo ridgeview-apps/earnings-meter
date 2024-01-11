@@ -1,3 +1,5 @@
+#include "Global.xcconfig"
+
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter
 CODE_SIGN_IDENTITY = Apple Distribution
 CODE_SIGN_STYLE = Manual

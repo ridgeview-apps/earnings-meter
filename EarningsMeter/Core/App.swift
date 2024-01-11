@@ -5,13 +5,13 @@ import SwiftUI
 struct AppScene: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var appModel = AppModel.real()
+    @State private var appModel = AppModel.real()
     
     var body: some Scene {
         WindowGroup {
             RootScreen()
-                .environmentObject(appModel)
-                .withEnvironmentObjects(userPreferences: appModel.userPreferences)
+                .environment(appModel)
+                .withEnvironmentValues(userPreferences: appModel.userPreferences)
         }
     }
 }
@@ -31,8 +31,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 extension View {
     
-    func withEnvironmentObjects(userPreferences: UserPreferencesDataStore) -> some View {
+    func withEnvironmentValues(userPreferences: UserPreferencesDataStore) -> some View {
         self
-            .environmentObject(userPreferences)
+            .environment(userPreferences)
     }
 }

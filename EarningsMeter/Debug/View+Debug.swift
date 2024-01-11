@@ -7,7 +7,7 @@ import SwiftUI
 extension View {
     
     @MainActor func withStubbedEnvironment() -> some View {
-        withEnvironmentObjects(userPreferences: .stub())
+        withEnvironmentValues(userPreferences: .stub())
         .environment(\.appConfig, AppConfig.stub)
     }
 }

@@ -6,7 +6,7 @@ import PresentationViews
 
 struct MeterSettingsScreen: View {
 
-    @EnvironmentObject var userPreferences: UserPreferencesDataStore
+    @Environment(UserPreferencesDataStore.self) var userPreferences: UserPreferencesDataStore
     @Environment(\.dismiss) var dismiss
     
     @State private var inputForm: MeterSettingsInputForm = .welcomeMode()

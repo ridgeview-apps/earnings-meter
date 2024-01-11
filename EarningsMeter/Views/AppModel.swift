@@ -2,9 +2,10 @@ import AppConfig
 import DataStores
 import Models
 import Foundation
+import Observation
 
 @MainActor
-final class AppModel: ObservableObject {
+@Observable final class AppModel {
 
     private(set) var userPreferences: UserPreferencesDataStore
     
