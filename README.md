@@ -23,31 +23,32 @@ The app uses the [MV architecture](https://azamsharp.com/2023/02/28/building-lar
 
 Swift Package Manager is used to modularize the app as follows:
 
-* `Models` - the main data structures / models used globally across the app (e.g. Meter settings)
-* `DataStores` - this covers the main data requirements / business logic for the app (Observable objects which can be reused across multiple targets).
-* `PresentationViews` - these are plain ("dumb") views / reusable components. As the name suggests, they are purely for presentation purposes (hence perfect for SwiftUI previews). The components are typically just parts of a screen and contain no business logic.
-* `AppConfig` - shared config used across app targets (i.e. main app target and widgets)
+* `Models` - the main objects / models used globally across the app (e.g. `MeterSettings`, `MeterReading`)
+* `DataStores` - the main data / business logic for the app
+* `PresentationViews` - plain ("dumb") views / reusable components. These are purely for presentation purposes (hence perfect for SwiftUI previews). The components are typically just parts of a screen and contain no business logic.
+* `Shared` - shared logic that can be used by ANY part of the app (i.e. any package or target - for example, `String`, `Date` extensions etc)
 
-The main app target itself is predominantly just composed of "screens" (which do all the heavy lifting and wire everything together - see example below).
+![](Docs/Images/swift-package-dependencies.png)
 
-### Meter settings example
+The main point to note is that the `PresentationViews` and `DataStores` packages are completely isolated from one another. The main app target itself is predominantly just composed of "screens" (which do all the heavy lifting and wire everything together - see example below).
 
-Meter settings are a good example of data used globally across the app e.g. (main app screen, welcome screen, edit screen & widgets):
+> There are many ways to modularize an app, and I strong recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-models). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
 
-* The data objects (e.g. `MeterSettings`) are defined in the `Models` package.
-* The `UserPreferencesDataStore` (in the `DataStores` package) is responsible for loading and storing meter settings (as an `ObservableObject` / `EnvironmentObject` which can then be used globally across the app). The `ObservableObject` resides here rather than in the the main app target so that it can be reused also by the widget extension.
-* The `PresentationViews` package uses the model objects to build reusable / previewable components (i.e. so has access to the `Models` package but NOT the `DataStores` package)
-* In the main app target, `UserPreferencesDataStore` is used in a couple of places (`MeterScreen` and `MeterSettingsScreen`). These are completely separate screens and assembled with different presentation views but both share the same `UserPreferencesDataStore` object as their source of truth (hence any updates on one screen will automatically reflect on the other).
-* In the widget target, `UserPreferencesDataStore` is also used to load and render the widgets.
+### Meter Reading example
 
-> Note: The `PresentationViews` package used to be a completely standalone package (and I have developed other apps in this way before). However, by isolating it completely in this way, I found myself constantly duplicating data structures that were already inside the `Models` package (and I found the extra transformation from `Models` object -> `PresentationViews` object to be unnecessary in the vast majority of cases).
+Meter readings are a good example of data used globally across the app e.g. (main app screen, welcome screen, edit screen & widgets):
+
+* The model objects (e.g. `MeterReading`) are defined in the `Models` package.
+* The `PresentationViews` package uses the model objects to build reusable / previewable components
+* The `DataStores` package has a `MeterCalculator` which calculates the correct daily or accumulated reading (and is used by the main app target & widgets)
+
+> Note: The `PresentationViews` package used to be a completely standalone package with its own separate models. However I found myself frequently transforming a model from the `Models` package to a 100% identical model in the `PresentationViews` package. So I cut out the middle man and gave `PresentationViews` direct access to the `Models` package (and any presentation-specific properties can simply be added as extensions inside the `PresentationViews` package).
 
 ## Previews
 
 App previews use stub data (see `ModelStubs.swift`) to generate the different screen states
 
 ![](Docs/Images/preview-example.png)
-
 
 ## Unit tests
 
@@ -70,7 +71,7 @@ Note that the Xcconfig files themselves contain two "kinds" of config:
 1. Build settings (e.g. code signing settings, compilation settings, bundle ID)
 1. Environment settings (API urls etc)
 
-The environment settings are exposed in the `Info.plist` file and are loaded / referenced from Swift code as `AppConfig`.
+The environment settings are exposed in the `Info.plist` file and are loaded / referenced from Swift code (e.g. `AppEnvironment`, `WidgetEnvironment`).
 
 
 ## Fastlane / CI

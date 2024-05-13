@@ -95,7 +95,7 @@ private let amountFormatter: NumberFormatter = {
 
 public extension MeterDigitsView {
     
-    init(reading: MeterCalculator.Reading,
+    init(reading: MeterReading,
          style: Style,
          showCurrencySymbol: Bool = true) {
         self = .init(amount: reading.amountEarned,
@@ -106,8 +106,6 @@ public extension MeterDigitsView {
 }
 
 // MARK: - Previews
-
-#if DEBUG
 
 #Preview {
     ScrollView {
@@ -123,4 +121,3 @@ public extension MeterDigitsView {
     }
     .styledPreview()
 }
-#endif

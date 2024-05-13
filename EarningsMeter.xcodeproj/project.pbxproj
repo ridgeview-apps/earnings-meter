@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31003EBB2BF2538E00643FB8 /* WidgetEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31003EB92BF2533800643FB8 /* WidgetEnvironment.swift */; };
+		31003EBE2BF254F200643FB8 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31003EBD2BF254F200643FB8 /* AppEnvironment.swift */; };
 		311C3DBD28E0D7E500E0C63F /* EarningsMeterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */; };
-		312749C42AF9639C007905B2 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 312749C32AF9639C007905B2 /* DeviceKit */; };
 		312821CE23D0B96000975F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821CD23D0B96000975F66 /* Assets.xcassets */; };
 		312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821D023D0B96000975F66 /* Preview Assets.xcassets */; };
 		312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312821D223D0B96000975F66 /* LaunchScreen.storyboard */; };
-		312DED052AF964100070956A /* AppConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED042AF964100070956A /* AppConfig */; };
-		312DED102AF965B00070956A /* AppConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED0F2AF965B00070956A /* AppConfig */; };
 		312DED172AF967900070956A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED162AF967900070956A /* Models */; };
 		312DED192AF967970070956A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED182AF967970070956A /* Models */; };
 		312DED1C2AFA47BB0070956A /* PresentationViews in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED1B2AFA47BB0070956A /* PresentationViews */; };
@@ -26,7 +25,6 @@
 		314A716625BAFAF20062D050 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716525BAFAF20062D050 /* SnapshotHelper.swift */; };
 		314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
 		314A717525BB050F0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
-		316520B12AF95F9400E44FF5 /* AppConfig in Resources */ = {isa = PBXBuildFile; fileRef = 316520A32AF95F9400E44FF5 /* AppConfig */; };
 		31658F9128D37759005466C2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31658F9028D37759005466C2 /* WidgetKit.framework */; };
 		31658F9328D37759005466C2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31658F9228D37759005466C2 /* SwiftUI.framework */; };
 		31658F9928D3775A005466C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31658F9828D3775A005466C2 /* Assets.xcassets */; };
@@ -34,16 +32,13 @@
 		3185541B2B0916AB0061AD11 /* AppInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185541A2B0916AB0061AD11 /* AppInfoScreen.swift */; };
 		3185541D2B0917030061AD11 /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185541C2B0917030061AD11 /* EnvironmentKeys.swift */; };
 		318554202B0920220061AD11 /* ToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185541F2B0920220061AD11 /* ToolbarItems.swift */; };
+		3190A4392BF61CF7009C70F4 /* View+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190A4372BF61CF7009C70F4 /* View+Debug.swift */; };
 		3190F6EC24CF0B8C004303F0 /* MeterSettings+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E824CF0B8C004303F0 /* MeterSettings+TestData.swift */; };
 		31B5EDA22B1748D80025A05C /* TabContentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5EDA12B1748D80025A05C /* TabContentScreen.swift */; };
-		31BC54D628E60CE50037823B /* ScenePhaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC54D528E60CE50037823B /* ScenePhaseHandler.swift */; };
+		31B670412BF61E3700C4C731 /* ScenePhaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B670402BF61E3700C4C731 /* ScenePhaseHandler.swift */; };
 		31C639EC2AFFC2990050340C /* MeterSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639EB2AFFC2990050340C /* MeterSettingsScreen.swift */; };
-		31C639EE2AFFD85B0050340C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639ED2AFFD85B0050340C /* AppModel.swift */; };
 		31C639F02B021B170050340C /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639EF2B021B170050340C /* RootScreen.swift */; };
-		31C639F22B023ECD0050340C /* View+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639F12B023ECD0050340C /* View+Debug.swift */; };
-		31C639F42B023F140050340C /* UserPreferencesDataStore+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639F32B023F140050340C /* UserPreferencesDataStore+Stub.swift */; };
 		31D82CA22B079A8600D2CE6E /* CircularHireStatusGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D82CA02B07983400D2CE6E /* CircularHireStatusGauge.swift */; };
-		31D82CA62B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D82CA52B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift */; };
 		31E4035428D8D32000CC71B6 /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31E4035328D8D31400CC71B6 /* digital-7-mono.ttf */; };
 		31F28ED325D3F91400AC523A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28ED525D3F91400AC523A /* Localizable.strings */; };
 		31F28EF325D4251300AC523A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31F28EF525D4251300AC523A /* InfoPlist.strings */; };
@@ -91,6 +86,9 @@
 
 /* Begin PBXFileReference section */
 		1E82D5FD997C117E47AED734 /* Pods_Contract_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31003EB92BF2533800643FB8 /* WidgetEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEnvironment.swift; sourceTree = "<group>"; };
+		31003EBC2BF253E600643FB8 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Shared; sourceTree = "<group>"; };
+		31003EBD2BF254F200643FB8 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningsMeterWidget.swift; sourceTree = "<group>"; };
 		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		312821CD23D0B96000975F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 		314A716D25BB02FF0062D050 /* UITestScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestScenario.swift; sourceTree = "<group>"; };
 		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		316520A32AF95F9400E44FF5 /* AppConfig */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppConfig; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31658F9028D37759005466C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		31658F9228D37759005466C2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -122,19 +119,17 @@
 		3185541F2B0920220061AD11 /* ToolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItems.swift; sourceTree = "<group>"; };
 		318AD0F228E0D556002B3E88 /* EarningsMeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarningsMeter.entitlements; sourceTree = "<group>"; };
 		318AD0F328E0D556002B3E88 /* EarningsMeterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarningsMeterWidgetExtension.entitlements; sourceTree = "<group>"; };
+		3190A4372BF61CF7009C70F4 /* View+Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Debug.swift"; sourceTree = "<group>"; };
 		3190F6DA24CF0B6A004303F0 /* EarningsMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3190F6DE24CF0B6A004303F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3190F6E824CF0B8C004303F0 /* MeterSettings+TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeterSettings+TestData.swift"; sourceTree = "<group>"; };
 		31B5EDA12B1748D80025A05C /* TabContentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentScreen.swift; sourceTree = "<group>"; };
-		31BC54D528E60CE50037823B /* ScenePhaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScenePhaseHandler.swift; path = EarningsMeter/Views/ScenePhaseHandler.swift; sourceTree = SOURCE_ROOT; };
+		31B670402BF61E3700C4C731 /* ScenePhaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenePhaseHandler.swift; sourceTree = "<group>"; };
+		31B670422BF6606700C4C731 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		31C639EB2AFFC2990050340C /* MeterSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterSettingsScreen.swift; sourceTree = "<group>"; };
-		31C639ED2AFFD85B0050340C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		31C639EF2B021B170050340C /* RootScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreen.swift; sourceTree = "<group>"; };
-		31C639F12B023ECD0050340C /* View+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Debug.swift"; sourceTree = "<group>"; };
-		31C639F32B023F140050340C /* UserPreferencesDataStore+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferencesDataStore+Stub.swift"; sourceTree = "<group>"; };
 		31D82CA02B07983400D2CE6E /* CircularHireStatusGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularHireStatusGauge.swift; sourceTree = "<group>"; };
-		31D82CA52B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EarningMeterWidget+iOS16Preview.swift"; sourceTree = "<group>"; };
-		31DDEDF92B4FF6E800CC2B8E /* Global.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Global.xcconfig; sourceTree = "<group>"; };
+		31DDEDF92B4FF6E800CC2B8E /* Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Defaults.xcconfig; sourceTree = "<group>"; };
 		31E4035328D8D31400CC71B6 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
 		31F28ED425D3F91400AC523A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		31F28ED925D3F97900AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -159,8 +154,6 @@
 				312DED172AF967900070956A /* Models in Frameworks */,
 				312DED1E2AFA47C50070956A /* PresentationViews in Frameworks */,
 				312DED3D2AFE92FE0070956A /* DataStores in Frameworks */,
-				312DED052AF964100070956A /* AppConfig in Frameworks */,
-				312749C42AF9639C007905B2 /* DeviceKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +171,6 @@
 				312DED192AF967970070956A /* Models in Frameworks */,
 				312DED1C2AFA47BB0070956A /* PresentationViews in Frameworks */,
 				312DED3F2AFE93050070956A /* DataStores in Frameworks */,
-				312DED102AF965B00070956A /* AppConfig in Frameworks */,
 				31658F9328D37759005466C2 /* SwiftUI.framework in Frameworks */,
 				31658F9128D37759005466C2 /* WidgetKit.framework in Frameworks */,
 			);
@@ -224,12 +216,13 @@
 			children = (
 				312EF56B249CAA9A00CC71BA /* Assets */,
 				314A47C925ACD5AD00FBBF3E /* Core */,
-				314A47BC25ACD3E300FBBF3E /* Debug */,
+				3190A4382BF61CF7009C70F4 /* Debug */,
 				314A47C625ACD4B000FBBF3E /* Localization */,
-				312821EA23D0BA3000975F66 /* Views */,
+				312821EA23D0BA3000975F66 /* Screens */,
 				312821D223D0B96000975F66 /* LaunchScreen.storyboard */,
 				312821D523D0B96000975F66 /* Info.plist */,
 				312821CF23D0B96000975F66 /* Preview Content */,
+				31B670422BF6606700C4C731 /* PrivacyInfo.xcprivacy */,
 			);
 			path = EarningsMeter;
 			sourceTree = "<group>";
@@ -242,21 +235,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		312821EA23D0BA3000975F66 /* Views */ = {
+		312821EA23D0BA3000975F66 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				3185541C2B0917030061AD11 /* EnvironmentKeys.swift */,
-				31BC54D528E60CE50037823B /* ScenePhaseHandler.swift */,
-				3185541F2B0920220061AD11 /* ToolbarItems.swift */,
-				3185541E2B091F520061AD11 /* Common */,
 				315234FA25B83C2B00AE8811 /* AppInfo */,
 				314A48DC25AF6F1900FBBF3E /* Meter */,
 				314A48DD25AF6F3000FBBF3E /* MeterSettings */,
-				31C639ED2AFFD85B0050340C /* AppModel.swift */,
 				31C639EF2B021B170050340C /* RootScreen.swift */,
 				31B5EDA12B1748D80025A05C /* TabContentScreen.swift */,
+				3185541C2B0917030061AD11 /* EnvironmentKeys.swift */,
+				31B670402BF61E3700C4C731 /* ScenePhaseHandler.swift */,
+				3185541F2B0920220061AD11 /* ToolbarItems.swift */,
 			);
-			path = Views;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		312EF56B249CAA9A00CC71BA /* Assets */ = {
@@ -276,15 +267,6 @@
 			path = CI;
 			sourceTree = "<group>";
 		};
-		314A47BC25ACD3E300FBBF3E /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				31C639F12B023ECD0050340C /* View+Debug.swift */,
-				31C639F32B023F140050340C /* UserPreferencesDataStore+Stub.swift */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
 		314A47C625ACD4B000FBBF3E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				314A488525AF169900FBBF3E /* App.swift */,
+				31003EBD2BF254F200643FB8 /* AppEnvironment.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -344,7 +327,7 @@
 				318AD0F128E0D556002B3E88 /* Entitlements */,
 				3152354225B8544400AE8811 /* Debug.xcconfig */,
 				3152354325B8544400AE8811 /* Release.xcconfig */,
-				31DDEDF92B4FF6E800CC2B8E /* Global.xcconfig */,
+				31DDEDF92B4FF6E800CC2B8E /* Defaults.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -352,10 +335,10 @@
 		316520A12AF95F9400E44FF5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				316520A32AF95F9400E44FF5 /* AppConfig */,
 				312DED3B2AFE92500070956A /* DataStores */,
 				312DED152AF966220070956A /* Models */,
 				312DED1A2AFA47860070956A /* PresentationViews */,
+				31003EBC2BF253E600643FB8 /* Shared */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -366,19 +349,13 @@
 				31D82C9F2B0797A800D2CE6E /* Components */,
 				311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */,
 				31FF687028E9D64A0049560B /* MeterTimeline.swift */,
+				31003EB92BF2533800643FB8 /* WidgetEnvironment.swift */,
 				31E4035228D8D23D00CC71B6 /* Fonts */,
 				31658F9828D3775A005466C2 /* Assets.xcassets */,
 				31658F9A28D3775A005466C2 /* Info.plist */,
 				31FF686A28E89AF80049560B /* Localizable.strings */,
 			);
 			path = EarningsMeterWidget;
-			sourceTree = "<group>";
-		};
-		3185541E2B091F520061AD11 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		318AD0F128E0D556002B3E88 /* Entitlements */ = {
@@ -388,6 +365,14 @@
 				318AD0F328E0D556002B3E88 /* EarningsMeterWidgetExtension.entitlements */,
 			);
 			path = Entitlements;
+			sourceTree = "<group>";
+		};
+		3190A4382BF61CF7009C70F4 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				3190A4372BF61CF7009C70F4 /* View+Debug.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		3190F6DB24CF0B6A004303F0 /* EarningsMeterTests */ = {
@@ -411,7 +396,6 @@
 			isa = PBXGroup;
 			children = (
 				31D82CA02B07983400D2CE6E /* CircularHireStatusGauge.swift */,
-				31D82CA52B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -455,8 +439,6 @@
 			);
 			name = EarningsMeter;
 			packageProductDependencies = (
-				312749C32AF9639C007905B2 /* DeviceKit */,
-				312DED042AF964100070956A /* AppConfig */,
 				312DED162AF967900070956A /* Models */,
 				312DED1D2AFA47C50070956A /* PresentationViews */,
 				312DED3C2AFE92FE0070956A /* DataStores */,
@@ -497,7 +479,6 @@
 			);
 			name = EarningsMeterWidgetExtension;
 			packageProductDependencies = (
-				312DED0F2AF965B00070956A /* AppConfig */,
 				312DED182AF967970070956A /* Models */,
 				312DED1B2AFA47BB0070956A /* PresentationViews */,
 				312DED3E2AFE93050070956A /* DataStores */,
@@ -563,7 +544,6 @@
 			);
 			mainGroup = 312821BB23D0B95E00975F66;
 			packageReferences = (
-				312749C22AF9639C007905B2 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 			);
 			productRefGroup = 312821C523D0B95E00975F66 /* Products */;
 			projectDirPath = "";
@@ -583,7 +563,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F28EF325D4251300AC523A /* InfoPlist.strings in Resources */,
-				316520B12AF95F9400E44FF5 /* AppConfig in Resources */,
 				312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */,
 				31F28ED325D3F91400AC523A /* Localizable.strings in Resources */,
 				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
@@ -646,17 +625,16 @@
 			files = (
 				3185541D2B0917030061AD11 /* EnvironmentKeys.swift in Sources */,
 				31C639EC2AFFC2990050340C /* MeterSettingsScreen.swift in Sources */,
-				31C639F42B023F140050340C /* UserPreferencesDataStore+Stub.swift in Sources */,
+				31003EBE2BF254F200643FB8 /* AppEnvironment.swift in Sources */,
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
+				3190A4392BF61CF7009C70F4 /* View+Debug.swift in Sources */,
 				31C639F02B021B170050340C /* RootScreen.swift in Sources */,
-				31C639EE2AFFD85B0050340C /* AppModel.swift in Sources */,
 				31B5EDA22B1748D80025A05C /* TabContentScreen.swift in Sources */,
-				31BC54D628E60CE50037823B /* ScenePhaseHandler.swift in Sources */,
-				31C639F22B023ECD0050340C /* View+Debug.swift in Sources */,
 				314A717525BB050F0062D050 /* UITestScenario.swift in Sources */,
 				3185541B2B0916AB0061AD11 /* AppInfoScreen.swift in Sources */,
 				318554202B0920220061AD11 /* ToolbarItems.swift in Sources */,
 				312DED3A2AFC0B0C0070956A /* MeterScreen.swift in Sources */,
+				31B670412BF61E3700C4C731 /* ScenePhaseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,8 +654,8 @@
 			files = (
 				31FF687228E9D6890049560B /* MeterTimeline.swift in Sources */,
 				31D82CA22B079A8600D2CE6E /* CircularHireStatusGauge.swift in Sources */,
-				31D82CA62B07DED000D2CE6E /* EarningMeterWidget+iOS16Preview.swift in Sources */,
 				311C3DBD28E0D7E500E0C63F /* EarningsMeterWidget.swift in Sources */,
+				31003EBB2BF2538E00643FB8 /* WidgetEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1106,31 +1084,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		312749C22AF9639C007905B2 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devicekit/DeviceKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		312749C32AF9639C007905B2 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 312749C22AF9639C007905B2 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
-		312DED042AF964100070956A /* AppConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppConfig;
-		};
-		312DED0F2AF965B00070956A /* AppConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppConfig;
-		};
 		312DED162AF967900070956A /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;

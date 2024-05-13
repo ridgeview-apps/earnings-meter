@@ -1,5 +1,3 @@
-import AppConfig
-import Combine
 import DataStores
 import Intents
 import Models
@@ -13,21 +11,13 @@ private final class WidgetBundlePin {}
 struct EarningsMeterWidget: Widget {
     let kind: String = "EarningsMeterWidget"
     
-    private let userPreferences: UserPreferencesDataStore
-    private let appConfig: AppConfig
+    private let environment: WidgetEnvironment
     private let timelineProvider: MeterTimeLineProvider
     
     init() {
-        let appConfig = AppConfig.loadedFromInfoPlist(inBundle: Bundle(for: WidgetBundlePin.self))
-        self.init(appConfig: appConfig,
-                  userPreferences: .real(sharedAppGroupName: appConfig.appGroupName))
-    }
-    
-    init(appConfig: AppConfig,
-         userPreferences: UserPreferencesDataStore) {
-        self.appConfig = appConfig
-        self.userPreferences = userPreferences
-        self.timelineProvider = MeterTimeLineProvider(userPreferences: userPreferences)
+        self.environment = WidgetEnvironment.shared(loadedFrom: Bundle(for: WidgetBundlePin.self))
+        environment.userDefaults?.migrateLegacyValuesIfNeeded()
+        self.timelineProvider = MeterTimeLineProvider(userDefaults: environment.userDefaults)
     }
     
     
@@ -48,7 +38,7 @@ struct EarningsMeterWidget: Widget {
     }
     
     @ViewBuilder private var widgetOverlayTitle: some View {
-        if let widgetOverlayTitle = appConfig.widgetOverlayTitle, !widgetOverlayTitle.isEmpty {
+        if let widgetOverlayTitle = environment.widgetOverlayTitle, !widgetOverlayTitle.isEmpty {
             Text(widgetOverlayTitle)
                 .font(.caption2)
                 .foregroundStyle(.white)
@@ -166,25 +156,24 @@ private extension View {
 
 
 // MARK: - Preview
-#if DEBUG
-@available(iOS 17.0, *)
+import ModelStubs
+
 #Preview(as: .systemSmall) {
-    EarningsMeterWidget(appConfig: .stub, userPreferences: .stub())
+    EarningsMeterWidget()
 } timeline: {
     MeterTimeLineEntry(date: .now,
-                       reading: .init(amountEarned: 0, status: .beforeWork),
+                       reading: .notStarted,
                        meterSettings: ModelStubs.dayTime_0900_to_1700())
     MeterTimeLineEntry(date: .now + 5,
-                       reading: .init(amountEarned: 100, status: .atWork(progress: 0.25)),
+                       reading: .working(amountEarned: 100, progress: 0.25),
                        meterSettings: ModelStubs.dayTime_0900_to_1700())
     MeterTimeLineEntry(date: .now + 10,
-                       reading: .init(amountEarned: 200, status: .atWork(progress: 0.5)),
+                       reading: .working(amountEarned: 200, progress: 0.5),
                        meterSettings: ModelStubs.dayTime_0900_to_1700())
     MeterTimeLineEntry(date: .now + 15,
-                       reading: .init(amountEarned: 300, status: .atWork(progress: 0.75)),
+                       reading: .working(amountEarned: 300, progress: 0.75),
                        meterSettings: ModelStubs.dayTime_0900_to_1700())
     MeterTimeLineEntry(date: .now + 15,
-                       reading: .init(amountEarned: 400, status: .afterWork),
+                       reading: .finished(amountEarned: 400),
                        meterSettings: ModelStubs.dayTime_0900_to_1700())
 }
-#endif

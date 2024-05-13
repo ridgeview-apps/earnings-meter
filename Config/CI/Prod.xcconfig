@@ -1,9 +1,8 @@
 #include "../Release.xcconfig"
 
+// Build/archive settings
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter
 
-// App config
-APP_STORE_PRODUCT_URL = https:/$()/apps.apple.com/app/id1549867514
-CONTACT_US_EMAIL = feedback@ridgeviewconsulting.co.uk
-APP_GROUP_NAME = group.$(MAIN_TARGET_BUNDLE_ID).sharedData
+// App environment / Info.plist values
+APP_GROUP_NAME = group.com.ridgeviewapps.earnings-meter.sharedData
 WIDGET_OVERLAY_TITLE =

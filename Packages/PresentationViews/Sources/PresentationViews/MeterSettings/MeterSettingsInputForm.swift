@@ -100,3 +100,18 @@ public extension MeterSettingsInputForm {
 public extension FormatStyle where Self == FloatingPointFormatStyle<Double> {
     static var rateAmount: Self { .number.precision(.fractionLength(2)) }
 }
+
+
+public extension MeterSettings {
+    
+    var defaultMeterSpeed: TimeInterval {
+        // Default meter speed will try to increment the meter by 1 "unit" per second (e.g. 1 pence, cent etc per second)
+        // Min meter speed is 0.3 to prevent the meter ticking too quickly (e.g. an insanely high earner!)
+        let minMeterSpeed: TimeInterval = 0.3
+        var desiredSpeed: TimeInterval = 1
+        if dailyRate > 0 {
+            desiredSpeed = workDayDuration / (dailyRate * 100)
+        }
+        return max(minMeterSpeed, desiredSpeed)
+    }
+}

@@ -1,15 +1,19 @@
-import AppConfig
+import Models
+import ModelStubs
 import DataStores
 import SwiftUI
 
-#if DEBUG
-
 extension View {
     
-    @MainActor func withStubbedEnvironment() -> some View {
-        withEnvironmentValues(userPreferences: .stub())
-        .environment(\.appConfig, AppConfig.stub)
+    func previewWithUserPreferences(_ userPreferences: UserPreferences?) -> some View {
+        self
+            .task {
+                AppEnvironment.shared.userDefaults?.userPreferences = userPreferences
+            }
     }
 }
 
-#endif
+enum UserPreferencesStubs {    
+    static var nineToFiveMeter: UserPreferences = UserPreferences(meterSettings: ModelStubs.dayTime_0900_to_1700(),
+                                                                  earningsSinceDate: nil)
+}

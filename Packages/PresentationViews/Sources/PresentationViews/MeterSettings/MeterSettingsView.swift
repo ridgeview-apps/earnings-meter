@@ -136,6 +136,7 @@ private extension MeterSettings.Rate.RateType {
 
 
 // MARK: - Previews
+import ModelStubs
 
 private struct WrapperView: View {
     @State var inputForm: MeterSettingsInputForm = .updateMode(with: ModelStubs.dayTime_0900_to_1700())

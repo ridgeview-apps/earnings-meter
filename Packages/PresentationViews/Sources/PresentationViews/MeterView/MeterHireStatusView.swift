@@ -1,3 +1,4 @@
+import Models
 import SwiftUI
 
 public struct MeterHireStatusView: View {
@@ -66,7 +67,7 @@ public struct MeterHireStatusView: View {
 
 public extension MeterHireStatusView {
 
-    init(reading: MeterCalculator.Reading,
+    init(reading: MeterReading,
          showStatusText: Bool = true,
          showEmoji: Bool = true,
          showLiveStatusImage: Bool = false) {
@@ -93,13 +94,13 @@ extension MeterHireStatusView.Status {
     }
 }
 
-private extension MeterCalculator.Reading {
+private extension MeterReading {
    
     var hireStatus: MeterHireStatusView.Status {
         switch self.status {
-        case .beforeWork, .afterWork, .dayOff:
+        case .notStarted, .finished:
             .free
-        case .atWork:
+        case .working:
             .atWork
         }
     }
@@ -110,14 +111,13 @@ private extension MeterCalculator.Reading {
 
 #Preview {
     VStack {
-        MeterHireStatusView(reading: .init(amountEarned: 1, status: .atWork(progress: 0.1)))
-        MeterHireStatusView(reading: .init(amountEarned: 3, status: .atWork(progress: 0.3)))
-        MeterHireStatusView(reading: .init(amountEarned: 6, status: .atWork(progress: 0.6)))
-        MeterHireStatusView(reading: .init(amountEarned: 9, status: .atWork(progress: 0.9)))
-        MeterHireStatusView(reading: .init(amountEarned: 9, status: .atWork(progress: 0.9)), showLiveStatusImage: true)
-        MeterHireStatusView(reading: .init(amountEarned: 0, status: .beforeWork))
-        MeterHireStatusView(reading: .init(amountEarned: 0, status: .dayOff))
-        MeterHireStatusView(reading: .init(amountEarned: 10, status: .afterWork))
+        MeterHireStatusView(reading: .working(amountEarned: 1, progress: 0.1))
+        MeterHireStatusView(reading: .working(amountEarned: 3, progress: 0.3))
+        MeterHireStatusView(reading: .working(amountEarned: 6, progress: 0.6))
+        MeterHireStatusView(reading: .working(amountEarned: 9, progress: 0.9))
+        MeterHireStatusView(reading: .working(amountEarned: 9, progress: 0.9), showLiveStatusImage: true)
+        MeterHireStatusView(reading: .notStarted)
+        MeterHireStatusView(reading: .finished(amountEarned: 10))
     }
     .background(Color.darkGrey1)
 }

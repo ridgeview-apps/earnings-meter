@@ -52,7 +52,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>appConfig</key>
+	<key>appEnvironment</key>
 	<dict>
 		<key>appGroupName</key>
 		<string>$(APP_GROUP_NAME)</string>

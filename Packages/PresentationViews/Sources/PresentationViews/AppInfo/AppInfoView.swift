@@ -91,7 +91,6 @@ public struct AppInfoView: View {
     }
 }
 
-#if DEBUG
 #Preview {
     AppInfoView(
         appVersionNumber: "1.1.1",
@@ -100,4 +99,3 @@ public struct AppInfoView: View {
         appGroupName: "group.foo.bar"
     )
 }
-#endif

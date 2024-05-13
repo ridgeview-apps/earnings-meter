@@ -81,6 +81,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "312821C323D0B95E00975F66"
+            BuildableName = "Earnings Meter.app"
+            BlueprintName = "EarningsMeter"
+            ReferencedContainer = "container:EarningsMeter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -13,7 +13,8 @@ let package = Package(
         .library(name: "PresentationViews", targets: ["PresentationViews"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ridgeview-apps/ridgeview-core", branch: "main"),
+        .package(url: "https://github.com/ridgeview-apps/ridgeview-core", from: "1.0.0"),
+        .package(path: "Shared"),
         .package(path: "Models")
     ],
     targets: [
@@ -23,13 +24,15 @@ let package = Package(
             name: "PresentationViews",
             dependencies: [
                 .product(name: "RidgeviewCore", package: "ridgeview-core"),
-                "Models"
+                "Shared",
+                .product(name: "Models", package: "Models"),
+                .product(name: "ModelStubs", package: "Models")
             ],
             resources: [.process("Resources")]
         ),
         .testTarget(
             name: "PresentationViewsTests",
-            dependencies: ["PresentationViews", "Models"]
+            dependencies: ["PresentationViews"]
         ),
     ]
 )

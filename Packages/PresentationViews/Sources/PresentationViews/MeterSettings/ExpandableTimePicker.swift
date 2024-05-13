@@ -29,7 +29,6 @@ struct ExpandableTimePicker: View {
 
 // MARK: - Previews
 
-#if DEBUG
 private struct WrapperView: View {
     
     @State var selectedTime: Date = .distantPast
@@ -51,4 +50,3 @@ private struct WrapperView: View {
 #Preview("Expanded state") {
     WrapperView(isExpanded: true)
 }
-#endif

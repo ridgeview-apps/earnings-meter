@@ -15,7 +15,7 @@ public struct MeterView: View {
     
     public let style: Style
     public let settings: MeterSettings
-    public let reading: MeterCalculator.Reading
+    public let reading: MeterReading
     
     @Binding public var selectedDate: Date
     
@@ -29,7 +29,7 @@ public struct MeterView: View {
     
     public init(style: Style,
                 settings: MeterSettings,
-                reading: MeterCalculator.Reading,
+                reading: MeterReading,
                 selectedDate: Binding<Date>) {
         self.style = style
         self.settings = settings
@@ -137,10 +137,11 @@ public struct MeterView: View {
 
 // MARK: - Previews
 
+import ModelStubs
+
 private struct WrapperView: View {
     let style: MeterView.Style
-    var amount: Double = 123.45
-    var hireStatus: MeterCalculator.Reading.Status = .atWork(progress: 0.5)
+    var reading: MeterReading = .working(amountEarned: 123.45, progress: 0.5)
 
     @State var selectedDate: Date = .now
     
@@ -148,8 +149,7 @@ private struct WrapperView: View {
         NavigationStack {
             MeterView(style: style,
                       settings: ModelStubs.dayTime_0900_to_1700(),
-                      reading: .init(amountEarned: amount,
-                                     status: hireStatus),
+                      reading: reading,
                       selectedDate: $selectedDate)
             .padding(.horizontal)
             .styledPreview()
@@ -159,17 +159,18 @@ private struct WrapperView: View {
 }
 
 #Preview("Today - before work") {
-    WrapperView(style: .today, hireStatus: .beforeWork)
+    WrapperView(style: .today, reading: .notStarted)
 }
 
 #Preview("Today - at work") {
-    WrapperView(style: .today, hireStatus: .atWork(progress: 0.5))
+    WrapperView(style: .today, reading: .working(amountEarned: 200, progress: 0.5))
 }
 
 #Preview("Today - after work") {
-    WrapperView(style: .today, hireStatus: .afterWork)
+    WrapperView(style: .today, reading: .finished(amountEarned: 400))
 }
 
 #Preview("Accumulated earnings") {
-    WrapperView(style: .accumulated)
+    WrapperView(style: .accumulated,
+                reading: .accumulated(amountEarned: 1234567, status: .working(progress: 0.5)))
 }

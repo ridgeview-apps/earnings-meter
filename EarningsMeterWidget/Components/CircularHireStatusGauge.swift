@@ -1,9 +1,10 @@
+import Models
 import PresentationViews
 import SwiftUI
 
 struct CircularHireStatusGauge: View {
     
-    let reading: MeterCalculator.Reading
+    let reading: MeterReading
     
     var body: some View {
         Gauge(value: reading.progress) {

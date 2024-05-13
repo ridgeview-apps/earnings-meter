@@ -1,4 +1,5 @@
 import Foundation
+import RidgeviewCore
 
 public struct MeterSettings: Codable, Equatable {
     public let rate: Rate
@@ -53,5 +54,18 @@ public extension MeterSettings {
             return TimeInterval((hour * 60 * 60) + (minute * 60))
         }
     }
-        
+}
+
+public extension MeterSettings.MeterTime {
+    
+    func toMeterDateTime(for sourceDate: Date = .now, in calendar: Calendar) -> Date {
+        guard let dateWithMeterTime = calendar.date(bySettingHour: hour,
+                                                    minute: minute,
+                                                    second: 0,
+                                                    of: sourceDate) else {
+            assertionFailure("Failed to derive date value from invalid meter time: \(self)")
+            return .now
+        }
+        return dateWithMeterTime
+    }
 }

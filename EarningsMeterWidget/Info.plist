@@ -11,14 +11,10 @@
 	<array>
 		<string>digital-7-mono.ttf</string>
 	</array>
-	<key>appConfig</key>
+	<key>widgetEnvironment</key>
 	<dict>
 		<key>appGroupName</key>
 		<string>$(APP_GROUP_NAME)</string>
-		<key>appStoreProductUrl</key>
-		<string>$(APP_STORE_PRODUCT_URL)</string>
-		<key>contactUsEmail</key>
-		<string>$(CONTACT_US_EMAIL)</string>
 		<key>widgetOverlayTitle</key>
 		<string>$(WIDGET_OVERLAY_TITLE)</string>
 	</dict>

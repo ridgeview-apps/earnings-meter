@@ -38,7 +38,7 @@ public struct MeterProgressBarView: View {
 public extension MeterProgressBarView {
     
     init(settings: MeterSettings,
-         reading: MeterCalculator.Reading,
+         reading: MeterReading,
          showsTextLabels: Bool,
          calendar: Calendar) {
         self.init(
@@ -86,7 +86,6 @@ private func nineToFiveView(
    )
 }
 
-#if DEBUG
 #Preview {
     VStack {
         nineToFiveView(withProgress: 0.01)
@@ -100,4 +99,3 @@ private func nineToFiveView(
     }
     .background(Color.darkGrey1)
 }
-#endif

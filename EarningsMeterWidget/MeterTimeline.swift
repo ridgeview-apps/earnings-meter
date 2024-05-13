@@ -6,7 +6,11 @@ import WidgetKit
 struct MeterTimeLineProvider: TimelineProvider {
     typealias Entry = MeterTimeLineEntry
     
-    let userPreferences: UserPreferencesDataStore
+    let userDefaults: UserDefaults?
+    
+    private var meterSettings: MeterSettings {
+        userDefaults?.userPreferences?.meterSettings ?? .placeholder
+    }
     
     func placeholder(in context: Context) -> MeterTimeLineEntry {
         return .placeholder
@@ -19,9 +23,7 @@ struct MeterTimeLineProvider: TimelineProvider {
         if context.isPreview {
             snapshotEntry = .placeholder
         } else {
-            refreshUserPreferences()
-            let calculator = MeterCalculator(meterSettings: userPreferences.savedMeterSettings ?? .placeholder)
-            snapshotEntry = makeTimeLineEntry(at: .now, with: calculator)
+            snapshotEntry = makeTimeLineEntry(at: .now)
         }
         completion(snapshotEntry)
     }
@@ -33,14 +35,11 @@ struct MeterTimeLineProvider: TimelineProvider {
     // is called), NOT the number of timeline entries themselves.
     //
     func getTimeline(in context: Context, completion: @escaping (Timeline<MeterTimeLineEntry>) -> Void) {
-        refreshUserPreferences()
-        
         var entries: [MeterTimeLineEntry] = []
         let now = Date.now
-        let calculator = MeterCalculator(meterSettings: userPreferences.savedMeterSettings ?? .placeholder)
 
         // 1. Generate a timeline entry for right now
-        entries.append(makeTimeLineEntry(at: now, with: calculator))
+        entries.append(makeTimeLineEntry(at: now))
         
         // 2. Generate 30 timeline entries (next 15 minutes, 2 per minute)
         let thirtySeconds = 30
@@ -48,7 +47,7 @@ struct MeterTimeLineProvider: TimelineProvider {
         let fifteenMinutes = 15 * 60
         stride(from: 0, through: fifteenMinutes, by: thirtySeconds).forEach {
             if let readingTimestamp = Calendar.current.date(byAdding: .second, value: $0, to: firstScheduledEntry) {
-                let scheduledEntry = makeTimeLineEntry(at: readingTimestamp, with: calculator)
+                let scheduledEntry = makeTimeLineEntry(at: readingTimestamp)
                 entries.append(scheduledEntry)
             }
         }
@@ -57,24 +56,19 @@ struct MeterTimeLineProvider: TimelineProvider {
         completion(timeline)
     }
     
-    private func refreshUserPreferences() {
-        userPreferences.refresh()
-    }
-    
-    
-    private func makeTimeLineEntry(at date: Date,
-                                   with calculator: MeterCalculator) -> MeterTimeLineEntry {
+    private func makeTimeLineEntry(at date: Date) -> MeterTimeLineEntry {
+        let calculator = MeterCalculator(meterSettings: meterSettings, calendar: .current)
         let reading = calculator.dailyReading(at: date)
         
         return MeterTimeLineEntry(date: date,
                                   reading: reading,
-                                  meterSettings: calculator.meterSettings)
+                                  meterSettings: meterSettings)
     }
 }
 
 struct MeterTimeLineEntry: TimelineEntry {
     let date: Date
-    let reading: MeterCalculator.Reading
+    let reading: MeterReading
     let meterSettings: MeterSettings
     
     static let placeholder = MeterTimeLineEntry(date: .now,
@@ -83,6 +77,16 @@ struct MeterTimeLineEntry: TimelineEntry {
     
 }
 
+private extension MeterReading {
+    static let placeholder = MeterReading.working(amountEarned: 25, progress: 0.25)
+}
+
+private extension MeterSettings {
+    static let placeholder = MeterSettings(rate: .init(amount: 100, type: .daily),
+                                           startTime: .init(hour: 9, minute: 0),
+                                           endTime: .init(hour: 5, minute: 0),
+                                           runAtWeekends: true)
+}
 
 private extension Date {
     func roundedUp(toNearestSeconds numberOfSeconds: Int) -> Date {
