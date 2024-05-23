@@ -32,17 +32,17 @@ Swift Package Manager is used to modularize the app as follows:
 
 The main point to note is that the `PresentationViews` and `DataStores` packages are completely isolated from one another. The main app target itself is predominantly just composed of "screens" (which do all the heavy lifting and wire everything together - see example below).
 
-> There are many ways to modularize an app, and I strong recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-models). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
+> There are many ways to modularize an app, and I strongly recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-models). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
 
 ### Meter Reading example
 
-Meter readings are a good example of data used globally across the app e.g. (main app screen, welcome screen, edit screen & widgets):
+Meter readings are a good example of data used in various parts of the app (e.g. main app screen, widgets):
 
-* The model objects (e.g. `MeterReading`) are defined in the `Models` package.
-* The `PresentationViews` package uses the model objects to build reusable / previewable components
-* The `DataStores` package has a `MeterCalculator` which calculates the correct daily or accumulated reading (and is used by the main app target & widgets)
+* The `MeterReading` model is defined in the `Models` package.
+* The `PresentationViews` package use this model to build reusable / previewable components
+* The `DataStores` package contains business logic (`MeterCalculator`) which provides reading data to the main app or widgets.
 
-> Note: The `PresentationViews` package used to be a completely standalone package with its own separate models. However I found myself frequently transforming a model from the `Models` package to a 100% identical model in the `PresentationViews` package. So I cut out the middle man and gave `PresentationViews` direct access to the `Models` package (and any presentation-specific properties can simply be added as extensions inside the `PresentationViews` package).
+> Note: The `PresentationViews` package used to be a completely standalone package with its own separate models. However I found myself frequently transforming from a `Models` "model" -> `PresentationViews` "model". So I found it much simpler to cut out the middle man and gave `PresentationViews` direct access to the `Models` package (any "presentation"-specific properties could simply be added via Swift extensions). This also makes data stubbing much simpler (for example `ModelStubs` contains lots of pre-configured data models which are perfect for SwiftUI previews and unit testing).
 
 ## Previews
 
