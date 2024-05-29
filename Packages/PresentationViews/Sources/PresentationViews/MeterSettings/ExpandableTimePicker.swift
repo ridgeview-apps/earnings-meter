@@ -4,7 +4,7 @@ import SwiftUI
 struct ExpandableTimePicker: View {
 
     
-    let title: LocalizedStringKey
+    let title: LocalizedStringResource
     @Binding private(set) var selectedTime: Date
     @Binding private(set) var isExpanded: Bool
     
@@ -16,7 +16,7 @@ struct ExpandableTimePicker: View {
             .datePickerStyle(.wheel)
         } label: {
             HStack {
-                Text(title, bundle: .module)
+                Text(title)
                     .foregroundColor(.primary)
                 Spacer()
                 Text(selectedTime.formatted(date: .omitted, time: .shortened))

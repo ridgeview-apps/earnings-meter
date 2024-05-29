@@ -18,13 +18,13 @@ public extension View {
     }
     
     func styledTabItem(imageName: String,
-                       title: LocalizedStringKey,
+                       title: LocalizedStringResource,
                        accessibilityID: String) -> some View {
         tabItem {
             VStack {
                 Image(systemName: imageName)
                     .imageScale(.large)
-                Text(title, bundle: .module)
+                Text(title)
             }
             .accessibilityIdentifier(accessibilityID)
         }

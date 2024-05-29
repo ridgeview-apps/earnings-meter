@@ -19,7 +19,7 @@ struct AppInfoScreen: View {
                                          localeInfo: "\(locale.identifier) - \(locale.language.languageCode?.identifier ?? "")"),
                         appGroupName: appEnvironment.appGroupName)
             
-            .navigationTitle("appInfo.navigation.title")
+            .navigationTitle(Text(.appInfoNavigationTitle))
             .withToolbarCloseButton(placement: .topBarLeading)
         }
     }

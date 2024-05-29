@@ -44,18 +44,18 @@ struct MeterSettingsScreen: View {
     private var navigationTitle: Text {
         switch inputForm.editMode {
         case .welcome:
-            Text("settings.navigation.title.welcome")
+            Text(.settingsNavigationTitleWelcome)
         case .update:
-            Text("settings.navigation.title.edit")
+            Text(.settingsNavigationTitleEdit)
         }
     }
     
     private var saveButtonText: Text {
         switch inputForm.editMode {
         case .welcome:
-            Text("settings.button.title.start")
+            Text(.settingsButtonTitleStart)
         case .update:
-            Text("settings.button.title.save")
+            Text(.settingsButtonTitleSave)
         }
     }
     

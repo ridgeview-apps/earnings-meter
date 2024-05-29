@@ -3,7 +3,7 @@ import SwiftUI
 struct TabContentScreenModifier: ViewModifier {
     
     let imageName: String
-    let title: LocalizedStringKey
+    let title: LocalizedStringResource
     let accessibilityID: String
     
     @State private var activeSheetItem: TabContentSheetItem?
@@ -41,7 +41,7 @@ struct TabContentScreenModifier: ViewModifier {
 extension View {
     
     func tabContentScreen(imageName: String, 
-                          title: LocalizedStringKey,
+                          title: LocalizedStringResource,
                           accessibilityID: String) -> some View {
         modifier(TabContentScreenModifier(imageName: imageName,
                                           title: title,

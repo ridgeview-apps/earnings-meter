@@ -20,13 +20,12 @@ public struct AppInfoView: View {
     }
     
     @State private var showDebugSection = false
-    @State private var showCrashWarning = false
     
     public var body: some View {
         Form {
             Section {
                 HStack {
-                    Text("appInfo.app.version.title", bundle: .module)
+                    Text(.appInfoAppVersionTitle)
                     Spacer()
                     Text(appVersionNumber)
                 }
@@ -38,56 +37,45 @@ public struct AppInfoView: View {
                 MailButton(to: [contactUs.emailAddress],
                            subject: emailSubject,
                            body: emailBody) {
-                    Text("appInfo.contact.us.title", bundle: .module)
+                    Text(.appInfoContactUsTitle)
                 }
                 
                 Link(destination: appReviewURL) {
-                    Text("appInfo.rate.this.app.title", bundle: .module)
+                    Text(.appInfoRateThisAppTitle)
                 }
             }
             if showDebugSection {
-                Section(header: Text("Debug")) {
-                    Button("Test crash reporting") {
-                        showCrashWarning = true
-                    }
+                Section {
                     HStack {
-                        Text("App group")
+                        Text(.debugAppGroupTitle)
                         Spacer()
                         Text(appGroupName)
                     }
+                } header: {
+                    Text(.debugAppGroupHeader)
                 }
             }
         }
         .accentColor(Color.redThree)
-        .alert("Are you sure?", isPresented: $showCrashWarning) {
-            Button("Yes", role: .destructive) {
-                fatalError("Crash report test")
-            }
-            Button("No", role: .cancel) {}
-        }
     }
     
     private var emailSubject: String {
-        String(format: localizedString("contact.us.subject %@"), contactUs.appName)
+        String(localized: .contactUsSubject(contactUs.appName))
     }
     
     private var emailBody: String {
             """
-            \(localizedString("contact.us.body.diagnostic.info"))
+            \(String(localized: .contactUsBodyDiagnosticInfo))
             
-            \(localizedString("contact.us.body.app.version")): \(contactUs.appVersion)
-            \(localizedString("contact.us.body.device.info")): \(contactUs.deviceInfo)
-            \(localizedString("contact.us.body.locale.info")): \(contactUs.localeInfo)
-            \(localizedString("contact.us.body.os.version")): \(osNameAndVersion)
+            \(String(localized: .contactUsBodyAppVersion)): \(contactUs.appVersion)
+            \(String(localized: .contactUsBodyDeviceInfo)): \(contactUs.deviceInfo)
+            \(String(localized: .contactUsBodyLocaleInfo)): \(contactUs.localeInfo)
+            \(String(localized: .contactUsBodyOsVersion)): \(osNameAndVersion)
             """
     }
     
     private var osNameAndVersion: String {
         "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
-    }
-    
-    private func localizedString(_ key: String) -> String {
-        NSLocalizedString(key, bundle: .module, comment: "")
     }
 }
 

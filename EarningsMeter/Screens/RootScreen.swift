@@ -39,11 +39,11 @@ struct RootScreen: View {
     private var earningsTab: some View {
         MeterScreen(
             style: .today,
-            navigationTitle: "earnings.today.navigation.title"
+            navigationTitle: .earningsTodayNavigationTitle
         )
         .tabContentScreen(
             imageName: "dollarsign.square",
-            title: "tab.title.earnings.today",
+            title: .tabTitleEarningsToday,
             accessibilityID: "acc.id.tab.title.earnings.today"
         )
     }
@@ -51,11 +51,11 @@ struct RootScreen: View {
     private var accumulatedEarningsTab: some View {
         MeterScreen(
             style: .accumulated,
-            navigationTitle: "earnings.since.navigation.title"
+            navigationTitle: .earningsSinceNavigationTitle
         )
         .tabContentScreen(
             imageName: "calendar",
-            title: "tab.title.accumulated.earnings",
+            title: .tabTitleAccumulatedEarnings,
             accessibilityID: "acc.id.tab.title.accumulated.earnings"
         )
     }

@@ -9,7 +9,7 @@ struct MeterScreen: View {
     // MARK: - Properties
     
     let style: MeterView.Style
-    let navigationTitle: LocalizedStringKey
+    let navigationTitle: LocalizedStringResource
     
     @State private var meterTimer: Timer?
     @State private var selectedDate: Date = Self.defaultSelectionDate
@@ -32,7 +32,7 @@ struct MeterScreen: View {
                 .padding(.horizontal)
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationTitle(navigationTitle)
+        .navigationTitle(Text(navigationTitle))
         .onAppear {
             startMeter()
         }

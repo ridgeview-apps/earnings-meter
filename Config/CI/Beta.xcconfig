@@ -2,7 +2,8 @@
 
 // Build/archive settings
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.beta
+ENTITLEMENTS_APP_GROUP_NAME = group.com.ridgeviewapps.earnings-meter.beta.sharedData
 
 // App environment / Info.plist values
-APP_GROUP_NAME = group.com.ridgeviewapps.earnings-meter.beta.sharedData
+APP_GROUP_NAME = $(ENTITLEMENTS_APP_GROUP_NAME)
 WIDGET_OVERLAY_TITLE = Beta

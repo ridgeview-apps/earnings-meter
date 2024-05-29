@@ -26,8 +26,6 @@
 		314A716E25BB02FF0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
 		314A717525BB050F0062D050 /* UITestScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A716D25BB02FF0062D050 /* UITestScenario.swift */; };
 		31531BAF2C05FC09002B52BB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 31531BAE2C05FC09002B52BB /* InfoPlist.xcstrings */; };
-		31531BB12C05FC09002B52BB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 31531BB02C05FC09002B52BB /* Localizable.xcstrings */; };
-		31531BB32C05FC09002B52BB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 31531BB22C05FC09002B52BB /* Localizable.xcstrings */; };
 		31658F9128D37759005466C2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31658F9028D37759005466C2 /* WidgetKit.framework */; };
 		31658F9328D37759005466C2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31658F9228D37759005466C2 /* SwiftUI.framework */; };
 		31658F9928D3775A005466C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31658F9828D3775A005466C2 /* Assets.xcassets */; };
@@ -110,8 +108,6 @@
 		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		31531BAE2C05FC09002B52BB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		31531BB02C05FC09002B52BB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		31531BB22C05FC09002B52BB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31658F9028D37759005466C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		31658F9228D37759005466C2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -264,7 +260,6 @@
 		314A47C625ACD4B000FBBF3E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				31531BB02C05FC09002B52BB /* Localizable.xcstrings */,
 				31531BAE2C05FC09002B52BB /* InfoPlist.xcstrings */,
 			);
 			path = Localization;
@@ -347,7 +342,6 @@
 				31E4035228D8D23D00CC71B6 /* Fonts */,
 				31658F9828D3775A005466C2 /* Assets.xcassets */,
 				31658F9A28D3775A005466C2 /* Info.plist */,
-				31531BB22C05FC09002B52BB /* Localizable.xcstrings */,
 			);
 			path = EarningsMeterWidget;
 			sourceTree = "<group>";
@@ -559,7 +553,6 @@
 				31531BAF2C05FC09002B52BB /* InfoPlist.xcstrings in Resources */,
 				312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */,
 				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
-				31531BB12C05FC09002B52BB /* Localizable.xcstrings in Resources */,
 				312821CE23D0B96000975F66 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,7 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31E4035428D8D32000CC71B6 /* digital-7-mono.ttf in Resources */,
-				31531BB32C05FC09002B52BB /* Localizable.xcstrings in Resources */,
 				31658F9928D3775A005466C2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

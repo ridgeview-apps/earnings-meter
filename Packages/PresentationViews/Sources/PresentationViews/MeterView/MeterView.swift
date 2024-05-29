@@ -1,7 +1,6 @@
 import Models
 import SwiftUI
 
-
 public struct MeterView: View {
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -24,6 +23,9 @@ public struct MeterView: View {
     private var isTodaySelected: Bool { calendar.isDateInToday(selectedDate) }
     private var hasCompactWidth: Bool { horizontalSizeClass == .compact }
     private var today: Date { calendar.startOfDay(for: .now)}
+    private var formattedSelectedDate: String {
+        selectedDate.formatted(date: .abbreviated, time: .omitted)
+    }
     
     // MARK: - Initializers
     
@@ -72,9 +74,9 @@ public struct MeterView: View {
         Group {
             switch style {
             case .today:
-                Text("meter.header.earnings.today.title", bundle: .module)
+                Text(.meterHeaderEarningsTodayTitle)
             case .accumulated:
-                Text("meter.header.earnings.since.title \(selectedDate.formatted(date: .abbreviated, time: .omitted))", bundle: .module)
+                Text(.meterHeaderEarningsSinceTitle(formattedSelectedDate))
             }
         }
         .textCase(.uppercase)
@@ -118,7 +120,7 @@ public struct MeterView: View {
         DatePicker(selection: $selectedDate,
                    in: ...today,
                    displayedComponents: [.date]) {
-            Text("meter.date.picker.please.select", bundle: .module)
+            Text(.meterDatePickerPleaseSelect)
         }
     }
     
@@ -126,7 +128,7 @@ public struct MeterView: View {
         Button {
             selectedDate = .now
         } label: {
-            Text("Reset")
+            Text(.meterDatePickerResetButtonTitle)
         }
         .disabled(isTodaySelected)
         .buttonStyle(.bordered)

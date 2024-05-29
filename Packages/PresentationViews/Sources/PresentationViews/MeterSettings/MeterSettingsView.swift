@@ -23,10 +23,10 @@ public struct MeterSettingsView: View {
             Section(header: sectionHeader) {
                 rateDetails
                     .padding([.top, .bottom], 12)
-                ExpandableTimePicker(title: "settings.workingHours.startTime.title",
+                ExpandableTimePicker(title: .settingsWorkingHoursStartTimeTitle,
                                      selectedTime: $inputForm.startTime,
                                      isExpanded: $isStartTimeExpanded)
-                ExpandableTimePicker(title: "settings.workingHours.endTime.title",
+                ExpandableTimePicker(title: .settingsWorkingHoursEndTimeTitle,
                                      selectedTime: $inputForm.endTime,
                                      isExpanded: $isEndTimeExpanded)
                 runAtWeekendsToggle
@@ -37,7 +37,7 @@ public struct MeterSettingsView: View {
     
     @ViewBuilder private var sectionHeader: some View {
         if inputForm.editMode == .welcome {
-            Text("settings.welcome.message", bundle: .module)
+            Text(.settingsWelcomeMessage)
         }
     }
     
@@ -53,13 +53,9 @@ public struct MeterSettingsView: View {
     @ViewBuilder private var calculatedDailyRateInfo: some View {
         switch inputForm.rateType {
         case .annual where !calculatedDailyRateText.isEmpty:
-            calculatedDailyRateInfo {
-                Text("settings.rate.calculated \(calculatedDailyRateText)", bundle: .module)
-            }
+            calculatedDailyRateInfo(.settingsRateCalculated(calculatedDailyRateText))
         case .hourly where !calculatedDailyRateText.isEmpty:
-            calculatedDailyRateInfo {
-                Text("settings.rate.calculated.exact \(calculatedDailyRateText)", bundle: .module)
-            }
+            calculatedDailyRateInfo(.settingsRateCalculatedExact(calculatedDailyRateText))
         default:
             EmptyView()
         }
@@ -69,11 +65,11 @@ public struct MeterSettingsView: View {
         inputForm.dailyRate?.currencyFormatted(forLocale: locale) ?? ""
     }
     
-    @ViewBuilder private func calculatedDailyRateInfo(_ message: () -> Text) -> some View {
+    @ViewBuilder private func calculatedDailyRateInfo(_ message: LocalizedStringResource) -> some View {
         HStack {
             Image(systemName: "info.circle.fill")
                 .foregroundColor(.redThree)
-            message()
+            Text(message)
                 .font(.headline)
                 .foregroundColor(.redThree)
                 .lineLimit(2)
@@ -86,10 +82,10 @@ public struct MeterSettingsView: View {
     
     private var rateTextField: some View {
         HStack {
-            Text("settings.rate.title", bundle: .module)
+            Text(.settingsRateTitle)
             Text(locale.currencySymbol ?? "$")
             TextField(text: $inputForm.rateAmountFieldText) {
-                Text("settings.rate.placeholder", bundle: .module)
+                Text(.settingsRatePlaceholder)
             }
             .accessibilityIdentifier("acc.id.rate.textfield")
             .textFieldStyle(.roundedBorder)
@@ -105,7 +101,7 @@ public struct MeterSettingsView: View {
     private var ratePicker: some View {
         Picker("", selection: $inputForm.rateType) {
             ForEach(MeterSettings.Rate.RateType.allCases) { rateType in
-                Text(rateType.localizedStringKey, bundle: .module).tag(rateType)
+                Text(rateType.localizedStringResource).tag(rateType)
             }
         }
         .pickerStyle(.segmented)
@@ -113,7 +109,7 @@ public struct MeterSettingsView: View {
     
     private var runAtWeekendsToggle: some View {
         Toggle(isOn: $inputForm.runAtWeekends) {
-            Text("settings.runAtWeekends.title", bundle: .module)
+            Text(.settingsRunAtWeekendsTitle)
         }
         .toggleStyle(SwitchToggleStyle(tint: .redOne))
     }
@@ -121,14 +117,11 @@ public struct MeterSettingsView: View {
 
 private extension MeterSettings.Rate.RateType {
     
-    var localizedStringKey: LocalizedStringKey {
+    var localizedStringResource: LocalizedStringResource {
         switch self {
-        case .daily:
-            return LocalizedStringKey("settings.rate.picker.daily")
-        case .annual:
-            return LocalizedStringKey("settings.rate.picker.annual")
-        case .hourly:
-            return LocalizedStringKey("settings.rate.picker.hour")
+        case .daily: .settingsRatePickerDaily
+        case .annual: .settingsRatePickerAnnual
+        case .hourly: .settingsRatePickerHour
         }
     }
     

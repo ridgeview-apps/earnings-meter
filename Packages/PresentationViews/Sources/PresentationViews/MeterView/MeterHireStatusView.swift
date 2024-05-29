@@ -43,7 +43,7 @@ public struct MeterHireStatusView: View {
     }
     
     private var statusText: some View {
-        Text(status.localizedStringKey, bundle: .module)
+        Text(status.localizedStringResource)
             .textCase(.uppercase)
             .foregroundColor(.white)
     }
@@ -84,12 +84,10 @@ public extension MeterHireStatusView {
 
 extension MeterHireStatusView.Status {
     
-    var localizedStringKey: LocalizedStringKey {
+    var localizedStringResource: LocalizedStringResource {
         switch self {
-        case .free:
-            return LocalizedStringKey("meter.hireStatus.free")
-        case .atWork:
-            return LocalizedStringKey("meter.hireStatus.atWork")
+        case .free: .meterHireStatusFree
+        case .atWork: .meterHireStatusAtWork
         }
     }
 }
