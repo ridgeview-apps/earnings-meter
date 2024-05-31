@@ -1,2 +1,1 @@
-- Nuevo: ganancias acumuladas!
-- Adaptada para iOS 17
+- Corrección de errores menores

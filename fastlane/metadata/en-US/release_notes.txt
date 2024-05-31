@@ -1,2 +1,1 @@
-- New feature: accumulated earnings! Select a date and the app will show your total earnings since then
-- iOS 17 fixes
+- Minor bug fixes

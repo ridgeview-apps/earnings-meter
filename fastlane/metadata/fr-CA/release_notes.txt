@@ -1,2 +1,1 @@
-- Nouveau: revenus cumulés!
-- Optimisations iOS 17
+- Correction de bugs mineurs
