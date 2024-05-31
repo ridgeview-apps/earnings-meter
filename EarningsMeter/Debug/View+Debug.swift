@@ -8,7 +8,7 @@ extension View {
     func previewWithUserPreferences(_ userPreferences: UserPreferences?) -> some View {
         self
             .task {
-                AppEnvironment.shared.userDefaults?.userPreferences = userPreferences
+                AppEnvironment.shared.userDefaults.userPreferences = userPreferences
             }
     }
 }

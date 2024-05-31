@@ -5,8 +5,6 @@ import SwiftUI
 import PresentationViews
 import WidgetKit
 
-private final class WidgetBundlePin {}
-
 @main
 struct EarningsMeterWidget: Widget {
     let kind: String = "EarningsMeterWidget"
@@ -15,8 +13,8 @@ struct EarningsMeterWidget: Widget {
     private let timelineProvider: MeterTimeLineProvider
     
     init() {
-        self.environment = WidgetEnvironment.shared(loadedFrom: Bundle(for: WidgetBundlePin.self))
-        environment.userDefaults?.migrateLegacyValuesIfNeeded()
+        self.environment = WidgetEnvironment.shared
+        environment.userDefaults.migrateLegacyValuesIfNeeded()
         self.timelineProvider = MeterTimeLineProvider(userDefaults: environment.userDefaults)
     }
     
