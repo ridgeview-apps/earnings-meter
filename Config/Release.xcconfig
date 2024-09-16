@@ -7,6 +7,6 @@ CODE_SIGN_STYLE = Manual
 DEVELOPMENT_TEAM = 3H5L23529U
 ENTITLEMENTS_APP_GROUP_NAME = group.com.ridgeviewapps.earnings-meter.sharedData
 
-// App environment / Info.plist values
+// App config / Info.plist values
 APP_GROUP_NAME = $(ENTITLEMENTS_APP_GROUP_NAME)
 WIDGET_OVERLAY_TITLE =

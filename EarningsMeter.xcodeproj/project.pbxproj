@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31003EBB2BF2538E00643FB8 /* WidgetEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31003EB92BF2533800643FB8 /* WidgetEnvironment.swift */; };
-		31003EBE2BF254F200643FB8 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31003EBD2BF254F200643FB8 /* AppEnvironment.swift */; };
+		31003EBB2BF2538E00643FB8 /* WidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31003EB92BF2533800643FB8 /* WidgetConfig.swift */; };
+		31003EBE2BF254F200643FB8 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31003EBD2BF254F200643FB8 /* AppConfig.swift */; };
 		311C3DBD28E0D7E500E0C63F /* EarningsMeterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */; };
 		312821CE23D0B96000975F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821CD23D0B96000975F66 /* Assets.xcassets */; };
 		312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821D023D0B96000975F66 /* Preview Assets.xcassets */; };
@@ -84,9 +84,9 @@
 
 /* Begin PBXFileReference section */
 		1E82D5FD997C117E47AED734 /* Pods_Contract_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		31003EB92BF2533800643FB8 /* WidgetEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEnvironment.swift; sourceTree = "<group>"; };
+		31003EB92BF2533800643FB8 /* WidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfig.swift; sourceTree = "<group>"; };
 		31003EBC2BF253E600643FB8 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Shared; sourceTree = "<group>"; };
-		31003EBD2BF254F200643FB8 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		31003EBD2BF254F200643FB8 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningsMeterWidget.swift; sourceTree = "<group>"; };
 		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		312821CD23D0B96000975F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				314A488525AF169900FBBF3E /* App.swift */,
-				31003EBD2BF254F200643FB8 /* AppEnvironment.swift */,
+				31003EBD2BF254F200643FB8 /* AppConfig.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				31D82C9F2B0797A800D2CE6E /* Components */,
 				311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */,
 				31FF687028E9D64A0049560B /* MeterTimeline.swift */,
-				31003EB92BF2533800643FB8 /* WidgetEnvironment.swift */,
+				31003EB92BF2533800643FB8 /* WidgetConfig.swift */,
 				31E4035228D8D23D00CC71B6 /* Fonts */,
 				31658F9828D3775A005466C2 /* Assets.xcassets */,
 				31658F9A28D3775A005466C2 /* Info.plist */,
@@ -611,7 +611,7 @@
 			files = (
 				3185541D2B0917030061AD11 /* EnvironmentKeys.swift in Sources */,
 				31C639EC2AFFC2990050340C /* MeterSettingsScreen.swift in Sources */,
-				31003EBE2BF254F200643FB8 /* AppEnvironment.swift in Sources */,
+				31003EBE2BF254F200643FB8 /* AppConfig.swift in Sources */,
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
 				3190A4392BF61CF7009C70F4 /* View+Debug.swift in Sources */,
 				31C639F02B021B170050340C /* RootScreen.swift in Sources */,
@@ -641,7 +641,7 @@
 				31FF687228E9D6890049560B /* MeterTimeline.swift in Sources */,
 				31D82CA22B079A8600D2CE6E /* CircularHireStatusGauge.swift in Sources */,
 				311C3DBD28E0D7E500E0C63F /* EarningsMeterWidget.swift in Sources */,
-				31003EBB2BF2538E00643FB8 /* WidgetEnvironment.swift in Sources */,
+				31003EBB2BF2538E00643FB8 /* WidgetConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

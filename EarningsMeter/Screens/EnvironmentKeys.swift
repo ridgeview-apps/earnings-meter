@@ -1,14 +1,14 @@
 import SwiftUI
 
-// MARK: - AppEnvironment key
+// MARK: - AppConfig key
 
-private struct AppEnvironmentKey: EnvironmentKey {
-    static let defaultValue: AppEnvironment = .shared
+private struct AppConfigKey: EnvironmentKey {
+    static let defaultValue: AppConfig = .shared
 }
 
 extension EnvironmentValues {
-    var appEnvironment: AppEnvironment {
-        get { self[AppEnvironmentKey.self] }
-        set { self[AppEnvironmentKey.self] = newValue }
+    var appConfig: AppConfig {
+        get { self[AppConfigKey.self] }
+        set { self[AppConfigKey.self] = newValue }
     }
 }

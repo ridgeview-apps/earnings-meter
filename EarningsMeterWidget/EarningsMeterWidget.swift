@@ -9,13 +9,13 @@ import WidgetKit
 struct EarningsMeterWidget: Widget {
     let kind: String = "EarningsMeterWidget"
     
-    private let environment: WidgetEnvironment
+    private let widgetConfig: WidgetConfig
     private let timelineProvider: MeterTimeLineProvider
     
     init() {
-        self.environment = WidgetEnvironment.shared
-        environment.userDefaults.migrateLegacyValuesIfNeeded()
-        self.timelineProvider = MeterTimeLineProvider(userDefaults: environment.userDefaults)
+        self.widgetConfig = WidgetConfig.shared
+        widgetConfig.userDefaults.migrateLegacyValuesIfNeeded()
+        self.timelineProvider = MeterTimeLineProvider(userDefaults: widgetConfig.userDefaults)
     }
     
     
@@ -36,7 +36,7 @@ struct EarningsMeterWidget: Widget {
     }
     
     @ViewBuilder private var widgetOverlayTitle: some View {
-        if let widgetOverlayTitle = environment.widgetOverlayTitle, !widgetOverlayTitle.isEmpty {
+        if let widgetOverlayTitle = widgetConfig.widgetOverlayTitle, !widgetOverlayTitle.isEmpty {
             Text(widgetOverlayTitle)
                 .font(.caption2)
                 .foregroundStyle(.white)

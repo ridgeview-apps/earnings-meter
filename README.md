@@ -68,10 +68,10 @@ The app's config files are set up as follows:
 
 Note that the Xcconfig files themselves contain two "kinds" of config:
 
-1. Build settings (e.g. code signing settings, compilation settings, bundle ID)
-1. Environment settings (API urls etc)
+1. Build & Archive settings (e.g. code signing settings, compilation settings, bundle ID)
+1. App config properties (API urls etc)
 
-The environment settings are exposed in the `Info.plist` file and are loaded / referenced from Swift code (e.g. `AppEnvironment`, `WidgetEnvironment`).
+The app config properties are exposed in the `Info.plist` file and are loaded / referenced from Swift code (e.g. `AppConfig`, `WidgetConfig`).
 
 
 ## Fastlane / CI

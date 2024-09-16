@@ -11,7 +11,7 @@
 	<array>
 		<string>digital-7-mono.ttf</string>
 	</array>
-	<key>widgetEnvironment</key>
+	<key>widgetConfig</key>
 	<dict>
 		<key>appGroupName</key>
 		<string>$(APP_GROUP_NAME)</string>

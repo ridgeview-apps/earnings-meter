@@ -7,7 +7,7 @@ import SwiftUI
 
 struct MeterSettingsScreen: View {
 
-    @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: AppEnvironment.shared.userDefaults)
+    @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: .sharedTargetStorage)
     private var userPreferences: UserPreferences = .empty
     
     @Environment(\.dismiss) var dismiss

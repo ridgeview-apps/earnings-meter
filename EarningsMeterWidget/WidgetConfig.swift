@@ -1,7 +1,7 @@
 import Foundation
 import Shared
 
-struct WidgetEnvironment {
+struct WidgetConfig {
     
     let appGroupName: String
     let widgetOverlayTitle: String?
@@ -12,25 +12,25 @@ private final class WidgetBundleLocator {}
 
 // MARK: - Instantiation
 
-extension WidgetEnvironment {
+extension WidgetConfig {
     
-    static let shared: WidgetEnvironment = {
+    static let shared: WidgetConfig = {
         let bundle = Bundle(for: WidgetBundleLocator.self)
-        let config = bundle.loadInfoPlistConfig(forKey: "widgetEnvironment")
+        let config = bundle.loadInfoPlistConfig(forKey: "widgetConfig")
         
         let appGroupName = config["appGroupName"]
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {
             fatalError("Unable to load UserDefaults for app group name \(appGroupName)")
         }
         
-        return WidgetEnvironment(
+        return WidgetConfig(
             appGroupName: config["appGroupName"],
             widgetOverlayTitle: config[safe: "widgetOverlayTitle"],
             userDefaults: sharedTargetDefaults
         )
     }()
     
-    static let stub = WidgetEnvironment(
+    static let stub = WidgetConfig(
         appGroupName: "group.stub.app.group.name",
         widgetOverlayTitle: "Stub",
         userDefaults: .standard

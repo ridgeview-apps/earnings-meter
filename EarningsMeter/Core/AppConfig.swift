@@ -1,12 +1,11 @@
 import Foundation
 import Shared
 
-struct AppEnvironment {
+struct AppConfig {
     
     let contactUsEmail: String
     let appStoreProductUrl: URL
     let appGroupName: String
-    let userDefaults: UserDefaults
     
     var submitAppReviewURL: URL {
         guard var urlComponents = URLComponents(string: appStoreProductUrl.absoluteString) else {
@@ -18,23 +17,36 @@ struct AppEnvironment {
 }
 
 
-// MARK: - Instantiation
+// MARK: - Shared instance
 
-extension AppEnvironment {
+extension AppConfig {
     
-    static let shared: AppEnvironment = {
-        let config = Bundle.main.loadInfoPlistConfig(forKey: "appEnvironment")
+    static let shared: AppConfig = {
+        let config = Bundle.main.loadInfoPlistConfig(forKey: "appConfig")
         
         let appGroupName = config["appGroupName"]
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {
             fatalError("Unable to load UserDefaults for app group name \(appGroupName)")
         }
         
-        return AppEnvironment(
+        return AppConfig(
             contactUsEmail: config["contactUsEmail"],
             appStoreProductUrl: config[url: "appStoreProductUrl"],
-            appGroupName: appGroupName,
-            userDefaults: sharedTargetDefaults
+            appGroupName: appGroupName
         )
+    }()
+}
+
+
+// Default App Storage
+
+extension UserDefaults {
+    
+    static let sharedTargetStorage: UserDefaults = {
+        let appGroupName = AppConfig.shared.appGroupName
+        guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {
+            fatalError("Unable to load UserDefaults for app group name \(appGroupName)")
+        }
+        return sharedTargetDefaults
     }()
 }

@@ -15,7 +15,7 @@ struct MeterScreen: View {
     @State private var selectedDate: Date = Self.defaultSelectionDate
     @State private var currentReading: MeterReading?
     
-    @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: AppEnvironment.shared.userDefaults)
+    @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: .sharedTargetStorage)
     private var userPreferences: UserPreferences = .empty
     
     private var savedMeterSettings: MeterSettings? { userPreferences.meterSettings }

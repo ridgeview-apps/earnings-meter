@@ -12,7 +12,7 @@ struct RootScreen: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: AppEnvironment.shared.userDefaults)
+    @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: .sharedTargetStorage)
     private var userPreferences: UserPreferences = .empty
     
     let sceneChangeHandler = ScenePhaseHandler()
