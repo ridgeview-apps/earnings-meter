@@ -1,7 +1,7 @@
 import Foundation
 import RidgeviewCore
 
-public struct MeterSettings: Codable, Equatable {
+public struct MeterSettings: Codable, Equatable, Sendable {
     public let rate: Rate
     public let startTime: MeterTime
     public let endTime: MeterTime
@@ -20,8 +20,8 @@ public struct MeterSettings: Codable, Equatable {
 
 public extension MeterSettings {
     
-    struct Rate: Codable, Equatable {
-        public enum RateType: Int, Codable, CaseIterable, Identifiable {
+    struct Rate: Codable, Equatable, Sendable {
+        public enum RateType: Int, Codable, CaseIterable, Identifiable, Sendable {
             case annual, daily, hourly
             
             public var id: RateType { self }
@@ -39,7 +39,7 @@ public extension MeterSettings {
 
 public extension MeterSettings {
     
-    struct MeterTime: Equatable, Codable {
+    struct MeterTime: Equatable, Codable, Sendable {
         
         public let hour: Int
         public let minute: Int

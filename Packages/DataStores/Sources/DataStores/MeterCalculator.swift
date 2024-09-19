@@ -2,7 +2,7 @@ import Foundation
 import Models
 import RidgeviewCore
 
-public struct MeterCalculator {
+public struct MeterCalculator: Sendable {
     
     // MARK: - Properties
     

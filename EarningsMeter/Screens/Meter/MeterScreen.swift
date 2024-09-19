@@ -67,11 +67,13 @@ struct MeterScreen: View {
         let meterCalculator = MeterCalculator(meterSettings: savedMeterSettings)
         meterTimer = Timer.scheduledTimer(withTimeInterval: savedMeterSettings.defaultMeterSpeed,
                                           repeats: true) { _ in
-            switch style {
-            case .today:
-                currentReading = meterCalculator.dailyReading(at: .now)
-            case .accumulated:
-                currentReading = meterCalculator.accumulatedReading(at: .now, since: selectedDate)
+            Task { @MainActor in
+                switch style {
+                case .today:
+                    currentReading = meterCalculator.dailyReading(at: .now)
+                case .accumulated:
+                    currentReading = meterCalculator.accumulatedReading(at: .now, since: selectedDate)
+                }
             }
             
         }

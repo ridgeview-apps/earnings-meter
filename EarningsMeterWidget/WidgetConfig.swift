@@ -14,7 +14,7 @@ private final class WidgetBundleLocator {}
 
 extension WidgetConfig {
     
-    static let shared: WidgetConfig = {
+    @MainActor static let shared: WidgetConfig = {
         let bundle = Bundle(for: WidgetBundleLocator.self)
         let config = bundle.loadInfoPlistConfig(forKey: "widgetConfig")
         
@@ -30,7 +30,7 @@ extension WidgetConfig {
         )
     }()
     
-    static let stub = WidgetConfig(
+    @MainActor static let stub = WidgetConfig(
         appGroupName: "group.stub.app.group.name",
         widgetOverlayTitle: "Stub",
         userDefaults: .standard

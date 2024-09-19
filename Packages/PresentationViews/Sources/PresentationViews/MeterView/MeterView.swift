@@ -6,7 +6,7 @@ public struct MeterView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.calendar) var calendar
     
-    public enum Style: Int, Codable, CaseIterable {
+    public enum Style: Int, Codable, CaseIterable, Sendable {
         case today, accumulated
     }
     

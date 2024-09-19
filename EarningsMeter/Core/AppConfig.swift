@@ -42,7 +42,7 @@ extension AppConfig {
 
 extension UserDefaults {
     
-    static let sharedTargetStorage: UserDefaults = {
+    @MainActor static let sharedTargetStorage: UserDefaults = {
         let appGroupName = AppConfig.shared.appGroupName
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {
             fatalError("Unable to load UserDefaults for app group name \(appGroupName)")

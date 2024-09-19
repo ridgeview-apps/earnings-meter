@@ -14,6 +14,6 @@ extension View {
 }
 
 enum UserPreferencesStubs {    
-    static var nineToFiveMeter: UserPreferences = UserPreferences(meterSettings: ModelStubs.dayTime_0900_to_1700(),
+    @MainActor static var nineToFiveMeter: UserPreferences = UserPreferences(meterSettings: ModelStubs.dayTime_0900_to_1700(),
                                                                   earningsSinceDate: nil)
 }

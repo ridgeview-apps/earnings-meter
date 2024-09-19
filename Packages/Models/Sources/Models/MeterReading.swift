@@ -1,8 +1,8 @@
 import Foundation
 
-public struct MeterReading: Equatable {
+public struct MeterReading: Equatable, Sendable {
     
-    public enum Status: Equatable {
+    public enum Status: Equatable, Sendable {
         case notStarted
         case working(progress: Double)
         case finished
