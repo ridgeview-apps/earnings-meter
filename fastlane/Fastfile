@@ -1,5 +1,9 @@
 default_platform(:ios)
 
+before_all do
+  setup_ci if is_ci  
+end
+
 private_lane :read_xcconfig_file do
   path = "../Config/CI/#{ENV["XCODE_CONFIG"]}.xcconfig"
   Xcodeproj::Config.new(path)
@@ -21,7 +25,7 @@ private_lane :xcode_tests do |options|
   scan(
     scheme: options[:scheme],
     configuration: "Debug",
-    device: "iPhone 15 Pro"
+    device: "iPhone 16 Pro (18.0)"
   )
 end
 
@@ -62,13 +66,14 @@ lane :build do
   match(
     readonly: false,
     clone_branch_directly: true,
-    git_url: "git@github.com:ridgeview-apps/ridgeview-certs.git",
+    git_url: "https://github.com/ridgeview-apps/ridgeview-certs.git",
+    git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION_BASE64"],
     app_identifier: match_app_identifiers,
     username: "ci.ridgeview@gmail.com",
     type: "appstore"
   )
   
-  increment_build_number(build_number: ENV["BITRISE_BUILD_NUMBER"]) if is_ci
+  increment_build_number(build_number: ENV["GITHUB_RUN_NUMBER"]) if is_ci
 
   gym(
     clean: true,
