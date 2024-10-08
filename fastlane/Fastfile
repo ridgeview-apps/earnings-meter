@@ -86,7 +86,7 @@ end
 
 lane :distribute do
   app_store_connect_api_key(duration: 1200) if is_ci
-
+  
   groups = ENV["DISTRIBUTION_GROUPS"] ? ENV["DISTRIBUTION_GROUPS"].split("\n") : []
   distribute_external = groups.length > 0  
 
@@ -130,9 +130,8 @@ lane :submit_for_review do |options|
 end
 
 private_lane :upload_to_app_store_connect do |options|
+  app_store_connect_api_key(duration: 1200) if is_ci
     
-  app_store_connect_api_key(duration: 1200)
-
   app_identifier = "com.ridgeviewapps.earnings-meter"
   submit_for_review = options[:submit_for_review] || false
   overwrite_screenshots = options[:overwrite_screenshots] || false

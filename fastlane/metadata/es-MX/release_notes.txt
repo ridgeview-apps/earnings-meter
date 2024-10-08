@@ -1,1 +1,1 @@
-- Corrección de errores menores
+- Adaptada para iOS 18

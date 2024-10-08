@@ -1,1 +1,1 @@
-- Minor bug fixes
+- Optimised for iOS18
