@@ -41,3 +41,17 @@ jobs:
           # bundle exec fastlane unit_tests
           bundle exec fastlane build
           bundle exec fastlane distribute
+
+
+  # Manual approval prod
+  submit-for-review:
+    runs-on: macos-latest
+    environment:
+      name: prod
+    steps:
+      - name: Fastlane commands
+        run: |
+          # echo "Submitting app for review"
+          bundle install
+          bundle update fastlane
+          # bundle exec fastlane submit_for_review
