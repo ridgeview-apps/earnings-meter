@@ -46,12 +46,15 @@ jobs:
   # Manual approval prod
   submit-for-review:
     runs-on: macos-latest
+    needs: build-and-deploy-prod
     environment:
       name: prod
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
       - name: Fastlane commands
         run: |
-          # echo "Submitting app for review"
+          echo "Submitting app for review"
           bundle install
           bundle update fastlane
-          # bundle exec fastlane submit_for_review
+          bundle exec fastlane submit_for_review
