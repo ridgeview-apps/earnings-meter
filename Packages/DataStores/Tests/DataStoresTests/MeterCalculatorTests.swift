@@ -1,11 +1,15 @@
-import XCTest
+import Foundation
+import Testing
 import Models
 import ModelStubs
+import Shared
+
 @testable import DataStores
 
-class MeterCalculatorTests: XCTestCase {
+struct MeterCalculatorTests {
     
-    func testDailyReading_weekday_beforeWork() throws {
+    @Test
+    func dailyReading_weekday_beforeWork() throws {
         
         // Given
         let now = DateStubs.weekday_0800_London
@@ -17,12 +21,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
         
         // Then
-        XCTAssertEqual(0, currentReading.amountEarned)
-        XCTAssertEqual(0, currentReading.progress)
-        XCTAssertEqual(.notStarted, currentReading.status)
+        #expect(currentReading.amountEarned == 0)
+        #expect(currentReading.progress == 0)
+        #expect(currentReading.status == .notStarted)
     }
     
-    func testDailyReading_weekday_atWork() throws {
+    @Test
+    func dailyReading_weekday_atWork() throws {
 
         // Given
         let now = DateStubs.weekday_1300_London
@@ -34,12 +39,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
 
         // Then
-        XCTAssertEqual(200, currentReading.amountEarned)
-        XCTAssertEqual(0.5, currentReading.progress)
-        XCTAssertEqual(.working(progress: 0.5), currentReading.status)
+        #expect(currentReading.amountEarned == 200)
+        #expect(currentReading.progress == 0.5)
+        #expect(currentReading.status == .working(progress: 0.5))
     }
 
-    func testDailyReading_weekday_afterWork() throws {
+    @Test
+    func dailyReading_weekday_afterWork() throws {
 
         // Given
         let now = DateStubs.weekday_1900_London
@@ -51,12 +57,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
 
         // Then
-        XCTAssertEqual(400, currentReading.amountEarned)
-        XCTAssertEqual(1, currentReading.progress)
-        XCTAssertEqual(.finished, currentReading.status)
+        #expect(currentReading.amountEarned == 400)
+        #expect(currentReading.progress == 1)
+        #expect(currentReading.status == .finished)
     }
 
-    func testDailyReading_atWeekend_forWeekendWorker_showsReadingValue() throws {
+    @Test
+    func dailyReading_atWeekend_forWeekendWorker_showsReadingValue() throws {
 
         // Given
         let now = DateStubs.weekend_1300_London
@@ -68,12 +75,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
 
         // Then
-        XCTAssertEqual(200, currentReading.amountEarned)
-        XCTAssertEqual(0.5, currentReading.progress)
-        XCTAssertEqual(.working(progress: 0.5), currentReading.status)
+        #expect(currentReading.amountEarned == 200)
+        #expect(currentReading.progress == 0.5)
+        #expect(currentReading.status == .working(progress: 0.5))
     }
 
-    func testDailyReading_atWeekend_forNonWeekendWorker_showsZeroReading() throws {
+    @Test
+    func dailyReading_atWeekend_forNonWeekendWorker_showsZeroReading() throws {
 
         // Given
         let now = DateStubs.weekend_1300_London
@@ -85,12 +93,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
 
         // Then
-        XCTAssertEqual(0, currentReading.amountEarned)
-        XCTAssertEqual(0, currentReading.progress)
-        XCTAssertEqual(.notStarted, currentReading.status)
+        #expect(currentReading.amountEarned == 0)
+        #expect(currentReading.progress == 0)
+        #expect(currentReading.status == .notStarted)
     }
 
-    func testDailyReading_overnightWorker_beforeWork() throws {
+    @Test
+    func dailyReading_overnightWorker_beforeWork() throws {
 
         // Given
         let now = DateStubs.weekday_1900_London
@@ -103,12 +112,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
 
         // Then
-        XCTAssertEqual(0, currentReading.amountEarned)
-        XCTAssertEqual(0, currentReading.progress)
-        XCTAssertEqual(.notStarted, currentReading.status)
+        #expect(currentReading.amountEarned == 0)
+        #expect(currentReading.progress == 0)
+        #expect(currentReading.status == .notStarted)
     }
 
-    func testDailyReading_overnightWorker_atWork() throws {
+    @Test
+    func dailyReading_overnightWorker_atWork() throws {
 
         // Given
         let now = DateStubs.weekday_0200_London
@@ -120,13 +130,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
         
         // Then
-        XCTAssertEqual(200, currentReading.amountEarned)
-        XCTAssertEqual(0.5, currentReading.progress)
-        XCTAssertEqual(.working(progress: 0.5), currentReading.status)
-
+        #expect(currentReading.amountEarned == 200)
+        #expect(currentReading.progress == 0.5)
+        #expect(currentReading.status == .working(progress: 0.5))
     }
 
-    func testDailyReading_overnightWorker_afterWork() throws {
+    @Test
+    func dailyReading_overnightWorker_afterWork() throws {
 
         // Given
         let now = DateStubs.weekday_0800_London
@@ -138,13 +148,13 @@ class MeterCalculatorTests: XCTestCase {
         let currentReading = calculator.dailyReading(at: now)
         
         // Then
-        XCTAssertEqual(400, currentReading.amountEarned)
-        XCTAssertEqual(1, currentReading.progress)
-        XCTAssertEqual(.finished, currentReading.status)
-
+        #expect(currentReading.amountEarned == 400)
+        #expect(currentReading.progress == 1)
+        #expect(currentReading.status == .finished)
     }
     
-    func testAccumulatedMeterReading_dayWorker_beforeWork() throws {
+    @Test
+    func accumulatedMeterReading_dayWorker_beforeWork() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 7)! // Before work
@@ -157,12 +167,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(100, accumulatedReading.amountEarned)
-        XCTAssertEqual(0, accumulatedReading.progress)
-        XCTAssertEqual(.notStarted, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 100)
+        #expect(accumulatedReading.progress == 0)
+        #expect(accumulatedReading.status == .notStarted)
     }
     
-    func testAccumulatedMeterReading_dayWorker_atWork() throws {
+    @Test
+    func accumulatedMeterReading_dayWorker_atWork() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 13)! // Middle of day
@@ -175,12 +186,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(150, accumulatedReading.amountEarned)
-        XCTAssertEqual(0.5, accumulatedReading.progress)
-        XCTAssertEqual(.working(progress: 0.5), accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 150)
+        #expect(accumulatedReading.progress == 0.5)
+        #expect(accumulatedReading.status == .working(progress: 0.5))
     }
     
-    func testAccumulatedMeterReading_dayWorker_afterWork() throws {
+    @Test
+    func accumulatedMeterReading_dayWorker_afterWork() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 21)! // End of day
@@ -193,12 +205,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(200, accumulatedReading.amountEarned)
-        XCTAssertEqual(1, accumulatedReading.progress)
-        XCTAssertEqual(.finished, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 200)
+        #expect(accumulatedReading.progress == 1)
+        #expect(accumulatedReading.status == .finished)
     }
     
-    func testAccumulatedMeterReading_annualRate() throws {
+    @Test
+    func accumulatedMeterReading_annualRate() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2020, month: 6, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 8, day: 1)!// 3 years and 61 days later
@@ -211,12 +224,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(126684.93, accumulatedReading.amountEarned, accuracy: 0.1)
-        XCTAssertEqual(0, accumulatedReading.progress)
-        XCTAssertEqual(.notStarted, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned.isAlmostEqual(to: 126684.93, plusOrMinus: 0.01))
+        #expect(accumulatedReading.progress == 0)
+        #expect(accumulatedReading.status == .notStarted)
     }
     
-    func testAccumulatedMeterReading_nightWorker_beforeMidday_afterWork() throws {
+    @Test
+    func accumulatedMeterReading_nightWorker_beforeMidday_afterWork() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 10)! // 10am (after work)
@@ -229,12 +243,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(100, accumulatedReading.amountEarned)
-        XCTAssertEqual(1, accumulatedReading.progress)
-        XCTAssertEqual(.finished, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 100)
+        #expect(accumulatedReading.progress == 1)
+        #expect(accumulatedReading.status == .finished)
     }
     
-    func testAccumulatedMeterReading_nightWorker_afterMidday_beforeWork() throws {
+    @Test
+    func accumulatedMeterReading_nightWorker_afterMidday_beforeWork() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 21)! // 9pm (before work)
@@ -247,12 +262,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(100, accumulatedReading.amountEarned)
-        XCTAssertEqual(0, accumulatedReading.progress)
-        XCTAssertEqual(.notStarted, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 100)
+        #expect(accumulatedReading.progress == 0)
+        #expect(accumulatedReading.status == .notStarted)
     }
     
-    func testAccumulatedMeterReading_nightWorker_atWork() throws {
+    @Test
+    func accumulatedMeterReading_nightWorker_atWork() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 3, hour: 2)! // Middle of night (next day)
@@ -265,12 +281,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(150, accumulatedReading.amountEarned)
-        XCTAssertEqual(0.5, accumulatedReading.progress)
-        XCTAssertEqual(.working(progress: 0.5), accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 150)
+        #expect(accumulatedReading.progress == 0.5)
+        #expect(accumulatedReading.status == .working(progress: 0.5))
     }
     
-    func testAccumulatedMeterReading_nightWorker_afterWork_beforeMidday() throws {
+    @Test
+    func accumulatedMeterReading_nightWorker_afterWork_beforeMidday() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 3, hour: 8)! // After work (next day)
@@ -283,12 +300,13 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(200, accumulatedReading.amountEarned)
-        XCTAssertEqual(1, accumulatedReading.progress)
-        XCTAssertEqual(.finished, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 200)
+        #expect(accumulatedReading.progress == 1)
+        #expect(accumulatedReading.status == .finished)
     }
     
-    func testAccumulatedMeterReading_nightWorker_beforeWork_afterMidday() throws {
+    @Test
+    func accumulatedMeterReading_nightWorker_beforeWork_afterMidday() throws {
         // Given
         let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
         let now = DateStubs.UTC(year: 2023, month: 1, day: 3, hour: 13)!
@@ -301,9 +319,9 @@ class MeterCalculatorTests: XCTestCase {
         let accumulatedReading = calculator.accumulatedReading(at: now, since: startDate)
         
         // Then
-        XCTAssertEqual(200, accumulatedReading.amountEarned)
-        XCTAssertEqual(0, accumulatedReading.progress)
-        XCTAssertEqual(.notStarted, accumulatedReading.status)
+        #expect(accumulatedReading.amountEarned == 200)
+        #expect(accumulatedReading.progress == 0)
+        #expect(accumulatedReading.status == .notStarted)
     }
     
 }

@@ -1,14 +1,15 @@
-import XCTest
+import Testing
 import Models
 import ModelStubs
 
 @testable import PresentationViews
 
-class MeterSettingsInputFormTests: XCTestCase {
+struct MeterSettingsInputFormTests {
     
     // N.B. these are just basic tests based on the input amount (can flesh these out further later).
     
-    func testInputForm_welcomeMode() {
+    @Test
+    func inputForm_welcomeMode() {
         // Given
         let form = MeterSettingsInputForm.welcomeMode()
         
@@ -16,11 +17,12 @@ class MeterSettingsInputFormTests: XCTestCase {
         let rateAmountTextField = form.rateAmountFieldText
         
         // Then
-        XCTAssertTrue(rateAmountTextField.isEmpty)
-        XCTAssertFalse(form.isValid)
+        #expect(rateAmountTextField.isEmpty)
+        #expect(!form.isValid)
     }
     
-    func testInputForm_updateMode() {
+    @Test
+    func inputForm_updateMode() {
         // Given
         let form = MeterSettingsInputForm.updateMode(with: ModelStubs.dayTime_0900_to_1700())
         
@@ -28,11 +30,11 @@ class MeterSettingsInputFormTests: XCTestCase {
         let rateAmountTextField = form.rateAmountFieldText
         
         // Then
-        XCTAssertTrue(!rateAmountTextField.isEmpty)
+        #expect(!rateAmountTextField.isEmpty)
     }
     
-    
-    func testInputForm_becomesValid_whenNumericAmountIsEntered() {
+    @Test
+    func inputForm_becomesValid_whenNumericAmountIsEntered() {
         // Given
         var form = MeterSettingsInputForm.welcomeMode()
         let isInitiallyValid = form.isValid
@@ -42,11 +44,12 @@ class MeterSettingsInputFormTests: XCTestCase {
         let isNowValid = form.isValid
         
         // Then
-        XCTAssertFalse(isInitiallyValid)
-        XCTAssertTrue(isNowValid)
+        #expect(!isInitiallyValid)
+        #expect(isNowValid)
     }
     
-    func testInputForm_remainsInvalid_whenNonNumericAmountIsEntered() {
+    @Test
+    func inputForm_remainsInvalid_whenNonNumericAmountIsEntered() {
         // Given
         var form = MeterSettingsInputForm.welcomeMode()
         let isInitiallyValid = form.isValid
@@ -56,7 +59,7 @@ class MeterSettingsInputFormTests: XCTestCase {
         let isNowValid = form.isValid
         
         // Then
-        XCTAssertFalse(isInitiallyValid)
-        XCTAssertFalse(isNowValid)
+        #expect(!isInitiallyValid)
+        #expect(!isNowValid)
     }
 }
