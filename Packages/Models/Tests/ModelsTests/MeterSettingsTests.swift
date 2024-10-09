@@ -42,7 +42,8 @@ struct MeterSettingsTests {
         #expect(meterSettingsDailyRate.workDayDuration == 28_800)
     }
     
-    func testIsOverNightWorker() {
+    @Test
+    func isOverNightWorker() {
         let dayTimeWorker = ModelStubs.dayTime_0900_to_1700()
         let nightWorker = ModelStubs.nightTime_2200_to_0600()
         
