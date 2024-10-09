@@ -1,17 +1,18 @@
 import Models
 import ModelStubs
-import XCTest
+import Testing
 
 @testable import DataStores
 
-final class UserPreferencesTests: XCTestCase {
+struct UserPreferencesTests {
     
-    func testMeterSettingsSetUpRequired() throws {
+    @Test
+    func meterSettingsSetUpRequired() throws {
         let populatedUserPrefs = UserPreferences(meterSettings: ModelStubs.dayTime_0900_to_1700(),
                                                  earningsSinceDate: nil)
         let emptyUserPrefs = UserPreferences.empty
         
-        XCTAssertFalse(populatedUserPrefs.needsOnboarding)
-        XCTAssertTrue(emptyUserPrefs.needsOnboarding)
+        #expect(!populatedUserPrefs.needsOnboarding)
+        #expect(emptyUserPrefs.needsOnboarding)
     }
 }
