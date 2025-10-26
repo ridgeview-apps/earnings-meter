@@ -62,7 +62,7 @@ public extension LocalizedStringResource {
     }
 
     static var meterDatePickerPleaseSelect: LocalizedStringResource {
-        moduleResource("meter.date.picker.select")
+        moduleResource("meter.date.picker.please.select")
     }
     
     static func meterHeaderEarningsSinceTitle(_ title: String) -> LocalizedStringResource {

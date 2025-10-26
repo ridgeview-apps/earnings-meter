@@ -350,7 +350,6 @@
       }
     },
     "meter.date.picker.please.select" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,9 +393,6 @@
           }
         }
       }
-    },
-    "meter.date.picker.select" : {
-
     },
     "meter.header.earnings.since.title %@" : {
       "localizations" : {
