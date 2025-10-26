@@ -49,14 +49,6 @@ public extension LocalizedStringResource {
         moduleResource("contact.us.subject \(subject)")
     }
     
-    static var debugAppGroupHeader: LocalizedStringResource {
-        moduleResource("debug.app.group.header")
-    }
-    
-    static var debugAppGroupTitle: LocalizedStringResource {
-        moduleResource("debug.app.group.title")
-    }
-    
     static var earningsSinceNavigationTitle: LocalizedStringResource {
         moduleResource("earnings.since.navigation.title")
     }
@@ -70,13 +62,9 @@ public extension LocalizedStringResource {
     }
 
     static var meterDatePickerPleaseSelect: LocalizedStringResource {
-        moduleResource("meter.date.picker.please.select")
+        moduleResource("meter.date.picker.select")
     }
     
-    static var meterDatePickerResetButtonTitle: LocalizedStringResource {
-        moduleResource("meter.date.picker.reset.button.title")
-    }
-
     static func meterHeaderEarningsSinceTitle(_ title: String) -> LocalizedStringResource {
         moduleResource("meter.header.earnings.since.title \(title)")
     }
@@ -153,14 +141,6 @@ public extension LocalizedStringResource {
         moduleResource("settings.workingHours.startTime.title")
     }
 
-    static var tabTitleAccumulatedEarnings: LocalizedStringResource {
-        moduleResource("tab.title.accumulated.earnings")
-    }
-
-    static var tabTitleEarningsToday: LocalizedStringResource {
-        moduleResource("tab.title.earnings.today")
-    }
-    
     static var widgetMeterConfigurationDescription: LocalizedStringResource {
         moduleResource("widget.meter.configuration.description")
     }
@@ -168,4 +148,12 @@ public extension LocalizedStringResource {
     static var widgetMeterConfigurationDisplayName: LocalizedStringResource {
         moduleResource("widget.meter.configuration.display.name")
     }
+}
+
+// Public Localization strings
+
+public enum L10n {
+
+    public static var tabTitleAccumulatedEarnings: LocalizedStringResource { .tabTitleAccumulatedEarnings }
+    public static var tabTitleEarningsToday: LocalizedStringResource { .tabTitleEarningsToday }
 }

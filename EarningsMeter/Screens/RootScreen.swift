@@ -1,6 +1,7 @@
 import DataStores
 import SwiftUI
 import Models
+import PresentationViews
 
 enum TabContentSheetItem: Identifiable {
     var id: Self { self }
@@ -43,7 +44,7 @@ struct RootScreen: View {
         )
         .tabContentScreen(
             imageName: "dollarsign.square",
-            title: .tabTitleEarningsToday,
+            title: L10n.tabTitleEarningsToday,
             accessibilityID: "acc.id.tab.title.earnings.today"
         )
     }
@@ -55,7 +56,7 @@ struct RootScreen: View {
         )
         .tabContentScreen(
             imageName: "calendar",
-            title: .tabTitleAccumulatedEarnings,
+            title: L10n.tabTitleAccumulatedEarnings,
             accessibilityID: "acc.id.tab.title.accumulated.earnings"
         )
     }
