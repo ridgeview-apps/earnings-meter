@@ -1,10 +1,6 @@
 import Foundation
 import SwiftUI
 
-extension LocalizedStringResource.BundleDescription {
-    static let module: Self = { .atURL(Bundle.module.bundleURL) }()
-}
-
 // TOD0 - code-generate this file from JSON string catalog
 
 public extension LocalizedStringResource {
