@@ -3,7 +3,10 @@ name: Feature branch checks
 on:
   push:
     branches:
-      - 'feature/**'    
+      - 'feature/**'
+
+  workflow_dispatch: # Manual trigger
+  
 
 env:
   GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
