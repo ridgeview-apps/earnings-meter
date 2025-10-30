@@ -1,6 +1,7 @@
 name: Beta
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - shilan-workflow-trigger-test2
