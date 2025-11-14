@@ -4,7 +4,8 @@ class GenerateScreenshots: XCTestCase {
     
     private var app: XCUIApplication!
 
-    override func setUpWithError() throws {
+    @MainActor
+    override func setUp() async throws {
         continueAfterFailure = false
         
         app = XCUIApplication()
@@ -14,6 +15,7 @@ class GenerateScreenshots: XCTestCase {
     }
     
 
+    @MainActor
     func testGenerateAppScreenshots() throws {
         var screenshotNumber = 0
         func captureScreenshot(_ name: String) {
@@ -22,7 +24,7 @@ class GenerateScreenshots: XCTestCase {
             snapshot("\(numPrefix)-\(name)")
         }
         
-        let iPhone = UIDevice.current.userInterfaceIdiom == .phone
+//        let iPhone = UIDevice.current.userInterfaceIdiom == .phone
         let iPad = UIDevice.current.userInterfaceIdiom == .pad
         
         XCUIDevice.shared.orientation = iPad ? .landscapeLeft : .portrait
