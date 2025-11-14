@@ -24,10 +24,12 @@ public extension ModelStubs {
     private static func meterSettings(rate: MeterSettings.Rate = .init(amount: 40_000, type: .annual),
                                       startTime: MeterSettings.MeterTime = .init(hour: 8, minute: 10),
                                       endTime: MeterSettings.MeterTime = .init(hour: 18, minute: 30),
-                                      runAtWeekends: Bool = false) -> MeterSettings {
+                                      runAtWeekends: Bool = false,
+                                      emojisEnabled: Bool = true) -> MeterSettings {
         .init(rate: rate,
               startTime: startTime,
               endTime: endTime,
-              runAtWeekends: runAtWeekends)
+              runAtWeekends: runAtWeekends,
+              emojisEnabled: emojisEnabled)
     }
 }

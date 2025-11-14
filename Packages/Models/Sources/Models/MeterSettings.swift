@@ -6,15 +6,31 @@ public struct MeterSettings: Codable, Equatable, Sendable {
     public let startTime: MeterTime
     public let endTime: MeterTime
     public let runAtWeekends: Bool
+    public let emojisEnabled: Bool
     
     public init(rate: Rate,
                 startTime: MeterTime,
                 endTime: MeterTime,
-                runAtWeekends: Bool) {
+                runAtWeekends: Bool,
+                emojisEnabled: Bool) {
         self.rate = rate
         self.startTime = startTime
         self.endTime = endTime
         self.runAtWeekends = runAtWeekends
+        self.emojisEnabled = emojisEnabled
+    }
+    
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.rate = try container.decode(MeterSettings.Rate.self, forKey: .rate)
+        self.startTime = try container.decode(MeterSettings.MeterTime.self, forKey: .startTime)
+        self.endTime = try container.decode(MeterSettings.MeterTime.self, forKey: .endTime)
+        self.runAtWeekends = try container.decode(Bool.self, forKey: .runAtWeekends)
+        do {
+            self.emojisEnabled = try container.decode(Bool.self, forKey: .emojisEnabled)
+        } catch {
+            self.emojisEnabled = true
+        }
     }
 }
 

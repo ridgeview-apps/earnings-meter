@@ -103,8 +103,12 @@ public struct MeterView: View {
     }
     
     private var hireStatusView: some View {
-        MeterHireStatusView(reading: reading, showLiveStatusImage: true)
-            .font(.subheadline)
+        MeterHireStatusView(
+            reading: reading,
+            showEmoji: settings.emojisEnabled,
+            showLiveStatusImage: true
+        )
+        .font(.subheadline)
     }
     
     @ViewBuilder private var datePickerContainerView: some View {

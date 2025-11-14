@@ -76,7 +76,8 @@ struct MainWidgetView: View {
     private var smallWidget: some View {
         borderedWidget {
             VStack(spacing: 12) {
-                CircularHireStatusGauge(reading: entry.reading)
+                CircularHireStatusGauge(reading: entry.reading,
+                                        settings: entry.meterSettings)
                     .tint(.redOne)
                 MeterDigitsView(reading: entry.reading,
                                 style: .small,
@@ -94,7 +95,7 @@ struct MainWidgetView: View {
                 VStack(spacing: 8) {
                     MeterHireStatusView(reading: entry.reading,
                                         showStatusText: true,
-                                        showEmoji: true)
+                                        showEmoji: entry.meterSettings.emojisEnabled)
                     .font(.subheadline)
                     MeterProgressBarView(settings: entry.meterSettings,
                                          reading: entry.reading,
@@ -110,7 +111,7 @@ struct MainWidgetView: View {
         Gauge(value: entry.reading.progress) {
             MeterHireStatusView(reading: entry.reading,
                                 showStatusText: false,
-                                showEmoji: true)
+                                showEmoji: entry.meterSettings.emojisEnabled)
             .font(.footnote)
         } currentValueLabel: {
             MeterDigitsView(reading: entry.reading,
@@ -122,7 +123,8 @@ struct MainWidgetView: View {
     
     private var lockScreenRectangularWidget: some View {
         HStack {
-            CircularHireStatusGauge(reading: entry.reading)
+            CircularHireStatusGauge(reading: entry.reading,
+                                    settings: entry.meterSettings)
             MeterDigitsView(reading: entry.reading,
                             style: .small,
                             showCurrencySymbol: true)

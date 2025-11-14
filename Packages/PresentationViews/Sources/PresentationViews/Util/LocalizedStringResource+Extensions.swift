@@ -88,7 +88,7 @@ public extension LocalizedStringResource {
     static var settingsButtonTitleStart: LocalizedStringResource {
         moduleResource("settings.button.title.start")
     }
-    
+
     static var settingsNavigationTitleEdit: LocalizedStringResource {
         moduleResource("settings.navigation.title.edit")
     }

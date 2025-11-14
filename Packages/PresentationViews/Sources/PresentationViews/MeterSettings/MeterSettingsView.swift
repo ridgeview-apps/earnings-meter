@@ -30,6 +30,7 @@ public struct MeterSettingsView: View {
                                      selectedTime: $inputForm.endTime,
                                      isExpanded: $isEndTimeExpanded)
                 runAtWeekendsToggle
+                emojisEnabledToggle
             }
         }
         .scrollDismissesKeyboard(.interactively)
@@ -110,6 +111,13 @@ public struct MeterSettingsView: View {
     private var runAtWeekendsToggle: some View {
         Toggle(isOn: $inputForm.runAtWeekends) {
             Text(.settingsRunAtWeekendsTitle)
+        }
+        .toggleStyle(SwitchToggleStyle(tint: .redOne))
+    }
+    
+    private var emojisEnabledToggle: some View {
+        Toggle(isOn: $inputForm.emojisEnabled) {
+            Text(.settingsEmojisEnabledTitle)
         }
         .toggleStyle(SwitchToggleStyle(tint: .redOne))
     }
