@@ -1,1 +1,2 @@
-- Optimised for iOS18
+- Optimised for iOS26 / Liquid Glass
+- Emojis can now be turned off in Settings

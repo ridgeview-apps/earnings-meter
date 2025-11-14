@@ -1,1 +1,1 @@
-- Optimisations iOS 18
+- Optimisations iOS 26 / Liquid Glass
