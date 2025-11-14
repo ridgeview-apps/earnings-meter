@@ -31,13 +31,13 @@ class GenerateScreenshots: XCTestCase {
         
         captureScreenshot("Setup")
         
-        app.textFields["acc.id.rate.textfield"].tap()
+        app.textFields["acc.id.rate.textfield"].firstMatch.tap()
         app.typeText("400")
         app.buttons["acc.id.save.button"].tap()
                 
         captureScreenshot("DailyEarnings")
         
-        app.buttons["acc.id.tab.title.accumulated.earnings"].tap()
+        app.buttons["acc.id.tab.title.accumulated.earnings"].firstMatch.tap()
         
         captureScreenshot("AccumulatedEarnings")
     }
