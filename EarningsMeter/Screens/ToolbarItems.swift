@@ -9,7 +9,7 @@ struct ToolbarSettingsButton: ToolbarContent {
 
     var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
-            ImageButton(imageName: "gear", action: action)
+            ImageButton(imageName: "gearshape", action: action)
         }
     }
 }

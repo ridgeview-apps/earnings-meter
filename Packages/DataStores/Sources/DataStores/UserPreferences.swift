@@ -1,7 +1,7 @@
 import Models
 import Foundation
 
-public struct UserPreferences {
+public struct UserPreferences: Sendable {
     
     public var meterSettings: MeterSettings?
     public var earningsSinceDate: Date?

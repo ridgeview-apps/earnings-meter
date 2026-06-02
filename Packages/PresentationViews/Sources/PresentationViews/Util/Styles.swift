@@ -34,11 +34,14 @@ public extension Font {
     }
 
     private static func registerFont(named name: String, in bundle: Bundle = .module) throws {
-       guard let asset = NSDataAsset(name: "Fonts/\(name)", bundle: bundle),
-             let provider = CGDataProvider(data: asset.data as NSData),
-             let font = CGFont(provider),
-             CTFontManagerRegisterGraphicsFont(font, nil) else {
-        throw FontError.failedToRegisterFont
-       }
+        guard let asset = NSDataAsset(name: "Fonts/\(name)", bundle: bundle) else {
+            throw FontError.failedToRegisterFont
+        }
+        let fontURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(name).ttf")
+        try asset.data.write(to: fontURL, options: .atomic)
+        var error: Unmanaged<CFError>?
+        guard CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error) else {
+            throw FontError.failedToRegisterFont
+        }
     }
 }

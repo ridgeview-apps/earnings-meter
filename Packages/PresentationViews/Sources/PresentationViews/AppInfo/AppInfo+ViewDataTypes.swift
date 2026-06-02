@@ -2,7 +2,7 @@ public enum AppInfo {} // Namespace
 
 public extension AppInfo {
     
-    struct ContactUs: Equatable {
+    struct ContactUs: Equatable, Sendable {
         public let emailAddress: String
         public let appVersion: String
         public let appName: String
