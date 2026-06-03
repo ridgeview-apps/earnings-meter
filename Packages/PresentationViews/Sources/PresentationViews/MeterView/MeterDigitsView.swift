@@ -49,7 +49,6 @@ public struct MeterDigitsView: View {
         ZStack(alignment: .trailing) {
             faintBackgroundAmount
             Text(amount, format: amountFormatStyle)
-                .contentTransition(.numericText(value: amount))
         }
         .font(digitFont)
         .foregroundColor(isEnabled ? .redOne : Color.redTwo)
