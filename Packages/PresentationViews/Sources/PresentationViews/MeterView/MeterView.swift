@@ -79,8 +79,8 @@ public struct MeterView: View {
                     LinearGradient(
                         stops: [
                             .init(color: .white.opacity(0.85), location: 0),
-                            .init(color: .white.opacity(0.4), location: 0.55),
-                            .init(color: .black.opacity(0.6), location: 1)
+                            .init(color: .white.opacity(0.35), location: 0.55),
+                            .init(color: .white.opacity(0.1), location: 1)
                         ],
                         startPoint: .top,
                         endPoint: .bottom
