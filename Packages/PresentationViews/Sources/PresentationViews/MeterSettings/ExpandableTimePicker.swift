@@ -20,10 +20,9 @@ struct ExpandableTimePicker: View {
         } label: {
             HStack {
                 Text(title)
-                    .foregroundColor(.primary)
                 Spacer()
                 Text(selectedTime.formatted(date: .omitted, time: .shortened))
-                    .foregroundColor(isExpanded ? .blue : .primary)
+                    .foregroundColor(isExpanded ? Color.accentColor : .primary)
             }
         }
         .accessibilityElement(children: .combine)

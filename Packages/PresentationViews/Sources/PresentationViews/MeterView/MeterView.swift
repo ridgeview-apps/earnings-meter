@@ -55,7 +55,7 @@ public struct MeterView: View {
     // MARK: - Layout views
     
     public var meterView: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 20) {
             meterHeader
             VStack(spacing: 4) {
                 digitsView
@@ -63,7 +63,7 @@ public struct MeterView: View {
             }
             progressBarView
         }
-        .padding(20)
+        .padding(24)
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .fill(
@@ -75,11 +75,15 @@ public struct MeterView: View {
             RoundedRectangle(cornerRadius: 16)
                 .strokeBorder(
                     LinearGradient(
-                        colors: [.white, .white.opacity(0.5)],
+                        stops: [
+                            .init(color: .white.opacity(0.85), location: 0),
+                            .init(color: .white.opacity(0.4), location: 0.55),
+                            .init(color: .black.opacity(0.6), location: 1)
+                        ],
                         startPoint: .top,
                         endPoint: .bottom
                     ),
-                    lineWidth: 4
+                    lineWidth: 2
                 )
         }
         .shadow(color: .black.opacity(0.22), radius: 6, x: 0, y: 3)
@@ -95,7 +99,7 @@ public struct MeterView: View {
                 Text(.meterHeaderEarningsSinceTitle(formattedSelectedDate))
             }
         }
-        .instrumentLabel()
+        .instrumentLabel(.headline)
         .shrinkableSingleLine()
         .padding(.horizontal, 20)
         .foregroundColor(.white)
@@ -115,6 +119,7 @@ public struct MeterView: View {
             calendar: calendar
         )
         .frame(maxWidth: 450)
+        .padding(.horizontal, 16)
     }
     
     private var hireStatusView: some View {
@@ -122,7 +127,7 @@ public struct MeterView: View {
             reading: reading,
             showEmoji: settings.emojisEnabled
         )
-        .font(.caption)
+        .font(.subheadline)
     }
     
     @ViewBuilder private var datePickerContainerView: some View {

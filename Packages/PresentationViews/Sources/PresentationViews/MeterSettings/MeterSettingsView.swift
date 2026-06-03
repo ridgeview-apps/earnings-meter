@@ -125,8 +125,6 @@ public struct MeterSettingsView: View {
     private var rateTextField: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(.settingsRateTitle)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.secondary)
             HStack(spacing: 10) {
                 Text(locale.currencySymbol ?? "$")
                     .font(.headline.weight(.semibold))

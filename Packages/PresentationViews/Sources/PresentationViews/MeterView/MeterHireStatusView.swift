@@ -25,6 +25,9 @@ public struct MeterHireStatusView: View {
     
     public var body: some View {
         HStack {
+            if showStatusText {
+                statusText
+            }
             if showEmoji {
                 Image(systemName: statusSymbolName)
                     .foregroundStyle(.white)
@@ -36,15 +39,12 @@ public struct MeterHireStatusView: View {
                         isActive: status == .atWork
                     )
             }
-            if showStatusText {
-                statusText
-            }
         }
     }
     
     private var statusText: some View {
         Text(status.localizedStringResource)
-            .instrumentLabel(.caption)
+            .instrumentLabel(.footnote)
             .foregroundColor(.white)
     }
     

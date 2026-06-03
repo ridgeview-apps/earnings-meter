@@ -10,7 +10,7 @@ public extension View {
     func instrumentLabel(_ textStyle: Font.TextStyle = .subheadline) -> some View {
         self.textCase(.uppercase)
             .font(.system(textStyle, weight: .semibold))
-            .tracking(1.5)
+            .tracking(1)
     }
     
     func roundedBorder(_ color: Color,
