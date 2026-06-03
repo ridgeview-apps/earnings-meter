@@ -109,7 +109,7 @@ public extension FormatStyle where Self == FloatingPointFormatStyle<Double> {
 public extension MeterSettings {
     
     var defaultMeterSpeed: TimeInterval {
-        let minMeterSpeed: TimeInterval = 0.3
+        let minMeterSpeed: TimeInterval = 1
         var desiredSpeed: TimeInterval = minMeterSpeed
         if dailyRate > 0 {
             desiredSpeed = workDayDuration / (dailyRate * 100)

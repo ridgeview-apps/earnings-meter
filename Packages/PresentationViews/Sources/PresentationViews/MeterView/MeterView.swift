@@ -104,7 +104,7 @@ public struct MeterView: View {
     private var digitsView: some View {
         MeterDigitsView(reading: reading,
                         style: hasCompactWidth ? .medium : .large)
-        .animation(.default, value: reading.amountEarned)
+        .animation(.snappy, value: reading.amountEarned)
     }
     
     private var progressBarView: some View {
