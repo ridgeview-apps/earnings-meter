@@ -43,7 +43,7 @@ struct RootScreen: View {
             navigationTitle: .earningsTodayNavigationTitle
         )
         .tabContentScreen(
-            imageName: "dollarsign.square",
+            imageName: "gauge.with.dots.needle.bottom.50percent",
             title: L10n.tabTitleEarningsToday,
             accessibilityID: "acc.id.tab.title.earnings.today"
         )
@@ -55,7 +55,7 @@ struct RootScreen: View {
             navigationTitle: .earningsSinceNavigationTitle
         )
         .tabContentScreen(
-            imageName: "calendar",
+            imageName: "chart.line.uptrend.xyaxis",
             title: L10n.tabTitleAccumulatedEarnings,
             accessibilityID: "acc.id.tab.title.accumulated.earnings"
         )

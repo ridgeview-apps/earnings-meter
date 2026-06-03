@@ -17,7 +17,9 @@ public struct MeterView: View {
     public let reading: MeterReading
     
     @Binding public var selectedDate: Date
-    
+
+    @State private var showResetConfirmation: Bool = false
+
     private var isEnabled: Bool { reading.progress > 0 }
     private var showsDatePicker: Bool { style == .accumulated }
     private var isTodaySelected: Bool { calendar.isDateInToday(selectedDate) }
@@ -164,13 +166,26 @@ public struct MeterView: View {
     
     private var dateResetButton: some View {
         Button {
-            selectedDate = .now
+            showResetConfirmation = true
         } label: {
             Text(.meterDatePickerResetButtonTitle)
         }
         .disabled(isTodaySelected)
         .buttonStyle(.bordered)
         .tint(Color.redThree)
+        .confirmationDialog(Text(.meterDatePickerResetConfirmTitle),
+                            isPresented: $showResetConfirmation,
+                            titleVisibility: .visible) {
+            Button(role: .destructive) {
+                selectedDate = .now
+            } label: {
+                Text(.meterDatePickerResetButtonTitle)
+            }
+            Button(role: .cancel) {
+            } label: {
+                Text(.meterDatePickerResetConfirmCancelButton)
+            }
+        }
     }
 }
 
