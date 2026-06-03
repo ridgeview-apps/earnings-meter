@@ -127,9 +127,24 @@ public struct MeterView: View {
     
     @ViewBuilder private var datePickerContainerView: some View {
         if showsDatePicker {
-            HStack {
-                datePicker
-                dateResetButton
+            HStack(spacing: 10) {
+                Image(systemName: "calendar")
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
+                HStack {
+                    datePicker
+                    dateResetButton
+                }
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.secondary.opacity(0.08))
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(Color.secondary.opacity(0.2), lineWidth: 1)
             }
         }
     }
