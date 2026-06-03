@@ -1,3 +1,4 @@
+import PresentationViews
 import SwiftUI
 
 // MARK: - Settings button
@@ -43,12 +44,14 @@ struct ToolbarCloseButton: ToolbarContent {
 
     var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
-            ImageButton(imageName: "xmark.circle.fill") {
+            ImageButton(imageName: "xmark") {
                 if onShouldDismiss() {
                     dismiss()
                     onDidDismiss()
                 }
             }
+            .accessibilityLabel(Text(.toolbarCloseButtonAccessibilityLabel))
+            .accessibilityHint(Text(.toolbarCloseButtonAccessibilityHint))
         }
     }
 }

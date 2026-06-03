@@ -5,15 +5,18 @@ struct ExpandableTimePicker: View {
 
     
     let title: LocalizedStringResource
+    let accessibilityIdentifier: String
     @Binding private(set) var selectedTime: Date
     @Binding private(set) var isExpanded: Bool
     
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {
-            DatePicker("",
+            DatePicker(title,
                        selection: $selectedTime,
                        displayedComponents: .hourAndMinute)
+            .labelsHidden()
             .datePickerStyle(.wheel)
+            .accessibilityIdentifier("\(accessibilityIdentifier).picker")
         } label: {
             HStack {
                 Text(title)
@@ -23,6 +26,11 @@ struct ExpandableTimePicker: View {
                     .foregroundColor(isExpanded ? .blue : .primary)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text(title))
+        .accessibilityValue(Text(selectedTime.formatted(date: .omitted, time: .shortened)))
+        .accessibilityHint(isExpanded ? Text(.settingsWorkingHoursCollapseHint) : Text(.settingsWorkingHoursExpandHint))
+        .accessibilityIdentifier(accessibilityIdentifier)
     }
 }
 
@@ -37,6 +45,7 @@ private struct WrapperView: View {
     var body: some View {
         Form {
             ExpandableTimePicker(title: "Picker 1",
+                                 accessibilityIdentifier: "acc.id.preview.time.picker",
                                  selectedTime: $selectedTime,
                                  isExpanded: $isExpanded)
         }

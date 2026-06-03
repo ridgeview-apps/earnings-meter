@@ -89,6 +89,34 @@ public extension LocalizedStringResource {
         moduleResource("settings.button.title.start")
     }
 
+    static var settingsKeyboardDone: LocalizedStringResource {
+        moduleResource("settings.keyboard.done")
+    }
+
+    static var settingsDiscardChangesTitle: LocalizedStringResource {
+        moduleResource("settings.discardChanges.title")
+    }
+
+    static var settingsDiscardChangesMessage: LocalizedStringResource {
+        moduleResource("settings.discardChanges.message")
+    }
+
+    static var settingsDiscardChangesConfirmButton: LocalizedStringResource {
+        moduleResource("settings.discardChanges.confirmButton")
+    }
+
+    static var settingsDiscardChangesCancelButton: LocalizedStringResource {
+        moduleResource("settings.discardChanges.cancelButton")
+    }
+
+    static var toolbarCloseButtonAccessibilityLabel: LocalizedStringResource {
+        moduleResource("toolbar.close.button.accessibility.label")
+    }
+
+    static var toolbarCloseButtonAccessibilityHint: LocalizedStringResource {
+        moduleResource("toolbar.close.button.accessibility.hint")
+    }
+
     static var settingsNavigationTitleEdit: LocalizedStringResource {
         moduleResource("settings.navigation.title.edit")
     }
@@ -125,8 +153,28 @@ public extension LocalizedStringResource {
         moduleResource("settings.rate.title")
     }
 
+    static var settingsRateValidationInvalidAmount: LocalizedStringResource {
+        moduleResource("settings.rate.validation.invalidAmount")
+    }
+
+    static var settingsRatePickerAccessibilityLabel: LocalizedStringResource {
+        moduleResource("settings.rate.picker.accessibility.label")
+    }
+
+    static var settingsRatePickerAccessibilityHint: LocalizedStringResource {
+        moduleResource("settings.rate.picker.accessibility.hint")
+    }
+
     static var settingsRunAtWeekendsTitle: LocalizedStringResource {
         moduleResource("settings.runAtWeekends.title")
+    }
+
+    static var settingsRunAtWeekendsAccessibilityHint: LocalizedStringResource {
+        moduleResource("settings.runAtWeekends.accessibility.hint")
+    }
+
+    static var settingsEmojisEnabledAccessibilityHint: LocalizedStringResource {
+        moduleResource("settings.emojisEnabled.accessibility.hint")
     }
 
     static var settingsWelcomeMessage: LocalizedStringResource {
@@ -139,6 +187,22 @@ public extension LocalizedStringResource {
 
     static var settingsWorkingHoursStartTimeTitle: LocalizedStringResource {
         moduleResource("settings.workingHours.startTime.title")
+    }
+
+    static var settingsWorkingHoursInvalid: LocalizedStringResource {
+        moduleResource("settings.workingHours.invalid")
+    }
+
+    static var settingsWorkingHoursOvernightInfo: LocalizedStringResource {
+        moduleResource("settings.workingHours.overnight.info")
+    }
+
+    static var settingsWorkingHoursExpandHint: LocalizedStringResource {
+        moduleResource("settings.workingHours.expand.hint")
+    }
+
+    static var settingsWorkingHoursCollapseHint: LocalizedStringResource {
+        moduleResource("settings.workingHours.collapse.hint")
     }
 
     static var widgetMeterConfigurationDescription: LocalizedStringResource {

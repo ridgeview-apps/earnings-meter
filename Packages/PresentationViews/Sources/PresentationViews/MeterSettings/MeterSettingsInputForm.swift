@@ -27,6 +27,7 @@ public extension MeterSettingsInputForm {
     
     enum ValidationError: Error {
         case invalidRateAmount
+        case invalidWorkingHours
     }
     var isValid: Bool {
         let validatedSettings = try? toMeterSettings()
@@ -34,10 +35,19 @@ public extension MeterSettingsInputForm {
     }
 
     var dailyRate: Double? { try? toMeterSettings()?.dailyRate }
+    var hasValidWorkingHours: Bool { validateWorkingHours() }
+    var hasOvernightWorkingHours: Bool {
+        let startMeterTime = meterTime(for: startTime, calendar: calendar)
+        let endMeterTime = meterTime(for: endTime, calendar: calendar)
+        return endMeterTime.seconds < startMeterTime.seconds
+    }
 
     func toMeterSettings() throws -> MeterSettings? {
         guard let validatedRateAmount = validateInputRateAmount() else {
             throw ValidationError.invalidRateAmount
+        }
+        guard validateWorkingHours() else {
+            throw ValidationError.invalidWorkingHours
         }
         
         return .init(rate: .init(amount: validatedRateAmount,
@@ -50,6 +60,12 @@ public extension MeterSettingsInputForm {
     
     private func validateInputRateAmount() -> Double? {
         try? Double(rateAmountFieldText, format: rateAmountFormat).rounded(toDecimalPlaces: 2)
+    }
+
+    private func validateWorkingHours() -> Bool {
+        let startMeterTime = meterTime(for: startTime, calendar: calendar)
+        let endMeterTime = meterTime(for: endTime, calendar: calendar)
+        return startMeterTime != endMeterTime
     }
     
     private func meterTime(for date: Date, calendar: Calendar) -> MeterSettings.MeterTime {

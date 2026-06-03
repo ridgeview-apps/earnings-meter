@@ -63,4 +63,42 @@ struct MeterSettingsInputFormTests {
         #expect(!isInitiallyValid)
         #expect(!isNowValid)
     }
+
+    @Test
+    func inputForm_remainsInvalid_whenStartAndEndTimesAreTheSame() {
+        // Given
+        var form = MeterSettingsInputForm.welcomeMode()
+        form.rateAmountFieldText = "400"
+
+        // When
+        form.endTime = form.startTime
+
+        // Then
+        #expect(!form.hasValidWorkingHours)
+        #expect(!form.isValid)
+    }
+
+    @Test
+    func inputForm_allowsOvernightShift_whenEndTimeIsBeforeStartTime() throws {
+        // Given
+        var form = MeterSettingsInputForm.welcomeMode()
+        form.rateAmountFieldText = "400"
+
+        // When
+        let overnightStart = form.calendar.date(bySettingHour: 22,
+                                                minute: 0,
+                                                second: 0,
+                                                of: form.startTime)
+        let overnightEnd = form.calendar.date(bySettingHour: 6,
+                                              minute: 0,
+                                              second: 0,
+                                              of: form.endTime)
+        form.startTime = try #require(overnightStart)
+        form.endTime = try #require(overnightEnd)
+
+        // Then
+        #expect(form.hasOvernightWorkingHours)
+        #expect(form.hasValidWorkingHours)
+        #expect(form.isValid)
+    }
 }

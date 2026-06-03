@@ -13,6 +13,8 @@ struct MeterSettingsScreen: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var inputForm: MeterSettingsInputForm = .welcomeMode()
+    @State private var initialInputFormSnapshot: InputFormSnapshot?
+    @State private var showDiscardChangesDialog = false
     
     var body: some View {
         NavigationStack {
@@ -21,11 +23,27 @@ struct MeterSettingsScreen: View {
                 .interactiveDismissDisabled(userPreferences.needsOnboarding)
                 .toolbar {
                     if !userPreferences.needsOnboarding {
-                        ToolbarCloseButton(placement: .topBarLeading)
+                        ToolbarCloseButton(placement: .topBarLeading,
+                                           onShouldDismiss: onCloseButtonShouldDismiss)
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         saveButton
                     }
+                }
+                .confirmationDialog(Text(.settingsDiscardChangesTitle),
+                                    isPresented: $showDiscardChangesDialog,
+                                    titleVisibility: .visible) {
+                    Button(role: .destructive) {
+                        dismiss()
+                    } label: {
+                        Text(.settingsDiscardChangesConfirmButton)
+                    }
+                    Button(role: .cancel) {
+                    } label: {
+                        Text(.settingsDiscardChangesCancelButton)
+                    }
+                } message: {
+                    Text(.settingsDiscardChangesMessage)
                 }
                 .task {
                     prepareEditMode()
@@ -36,9 +54,11 @@ struct MeterSettingsScreen: View {
     private func prepareEditMode() {
         guard !userPreferences.needsOnboarding,
               let savedMeterSettings = userPreferences.meterSettings else {
+            initialInputFormSnapshot = .init(inputForm)
             return
         }
         inputForm = .updateMode(with: savedMeterSettings)
+        initialInputFormSnapshot = .init(inputForm)
     }
     
     private var navigationTitle: Text {
@@ -70,5 +90,38 @@ struct MeterSettingsScreen: View {
         }
         .accessibilityIdentifier("acc.id.save.button")
         .disabled(!inputForm.isValid)
+    }
+
+    private func onCloseButtonShouldDismiss() -> Bool {
+        if hasUnsavedChanges {
+            showDiscardChangesDialog = true
+            return false
+        }
+        return true
+    }
+
+    private var hasUnsavedChanges: Bool {
+        guard let initialInputFormSnapshot else {
+            return false
+        }
+        return initialInputFormSnapshot != .init(inputForm)
+    }
+}
+
+private struct InputFormSnapshot: Equatable {
+    let rateType: MeterSettings.Rate.RateType
+    let rateAmountFieldText: String
+    let startTime: Date
+    let endTime: Date
+    let runAtWeekends: Bool
+    let emojisEnabled: Bool
+
+    init(_ inputForm: MeterSettingsInputForm) {
+        self.rateType = inputForm.rateType
+        self.rateAmountFieldText = inputForm.rateAmountFieldText
+        self.startTime = inputForm.startTime
+        self.endTime = inputForm.endTime
+        self.runAtWeekends = inputForm.runAtWeekends
+        self.emojisEnabled = inputForm.emojisEnabled
     }
 }
