@@ -96,7 +96,7 @@ struct MainWidgetView: View {
                     MeterHireStatusView(reading: entry.reading,
                                         showStatusText: true,
                                         showEmoji: entry.meterSettings.emojisEnabled)
-                    .font(.subheadline)
+                    .font(.caption)
                     MeterProgressBarView(settings: entry.meterSettings,
                                          reading: entry.reading,
                                          showsTextLabels: true,
@@ -122,7 +122,7 @@ struct MainWidgetView: View {
     }
     
     private var lockScreenRectangularWidget: some View {
-        HStack {
+        HStack(spacing: 8) {
             CircularHireStatusGauge(reading: entry.reading,
                                     settings: entry.meterSettings)
             MeterDigitsView(reading: entry.reading,

@@ -18,6 +18,14 @@ public struct MeterDigitsView: View {
     var style: Style
     var showCurrencySymbol: Bool = true
     
+    @Environment(\.locale) private var locale
+
+    private var amountFormatStyle: FloatingPointFormatStyle<Double> {
+        .number
+            .precision(.fractionLength(2))
+            .locale(locale)
+    }
+    
     public var body: some View {
         HStack(alignment: .center) {
             if showCurrencySymbol {
@@ -32,38 +40,39 @@ public struct MeterDigitsView: View {
     // MARK: - Layout views
     
     private var currencySymbolText: some View {
-        Text(amountFormatter.currencySymbol)
-            .foregroundColor(.white)
-            .font(symbolFont)
+        Text(locale.currencySymbol ?? "$")
+            .foregroundStyle(Color.white.opacity(0.7))
+            .font(.system(size: symbolFontSize, weight: .semibold, design: .rounded))
     }
     
     private var amountText: some View {
         ZStack(alignment: .trailing) {
             faintBackgroundAmount
-            Text(amount as NSNumber, formatter: amountFormatter)
+            Text(amount, format: amountFormatStyle)
+                .contentTransition(.numericText(value: amount))
         }
         .font(digitFont)
         .foregroundColor(isEnabled ? .redOne : Color.redTwo)
     }
     
     @ViewBuilder private var faintBackgroundAmount: some View {
-        let amountText = amountFormatter.string(from: amount as NSNumber) ?? "0.00"
-        let digitsOfEight = amountText
+        let formatted = amount.formatted(amountFormatStyle)
+        let digitsOfEight = formatted
                                 .map { $0.isNumber ? "8" : String($0) }
                                 .joined()
         Text(digitsOfEight).opacity(0.1)
     }
     
-    private var symbolFont: Font {
+    private var symbolFontSize: CGFloat {
         switch style {
         case .tiny:
-            return .digitFont(size: 12)
+            return 10
         case .small:
-            return .digitFont(size: 20)
+            return 16
         case .medium:
-            return .digitFont(size: 35)
+            return 28
         case .large:
-            return .digitFont(size: 50)
+            return 40
         }
     }
     
@@ -80,16 +89,6 @@ public struct MeterDigitsView: View {
         }
     }
 }
-
-
-private let amountFormatter: NumberFormatter = {
-    let numFormatter = NumberFormatter()
-    numFormatter.numberStyle = .decimal
-    numFormatter.minimumFractionDigits = 2
-    numFormatter.maximumFractionDigits = 2
-    return numFormatter
-}()
-
 
 // MARK: - Convenience init
 

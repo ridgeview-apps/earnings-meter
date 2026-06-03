@@ -14,21 +14,63 @@ public struct MeterProgressBarView: View {
     private let disabledFillColor = Color.redTwo
     
     public var body: some View {
-        
-        Gauge(value: value) {
-            Text("")
-        } currentValueLabel: {
-            Text("")
-        } minimumValueLabel: {
-            Text(showTextLabels ? leftLabelText : "")
-        } maximumValueLabel: {
-            Text(showTextLabels ? rightLabelText : "")
+        HStack(spacing: 10) {
+            if showTextLabels {
+                sideLabel(leftLabelText)
+            }
+            meterTrack
+            if showTextLabels {
+                sideLabel(rightLabelText)
+            }
         }
-        .font(.subheadline)
-        .foregroundColor(isEnabled ? .white : disabledFillColor)
-        .tint(isEnabled ? .redOne : disabledFillColor)
-        .gaugeStyle(.accessoryLinearCapacity)
         .frame(maxHeight: 20)
+    }
+
+    private func sideLabel(_ text: String) -> some View {
+        Text(text)
+            .font(.system(.footnote, design: .monospaced, weight: .medium))
+            .foregroundStyle(isEnabled ? Color.white : disabledFillColor)
+    }
+
+    private var meterTrack: some View {
+        GeometryReader { proxy in
+            let trackShape = Capsule()
+            ZStack(alignment: .leading) {
+                trackShape
+                    .fill(
+                        Color.black.opacity(0.45)
+                            .shadow(.inner(color: .black.opacity(0.6), radius: 2, x: 0, y: 1))
+                    )
+
+                if value > 0 {
+                    trackShape
+                        .fill(
+                            LinearGradient(
+                                colors: isEnabled
+                                    ? [Color.redOne.opacity(0.7), Color.redOne]
+                                    : [disabledFillColor.opacity(0.7), disabledFillColor],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(width: proxy.size.width * value)
+                        .shadow(color: isEnabled ? Color.redOne.opacity(0.5) : .clear, radius: 3)
+                }
+
+                HStack(spacing: 0) {
+                    ForEach(0..<5) { index in
+                        if index > 0 { Spacer(minLength: 0) }
+                        Rectangle()
+                            .fill(Color.white.opacity(0.22))
+                            .frame(width: 1)
+                    }
+                }
+                .padding(.horizontal, 4)
+                .allowsHitTesting(false)
+            }
+            .clipShape(trackShape)
+        }
+        .frame(height: 10)
     }
 }
 

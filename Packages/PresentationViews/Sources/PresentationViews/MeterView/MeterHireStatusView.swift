@@ -20,44 +20,44 @@ public struct MeterHireStatusView: View {
     public let progressValue: Double
     public let showStatusText: Bool
     public let showEmoji: Bool
-    public let showLiveStatusImage: Bool
-    
     
     // MARK: - Body
     
     public var body: some View {
         HStack {
             if showEmoji {
-                Text(statusEmoji)
+                Image(systemName: statusSymbolName)
+                    .foregroundStyle(.white)
+                    .symbolRenderingMode(.hierarchical)
+                    .contentTransition(.symbolEffect(.replace))
+                    .symbolEffect(
+                        .pulse,
+                        options: .repeating,
+                        isActive: status == .atWork
+                    )
             }
             if showStatusText {
                 statusText
             }
-            if status == .atWork && showLiveStatusImage {
-                Image(systemName: "circle.inset.filled")
-                    .foregroundColor(.white)
-                    .pulsatingSymbol()
-            }
-
         }
     }
     
     private var statusText: some View {
         Text(status.localizedStringResource)
-            .textCase(.uppercase)
+            .instrumentLabel(.caption)
             .foregroundColor(.white)
     }
     
-    private var statusEmoji: String {
+    private var statusSymbolName: String {
         switch status {
         case .atWork where progressValue < 0.25:
-            return "☹️"
+            return "face.dashed"
         case .atWork where progressValue < 0.5:
-            return "😐"
+            return "face.dashed.fill"
         case .atWork where progressValue < 0.75:
-            return "🙂"
+            return "face.smiling"
         default:
-            return "😀" // Free or at end of working day
+            return "face.smiling.fill" // Free or at end of working day
         }
     }
 }
@@ -69,20 +69,18 @@ public extension MeterHireStatusView {
 
     init(reading: MeterReading,
          showStatusText: Bool = true,
-         showEmoji: Bool = true,
-         showLiveStatusImage: Bool = false) {
+         showEmoji: Bool = true) {
         self.status = reading.hireStatus
         self.progressValue = reading.progress
         self.showStatusText = showStatusText
         self.showEmoji = showEmoji
-        self.showLiveStatusImage = showLiveStatusImage
     }
     
 }
 
 // MARK: - Hire status localized text
 
-extension MeterHireStatusView.Status {
+public extension MeterHireStatusView.Status {
     
     var localizedStringResource: LocalizedStringResource {
         switch self {
@@ -92,7 +90,7 @@ extension MeterHireStatusView.Status {
     }
 }
 
-private extension MeterReading {
+public extension MeterReading {
    
     var hireStatus: MeterHireStatusView.Status {
         switch self.status {
@@ -113,7 +111,6 @@ private extension MeterReading {
         MeterHireStatusView(reading: .working(amountEarned: 3, progress: 0.3))
         MeterHireStatusView(reading: .working(amountEarned: 6, progress: 0.6))
         MeterHireStatusView(reading: .working(amountEarned: 9, progress: 0.9))
-        MeterHireStatusView(reading: .working(amountEarned: 9, progress: 0.9), showLiveStatusImage: true)
         MeterHireStatusView(reading: .notStarted)
         MeterHireStatusView(reading: .finished(amountEarned: 10))
     }

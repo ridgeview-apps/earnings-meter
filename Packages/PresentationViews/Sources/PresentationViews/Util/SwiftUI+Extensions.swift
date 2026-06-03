@@ -6,6 +6,12 @@ public extension View {
         self.lineLimit(1)
             .minimumScaleFactor(minimumScaleFactor)
     }
+
+    func instrumentLabel(_ textStyle: Font.TextStyle = .subheadline) -> some View {
+        self.textCase(.uppercase)
+            .font(.system(textStyle, weight: .semibold))
+            .tracking(1.5)
+    }
     
     func roundedBorder(_ color: Color,
                        cornerRadius: CGFloat = 4,
@@ -71,27 +77,5 @@ public extension View {
     func styledPreview() -> some View {
         Font.registerCustomFonts()
         return self
-    }
-}
-
-
-// MARK: - Pulsating symbol
-
-public extension View {
-    func pulsatingSymbol() -> some View {
-        self.modifier(PulsatingSymbolEffectModifier())
-    }
-}
-
-private struct PulsatingSymbolEffectModifier: ViewModifier {
-    
-    @State private var isAnimating = false
-    
-    func body(content: Content) -> some View {
-        content
-            .symbolEffect(.pulse, options: .repeating, value: isAnimating)
-            .onAppear {
-                isAnimating = true
-            }
     }
 }

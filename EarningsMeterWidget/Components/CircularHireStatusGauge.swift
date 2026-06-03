@@ -9,17 +9,16 @@ struct CircularHireStatusGauge: View {
     
     var body: some View {
         Gauge(value: reading.progress) {
-            hireStatusView(showStatusText: false, showEmoji: settings.emojisEnabled)
+            MeterHireStatusView(reading: reading,
+                                showStatusText: false,
+                                showEmoji: settings.emojisEnabled)
+            .font(.footnote)
         } currentValueLabel: {
-            hireStatusView(showStatusText: true, showEmoji: false)
+            Text(reading.hireStatus.localizedStringResource)
+                .textCase(.uppercase)
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(.white)
         }
         .gaugeStyle(.accessoryCircular)
-    }
-    
-    private func hireStatusView(showStatusText: Bool, showEmoji: Bool) -> some View {
-        MeterHireStatusView(reading: reading,
-                            showStatusText: showStatusText,
-                            showEmoji: showEmoji)
-        .font(.footnote)
     }
 }

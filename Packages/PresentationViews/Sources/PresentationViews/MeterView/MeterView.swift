@@ -64,9 +64,25 @@ public struct MeterView: View {
             progressBarView
         }
         .padding(20)
-        .background(Color.darkGrey1)
-        .roundedBorder(.white, cornerRadius: 16, lineWidth: 4)
-        .shadow(color: .black.opacity(0.14), radius: 4, x: 0, y: 2)
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(
+                    Color.darkGrey1
+                        .shadow(.inner(color: .black.opacity(0.55), radius: 6, x: 0, y: 4))
+                )
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .strokeBorder(
+                    LinearGradient(
+                        colors: [.white, .white.opacity(0.5)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ),
+                    lineWidth: 4
+                )
+        }
+        .shadow(color: .black.opacity(0.22), radius: 6, x: 0, y: 3)
         
     }
     
@@ -79,8 +95,7 @@ public struct MeterView: View {
                 Text(.meterHeaderEarningsSinceTitle(formattedSelectedDate))
             }
         }
-        .textCase(.uppercase)
-        .font(.title2)
+        .instrumentLabel()
         .shrinkableSingleLine()
         .padding(.horizontal, 20)
         .foregroundColor(.white)
@@ -105,10 +120,9 @@ public struct MeterView: View {
     private var hireStatusView: some View {
         MeterHireStatusView(
             reading: reading,
-            showEmoji: settings.emojisEnabled,
-            showLiveStatusImage: true
+            showEmoji: settings.emojisEnabled
         )
-        .font(.subheadline)
+        .font(.caption)
     }
     
     @ViewBuilder private var datePickerContainerView: some View {
@@ -179,4 +193,19 @@ private struct WrapperView: View {
 #Preview("Accumulated earnings") {
     WrapperView(style: .accumulated,
                 reading: .accumulated(amountEarned: 1234567, status: .working(progress: 0.5)))
+}
+
+#Preview("English / USD") {
+    WrapperView(style: .today, reading: .working(amountEarned: 123.45, progress: 0.5))
+        .environment(\.locale, Locale(identifier: "en_US"))
+}
+
+#Preview("Français / EUR") {
+    WrapperView(style: .today, reading: .working(amountEarned: 123.45, progress: 0.5))
+        .environment(\.locale, Locale(identifier: "fr_FR"))
+}
+
+#Preview("Español / EUR") {
+    WrapperView(style: .today, reading: .working(amountEarned: 123.45, progress: 0.5))
+        .environment(\.locale, Locale(identifier: "es_ES"))
 }
