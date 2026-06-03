@@ -30,6 +30,7 @@ public struct MeterProgressBarView: View {
         Text(text)
             .font(.system(.footnote, design: .monospaced, weight: .medium))
             .foregroundStyle(isEnabled ? Color.white : disabledFillColor)
+            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
     }
 
     private var meterTrack: some View {
