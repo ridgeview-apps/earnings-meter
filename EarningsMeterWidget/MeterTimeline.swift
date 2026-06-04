@@ -85,8 +85,7 @@ private extension MeterSettings {
     static let placeholder = MeterSettings(rate: .init(amount: 100, type: .daily),
                                            startTime: .init(hour: 9, minute: 0),
                                            endTime: .init(hour: 5, minute: 0),
-                                           runAtWeekends: true,
-                                           emojisEnabled: true)
+                                           runAtWeekends: true)
 }
 
 private extension Date {

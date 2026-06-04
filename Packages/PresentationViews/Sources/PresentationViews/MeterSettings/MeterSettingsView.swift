@@ -32,7 +32,6 @@ public struct MeterSettingsView: View {
                                      isExpanded: $isEndTimeExpanded)
                 workingHoursInfo
                 runAtWeekendsToggle
-                emojisEnabledToggle
             }
         }
         .scrollDismissesKeyboard(.interactively)
@@ -198,15 +197,6 @@ public struct MeterSettingsView: View {
         .toggleStyle(SwitchToggleStyle(tint: .redOne))
         .accessibilityHint(Text(.settingsRunAtWeekendsAccessibilityHint))
         .accessibilityIdentifier("acc.id.run.at.weekends.toggle")
-    }
-
-    private var emojisEnabledToggle: some View {
-        Toggle(isOn: $inputForm.emojisEnabled) {
-            Text(.settingsEmojisEnabledTitle)
-        }
-        .toggleStyle(SwitchToggleStyle(tint: .redOne))
-        .accessibilityHint(Text(.settingsEmojisEnabledAccessibilityHint))
-        .accessibilityIdentifier("acc.id.emojis.enabled.toggle")
     }
 
     private var shouldShowRateValidationError: Bool {

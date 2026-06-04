@@ -76,8 +76,7 @@ struct MainWidgetView: View {
     private var smallWidget: some View {
         borderedWidget {
             VStack(spacing: 12) {
-                CircularHireStatusGauge(reading: entry.reading,
-                                        settings: entry.meterSettings)
+                CircularHireStatusGauge(reading: entry.reading)
                     .tint(.redOne)
                 MeterDigitsView(reading: entry.reading,
                                 style: .small,
@@ -94,8 +93,7 @@ struct MainWidgetView: View {
                                 showCurrencySymbol: true)
                 VStack(spacing: 8) {
                     MeterHireStatusView(reading: entry.reading,
-                                        showStatusText: true,
-                                        showEmoji: entry.meterSettings.emojisEnabled)
+                                        showStatusText: true)
                     .font(.caption)
                     MeterProgressBarView(settings: entry.meterSettings,
                                          reading: entry.reading,
@@ -110,8 +108,7 @@ struct MainWidgetView: View {
     private var lockScreenSmallCircularWidget: some View {
         Gauge(value: entry.reading.progress) {
             MeterHireStatusView(reading: entry.reading,
-                                showStatusText: false,
-                                showEmoji: entry.meterSettings.emojisEnabled)
+                                showStatusText: false)
             .font(.footnote)
         } currentValueLabel: {
             MeterDigitsView(reading: entry.reading,
@@ -123,8 +120,7 @@ struct MainWidgetView: View {
     
     private var lockScreenRectangularWidget: some View {
         HStack(spacing: 8) {
-            CircularHireStatusGauge(reading: entry.reading,
-                                    settings: entry.meterSettings)
+            CircularHireStatusGauge(reading: entry.reading)
             MeterDigitsView(reading: entry.reading,
                             style: .small,
                             showCurrencySymbol: true)

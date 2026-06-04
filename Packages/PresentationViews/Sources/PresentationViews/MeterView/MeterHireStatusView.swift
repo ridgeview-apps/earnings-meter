@@ -19,19 +19,18 @@ public struct MeterHireStatusView: View {
     public let status: Status
     public let progressValue: Double
     public let showStatusText: Bool
-    public let showEmoji: Bool
     
     // MARK: - Body
     
     public var body: some View {
-        HStack {
+        HStack(spacing: 6) {
             if showStatusText {
                 statusText
             }
-            if showEmoji {
+            if status == .atWork {
                 Image(systemName: statusSymbolName)
-                    .foregroundStyle(.white)
-                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(statusSymbolPrimaryColor, statusSymbolSecondaryColor)
+                    .symbolRenderingMode(.palette)
                     .contentTransition(.symbolEffect(.replace))
                     .symbolEffect(
                         .pulse,
@@ -47,18 +46,17 @@ public struct MeterHireStatusView: View {
             .instrumentLabel(.footnote)
             .foregroundColor(.white)
     }
-    
+
     private var statusSymbolName: String {
-        switch status {
-        case .atWork where progressValue < 0.25:
-            return "face.dashed"
-        case .atWork where progressValue < 0.5:
-            return "face.dashed.fill"
-        case .atWork where progressValue < 0.75:
-            return "face.smiling"
-        default:
-            return "face.smiling.fill" // Free or at end of working day
-        }
+        "briefcase.fill"
+    }
+
+    private var statusSymbolPrimaryColor: Color {
+        .redOne
+    }
+
+    private var statusSymbolSecondaryColor: Color {
+        .white.opacity(0.85)
     }
 }
 
@@ -68,12 +66,10 @@ public struct MeterHireStatusView: View {
 public extension MeterHireStatusView {
 
     init(reading: MeterReading,
-         showStatusText: Bool = true,
-         showEmoji: Bool = true) {
+         showStatusText: Bool = true) {
         self.status = reading.hireStatus
         self.progressValue = reading.progress
         self.showStatusText = showStatusText
-        self.showEmoji = showEmoji
     }
     
 }
@@ -107,8 +103,6 @@ public extension MeterReading {
 
 #Preview {
     VStack {
-        MeterHireStatusView(reading: .working(amountEarned: 1, progress: 0.1))
-        MeterHireStatusView(reading: .working(amountEarned: 3, progress: 0.3))
         MeterHireStatusView(reading: .working(amountEarned: 6, progress: 0.6))
         MeterHireStatusView(reading: .working(amountEarned: 9, progress: 0.9))
         MeterHireStatusView(reading: .notStarted)

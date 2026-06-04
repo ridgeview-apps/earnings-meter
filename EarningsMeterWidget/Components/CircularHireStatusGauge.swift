@@ -5,13 +5,11 @@ import SwiftUI
 struct CircularHireStatusGauge: View {
     
     let reading: MeterReading
-    let settings: MeterSettings
     
     var body: some View {
         Gauge(value: reading.progress) {
             MeterHireStatusView(reading: reading,
-                                showStatusText: false,
-                                showEmoji: settings.emojisEnabled)
+                                showStatusText: false)
             .font(.footnote)
         } currentValueLabel: {
             Text(reading.hireStatus.localizedStringResource)

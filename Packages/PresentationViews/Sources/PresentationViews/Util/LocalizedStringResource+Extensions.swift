@@ -173,10 +173,6 @@ public extension LocalizedStringResource {
         moduleResource("settings.runAtWeekends.accessibility.hint")
     }
 
-    static var settingsEmojisEnabledAccessibilityHint: LocalizedStringResource {
-        moduleResource("settings.emojisEnabled.accessibility.hint")
-    }
-
     static var settingsWelcomeMessage: LocalizedStringResource {
         moduleResource("settings.welcome.message")
     }

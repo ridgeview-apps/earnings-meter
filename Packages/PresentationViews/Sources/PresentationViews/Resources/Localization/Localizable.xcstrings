@@ -694,51 +694,6 @@
         }
       }
     },
-    "settings.emojisEnabled.accessibility.hint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turn off to show text-only hire status"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desactívalo para mostrar solo texto en el estado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Désactivez pour afficher uniquement du texte pour le statut"
-          }
-        }
-      }
-    },
-    "settings.emojisEnabled.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show emojis"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Emojis"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Emojis"
-          }
-        }
-      }
-    },
     "settings.keyboard.done" : {
       "localizations" : {
         "en" : {

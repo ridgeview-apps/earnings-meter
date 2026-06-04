@@ -114,7 +114,6 @@ private struct InputFormSnapshot: Equatable {
     let startTime: Date
     let endTime: Date
     let runAtWeekends: Bool
-    let emojisEnabled: Bool
 
     init(_ inputForm: MeterSettingsInputForm) {
         self.rateType = inputForm.rateType
@@ -122,6 +121,5 @@ private struct InputFormSnapshot: Equatable {
         self.startTime = inputForm.startTime
         self.endTime = inputForm.endTime
         self.runAtWeekends = inputForm.runAtWeekends
-        self.emojisEnabled = inputForm.emojisEnabled
     }
 }

@@ -14,7 +14,6 @@ public struct MeterSettingsInputForm {
     public var startTime: Date
     public var endTime: Date
     public var runAtWeekends: Bool
-    public var emojisEnabled: Bool
     
     public var rateAmountFormat: FloatingPointFormatStyle<Double>
     public var calendar: Calendar
@@ -54,8 +53,7 @@ public extension MeterSettingsInputForm {
                                  type: rateType),
                      startTime: meterTime(for: startTime, calendar: calendar),
                      endTime: meterTime(for: endTime, calendar: calendar),
-                     runAtWeekends: runAtWeekends,
-                     emojisEnabled: emojisEnabled)
+                     runAtWeekends: runAtWeekends)
     }
     
     private func validateInputRateAmount() -> Double? {
@@ -96,7 +94,6 @@ public extension MeterSettingsInputForm {
                      startTime: defaultStartTime,
                      endTime: defaultEndTime,
                      runAtWeekends: false,
-                     emojisEnabled: true,
                      rateAmountFormat: rateAmountFormat,
                      calendar: calendar)
     }
@@ -111,7 +108,6 @@ public extension MeterSettingsInputForm {
                      startTime: settings.startTime.toMeterDateTime(for: today, in: calendar),
                      endTime: settings.endTime.toMeterDateTime(for: today, in: calendar),
                      runAtWeekends: settings.runAtWeekends,
-                     emojisEnabled: settings.emojisEnabled,
                      rateAmountFormat: rateAmountFormat,
                      calendar: calendar)
     }

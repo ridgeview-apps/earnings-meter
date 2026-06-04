@@ -18,7 +18,6 @@ struct MeterSettingsInputFormTests {
         
         // Then
         #expect(rateAmountTextField.isEmpty)
-        #expect(form.emojisEnabled)
         #expect(!form.isValid)
     }
     

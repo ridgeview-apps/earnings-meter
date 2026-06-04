@@ -111,10 +111,7 @@ public struct MeterView: View {
     }
     
     private var hireStatusView: some View {
-        MeterHireStatusView(
-            reading: reading,
-            showEmoji: settings.emojisEnabled
-        )
+        MeterHireStatusView(reading: reading)
         .font(.subheadline)
     }
     
