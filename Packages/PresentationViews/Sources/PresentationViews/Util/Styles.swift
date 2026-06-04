@@ -2,11 +2,11 @@ import RidgeviewCore
 import SwiftUI
 
 public extension Color {
-    
+
     static func assetCatalogColor(named colorName: String) -> Color {
         Color("Colors/\(colorName)", bundle: .module)
     }
-    
+
     static let redOne = assetCatalogColor(named: "redOne")
     static let redTwo = assetCatalogColor(named: "redTwo")
     static let redThree = assetCatalogColor(named: "redThree")
@@ -16,11 +16,11 @@ public extension Color {
 }
 
 public extension Font {
-    
+
     static func digitFont(size: CGFloat) -> Font {
         Font.custom("Digital-7Mono", size: size, relativeTo: .title)
     }
-    
+
     static func registerCustomFonts() {
         do {
             try registerFont(named: "digital-7-mono")
@@ -28,9 +28,9 @@ public extension Font {
             print("Error registering fonts")
         }
     }
-    
+
     enum FontError: Swift.Error {
-       case failedToRegisterFont
+        case failedToRegisterFont
     }
 
     private static func registerFont(named name: String, in bundle: Bundle = .module) throws {

@@ -4,11 +4,11 @@ import SwiftUI
 // TOD0 - code-generate this file from JSON string catalog
 
 public extension LocalizedStringResource {
-    
+
     private static func moduleResource(_ key: String.LocalizationValue) -> LocalizedStringResource {
         .init(key, bundle: .module)
     }
-    
+
     static var appInfoAppVersionTitle: LocalizedStringResource {
         moduleResource("appInfo.app.version.title")
     }
@@ -16,19 +16,19 @@ public extension LocalizedStringResource {
     static var appInfoContactUsTitle: LocalizedStringResource {
         moduleResource("appInfo.contact.us.title")
     }
-    
+
     static var appInfoNavigationTitle: LocalizedStringResource {
         moduleResource("appInfo.navigation.title")
     }
-    
+
     static var appInfoRateThisAppTitle: LocalizedStringResource {
         moduleResource("appInfo.rate.this.app.title")
     }
-    
+
     static var contactUsBodyAppVersion: LocalizedStringResource {
         moduleResource("contact.us.body.app.version")
     }
-    
+
     static var contactUsBodyDeviceInfo: LocalizedStringResource {
         moduleResource("contact.us.body.device.info")
     }
@@ -36,7 +36,7 @@ public extension LocalizedStringResource {
     static var contactUsBodyDiagnosticInfo: LocalizedStringResource {
         moduleResource("contact.us.body.diagnostic.info")
     }
-    
+
     static var contactUsBodyLocaleInfo: LocalizedStringResource {
         moduleResource("contact.us.body.locale.info")
     }
@@ -48,11 +48,11 @@ public extension LocalizedStringResource {
     static func contactUsSubject(_ subject: String) -> LocalizedStringResource {
         moduleResource("contact.us.subject \(subject)")
     }
-    
+
     static var earningsSinceNavigationTitle: LocalizedStringResource {
         moduleResource("earnings.since.navigation.title")
     }
-    
+
     static var earningsTodayNavigationTitle: LocalizedStringResource {
         moduleResource("earnings.today.navigation.title")
     }
@@ -64,11 +64,11 @@ public extension LocalizedStringResource {
     static var meterDatePickerPleaseSelect: LocalizedStringResource {
         moduleResource("meter.date.picker.please.select")
     }
-    
+
     static func meterHeaderEarningsSinceTitle(_ title: String) -> LocalizedStringResource {
         moduleResource("meter.header.earnings.since.title \(title)")
     }
-    
+
     static var meterHeaderEarningsTodayTitle: LocalizedStringResource {
         moduleResource("meter.header.earnings.today.title")
     }
@@ -80,11 +80,11 @@ public extension LocalizedStringResource {
     static var meterHireStatusFree: LocalizedStringResource {
         moduleResource("meter.hireStatus.free")
     }
-    
+
     static var settingsButtonTitleSave: LocalizedStringResource {
         moduleResource("settings.button.title.save")
     }
-    
+
     static var settingsButtonTitleStart: LocalizedStringResource {
         moduleResource("settings.button.title.start")
     }
@@ -120,7 +120,7 @@ public extension LocalizedStringResource {
     static var settingsNavigationTitleEdit: LocalizedStringResource {
         moduleResource("settings.navigation.title.edit")
     }
-    
+
     static var settingsNavigationTitleWelcome: LocalizedStringResource {
         moduleResource("settings.navigation.title.welcome")
     }
@@ -204,7 +204,7 @@ public extension LocalizedStringResource {
     static var widgetMeterConfigurationDescription: LocalizedStringResource {
         moduleResource("widget.meter.configuration.description")
     }
-    
+
     static var widgetMeterConfigurationDisplayName: LocalizedStringResource {
         moduleResource("widget.meter.configuration.display.name")
     }

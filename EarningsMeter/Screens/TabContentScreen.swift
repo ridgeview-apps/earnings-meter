@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct TabContentScreenModifier: ViewModifier {
-    
+
     let imageName: String
     let title: LocalizedStringResource
     let accessibilityID: String
-    
+
     @State private var activeSheetItem: TabContentSheetItem?
-    
+
     func body(content: Content) -> some View {
         NavigationStack {
             content
@@ -27,7 +27,7 @@ struct TabContentScreenModifier: ViewModifier {
             accessibilityID: accessibilityID
         )
     }
-    
+
     @ViewBuilder private func show(sheetItem: TabContentSheetItem) -> some View {
         switch sheetItem {
         case .info:
@@ -39,12 +39,18 @@ struct TabContentScreenModifier: ViewModifier {
 }
 
 extension View {
-    
-    func tabContentScreen(imageName: String, 
-                          title: LocalizedStringResource,
-                          accessibilityID: String) -> some View {
-        modifier(TabContentScreenModifier(imageName: imageName,
-                                          title: title,
-                                          accessibilityID: accessibilityID))
+
+    func tabContentScreen(
+        imageName: String,
+        title: LocalizedStringResource,
+        accessibilityID: String
+    ) -> some View {
+        modifier(
+            TabContentScreenModifier(
+                imageName: imageName,
+                title: title,
+                accessibilityID: accessibilityID
+            )
+        )
     }
 }

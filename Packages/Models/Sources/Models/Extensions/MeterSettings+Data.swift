@@ -1,7 +1,7 @@
 import Foundation
 
 public extension MeterSettings {
-    
+
     var dailyRate: Double {
         switch rate.type {
         case .daily:
@@ -12,7 +12,7 @@ public extension MeterSettings {
             rate.amount / businessDaysPerYear
         }
     }
-    
+
     var annualRate: Double {
         switch rate.type {
         case .daily:
@@ -23,7 +23,7 @@ public extension MeterSettings {
             rate.amount
         }
     }
-    
+
     var workDayDuration: TimeInterval {
         let duration: TimeInterval
         if isOvernightWorker {
@@ -33,7 +33,7 @@ public extension MeterSettings {
         }
         return duration
     }
-    
+
     var isOvernightWorker: Bool {
         return endTime.seconds < startTime.seconds
     }
@@ -43,7 +43,7 @@ private extension MeterSettings {
     var hoursWorkedPerDay: Double {
         workDayDuration / (60 * 60)
     }
-    
+
     var businessDaysPerYear: Double {
         // N.B. APPROXIMATELY!!!
         // The app doesn't support public holidays or leap years (adds unnecessary complexity / not needed right now)

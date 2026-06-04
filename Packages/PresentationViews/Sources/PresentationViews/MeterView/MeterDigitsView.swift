@@ -3,7 +3,7 @@ import Models
 import SwiftUI
 
 public struct MeterDigitsView: View {
-    
+
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
     public enum Style {
@@ -12,12 +12,12 @@ public struct MeterDigitsView: View {
         case medium
         case large
     }
-    
+
     let amount: Double
     let isEnabled: Bool
     var style: Style
     var showCurrencySymbol: Bool = true
-    
+
     @Environment(\.locale) private var locale
 
     private var amountFormatStyle: FloatingPointFormatStyle<Double> {
@@ -25,7 +25,7 @@ public struct MeterDigitsView: View {
             .precision(.fractionLength(2))
             .locale(locale)
     }
-    
+
     public var body: some View {
         HStack(alignment: .center) {
             if showCurrencySymbol {
@@ -35,16 +35,16 @@ public struct MeterDigitsView: View {
         }
         .shrinkableSingleLine()
     }
-    
-    
+
+
     // MARK: - Layout views
-    
+
     private var currencySymbolText: some View {
         Text(locale.currencySymbol ?? "$")
             .foregroundStyle(Color.white.opacity(isEnabled ? 0.7 : 0.45))
             .font(.system(size: symbolFontSize, weight: .semibold, design: .rounded))
     }
-    
+
     private var amountText: some View {
         ZStack(alignment: .trailing) {
             faintBackgroundAmount
@@ -54,12 +54,13 @@ public struct MeterDigitsView: View {
         .font(digitFont)
         .foregroundColor(amountForegroundColor)
     }
-    
+
     @ViewBuilder private var faintBackgroundAmount: some View {
         let formatted = amount.formatted(amountFormatStyle)
-        let digitsOfEight = formatted
-                                .map { $0.isNumber ? "8" : String($0) }
-                                .joined()
+        let digitsOfEight =
+            formatted
+            .map { $0.isNumber ? "8" : String($0) }
+            .joined()
         Text(digitsOfEight)
             .opacity(backgroundDigitOpacity)
     }
@@ -71,7 +72,7 @@ public struct MeterDigitsView: View {
     private var backgroundDigitOpacity: Double {
         isEnabled ? 0.1 : 0.22
     }
-    
+
     private var symbolFontSize: CGFloat {
         switch style {
         case .tiny:
@@ -84,7 +85,7 @@ public struct MeterDigitsView: View {
             return 40
         }
     }
-    
+
     private var digitFont: Font {
         switch style {
         case .tiny:
@@ -102,14 +103,18 @@ public struct MeterDigitsView: View {
 // MARK: - Convenience init
 
 public extension MeterDigitsView {
-    
-    init(reading: MeterReading,
-         style: Style,
-         showCurrencySymbol: Bool = true) {
-        self = .init(amount: reading.amountEarned,
-                     isEnabled: reading.progress > 0,
-                     style: style,
-                     showCurrencySymbol: showCurrencySymbol)
+
+    init(
+        reading: MeterReading,
+        style: Style,
+        showCurrencySymbol: Bool = true
+    ) {
+        self = .init(
+            amount: reading.amountEarned,
+            isEnabled: reading.progress > 0,
+            style: style,
+            showCurrencySymbol: showCurrencySymbol
+        )
     }
 }
 

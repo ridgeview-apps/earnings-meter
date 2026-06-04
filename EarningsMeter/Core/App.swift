@@ -4,9 +4,9 @@ import SwiftUI
 
 @main
 struct AppScene: App {
-    
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
     var body: some Scene {
         WindowGroup {
             RootScreen()
@@ -18,10 +18,10 @@ struct AppScene: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         UserDefaults.sharedTargetStorage.migrateLegacyValuesIfNeeded()
         Font.registerCustomFonts()
-        
+
         return true
     }
 }

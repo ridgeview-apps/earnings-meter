@@ -4,7 +4,7 @@ import SwiftUI
 // MARK: - Settings button
 
 struct ToolbarSettingsButton: ToolbarContent {
-    
+
     var placement: ToolbarItemPlacement = .automatic
     let action: () -> Void
 
@@ -18,7 +18,7 @@ struct ToolbarSettingsButton: ToolbarContent {
 // MARK: - Info button
 
 struct ToolbarInfoButton: ToolbarContent {
-    
+
     var placement: ToolbarItemPlacement = .automatic
     let action: () -> Void
 
@@ -32,14 +32,14 @@ struct ToolbarInfoButton: ToolbarContent {
 // MARK: - Close button
 
 struct ToolbarCloseButton: ToolbarContent {
-    
+
     typealias ShouldDismissHandler = () -> Bool
     typealias DidDismissHandler = () -> Void
-    
+
     var placement: ToolbarItemPlacement = .automatic
     var onShouldDismiss: ShouldDismissHandler = { true }
-    var onDidDismiss: DidDismissHandler = { }
-    
+    var onDidDismiss: DidDismissHandler = {}
+
     @Environment(\.dismiss) var dismiss
 
     var body: some ToolbarContent {
@@ -58,27 +58,33 @@ struct ToolbarCloseButton: ToolbarContent {
 
 
 extension View {
-    
-    func withToolbarSettingsButton(placement: ToolbarItemPlacement = .automatic,
-                                   action: @escaping () -> Void) -> some View {
+
+    func withToolbarSettingsButton(
+        placement: ToolbarItemPlacement = .automatic,
+        action: @escaping () -> Void
+    ) -> some View {
         toolbar {
             ToolbarSettingsButton(placement: placement, action: action)
         }
     }
-    
-    func withToolbarInfoButton(placement: ToolbarItemPlacement =  .automatic, action: @escaping () -> Void) -> some View {
+
+    func withToolbarInfoButton(placement: ToolbarItemPlacement = .automatic, action: @escaping () -> Void) -> some View {
         toolbar {
             ToolbarInfoButton(placement: placement, action: action)
         }
     }
-    
-    func withToolbarCloseButton(placement: ToolbarItemPlacement,
-                                onShouldDismiss: @escaping ToolbarCloseButton.ShouldDismissHandler = { true },
-                                onDidDismiss: @escaping ToolbarCloseButton.DidDismissHandler = { }) -> some View {
+
+    func withToolbarCloseButton(
+        placement: ToolbarItemPlacement,
+        onShouldDismiss: @escaping ToolbarCloseButton.ShouldDismissHandler = { true },
+        onDidDismiss: @escaping ToolbarCloseButton.DidDismissHandler = {}
+    ) -> some View {
         toolbar {
-            ToolbarCloseButton(placement: placement,
-                               onShouldDismiss: onShouldDismiss,
-                               onDidDismiss: onDidDismiss)
+            ToolbarCloseButton(
+                placement: placement,
+                onShouldDismiss: onShouldDismiss,
+                onDidDismiss: onDidDismiss
+            )
         }
     }
 }
@@ -89,7 +95,7 @@ extension View {
 private struct ImageButton: View {
     let imageName: String
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             Image(systemName: imageName)

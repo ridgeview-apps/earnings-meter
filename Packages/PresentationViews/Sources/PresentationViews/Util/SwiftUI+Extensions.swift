@@ -1,7 +1,7 @@
 import SwiftUI
 
 public extension View {
-    
+
     func shrinkableSingleLine(minimumScaleFactor: CGFloat = 0.5) -> some View {
         self.lineLimit(1)
             .minimumScaleFactor(minimumScaleFactor)
@@ -12,20 +12,24 @@ public extension View {
             .font(.system(textStyle, weight: .semibold))
             .tracking(1)
     }
-    
-    func roundedBorder(_ color: Color,
-                       cornerRadius: CGFloat = 4,
-                       lineWidth: CGFloat = 1) -> some View {
+
+    func roundedBorder(
+        _ color: Color,
+        cornerRadius: CGFloat = 4,
+        lineWidth: CGFloat = 1
+    ) -> some View {
         self.cornerRadius(cornerRadius)
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(color, lineWidth: lineWidth)
             )
     }
-    
-    func styledTabItem(imageName: String,
-                       title: LocalizedStringResource,
-                       accessibilityID: String) -> some View {
+
+    func styledTabItem(
+        imageName: String,
+        title: LocalizedStringResource,
+        accessibilityID: String
+    ) -> some View {
         tabItem {
             VStack {
                 Image(systemName: imageName)
@@ -34,7 +38,7 @@ public extension View {
             }
             .accessibilityIdentifier(accessibilityID)
         }
-        
+
     }
 }
 
@@ -44,7 +48,7 @@ public extension View {
 // Until SwiftUI supports clear button natively (if ever??)
 public struct TextFieldClearButton: ViewModifier {
     @Binding var text: String
-    
+
     public init(text: Binding<String>) {
         self._text = text
     }

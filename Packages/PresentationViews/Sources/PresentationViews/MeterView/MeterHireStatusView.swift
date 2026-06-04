@@ -2,26 +2,26 @@ import Models
 import SwiftUI
 
 public struct MeterHireStatusView: View {
-    
+
     // MARK: - Data types
-    
+
     public enum Status: Equatable {
         case free
         case atWork
     }
 
-    
+
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    
-    
+
+
     // MARK: - Properties
-    
+
     public let status: Status
     public let progressValue: Double
     public let showStatusText: Bool
-    
+
     // MARK: - Body
-    
+
     public var body: some View {
         HStack(spacing: 6) {
             if showStatusText {
@@ -40,7 +40,7 @@ public struct MeterHireStatusView: View {
             }
         }
     }
-    
+
     private var statusText: some View {
         Text(status.localizedStringResource)
             .instrumentLabel(.footnote)
@@ -65,19 +65,21 @@ public struct MeterHireStatusView: View {
 
 public extension MeterHireStatusView {
 
-    init(reading: MeterReading,
-         showStatusText: Bool = true) {
+    init(
+        reading: MeterReading,
+        showStatusText: Bool = true
+    ) {
         self.status = reading.hireStatus
         self.progressValue = reading.progress
         self.showStatusText = showStatusText
     }
-    
+
 }
 
 // MARK: - Hire status localized text
 
 public extension MeterHireStatusView.Status {
-    
+
     var localizedStringResource: LocalizedStringResource {
         switch self {
         case .free: .meterHireStatusFree
@@ -87,7 +89,7 @@ public extension MeterHireStatusView.Status {
 }
 
 public extension MeterReading {
-   
+
     var hireStatus: MeterHireStatusView.Status {
         switch self.status {
         case .notStarted, .finished:

@@ -8,33 +8,37 @@ import WidgetKit
 @main
 struct EarningsMeterWidget: Widget {
     let kind: String = "EarningsMeterWidget"
-    
+
     private let widgetConfig: WidgetConfig
     private let timelineProvider: MeterTimeLineProvider
-    
+
     init() {
         self.widgetConfig = WidgetConfig.shared
         widgetConfig.userDefaults.migrateLegacyValuesIfNeeded()
         self.timelineProvider = MeterTimeLineProvider(userDefaults: widgetConfig.userDefaults)
     }
-    
-    
+
+
     // MARK: - Layout
-    
+
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind,
-                            provider: timelineProvider) { entry in
+        StaticConfiguration(
+            kind: kind,
+            provider: timelineProvider
+        ) { entry in
             MainWidgetView(entry: entry)
                 .overlay(alignment: .topTrailing) { widgetOverlayTitle }
         }
-        .supportedFamilies([.systemSmall,
-                            .systemMedium,
-                            .accessoryCircular,
-                            .accessoryRectangular])
+        .supportedFamilies([
+            .systemSmall,
+            .systemMedium,
+            .accessoryCircular,
+            .accessoryRectangular
+        ])
         .configurationDisplayName(Text(.widgetMeterConfigurationDisplayName))
         .description(Text(.widgetMeterConfigurationDescription))
     }
-    
+
     @ViewBuilder private var widgetOverlayTitle: some View {
         if let widgetOverlayTitle = widgetConfig.widgetOverlayTitle, !widgetOverlayTitle.isEmpty {
             Text(widgetOverlayTitle)
@@ -50,9 +54,9 @@ struct EarningsMeterWidget: Widget {
 struct MainWidgetView: View {
     @Environment(\.widgetFamily) var widgetFamily
     @Environment(\.calendar) var calendar
-    
+
     let entry: MeterTimeLineEntry
-    
+
     var body: some View {
         Group {
             switch widgetFamily {
@@ -65,65 +69,79 @@ struct MainWidgetView: View {
             case .accessoryRectangular:
                 lockScreenRectangularWidget
             case .accessoryInline:
-                EmptyView() // Unsupported widget sizes
+                EmptyView()  // Unsupported widget sizes
             @unknown default:
                 EmptyView()
             }
         }
         .withWidgetContainerBackgroundColor()
     }
-    
+
     private var smallWidget: some View {
         borderedWidget {
             VStack(spacing: 12) {
                 CircularHireStatusGauge(reading: entry.reading)
                     .tint(.redOne)
-                MeterDigitsView(reading: entry.reading,
-                                style: .small,
-                                showCurrencySymbol: true)
+                MeterDigitsView(
+                    reading: entry.reading,
+                    style: .small,
+                    showCurrencySymbol: true
+                )
             }
         }
     }
-    
+
     private var mediumWidget: some View {
         borderedWidget {
             VStack(spacing: 4) {
-                MeterDigitsView(reading: entry.reading,
-                                style: .medium,
-                                showCurrencySymbol: true)
+                MeterDigitsView(
+                    reading: entry.reading,
+                    style: .medium,
+                    showCurrencySymbol: true
+                )
                 VStack(spacing: 8) {
-                    MeterHireStatusView(reading: entry.reading,
-                                        showStatusText: true)
+                    MeterHireStatusView(
+                        reading: entry.reading,
+                        showStatusText: true
+                    )
                     .font(.caption)
-                    MeterProgressBarView(settings: entry.meterSettings,
-                                         reading: entry.reading,
-                                         showsTextLabels: true,
-                                         calendar: calendar)
+                    MeterProgressBarView(
+                        settings: entry.meterSettings,
+                        reading: entry.reading,
+                        showsTextLabels: true,
+                        calendar: calendar
+                    )
                     .frame(maxWidth: 450)
                 }
             }
         }
     }
-    
+
     private var lockScreenSmallCircularWidget: some View {
         Gauge(value: entry.reading.progress) {
-            MeterHireStatusView(reading: entry.reading,
-                                showStatusText: false)
+            MeterHireStatusView(
+                reading: entry.reading,
+                showStatusText: false
+            )
             .font(.footnote)
         } currentValueLabel: {
-            MeterDigitsView(reading: entry.reading,
-                            style: .tiny,
-                            showCurrencySymbol: false)
+            MeterDigitsView(
+                reading: entry.reading,
+                style: .tiny,
+                showCurrencySymbol: false
+            )
         }
         .gaugeStyle(.accessoryCircular)
     }
-    
+
     private var lockScreenRectangularWidget: some View {
         HStack(spacing: 8) {
             CircularHireStatusGauge(reading: entry.reading)
-            MeterDigitsView(reading: entry.reading,
-                            style: .small,
-                            showCurrencySymbol: true)
+            MeterDigitsView(
+                reading: entry.reading,
+                style: .small,
+                showCurrencySymbol: true
+            )
         }
     }
 }
@@ -136,7 +154,7 @@ private extension View {
             self
         }
     }
-    
+
     @ViewBuilder func borderedWidget(_ widgetContentView: () -> some View) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
             widgetContentView()
@@ -144,7 +162,7 @@ private extension View {
             Color.darkGrey1
                 .overlay {
                     widgetContentView()
-                     .padding()
+                        .padding()
                 }
         }
     }
@@ -157,19 +175,29 @@ import ModelStubs
 #Preview(as: .systemSmall) {
     EarningsMeterWidget()
 } timeline: {
-    MeterTimeLineEntry(date: .now,
-                       reading: .notStarted,
-                       meterSettings: ModelStubs.dayTime_0900_to_1700())
-    MeterTimeLineEntry(date: .now + 5,
-                       reading: .working(amountEarned: 100, progress: 0.25),
-                       meterSettings: ModelStubs.dayTime_0900_to_1700())
-    MeterTimeLineEntry(date: .now + 10,
-                       reading: .working(amountEarned: 200, progress: 0.5),
-                       meterSettings: ModelStubs.dayTime_0900_to_1700())
-    MeterTimeLineEntry(date: .now + 15,
-                       reading: .working(amountEarned: 300, progress: 0.75),
-                       meterSettings: ModelStubs.dayTime_0900_to_1700())
-    MeterTimeLineEntry(date: .now + 15,
-                       reading: .finished(amountEarned: 400),
-                       meterSettings: ModelStubs.dayTime_0900_to_1700())
+    MeterTimeLineEntry(
+        date: .now,
+        reading: .notStarted,
+        meterSettings: ModelStubs.dayTime_0900_to_1700()
+    )
+    MeterTimeLineEntry(
+        date: .now + 5,
+        reading: .working(amountEarned: 100, progress: 0.25),
+        meterSettings: ModelStubs.dayTime_0900_to_1700()
+    )
+    MeterTimeLineEntry(
+        date: .now + 10,
+        reading: .working(amountEarned: 200, progress: 0.5),
+        meterSettings: ModelStubs.dayTime_0900_to_1700()
+    )
+    MeterTimeLineEntry(
+        date: .now + 15,
+        reading: .working(amountEarned: 300, progress: 0.75),
+        meterSettings: ModelStubs.dayTime_0900_to_1700()
+    )
+    MeterTimeLineEntry(
+        date: .now + 15,
+        reading: .finished(amountEarned: 400),
+        meterSettings: ModelStubs.dayTime_0900_to_1700()
+    )
 }

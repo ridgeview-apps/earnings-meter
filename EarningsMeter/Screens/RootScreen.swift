@@ -10,16 +10,16 @@ enum TabContentSheetItem: Identifiable {
 }
 
 struct RootScreen: View {
-    
+
     @Environment(\.scenePhase) var scenePhase
-    
+
     @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: .sharedTargetStorage)
     private var userPreferences: UserPreferences = .empty
-    
+
     let sceneChangeHandler = ScenePhaseHandler()
-    
+
     @State private var showSettings: Bool = false
-        
+
     var body: some View {
         TabView {
             earningsTab
@@ -36,7 +36,7 @@ struct RootScreen: View {
             sceneChangeHandler.scenePhaseChanged(to: scenePhase)
         }
     }
-    
+
     private var earningsTab: some View {
         MeterScreen(
             style: .today,
@@ -48,7 +48,7 @@ struct RootScreen: View {
             accessibilityID: "acc.id.tab.title.earnings.today"
         )
     }
-    
+
     private var accumulatedEarningsTab: some View {
         MeterScreen(
             style: .accumulated,

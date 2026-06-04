@@ -2,16 +2,18 @@ import Models
 import Foundation
 
 public struct UserPreferences: Sendable {
-    
+
     public var meterSettings: MeterSettings?
     public var earningsSinceDate: Date?
-    
-    public init(meterSettings: MeterSettings?,
-                earningsSinceDate: Date?) {
+
+    public init(
+        meterSettings: MeterSettings?,
+        earningsSinceDate: Date?
+    ) {
         self.meterSettings = meterSettings
         self.earningsSinceDate = earningsSinceDate
     }
-    
+
     public var needsOnboarding: Bool { meterSettings == nil }
 }
 
@@ -23,12 +25,12 @@ public extension UserPreferences {
 // MARK: - Codable
 
 extension UserPreferences: Codable {
-    
+
     enum CodingKeys: CodingKey {
         case meterSettings
         case earningsSinceDate
     }
-    
+
     // N.B. Codable conformance needs to be implemented manually to play nicely with `RawRepresentable`
     // and prevent infinite recursion.
     //
@@ -41,7 +43,7 @@ extension UserPreferences: Codable {
         self.meterSettings = try container.decodeIfPresent(MeterSettings.self, forKey: .meterSettings)
         self.earningsSinceDate = try container.decodeIfPresent(Date.self, forKey: .earningsSinceDate)
     }
-    
+
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(self.meterSettings, forKey: .meterSettings)
@@ -53,7 +55,7 @@ extension UserPreferences: Codable {
 
 extension UserPreferences: RawRepresentable {
     public typealias RawValue = String
-    
+
     public init?(rawValue: RawValue) {
         guard
             let data = rawValue.data(using: .utf8),
@@ -63,7 +65,7 @@ extension UserPreferences: RawRepresentable {
         }
         self = decoded
     }
-    
+
     public var rawValue: RawValue {
         guard
             let data = try? JSONEncoder().encode(self),

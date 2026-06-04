@@ -109,6 +109,10 @@
 		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		31531BAE2C05FC09002B52BB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		316576B62FD18E0800CABBB4 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
+		316576B72FD1942100CABBB4 /* generate-screenshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "generate-screenshots.sh"; sourceTree = "<group>"; };
+		316576B82FD1942100CABBB4 /* screenshots-upload.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "screenshots-upload.sh"; sourceTree = "<group>"; };
+		316576B92FD1942100CABBB4 /* submit-for-review.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "submit-for-review.sh"; sourceTree = "<group>"; };
+		316576BA2FD1942100CABBB4 /* swift-format-lint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "swift-format-lint.sh"; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31658F9028D37759005466C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		31658F9228D37759005466C2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -187,6 +191,7 @@
 				3190F6DB24CF0B6A004303F0 /* EarningsMeterTests */,
 				314A715925BAF8F90062D050 /* EarningsMeterUITests */,
 				31658F9428D37759005466C2 /* EarningsMeterWidget */,
+				316576BB2FD1942100CABBB4 /* Scripts */,
 				312821C523D0B95E00975F66 /* Products */,
 				F858EC30A238121FBBD1C004 /* Frameworks */,
 			);
@@ -332,6 +337,17 @@
 				31003EBC2BF253E600643FB8 /* Shared */,
 			);
 			path = Packages;
+			sourceTree = "<group>";
+		};
+		316576BB2FD1942100CABBB4 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				316576B72FD1942100CABBB4 /* generate-screenshots.sh */,
+				316576B82FD1942100CABBB4 /* screenshots-upload.sh */,
+				316576B92FD1942100CABBB4 /* submit-for-review.sh */,
+				316576BA2FD1942100CABBB4 /* swift-format-lint.sh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		31658F9428D37759005466C2 /* EarningsMeterWidget */ = {

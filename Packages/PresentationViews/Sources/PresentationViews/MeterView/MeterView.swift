@@ -2,20 +2,20 @@ import Models
 import SwiftUI
 
 public struct MeterView: View {
-    
+
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.calendar) var calendar
-    
+
     public enum Style: Int, Codable, CaseIterable, Sendable {
         case today, accumulated
     }
 
     // MARK: - Properties
-    
+
     public let style: Style
     public let settings: MeterSettings
     public let reading: MeterReading
-    
+
     @Binding public var selectedDate: Date
 
     private var isEnabled: Bool { reading.progress > 0 }
@@ -37,22 +37,24 @@ public struct MeterView: View {
     private var formattedSelectedDate: String {
         selectedDate.formatted(date: .abbreviated, time: .omitted)
     }
-    
+
     // MARK: - Initializers
-    
-    public init(style: Style,
-                settings: MeterSettings,
-                reading: MeterReading,
-                selectedDate: Binding<Date>) {
+
+    public init(
+        style: Style,
+        settings: MeterSettings,
+        reading: MeterReading,
+        selectedDate: Binding<Date>
+    ) {
         self.style = style
         self.settings = settings
         self.reading = reading
         self._selectedDate = selectedDate
     }
-    
-    
+
+
     // MARK: - Body
-    
+
     public var body: some View {
         VStack(spacing: 24) {
             meterView
@@ -61,10 +63,10 @@ public struct MeterView: View {
         .frame(maxWidth: 450)
         .animation(.default, value: showsDatePicker)
     }
-    
-    
+
+
     // MARK: - Layout views
-    
+
     public var meterView: some View {
         VStack(spacing: meterSpacing) {
             meterHeader
@@ -77,7 +79,7 @@ public struct MeterView: View {
         .padding(meterPadding)
         .meterCardStyle(presentationState)
     }
-    
+
     private var meterHeader: some View {
         Group {
             switch style {
@@ -92,16 +94,18 @@ public struct MeterView: View {
         .padding(.horizontal, 20)
         .foregroundColor(presentationState.headerColor)
     }
-    
+
     private var digitsView: some View {
-        MeterDigitsView(reading: reading,
-                        style: hasCompactWidth ? .medium : .large)
+        MeterDigitsView(
+            reading: reading,
+            style: hasCompactWidth ? .medium : .large
+        )
         .animation(.snappy, value: reading.amountEarned)
     }
-    
+
     private var progressBarView: some View {
         MeterProgressBarView(
-            settings: settings, 
+            settings: settings,
             reading: reading,
             showsTextLabels: true,
             calendar: calendar
@@ -109,12 +113,12 @@ public struct MeterView: View {
         .frame(maxWidth: 450)
         .padding(.horizontal, progressBarHorizontalPadding)
     }
-    
+
     private var hireStatusView: some View {
         MeterHireStatusView(reading: reading)
-        .font(.subheadline)
+            .font(.subheadline)
     }
-    
+
     @ViewBuilder private var datePickerContainerView: some View {
         if showsDatePicker {
             MeterAccumulatedDatePickerView(selectedDate: $selectedDate)
@@ -132,13 +136,15 @@ private struct WrapperView: View {
     var reading: MeterReading = .working(amountEarned: 123.45, progress: 0.5)
 
     @State var selectedDate: Date = .now
-    
+
     var body: some View {
         NavigationStack {
-            MeterView(style: style,
-                      settings: ModelStubs.dayTime_0900_to_1700(),
-                      reading: reading,
-                      selectedDate: $selectedDate)
+            MeterView(
+                style: style,
+                settings: ModelStubs.dayTime_0900_to_1700(),
+                reading: reading,
+                selectedDate: $selectedDate
+            )
             .padding(.horizontal)
             .styledPreview()
             .navigationTitle("Preview")
@@ -159,8 +165,10 @@ private struct WrapperView: View {
 }
 
 #Preview("Accumulated earnings") {
-    WrapperView(style: .accumulated,
-                reading: .accumulated(amountEarned: 1234567, status: .working(progress: 0.5)))
+    WrapperView(
+        style: .accumulated,
+        reading: .accumulated(amountEarned: 1234567, status: .working(progress: 0.5))
+    )
 }
 
 #Preview("English / USD") {

@@ -6,30 +6,34 @@ import MessageUI
 // Adapted from: https://stackoverflow.com/questions/56784722/swiftui-send-email
 //
 public struct MailButton<Label: View>: View {
-    
+
     @State private var result: Result<MFMailComposeResult, Error>?
     @State private var showMailComposer = false
     @State private var showMailUnsupported = false
-    
+
     private let label: Label
     private let config: MailViewConfig?
-    
-    public init(to: [String]? = nil,
-                cc: [String]? = nil,
-                bcc: [String]? = nil,
-                subject: String? = nil,
-                body: String? = nil,
-                isHtml: Bool = false,
-                @ViewBuilder label: () -> Label) {
+
+    public init(
+        to: [String]? = nil,
+        cc: [String]? = nil,
+        bcc: [String]? = nil,
+        subject: String? = nil,
+        body: String? = nil,
+        isHtml: Bool = false,
+        @ViewBuilder label: () -> Label
+    ) {
         self.label = label()
-        self.config = .init(to: to,
-                            cc: cc,
-                            bcc: bcc,
-                            subject: subject,
-                            body: body,
-                            isHtml: isHtml)
+        self.config = .init(
+            to: to,
+            cc: cc,
+            bcc: bcc,
+            subject: subject,
+            body: body,
+            isHtml: isHtml
+        )
     }
-    
+
     public var body: some View {
         Button {
             showMailComposer = MFMailComposeViewController.canSendMail()
@@ -57,13 +61,15 @@ struct MailViewConfig {
     private(set) var subject: String?
     private(set) var body: String?
     private(set) var isHtml: Bool
-    
-    init(to: [String]? = nil,
-         cc: [String]? = nil,
-         bcc: [String]? = nil,
-         subject: String? = nil,
-         body: String? = nil,
-         isHtml: Bool = false) {
+
+    init(
+        to: [String]? = nil,
+        cc: [String]? = nil,
+        bcc: [String]? = nil,
+        subject: String? = nil,
+        body: String? = nil,
+        isHtml: Bool = false
+    ) {
         self.to = to
         self.cc = cc
         self.bcc = bcc
@@ -78,26 +84,30 @@ private struct MailViewController: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
     private(set) var messageConfig: MailViewConfig?
-    
+
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
 
         @Binding var presentation: PresentationMode
         @Binding var result: Result<MFMailComposeResult, Error>?
-        
+
         let messageConfig: MailViewConfig?
 
-        init(presentation: Binding<PresentationMode>,
-             result: Binding<Result<MFMailComposeResult, Error>?>,
-             messageConfig: MailViewConfig? = nil) {
+        init(
+            presentation: Binding<PresentationMode>,
+            result: Binding<Result<MFMailComposeResult, Error>?>,
+            messageConfig: MailViewConfig? = nil
+        ) {
             _presentation = presentation
             _result = result
-            
+
             self.messageConfig = messageConfig
         }
 
-        func mailComposeController(_ controller: MFMailComposeViewController,
-                                   didFinishWith result: MFMailComposeResult,
-                                   error: Error?) {
+        func mailComposeController(
+            _ controller: MFMailComposeViewController,
+            didFinishWith result: MFMailComposeResult,
+            error: Error?
+        ) {
             defer {
                 $presentation.wrappedValue.dismiss()
             }
@@ -110,9 +120,11 @@ private struct MailViewController: UIViewControllerRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(presentation: presentation,
-                           result: $result,
-                           messageConfig: messageConfig)
+        return Coordinator(
+            presentation: presentation,
+            result: $result,
+            messageConfig: messageConfig
+        )
     }
 
     func makeUIViewController(context: Context) -> MFMailComposeViewController {
@@ -140,7 +152,7 @@ private struct MailViewController: UIViewControllerRepresentable {
 
         return vc
     }
-    
+
     func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {
     }
 

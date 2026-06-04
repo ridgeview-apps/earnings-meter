@@ -46,9 +46,11 @@ struct MeterAccumulatedDatePickerView: View {
     }
 
     private var datePicker: some View {
-        DatePicker(selection: $selectedDate,
-                   in: ...today,
-                   displayedComponents: [.date]) {
+        DatePicker(
+            selection: $selectedDate,
+            in: ...today,
+            displayedComponents: [.date]
+        ) {
             Text(.meterDatePickerPleaseSelect)
         }
         .datePickerStyle(.compact)
@@ -64,9 +66,11 @@ struct MeterAccumulatedDatePickerView: View {
         .disabled(isTodaySelected)
         .buttonStyle(.bordered)
         .tint(Color.redThree)
-        .confirmationDialog(Text(.meterDatePickerResetConfirmTitle),
-                            isPresented: $showResetConfirmation,
-                            titleVisibility: .visible) {
+        .confirmationDialog(
+            Text(.meterDatePickerResetConfirmTitle),
+            isPresented: $showResetConfirmation,
+            titleVisibility: .visible
+        ) {
             Button(role: .destructive) {
                 selectedDate = .now
             } label: {

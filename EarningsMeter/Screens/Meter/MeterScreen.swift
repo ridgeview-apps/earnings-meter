@@ -5,26 +5,26 @@ import Shared
 import SwiftUI
 
 struct MeterScreen: View {
-    
+
     // MARK: - Properties
-    
+
     let style: MeterView.Style
     let navigationTitle: LocalizedStringResource
-    
+
     @State private var meterTimer: Timer?
     @State private var selectedDate: Date = Self.defaultSelectionDate
     @State private var currentReading: MeterReading?
-    
+
     @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: .sharedTargetStorage)
     private var userPreferences: UserPreferences = .empty
-    
+
     private var savedMeterSettings: MeterSettings? { userPreferences.meterSettings }
-    
+
     private static var defaultSelectionDate: Date { Calendar.current.startOfDay(for: .now) }
-    
-    
+
+
     // MARK: - Body
-    
+
     var body: some View {
         ZStack {
             Color.adaptiveGreyOne
@@ -50,23 +50,27 @@ struct MeterScreen: View {
             restoreUserSettings()
         }
     }
-    
+
     @ViewBuilder private var meterView: some View {
         if let savedMeterSettings, let currentReading {
-            MeterView(style: style,
-                      settings: savedMeterSettings,
-                      reading: currentReading,
-                      selectedDate: $selectedDate)
+            MeterView(
+                style: style,
+                settings: savedMeterSettings,
+                reading: currentReading,
+                selectedDate: $selectedDate
+            )
         }
     }
-    
+
     private func startMeter() {
         guard let savedMeterSettings else { return }
-        
+
         stopMeter()
         let meterCalculator = MeterCalculator(meterSettings: savedMeterSettings)
-        meterTimer = Timer.scheduledTimer(withTimeInterval: savedMeterSettings.defaultMeterSpeed,
-                                          repeats: true) { _ in
+        meterTimer = Timer.scheduledTimer(
+            withTimeInterval: savedMeterSettings.defaultMeterSpeed,
+            repeats: true
+        ) { _ in
             Task { @MainActor in
                 switch style {
                 case .today:
@@ -75,16 +79,16 @@ struct MeterScreen: View {
                     currentReading = meterCalculator.accumulatedReading(at: .now, since: selectedDate)
                 }
             }
-            
+
         }
         meterTimer?.fire()
     }
-    
+
     private func stopMeter() {
         meterTimer?.invalidate()
         meterTimer = nil
     }
-    
+
     private func restoreUserSettings() {
         if let earningsSince = userPreferences.earningsSinceDate {
             selectedDate = earningsSince

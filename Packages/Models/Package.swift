@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/ridgeview-apps/ridgeview-core", from: "1.0.0"),
-        .package(path: "Shared"),
+        .package(path: "Shared")
         // Dependencies declare other packages that this package depends on.
     ],
     targets: [
@@ -24,7 +24,7 @@ let package = Package(
             name: "Models",
             dependencies: [
                 .product(name: "RidgeviewCore", package: "ridgeview-core"),
-                "Shared",
+                "Shared"
             ],
             path: "Sources/Models"
         ),
@@ -41,5 +41,5 @@ let package = Package(
             dependencies: ["Models", "ModelStubs"]
         )
     ]
-    
+
 )

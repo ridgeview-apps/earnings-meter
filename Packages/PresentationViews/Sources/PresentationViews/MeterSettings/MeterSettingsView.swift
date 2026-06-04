@@ -22,14 +22,18 @@ public struct MeterSettingsView: View {
             Section(header: sectionHeader) {
                 rateDetails
                     .padding([.top, .bottom], 12)
-                ExpandableTimePicker(title: .settingsWorkingHoursStartTimeTitle,
-                                     accessibilityIdentifier: "acc.id.start.time.disclosure",
-                                     selectedTime: $inputForm.startTime,
-                                     isExpanded: $isStartTimeExpanded)
-                ExpandableTimePicker(title: .settingsWorkingHoursEndTimeTitle,
-                                     accessibilityIdentifier: "acc.id.end.time.disclosure",
-                                     selectedTime: $inputForm.endTime,
-                                     isExpanded: $isEndTimeExpanded)
+                ExpandableTimePicker(
+                    title: .settingsWorkingHoursStartTimeTitle,
+                    accessibilityIdentifier: "acc.id.start.time.disclosure",
+                    selectedTime: $inputForm.startTime,
+                    isExpanded: $isStartTimeExpanded
+                )
+                ExpandableTimePicker(
+                    title: .settingsWorkingHoursEndTimeTitle,
+                    accessibilityIdentifier: "acc.id.end.time.disclosure",
+                    selectedTime: $inputForm.endTime,
+                    isExpanded: $isEndTimeExpanded
+                )
                 workingHoursInfo
                 runAtWeekendsToggle
             }

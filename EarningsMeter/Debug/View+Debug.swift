@@ -4,7 +4,7 @@ import DataStores
 import SwiftUI
 
 extension View {
-    
+
     func previewWithUserPreferences(_ userPreferences: UserPreferences?) -> some View {
         self
             .task {
@@ -13,7 +13,9 @@ extension View {
     }
 }
 
-enum UserPreferencesStubs {    
-    @MainActor static var nineToFiveMeter: UserPreferences = UserPreferences(meterSettings: ModelStubs.dayTime_0900_to_1700(),
-                                                                  earningsSinceDate: nil)
+enum UserPreferencesStubs {
+    @MainActor static var nineToFiveMeter: UserPreferences = UserPreferences(
+        meterSettings: ModelStubs.dayTime_0900_to_1700(),
+        earningsSinceDate: nil
+    )
 }

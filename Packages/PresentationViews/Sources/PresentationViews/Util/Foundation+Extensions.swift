@@ -6,7 +6,7 @@ public extension Double {
         let multiplier = pow(10, Double(fractionDigits))
         return ((self * multiplier).rounded() / multiplier)
     }
-    
+
     func currencyFormatted(forLocale locale: Locale) -> String {
         self.formatted(.currency(code: locale.currency?.identifier ?? ""))
     }
