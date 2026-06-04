@@ -12,6 +12,8 @@ public struct MeterProgressBarView: View {
     public let isEnabled: Bool
     
     private let disabledFillColor = Color.redTwo
+    private var clampedValue: Double { min(max(value, 0), 1) }
+    private var hasProgress: Bool { clampedValue > 0 }
     
     public var body: some View {
         HStack(spacing: 10) {
@@ -24,6 +26,7 @@ public struct MeterProgressBarView: View {
             }
         }
         .frame(maxHeight: 20)
+        .animation(.snappy, value: clampedValue)
     }
 
     private func sideLabel(_ text: String) -> some View {
@@ -37,13 +40,9 @@ public struct MeterProgressBarView: View {
         GeometryReader { proxy in
             let trackShape = Capsule()
             ZStack(alignment: .leading) {
-                trackShape
-                    .fill(
-                        Color.black.opacity(0.45)
-                            .shadow(.inner(color: .black.opacity(0.6), radius: 2, x: 0, y: 1))
-                    )
+                trackBackground(trackShape)
 
-                if value > 0 {
+                if hasProgress {
                     trackShape
                         .fill(
                             LinearGradient(
@@ -54,24 +53,52 @@ public struct MeterProgressBarView: View {
                                 endPoint: .trailing
                             )
                         )
-                        .frame(width: proxy.size.width * value)
+                        .frame(width: proxy.size.width * clampedValue)
                         .shadow(color: isEnabled ? Color.redOne.opacity(0.5) : .clear, radius: 3)
                 }
 
-                HStack(spacing: 0) {
-                    ForEach(0..<5) { index in
-                        if index > 0 { Spacer(minLength: 0) }
-                        Rectangle()
-                            .fill(Color.white.opacity(0.22))
-                            .frame(width: 1)
-                    }
-                }
-                .padding(.horizontal, 4)
-                .allowsHitTesting(false)
+                segmentMarks
             }
             .clipShape(trackShape)
+            .overlay {
+                trackShape
+                    .strokeBorder(Color.white.opacity(hasProgress ? 0.18 : 0.24), lineWidth: 1)
+            }
         }
         .frame(height: 10)
+    }
+
+    private func trackBackground(_ trackShape: Capsule) -> some View {
+        trackShape
+            .fill(
+                LinearGradient(
+                    colors: [
+                        Color.white.opacity(hasProgress ? 0.08 : 0.12),
+                        Color.black.opacity(hasProgress ? 0.45 : 0.32)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .shadow(.inner(color: .black.opacity(hasProgress ? 0.6 : 0.35), radius: 2, x: 0, y: 1))
+            )
+    }
+
+    private var segmentMarks: some View {
+        GeometryReader { proxy in
+            let inset: CGFloat = 4
+            let availableWidth = max(proxy.size.width - inset * 2, 0)
+
+            ForEach(1..<5) { index in
+                Rectangle()
+                    .fill(Color.white.opacity(hasProgress ? 0.22 : 0.14))
+                    .frame(width: 1)
+                    .position(
+                        x: inset + availableWidth * CGFloat(index) / 5,
+                        y: proxy.size.height / 2
+                    )
+            }
+        }
+        .allowsHitTesting(false)
     }
 }
 

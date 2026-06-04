@@ -9,7 +9,7 @@ public struct MeterView: View {
     public enum Style: Int, Codable, CaseIterable, Sendable {
         case today, accumulated
     }
-    
+
     // MARK: - Properties
     
     public let style: Style
@@ -18,13 +18,22 @@ public struct MeterView: View {
     
     @Binding public var selectedDate: Date
 
-    @State private var showResetConfirmation: Bool = false
-
     private var isEnabled: Bool { reading.progress > 0 }
     private var showsDatePicker: Bool { style == .accumulated }
-    private var isTodaySelected: Bool { calendar.isDateInToday(selectedDate) }
     private var hasCompactWidth: Bool { horizontalSizeClass == .compact }
-    private var today: Date { calendar.startOfDay(for: .now)}
+    private var meterSpacing: CGFloat { hasCompactWidth ? 16 : 20 }
+    private var meterPadding: CGFloat { hasCompactWidth ? 20 : 24 }
+    private var progressBarHorizontalPadding: CGFloat { hasCompactWidth ? 8 : 16 }
+    private var presentationState: MeterPresentationState {
+        switch reading.status {
+        case .notStarted:
+            .inactive
+        case .working:
+            .active
+        case .finished:
+            .completed
+        }
+    }
     private var formattedSelectedDate: String {
         selectedDate.formatted(date: .abbreviated, time: .omitted)
     }
@@ -57,7 +66,7 @@ public struct MeterView: View {
     // MARK: - Layout views
     
     public var meterView: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: meterSpacing) {
             meterHeader
             VStack(spacing: 4) {
                 digitsView
@@ -65,31 +74,8 @@ public struct MeterView: View {
             }
             progressBarView
         }
-        .padding(24)
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(
-                    Color.darkGrey1
-                        .shadow(.inner(color: .black.opacity(0.55), radius: 6, x: 0, y: 4))
-                )
-        }
-        .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .strokeBorder(
-                    LinearGradient(
-                        stops: [
-                            .init(color: .white.opacity(0.85), location: 0),
-                            .init(color: .white.opacity(0.35), location: 0.55),
-                            .init(color: .white.opacity(0.1), location: 1)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    ),
-                    lineWidth: 2
-                )
-        }
-        .shadow(color: .black.opacity(0.22), radius: 6, x: 0, y: 3)
-        
+        .padding(meterPadding)
+        .meterCardStyle(presentationState)
     }
     
     private var meterHeader: some View {
@@ -104,7 +90,7 @@ public struct MeterView: View {
         .instrumentLabel(.headline)
         .shrinkableSingleLine()
         .padding(.horizontal, 20)
-        .foregroundColor(.white)
+        .foregroundColor(presentationState.headerColor)
     }
     
     private var digitsView: some View {
@@ -121,7 +107,7 @@ public struct MeterView: View {
             calendar: calendar
         )
         .frame(maxWidth: 450)
-        .padding(.horizontal, 16)
+        .padding(.horizontal, progressBarHorizontalPadding)
     }
     
     private var hireStatusView: some View {
@@ -134,57 +120,7 @@ public struct MeterView: View {
     
     @ViewBuilder private var datePickerContainerView: some View {
         if showsDatePicker {
-            HStack(spacing: 10) {
-                Image(systemName: "calendar")
-                    .font(.headline)
-                    .foregroundStyle(.secondary)
-                HStack {
-                    datePicker
-                    dateResetButton
-                }
-            }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 10)
-            .background {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color.secondary.opacity(0.08))
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(Color.secondary.opacity(0.2), lineWidth: 1)
-            }
-        }
-    }
-    
-    private var datePicker: some View {
-        DatePicker(selection: $selectedDate,
-                   in: ...today,
-                   displayedComponents: [.date]) {
-            Text(.meterDatePickerPleaseSelect)
-        }
-    }
-    
-    private var dateResetButton: some View {
-        Button {
-            showResetConfirmation = true
-        } label: {
-            Text(.meterDatePickerResetButtonTitle)
-        }
-        .disabled(isTodaySelected)
-        .buttonStyle(.bordered)
-        .tint(Color.redThree)
-        .confirmationDialog(Text(.meterDatePickerResetConfirmTitle),
-                            isPresented: $showResetConfirmation,
-                            titleVisibility: .visible) {
-            Button(role: .destructive) {
-                selectedDate = .now
-            } label: {
-                Text(.meterDatePickerResetButtonTitle)
-            }
-            Button(role: .cancel) {
-            } label: {
-                Text(.meterDatePickerResetConfirmCancelButton)
-            }
+            MeterAccumulatedDatePickerView(selectedDate: $selectedDate)
         }
     }
 }

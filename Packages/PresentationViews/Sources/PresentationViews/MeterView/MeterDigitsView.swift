@@ -41,7 +41,7 @@ public struct MeterDigitsView: View {
     
     private var currencySymbolText: some View {
         Text(locale.currencySymbol ?? "$")
-            .foregroundStyle(Color.white.opacity(0.7))
+            .foregroundStyle(Color.white.opacity(isEnabled ? 0.7 : 0.45))
             .font(.system(size: symbolFontSize, weight: .semibold, design: .rounded))
     }
     
@@ -52,7 +52,7 @@ public struct MeterDigitsView: View {
                 .contentTransition(.numericText(value: amount))
         }
         .font(digitFont)
-        .foregroundColor(isEnabled ? .redOne : Color.redTwo)
+        .foregroundColor(amountForegroundColor)
     }
     
     @ViewBuilder private var faintBackgroundAmount: some View {
@@ -60,7 +60,16 @@ public struct MeterDigitsView: View {
         let digitsOfEight = formatted
                                 .map { $0.isNumber ? "8" : String($0) }
                                 .joined()
-        Text(digitsOfEight).opacity(0.1)
+        Text(digitsOfEight)
+            .opacity(backgroundDigitOpacity)
+    }
+
+    private var amountForegroundColor: Color {
+        isEnabled ? .redOne : Color.redTwo.opacity(0.78)
+    }
+
+    private var backgroundDigitOpacity: Double {
+        isEnabled ? 0.1 : 0.22
     }
     
     private var symbolFontSize: CGFloat {
