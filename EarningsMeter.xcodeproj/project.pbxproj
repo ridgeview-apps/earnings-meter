@@ -108,6 +108,7 @@
 		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		31531BAE2C05FC09002B52BB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		316576B62FD18E0800CABBB4 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		31658F9028D37759005466C2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		31658F9228D37759005466C2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -179,6 +180,7 @@
 		312821BB23D0B95E00975F66 = {
 			isa = PBXGroup;
 			children = (
+				316576B62FD18E0800CABBB4 /* .swift-format */,
 				316520A12AF95F9400E44FF5 /* Packages */,
 				3152354025B8544400AE8811 /* Config */,
 				312821C623D0B95E00975F66 /* EarningsMeter */,
@@ -414,7 +416,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 312821E323D0B96100975F66 /* Build configuration list for PBXNativeTarget "EarningsMeter" */;
 			buildPhases = (
-				3145BA7D2B4EBA1900AE1DDE /* Swiftlint */,
+				318AA1392FD1883700ECFC6C /* Swift format */,
 				312821C023D0B95E00975F66 /* Sources */,
 				312821C123D0B95E00975F66 /* Frameworks */,
 				312821C223D0B95E00975F66 /* Resources */,
@@ -583,7 +585,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3145BA7D2B4EBA1900AE1DDE /* Swiftlint */ = {
+		318AA1392FD1883700ECFC6C /* Swift format */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -593,14 +595,14 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = "Swift format";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --strict\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\"$SRCROOT/Scripts/swift-format-lint.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
