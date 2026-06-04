@@ -13,14 +13,7 @@ struct MeterAccumulatedDatePickerView: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: "calendar")
-                .font(.headline)
-                .foregroundStyle(.secondary)
-                .frame(width: 24, height: 24)
-
             datePicker
-                .frame(maxWidth: .infinity, alignment: .leading)
-
             dateResetButton
         }
         .padding(.horizontal, 12)
@@ -51,7 +44,13 @@ struct MeterAccumulatedDatePickerView: View {
             in: ...today,
             displayedComponents: [.date]
         ) {
-            Text(.meterDatePickerPleaseSelect)
+            Label {
+                Text(.meterDatePickerPleaseSelect)
+            } icon: {
+                Image(systemName: "calendar")
+                    .font(.headline)
+            }
+            .foregroundStyle(.secondary)
         }
         .datePickerStyle(.compact)
     }

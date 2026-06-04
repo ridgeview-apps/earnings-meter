@@ -354,19 +354,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select date"
+            "value" : "Since"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fecha"
+            "value" : "Desde"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Date"
+            "value" : "Depuis"
           }
         }
       }
