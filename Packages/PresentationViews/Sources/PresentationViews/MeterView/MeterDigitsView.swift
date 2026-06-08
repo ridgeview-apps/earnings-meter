@@ -5,6 +5,7 @@ import SwiftUI
 public struct MeterDigitsView: View {
 
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.appAnimationsEnabled) private var appAnimationsEnabled
 
     public enum Style {
         case tiny
@@ -49,7 +50,9 @@ public struct MeterDigitsView: View {
         ZStack(alignment: .trailing) {
             faintBackgroundAmount
             Text(amount, format: amountFormatStyle)
-                .contentTransition(.numericText(value: amount))
+                .contentTransition(
+                    appAnimationsEnabled ? .numericText(value: amount) : .identity
+                )
         }
         .font(digitFont)
         .foregroundColor(amountForegroundColor)

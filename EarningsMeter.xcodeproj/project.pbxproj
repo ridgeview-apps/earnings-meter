@@ -31,7 +31,6 @@
 		31658F9928D3775A005466C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31658F9828D3775A005466C2 /* Assets.xcassets */; };
 		31658F9F28D3775A005466C2 /* EarningsMeterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3185541B2B0916AB0061AD11 /* AppInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185541A2B0916AB0061AD11 /* AppInfoScreen.swift */; };
-		3185541D2B0917030061AD11 /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185541C2B0917030061AD11 /* EnvironmentKeys.swift */; };
 		318554202B0920220061AD11 /* ToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185541F2B0920220061AD11 /* ToolbarItems.swift */; };
 		3190A4392BF61CF7009C70F4 /* View+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190A4372BF61CF7009C70F4 /* View+Debug.swift */; };
 		3190F6EC24CF0B8C004303F0 /* MeterSettings+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190F6E824CF0B8C004303F0 /* MeterSettings+TestData.swift */; };
@@ -40,6 +39,8 @@
 		31C639EC2AFFC2990050340C /* MeterSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639EB2AFFC2990050340C /* MeterSettingsScreen.swift */; };
 		31C639F02B021B170050340C /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C639EF2B021B170050340C /* RootScreen.swift */; };
 		31D82CA22B079A8600D2CE6E /* CircularHireStatusGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D82CA02B07983400D2CE6E /* CircularHireStatusGauge.swift */; };
+		31E068542FD6BFBE00FED06D /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E068532FD6BFBB00FED06D /* EnvironmentValues.swift */; };
+		31E068562FD6C3CA00FED06D /* ProcessInfo+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E068552FD6C3C700FED06D /* ProcessInfo+.swift */; };
 		31E4035428D8D32000CC71B6 /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31E4035328D8D31400CC71B6 /* digital-7-mono.ttf */; };
 		31FF687228E9D6890049560B /* MeterTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF687028E9D64A0049560B /* MeterTimeline.swift */; };
 /* End PBXBuildFile section */
@@ -119,7 +120,6 @@
 		31658F9828D3775A005466C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31658F9A28D3775A005466C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3185541A2B0916AB0061AD11 /* AppInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoScreen.swift; sourceTree = "<group>"; };
-		3185541C2B0917030061AD11 /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
 		3185541F2B0920220061AD11 /* ToolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItems.swift; sourceTree = "<group>"; };
 		318AD0F228E0D556002B3E88 /* EarningsMeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarningsMeter.entitlements; sourceTree = "<group>"; };
 		318AD0F328E0D556002B3E88 /* EarningsMeterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarningsMeterWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -134,6 +134,8 @@
 		31C639EF2B021B170050340C /* RootScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreen.swift; sourceTree = "<group>"; };
 		31D82CA02B07983400D2CE6E /* CircularHireStatusGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularHireStatusGauge.swift; sourceTree = "<group>"; };
 		31DDEDF92B4FF6E800CC2B8E /* Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Defaults.xcconfig; sourceTree = "<group>"; };
+		31E068532FD6BFBB00FED06D /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
+		31E068552FD6C3C700FED06D /* ProcessInfo+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+.swift"; sourceTree = "<group>"; };
 		31E4035328D8D31400CC71B6 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
 		31F28ED925D3F97900AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		31F28EDE25D3F98A00AC523A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -240,7 +242,7 @@
 				314A48DD25AF6F3000FBBF3E /* MeterSettings */,
 				31C639EF2B021B170050340C /* RootScreen.swift */,
 				31B5EDA12B1748D80025A05C /* TabContentScreen.swift */,
-				3185541C2B0917030061AD11 /* EnvironmentKeys.swift */,
+				31E068532FD6BFBB00FED06D /* EnvironmentValues.swift */,
 				31B670402BF61E3700C4C731 /* ScenePhaseHandler.swift */,
 				3185541F2B0920220061AD11 /* ToolbarItems.swift */,
 			);
@@ -275,6 +277,7 @@
 		314A47C925ACD5AD00FBBF3E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				31E068552FD6C3C700FED06D /* ProcessInfo+.swift */,
 				314A488525AF169900FBBF3E /* App.swift */,
 				31003EBD2BF254F200643FB8 /* AppConfig.swift */,
 			);
@@ -627,7 +630,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3185541D2B0917030061AD11 /* EnvironmentKeys.swift in Sources */,
 				31C639EC2AFFC2990050340C /* MeterSettingsScreen.swift in Sources */,
 				31003EBE2BF254F200643FB8 /* AppConfig.swift in Sources */,
 				314A488625AF169900FBBF3E /* App.swift in Sources */,
@@ -635,7 +637,9 @@
 				31C639F02B021B170050340C /* RootScreen.swift in Sources */,
 				31B5EDA22B1748D80025A05C /* TabContentScreen.swift in Sources */,
 				314A717525BB050F0062D050 /* UITestScenario.swift in Sources */,
+				31E068562FD6C3CA00FED06D /* ProcessInfo+.swift in Sources */,
 				3185541B2B0916AB0061AD11 /* AppInfoScreen.swift in Sources */,
+				31E068542FD6BFBE00FED06D /* EnvironmentValues.swift in Sources */,
 				318554202B0920220061AD11 /* ToolbarItems.swift in Sources */,
 				312DED3A2AFC0B0C0070956A /* MeterScreen.swift in Sources */,
 				31B670412BF61E3700C4C731 /* ScenePhaseHandler.swift in Sources */,

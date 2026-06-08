@@ -12,6 +12,7 @@ public struct MeterHireStatusView: View {
 
 
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.appAnimationsEnabled) private var appAnimationsEnabled
 
 
     // MARK: - Properties
@@ -29,13 +30,14 @@ public struct MeterHireStatusView: View {
             }
             if status == .atWork {
                 Image(systemName: statusSymbolName)
+                    .imageScale(.small)
                     .foregroundStyle(statusSymbolPrimaryColor, statusSymbolSecondaryColor)
                     .symbolRenderingMode(.palette)
                     .contentTransition(.symbolEffect(.replace))
                     .symbolEffect(
                         .pulse,
                         options: .repeating,
-                        isActive: status == .atWork
+                        isActive: appAnimationsEnabled
                     )
             }
         }

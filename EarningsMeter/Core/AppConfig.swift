@@ -21,7 +21,7 @@ struct AppConfig {
 
 extension AppConfig {
 
-    static let shared: AppConfig = {
+    static let main: AppConfig = {
         let config = Bundle.main.loadInfoPlistConfig(forKey: "appConfig")
 
         let appGroupName = config["appGroupName"]
@@ -43,7 +43,7 @@ extension AppConfig {
 extension UserDefaults {
 
     @MainActor static let sharedTargetStorage: UserDefaults = {
-        let appGroupName = AppConfig.shared.appGroupName
+        let appGroupName = AppConfig.main.appGroupName
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {
             fatalError("Unable to load UserDefaults for app group name \(appGroupName)")
         }

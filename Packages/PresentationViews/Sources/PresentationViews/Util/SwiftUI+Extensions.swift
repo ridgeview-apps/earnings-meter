@@ -1,6 +1,20 @@
 import SwiftUI
 
+extension EnvironmentValues {
+    @Entry var appAnimationsEnabled = true
+}
+
 public extension View {
+
+    func appAnimationsEnabled(_ enabled: Bool) -> some View {
+        self
+            .environment(\.appAnimationsEnabled, enabled)
+            .transaction { transaction in
+                guard !enabled else { return }
+                transaction.animation = nil
+                transaction.disablesAnimations = true
+            }
+    }
 
     func shrinkableSingleLine(minimumScaleFactor: CGFloat = 0.5) -> some View {
         self.lineLimit(1)

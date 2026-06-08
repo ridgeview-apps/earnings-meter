@@ -9,7 +9,11 @@ class GenerateScreenshots: XCTestCase {
         continueAfterFailure = false
 
         app = XCUIApplication()
-        app.launchArguments = ["UITests"]
+        app.launchArguments = [
+            "-ui-tests",
+            "-disable-animations",
+            "-reset-user-preferences"
+        ]
         setupSnapshot(app)
         app.launch()
     }

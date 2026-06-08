@@ -1,4 +1,5 @@
 import DataStores
+import Foundation
 import PresentationViews
 import SwiftUI
 
@@ -7,12 +8,20 @@ struct AppScene: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    init() {
+        if ProcessInfo.resetUserPreferences {
+            UserDefaults.sharedTargetStorage.resetPreferences()
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             RootScreen()
+                .appAnimationsEnabled(ProcessInfo.animationsEnabled)
         }
     }
 }
+
 // MARK: - AppDelegate
 
 class AppDelegate: NSObject, UIApplicationDelegate {
