@@ -1,1 +1,2 @@
-- Optimisations iOS 26 / Liquid Glass
+- Améliorations de l’interface utilisateur dans toute l’application
+- Corrections de bugs et améliorations de la stabilité

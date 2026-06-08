@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 71;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,17 +60,10 @@
 		312DED152AF966220070956A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Models; sourceTree = "<group>"; };
 		312DED1A2AFA47860070956A /* PresentationViews */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PresentationViews; sourceTree = "<group>"; };
 		312DED3B2AFE92500070956A /* DataStores */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataStores; sourceTree = "<group>"; };
-		313DCA8A2AD6D39A00FF4271 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
-		313DCA8B2AD6D3D100FF4271 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3152354225B8544400AE8811 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		3152354325B8544400AE8811 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		316576B62FD18E0800CABBB4 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		318AD0F228E0D556002B3E88 /* EarningsMeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarningsMeter.entitlements; sourceTree = "<group>"; };
-		318AD0F328E0D556002B3E88 /* EarningsMeterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarningsMeterWidgetExtension.entitlements; sourceTree = "<group>"; };
 		3190F6DA24CF0B6A004303F0 /* EarningsMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		31DDEDF92B4FF6E800CC2B8E /* Defaults.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Defaults.xcconfig; sourceTree = "<group>"; };
 		31E068D02FD6CF0D00FED06D /* generate-screenshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "generate-screenshots.sh"; sourceTree = "<group>"; };
 		31E068D12FD6CF0D00FED06D /* screenshots-upload.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "screenshots-upload.sh"; sourceTree = "<group>"; };
 		31E068D22FD6CF0D00FED06D /* submit-for-review.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "submit-for-review.sh"; sourceTree = "<group>"; };
@@ -110,6 +103,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3131C6E82FD70F28008CB26A /* Config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Config; sourceTree = "<group>"; };
 		31E068982FD6CDD100FED06D /* EarningsMeter */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068AA2FD6CDD200FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeter; sourceTree = "<group>"; };
 		31E068AC2FD6CEEB00FED06D /* EarningsMeterTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterTests; sourceTree = "<group>"; };
 		31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068B72FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 31E068B82FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterUITests; sourceTree = "<group>"; };
@@ -159,7 +153,7 @@
 			children = (
 				316576B62FD18E0800CABBB4 /* .swift-format */,
 				316520A12AF95F9400E44FF5 /* Packages */,
-				3152354025B8544400AE8811 /* Config */,
+				3131C6E82FD70F28008CB26A /* Config */,
 				31E068982FD6CDD100FED06D /* EarningsMeter */,
 				31E068AC2FD6CEEB00FED06D /* EarningsMeterTests */,
 				31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */,
@@ -180,27 +174,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		313DCA892AD6D39A00FF4271 /* CI */ = {
-			isa = PBXGroup;
-			children = (
-				313DCA8A2AD6D39A00FF4271 /* Beta.xcconfig */,
-				313DCA8B2AD6D3D100FF4271 /* Prod.xcconfig */,
-			);
-			path = CI;
-			sourceTree = "<group>";
-		};
-		3152354025B8544400AE8811 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				313DCA892AD6D39A00FF4271 /* CI */,
-				318AD0F128E0D556002B3E88 /* Entitlements */,
-				3152354225B8544400AE8811 /* Debug.xcconfig */,
-				3152354325B8544400AE8811 /* Release.xcconfig */,
-				31DDEDF92B4FF6E800CC2B8E /* Defaults.xcconfig */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
 		316520A12AF95F9400E44FF5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,15 +183,6 @@
 				31003EBC2BF253E600643FB8 /* Shared */,
 			);
 			path = Packages;
-			sourceTree = "<group>";
-		};
-		318AD0F128E0D556002B3E88 /* Entitlements */ = {
-			isa = PBXGroup;
-			children = (
-				318AD0F228E0D556002B3E88 /* EarningsMeter.entitlements */,
-				318AD0F328E0D556002B3E88 /* EarningsMeterWidgetExtension.entitlements */,
-			);
-			path = Entitlements;
 			sourceTree = "<group>";
 		};
 		31E068D42FD6CF0D00FED06D /* Scripts */ = {
@@ -484,7 +448,8 @@
 /* Begin XCBuildConfiguration section */
 		312821E123D0B96100975F66 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3152354225B8544400AE8811 /* Debug.xcconfig */;
+			baseConfigurationReferenceAnchor = 3131C6E82FD70F28008CB26A /* Config */;
+			baseConfigurationReferenceRelativePath = Debug.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -552,7 +517,8 @@
 		};
 		312821E223D0B96100975F66 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3152354325B8544400AE8811 /* Release.xcconfig */;
+			baseConfigurationReferenceAnchor = 3131C6E82FD70F28008CB26A /* Config */;
+			baseConfigurationReferenceRelativePath = Release.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

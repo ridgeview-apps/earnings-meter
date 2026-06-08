@@ -1,2 +1,2 @@
-- Optimised for iOS26 / Liquid Glass
-- Emojis can now be turned off in Settings
+- UI improvements across the app
+- Bug fixes and stability improvements
