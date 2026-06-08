@@ -50,8 +50,8 @@ struct ToolbarCloseButton: ToolbarContent {
                     onDidDismiss()
                 }
             }
-            .accessibilityLabel(Text(.toolbarCloseButtonAccessibilityLabel))
-            .accessibilityHint(Text(.toolbarCloseButtonAccessibilityHint))
+            .accessibilityLabel(Text(L10n.toolbarCloseButtonAccessibilityLabel))
+            .accessibilityHint(Text(L10n.toolbarCloseButtonAccessibilityHint))
         }
     }
 }

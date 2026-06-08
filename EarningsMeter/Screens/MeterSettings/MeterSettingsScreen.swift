@@ -33,21 +33,21 @@ struct MeterSettingsScreen: View {
                     }
                 }
                 .confirmationDialog(
-                    Text(.settingsDiscardChangesTitle),
+                    Text(L10n.settingsDiscardChangesTitle),
                     isPresented: $showDiscardChangesDialog,
                     titleVisibility: .visible
                 ) {
                     Button(role: .destructive) {
                         dismiss()
                     } label: {
-                        Text(.settingsDiscardChangesConfirmButton)
+                        Text(L10n.settingsDiscardChangesConfirmButton)
                     }
                     Button(role: .cancel) {
                     } label: {
-                        Text(.settingsDiscardChangesCancelButton)
+                        Text(L10n.settingsDiscardChangesCancelButton)
                     }
                 } message: {
-                    Text(.settingsDiscardChangesMessage)
+                    Text(L10n.settingsDiscardChangesMessage)
                 }
                 .task {
                     prepareEditMode()
@@ -69,18 +69,18 @@ struct MeterSettingsScreen: View {
     private var navigationTitle: Text {
         switch inputForm.editMode {
         case .welcome:
-            Text(.settingsNavigationTitleWelcome)
+            Text(L10n.settingsNavigationTitleWelcome)
         case .update:
-            Text(.settingsNavigationTitleEdit)
+            Text(L10n.settingsNavigationTitleEdit)
         }
     }
 
     private var saveButtonText: Text {
         switch inputForm.editMode {
         case .welcome:
-            Text(.settingsButtonTitleStart)
+            Text(L10n.settingsButtonTitleStart)
         case .update:
-            Text(.settingsButtonTitleSave)
+            Text(L10n.settingsButtonTitleSave)
         }
     }
 

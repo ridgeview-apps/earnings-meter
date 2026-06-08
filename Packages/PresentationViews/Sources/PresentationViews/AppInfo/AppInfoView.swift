@@ -64,7 +64,7 @@ public struct AppInfoView: View {
     }
 
     private var emailSubject: String {
-        String(localized: .contactUsSubject(contactUs.appName))
+        String(localized: "contact.us.subject \(contactUs.appName)")
     }
 
     private var emailBody: String {

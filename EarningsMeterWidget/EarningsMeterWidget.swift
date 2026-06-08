@@ -35,8 +35,8 @@ struct EarningsMeterWidget: Widget {
             .accessoryCircular,
             .accessoryRectangular
         ])
-        .configurationDisplayName(Text(.widgetMeterConfigurationDisplayName))
-        .description(Text(.widgetMeterConfigurationDescription))
+        .configurationDisplayName(Text(L10n.widgetMeterConfigurationDisplayName))
+        .description(Text(L10n.widgetMeterConfigurationDescription))
     }
 
     @ViewBuilder private var widgetOverlayTitle: some View {

@@ -46,7 +46,7 @@ private struct WrapperView: View {
     var body: some View {
         Form {
             ExpandableTimePicker(
-                title: "Picker 1",
+                title: .picker1,
                 accessibilityIdentifier: "acc.id.preview.time.picker",
                 selectedTime: $selectedTime,
                 isExpanded: $isExpanded

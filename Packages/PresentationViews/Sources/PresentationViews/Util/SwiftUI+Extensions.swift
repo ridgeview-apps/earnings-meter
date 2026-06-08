@@ -38,22 +38,6 @@ public extension View {
                     .stroke(color, lineWidth: lineWidth)
             )
     }
-
-    func styledTabItem(
-        imageName: String,
-        title: LocalizedStringResource,
-        accessibilityID: String
-    ) -> some View {
-        tabItem {
-            VStack {
-                Image(systemName: imageName)
-                    .imageScale(.large)
-                Text(title)
-            }
-            .accessibilityIdentifier(accessibilityID)
-        }
-
-    }
 }
 
 // MARK: - Text fields

@@ -9,7 +9,6 @@ struct MeterScreen: View {
     // MARK: - Properties
 
     let style: MeterView.Style
-    let navigationTitle: LocalizedStringResource
 
     @State private var meterTimer: Timer?
     @State private var selectedDate: Date = Self.defaultSelectionDate
@@ -21,6 +20,15 @@ struct MeterScreen: View {
     private var savedMeterSettings: MeterSettings? { userPreferences.meterSettings }
 
     private static var defaultSelectionDate: Date { Calendar.current.startOfDay(for: .now) }
+
+    private var navigationTitle: LocalizedStringResource {
+        switch style {
+        case .today:
+            L10n.earningsTodayNavigationTitle
+        case .accumulated:
+            L10n.earningsSinceNavigationTitle
+        }
+    }
 
 
     // MARK: - Body
@@ -100,8 +108,7 @@ struct MeterScreen: View {
 // MARK: - Previews
 #Preview {
     MeterScreen(
-        style: .today,
-        navigationTitle: "Preview"
+        style: .today
     )
     .styledPreview()
     .previewWithUserPreferences(UserPreferencesStubs.nineToFiveMeter)

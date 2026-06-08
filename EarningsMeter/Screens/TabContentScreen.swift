@@ -2,10 +2,6 @@ import SwiftUI
 
 struct TabContentScreenModifier: ViewModifier {
 
-    let imageName: String
-    let title: LocalizedStringResource
-    let accessibilityID: String
-
     @State private var activeSheetItem: TabContentSheetItem?
 
     func body(content: Content) -> some View {
@@ -21,11 +17,6 @@ struct TabContentScreenModifier: ViewModifier {
                     activeSheetItem = .settings
                 }
         }
-        .styledTabItem(
-            imageName: imageName,
-            title: title,
-            accessibilityID: accessibilityID
-        )
     }
 
     @ViewBuilder private func show(sheetItem: TabContentSheetItem) -> some View {
@@ -40,17 +31,9 @@ struct TabContentScreenModifier: ViewModifier {
 
 extension View {
 
-    func tabContentScreen(
-        imageName: String,
-        title: LocalizedStringResource,
-        accessibilityID: String
-    ) -> some View {
+    func tabContentScreen() -> some View {
         modifier(
-            TabContentScreenModifier(
-                imageName: imageName,
-                title: title,
-                accessibilityID: accessibilityID
-            )
+            TabContentScreenModifier()
         )
     }
 }

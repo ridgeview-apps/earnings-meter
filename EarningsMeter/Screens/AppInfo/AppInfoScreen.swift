@@ -23,7 +23,7 @@ struct AppInfoScreen: View {
                 appGroupName: appConfig.appGroupName
             )
 
-            .navigationTitle(Text(.appInfoNavigationTitle))
+            .navigationTitle(Text(L10n.appInfoNavigationTitle))
             .withToolbarCloseButton(placement: .topBarLeading)
         }
     }
