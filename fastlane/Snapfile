@@ -6,10 +6,12 @@ devices([
 languages([
   "en-GB", 
   "en-US",
-  "es-ES", "es-MX",
-  "fr-CA", "fr-FR",
+  "es-ES", 
+  "es-MX",
+  "fr-CA", 
+  "fr-FR",
 ])
 
 clear_previous_screenshots(true)
 override_status_bar(true)
-erase_simulator(true)
+# erase_simulator(true)

@@ -12,7 +12,6 @@
 		311C3DBD28E0D7E500E0C63F /* EarningsMeterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C3DBB28E0D7D800E0C63F /* EarningsMeterWidget.swift */; };
 		312821CE23D0B96000975F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821CD23D0B96000975F66 /* Assets.xcassets */; };
 		312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312821D023D0B96000975F66 /* Preview Assets.xcassets */; };
-		312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312821D223D0B96000975F66 /* LaunchScreen.storyboard */; };
 		312DED172AF967900070956A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED162AF967900070956A /* Models */; };
 		312DED192AF967970070956A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED182AF967970070956A /* Models */; };
 		312DED1C2AFA47BB0070956A /* PresentationViews in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED1B2AFA47BB0070956A /* PresentationViews */; };
@@ -92,7 +91,6 @@
 		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		312821CD23D0B96000975F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		312821D023D0B96000975F66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		312821D323D0B96000975F66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		312821D523D0B96000975F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		312DED152AF966220070956A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Models; sourceTree = "<group>"; };
 		312DED1A2AFA47860070956A /* PresentationViews */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PresentationViews; sourceTree = "<group>"; };
@@ -137,8 +135,6 @@
 		31E068532FD6BFBB00FED06D /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		31E068552FD6C3C700FED06D /* ProcessInfo+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+.swift"; sourceTree = "<group>"; };
 		31E4035328D8D31400CC71B6 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
-		31F28ED925D3F97900AC523A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		31F28EDE25D3F98A00AC523A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		31FF687028E9D64A0049560B /* MeterTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTimeline.swift; sourceTree = "<group>"; };
 		3CD582947C71E1A803A0446F /* Pods_Contract_MeterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contract_MeterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,7 +214,6 @@
 				3190A4382BF61CF7009C70F4 /* Debug */,
 				314A47C625ACD4B000FBBF3E /* Localization */,
 				312821EA23D0BA3000975F66 /* Screens */,
-				312821D223D0B96000975F66 /* LaunchScreen.storyboard */,
 				312821D523D0B96000975F66 /* Info.plist */,
 				312821CF23D0B96000975F66 /* Preview Content */,
 				31B670422BF6606700C4C731 /* PrivacyInfo.xcprivacy */,
@@ -572,7 +567,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31531BAF2C05FC09002B52BB /* InfoPlist.xcstrings in Resources */,
-				312821D423D0B96000975F66 /* LaunchScreen.storyboard in Resources */,
 				312821D123D0B96000975F66 /* Preview Assets.xcassets in Resources */,
 				312821CE23D0B96000975F66 /* Assets.xcassets in Resources */,
 			);
@@ -694,19 +688,6 @@
 			targetProxy = 3190F6DF24CF0B6A004303F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		312821D223D0B96000975F66 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				312821D323D0B96000975F66 /* Base */,
-				31F28ED925D3F97900AC523A /* fr */,
-				31F28EDE25D3F98A00AC523A /* es */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		312821E123D0B96100975F66 /* Debug */ = {
