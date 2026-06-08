@@ -22,27 +22,8 @@ struct RootScreen: View {
 
     var body: some View {
         TabView {
-            Tab {
-                MeterScreen(style: .today)
-                    .tabContentScreen()
-            } label: {
-                Label(
-                    L10n.tabTitleEarningsToday,
-                    systemImage: "gauge.with.dots.needle.bottom.50percent"
-                )
-            }
-            .accessibilityIdentifier("acc.id.tab.title.earnings.today")
-
-            Tab {
-                MeterScreen(style: .accumulated)
-                    .tabContentScreen()
-            } label: {
-                Label(
-                    L10n.tabTitleAccumulatedEarnings,
-                    systemImage: "chart.line.uptrend.xyaxis"
-                )
-            }
-            .accessibilityIdentifier("acc.id.tab.title.accumulated.earnings")
+            earningsTodayTab
+            accumulatedEarningsTab
         }
         .tint(.redThree)
         .task {
@@ -54,6 +35,32 @@ struct RootScreen: View {
         .onChange(of: scenePhase) { _, scenePhase in
             sceneChangeHandler.scenePhaseChanged(to: scenePhase)
         }
+    }
+
+    private var earningsTodayTab: some TabContent<Never> {
+        Tab {
+            MeterScreen(style: .today)
+                .tabContentScreen()
+        } label: {
+            Label(
+                L10n.tabTitleEarningsToday,
+                systemImage: "gauge.with.dots.needle.bottom.50percent"
+            )
+        }
+        .accessibilityIdentifier("acc.id.tab.title.earnings.today")
+    }
+
+    private var accumulatedEarningsTab: some TabContent<Never> {
+        Tab {
+            MeterScreen(style: .accumulated)
+                .tabContentScreen()
+        } label: {
+            Label(
+                L10n.tabTitleAccumulatedEarnings,
+                systemImage: "chart.line.uptrend.xyaxis"
+            )
+        }
+        .accessibilityIdentifier("acc.id.tab.title.accumulated.earnings")
     }
 }
 
