@@ -1,4 +1,4 @@
-#include "Defaults.xcconfig"
+#include "Base.xcconfig"
 
 // Build/archive settings
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter
