@@ -1,6 +1,6 @@
 import PresentationViews
-import RidgeviewCore
 import SwiftUI
+import Shared
 
 struct AppInfoScreen: View {
 
@@ -11,13 +11,13 @@ struct AppInfoScreen: View {
     var body: some View {
         NavigationStack {
             AppInfoView(
-                appVersionNumber: Bundle.main.appVersionNumber,
+                appVersionNumber: Bundle.main.appVersionDisplayString ?? "",
                 appReviewURL: appConfig.submitAppReviewURL,
                 contactUs: .init(
                     emailAddress: appConfig.contactUsEmail,
-                    appVersion: Bundle.main.appVersionNumber,
-                    appName: Bundle.main.appName,
-                    deviceInfo: Device.current.modelName,
+                    appVersion: Bundle.main.appVersionDisplayString ?? "",
+                    appName: Bundle.main.appName ?? "",
+                    deviceInfo: Device.modelDescription,
                     localeInfo: "\(locale.identifier) - \(locale.language.languageCode?.identifier ?? "")"
                 ),
                 appGroupName: appConfig.appGroupName

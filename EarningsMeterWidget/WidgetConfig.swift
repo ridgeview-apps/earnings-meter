@@ -16,7 +16,7 @@ extension WidgetConfig {
 
     @MainActor static let shared: WidgetConfig = {
         let bundle = Bundle(for: WidgetBundleLocator.self)
-        let config = bundle.loadInfoPlistConfig(forKey: "widgetConfig")
+        let config = bundle.infoPlistConfig(forKey: "widgetConfig")
 
         let appGroupName = config["appGroupName"]
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {

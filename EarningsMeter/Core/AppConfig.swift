@@ -22,7 +22,7 @@ struct AppConfig {
 extension AppConfig {
 
     static let main: AppConfig = {
-        let config = Bundle.main.loadInfoPlistConfig(forKey: "appConfig")
+        let config = Bundle.main.infoPlistConfig(forKey: "appConfig")
 
         let appGroupName = config["appGroupName"]
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {

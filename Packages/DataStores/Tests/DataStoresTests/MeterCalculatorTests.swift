@@ -156,8 +156,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_dayWorker_beforeWork() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 7)!  // Before work
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 2, hour: 7)!  // Before work
         let nineToFiveMeter = ModelStubs.dayTime_0900_to_1700(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -177,8 +177,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_dayWorker_atWork() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 13)!  // Middle of day
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 2, hour: 13)!  // Middle of day
         let nineToFiveMeter = ModelStubs.dayTime_0900_to_1700(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -198,8 +198,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_dayWorker_afterWork() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 21)!  // End of day
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 2, hour: 21)!  // End of day
         let nineToFiveMeter = ModelStubs.dayTime_0900_to_1700(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -219,8 +219,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_annualRate() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2020, month: 6, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 8, day: 1)!  // 3 years and 61 days later
+        let startDate = DateStubs.utc(year: 2020, month: 6, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 8, day: 1)!  // 3 years and 61 days later
         let nineToFiveMeter = ModelStubs.dayTime_0900_to_1700(
             rate: .init(amount: 40_000, type: .annual),
             runAtWeekends: true
@@ -240,8 +240,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_nightWorker_beforeMidday_afterWork() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 10)!  // 10am (after work)
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 2, hour: 10)!  // 10am (after work)
         let nineToFiveMeter = ModelStubs.nightTime_2200_to_0600(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -261,8 +261,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_nightWorker_afterMidday_beforeWork() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 2, hour: 21)!  // 9pm (before work)
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 2, hour: 21)!  // 9pm (before work)
         let nineToFiveMeter = ModelStubs.nightTime_2200_to_0600(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -282,8 +282,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_nightWorker_atWork() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 3, hour: 2)!  // Middle of night (next day)
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 3, hour: 2)!  // Middle of night (next day)
         let nineToFiveMeter = ModelStubs.nightTime_2200_to_0600(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -303,8 +303,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_nightWorker_afterWork_beforeMidday() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 3, hour: 8)!  // After work (next day)
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 3, hour: 8)!  // After work (next day)
         let nineToFiveMeter = ModelStubs.nightTime_2200_to_0600(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -324,8 +324,8 @@ struct MeterCalculatorTests {
     @Test
     func accumulatedMeterReading_nightWorker_beforeWork_afterMidday() throws {
         // Given
-        let startDate = DateStubs.UTC(year: 2023, month: 1, day: 1)!
-        let now = DateStubs.UTC(year: 2023, month: 1, day: 3, hour: 13)!
+        let startDate = DateStubs.utc(year: 2023, month: 1, day: 1)!
+        let now = DateStubs.utc(year: 2023, month: 1, day: 3, hour: 13)!
         let nineToFiveMeter = ModelStubs.nightTime_2200_to_0600(
             rate: .init(amount: 100, type: .daily),
             runAtWeekends: true
@@ -347,7 +347,7 @@ struct MeterCalculatorTests {
 
 extension Calendar {
 
-    static func iso8601(in timeZone: TimeZone = .UTC) -> Calendar {
+    static func iso8601(in timeZone: TimeZone = .utc) -> Calendar {
         var cal = Calendar(identifier: .iso8601)
         cal.timeZone = timeZone
         return cal

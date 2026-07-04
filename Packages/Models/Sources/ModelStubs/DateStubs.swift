@@ -1,5 +1,4 @@
 import Foundation
-import RidgeviewCore
 
 public enum DateStubs {}  // Namespace
 
@@ -14,8 +13,8 @@ public extension DateStubs {
 
     static let weekend_1300_London = Date.weekend(hour: 13, minute: 0, in: .london)
 
-    static func UTC(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0, nanoSecond: Int = 0) -> Date? {
-        Date.UTC(year: year, month: month, day: day, hour: hour, minute: minute, second: second, nanosecond: nanoSecond)
+    static func utc(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0, nanoSecond: Int = 0) -> Date? {
+        Date.utc(year: year, month: month, day: day, hour: hour, minute: minute, second: second, nanosecond: nanoSecond)
     }
 }
 

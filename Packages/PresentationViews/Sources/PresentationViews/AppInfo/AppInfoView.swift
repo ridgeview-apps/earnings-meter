@@ -41,11 +41,11 @@ public struct AppInfoView: View {
                     subject: emailSubject,
                     body: emailBody
                 ) {
-                    Text(.appInfoContactUsTitle)
+                    Label(.appInfoContactUsTitle, systemImage: "envelope.fill")
                 }
 
                 Link(destination: appReviewURL) {
-                    Text(.appInfoRateThisAppTitle)
+                    Label(.appInfoRateThisAppTitle, systemImage: "star.fill")
                 }
             }
             if showDebugSection {

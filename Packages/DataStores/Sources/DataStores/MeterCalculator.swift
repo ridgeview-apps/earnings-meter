@@ -1,6 +1,5 @@
 import Foundation
 import Models
-import RidgeviewCore
 
 public struct MeterCalculator: Sendable {
 

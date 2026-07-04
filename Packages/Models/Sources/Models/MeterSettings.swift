@@ -1,5 +1,4 @@
 import Foundation
-import RidgeviewCore
 
 public struct MeterSettings: Codable, Equatable, Sendable {
     public let rate: Rate
