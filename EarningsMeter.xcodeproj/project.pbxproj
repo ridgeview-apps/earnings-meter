@@ -56,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		31003EBC2BF253E600643FB8 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Shared; sourceTree = "<group>"; };
+		311FD6DD2FF929D20089C709 /* beta.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = beta.yml; sourceTree = "<group>"; };
+		311FD6DE2FF929D20089C709 /* feature-branch-checks.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "feature-branch-checks.yml"; sourceTree = "<group>"; };
+		311FD6DF2FF929D20089C709 /* prod.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = prod.yml; sourceTree = "<group>"; };
 		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		312DED152AF966220070956A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Models; sourceTree = "<group>"; };
 		312DED1A2AFA47860070956A /* PresentationViews */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PresentationViews; sourceTree = "<group>"; };
@@ -148,9 +151,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		311FD6E02FF929D20089C709 /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				311FD6DD2FF929D20089C709 /* beta.yml */,
+				311FD6DE2FF929D20089C709 /* feature-branch-checks.yml */,
+				311FD6DF2FF929D20089C709 /* prod.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		311FD6E12FF929D20089C709 /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				311FD6E02FF929D20089C709 /* workflows */,
+			);
+			path = .github;
+			sourceTree = "<group>";
+		};
 		312821BB23D0B95E00975F66 = {
 			isa = PBXGroup;
 			children = (
+				311FD6E12FF929D20089C709 /* .github */,
 				316576B62FD18E0800CABBB4 /* .swift-format */,
 				316520A12AF95F9400E44FF5 /* Packages */,
 				3131C6E82FD70F28008CB26A /* Config */,
