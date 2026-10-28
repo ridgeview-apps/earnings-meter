@@ -52,16 +52,15 @@ lane :add_badge_overlay do
   )
 end
 
-lane :build do
+private_lane :signed_bundle_ids do
+  main_target_bundle_id = read_xcconfig_file.attributes['MAIN_TARGET_BUNDLE_ID']
+
+  [main_target_bundle_id,
+   "#{main_target_bundle_id}.widgetExtension"]
+end
+
+lane :sync_signing do
   app_store_connect_api_key(duration: 1200)
-
-  xcconfig = read_xcconfig_file
-
-  main_target_bundle_id = xcconfig.attributes['MAIN_TARGET_BUNDLE_ID']
-
-  match_app_identifiers = ["#{main_target_bundle_id}", 
-                           "#{main_target_bundle_id}.widgetExtension"]
-
 
   match(
     readonly: false,
@@ -69,11 +68,15 @@ lane :build do
     clone_branch_directly: true,
     git_url: "git@github.com:ridgeview-apps/ridgeview-certs.git",
     git_private_key: ENV["MATCH_GIT_PRIVATE_KEY"],
-    app_identifier: match_app_identifiers,
+    app_identifier: signed_bundle_ids,
     username: "ci.ridgeview@gmail.com",
     type: "appstore"
   )
-  
+end
+
+lane :build do
+  bundle_ids = signed_bundle_ids
+
   increment_build_number(build_number: ENV["GITHUB_RUN_NUMBER"]) if is_ci
 
   gym(
@@ -82,7 +85,12 @@ lane :build do
     configuration: "Release",
     xcconfig: "./Config/CI/#{ENV["XCODE_CONFIG"]}.xcconfig",
     export_method: "app-store",
-    skip_profile_detection: true
+    skip_profile_detection: true,
+    # match runs in a separate fastlane call (sync_signing), so gym doesn't
+    # inherit its profile mapping and needs it spelled out for the export
+    export_options: {
+      provisioningProfiles: bundle_ids.to_h { |id| [id, "match AppStore #{id}"] }
+    }
   )
 end
 
