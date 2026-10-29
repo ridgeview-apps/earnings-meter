@@ -40,10 +40,6 @@ jobs:
           brew install imagemagick
       - name: Swift format lint
         run: Scripts/swift-format-lint.sh
-      # Boot the unit test simulator so it starts up while signing and scan's
-      # build run. Starting it any earlier slows Homebrew and lint by minutes
-      - name: Pre-boot simulator
-        run: bundle exec fastlane boot_test_simulator
       - name: Sync signing
         run: bundle exec fastlane sync_signing
       - name: Unit tests
