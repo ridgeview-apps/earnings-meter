@@ -37,6 +37,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### sync_signing
+
+```sh
+[bundle exec] fastlane sync_signing
+```
+
+
+
 ### build
 
 ```sh
