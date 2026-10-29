@@ -21,12 +21,31 @@ end
 # Unit tests
 #######################
 
+TEST_DEVICE = "iPhone 18 Pro"
+
 private_lane :xcode_tests do |options|
   scan(
     scheme: options[:scheme],
     configuration: "Debug",
-    device: "iPhone 18 Pro"
+    device: TEST_DEVICE
   )
+end
+
+# Starts booting the test simulator without waiting, so CI can run other steps
+# while it boots. Picks the same simulator as scan: the newest iOS runtime's
+# TEST_DEVICE
+lane :boot_test_simulator do
+  simulator = FastlaneCore::DeviceManager.simulators("iOS")
+                                         .select { |device| device.name == TEST_DEVICE }
+                                         .max_by { |device| Gem::Version.new(device.os_version) }
+  UI.user_error!("No #{TEST_DEVICE} simulator found") unless simulator
+
+  if simulator.state == "Booted"
+    UI.message("#{TEST_DEVICE} (iOS #{simulator.os_version}) is already booted")
+  else
+    UI.message("Booting #{TEST_DEVICE} (iOS #{simulator.os_version}, #{simulator.udid})")
+    Process.detach(Process.spawn("xcrun", "simctl", "boot", simulator.udid, [:out, :err] => File::NULL))
+  end
 end
 
 lane :unit_tests do
