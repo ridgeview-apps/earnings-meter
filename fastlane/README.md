@@ -77,6 +77,30 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### tag_release
+
+```sh
+[bundle exec] fastlane tag_release
+```
+
+
+
+### upload_metadata
+
+```sh
+[bundle exec] fastlane upload_metadata
+```
+
+
+
+### start_release
+
+```sh
+[bundle exec] fastlane start_release
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
