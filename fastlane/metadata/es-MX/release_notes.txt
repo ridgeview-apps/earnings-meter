@@ -1,2 +1,2 @@
-- Mejoras en la interfaz de usuario de toda la aplicación
+- Actualizada para iOS 27
 - Corrección de errores y mejoras de estabilidad

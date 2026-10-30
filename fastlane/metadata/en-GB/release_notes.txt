@@ -1,2 +1,2 @@
-- UI improvements across the app
+- Updated for iOS 27
 - Bug fixes and stability improvements
