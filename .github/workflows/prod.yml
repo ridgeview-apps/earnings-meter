@@ -7,7 +7,8 @@ on:
 
 env:
   XCODE_CONFIG: Prod
-  DISTRIBUTION_GROUPS: 'Beta Testers'
+  # Builds go to internal TestFlight only. To also send them to external
+  # testers, add: DISTRIBUTION_GROUPS: 'Beta Testers'
   APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
   APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
   APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
