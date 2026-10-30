@@ -1,2 +1,2 @@
-- Mise à jour pour iOS 27
-- Corrections de bugs et améliorations de la stabilité
+• Mise à jour pour iOS 27.
+• Corrections de bogues et améliorations de la stabilité.

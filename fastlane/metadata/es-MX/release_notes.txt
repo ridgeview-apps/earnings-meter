@@ -1,2 +1,2 @@
-- Actualizada para iOS 27
-- Corrección de errores y mejoras de estabilidad
+• Actualizada para iOS 27.
+• Corrección de errores y mejoras de estabilidad.

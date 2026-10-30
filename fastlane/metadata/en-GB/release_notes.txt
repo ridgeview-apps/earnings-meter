@@ -1,2 +1,2 @@
-- Updated for iOS 27
-- Bug fixes and stability improvements
+• Updated for iOS 27.
+• Bug fixes and stability improvements.
