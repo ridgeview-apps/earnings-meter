@@ -1,15 +1,18 @@
+import Shared
 import SwiftUI
 
 struct MeterAccumulatedDatePickerView: View {
 
     @Environment(\.calendar) private var calendar
+    @Environment(\.clock) private var clock
 
     @Binding var selectedDate: Date
 
     @State private var showResetConfirmation: Bool = false
 
-    private var today: Date { calendar.startOfDay(for: .now) }
-    private var isTodaySelected: Bool { calendar.isDateInToday(selectedDate) }
+    private var today: Date { calendar.startOfDay(for: clock.now) }
+    // Not `isDateInToday(_:)`, which always uses the real date
+    private var isTodaySelected: Bool { calendar.isDate(selectedDate, inSameDayAs: clock.now) }
 
     var body: some View {
         HStack(spacing: 12) {
@@ -71,7 +74,7 @@ struct MeterAccumulatedDatePickerView: View {
             titleVisibility: .visible
         ) {
             Button(role: .destructive) {
-                selectedDate = .now
+                selectedDate = clock.now
             } label: {
                 Text(.meterDatePickerResetButtonTitle)
             }

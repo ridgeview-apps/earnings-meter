@@ -18,6 +18,7 @@ struct AppScene: App {
         WindowGroup {
             RootScreen()
                 .appAnimationsEnabled(ProcessInfo.animationsEnabled)
+                .environment(\.pausesRepeatingAnimations, ProcessInfo.isRunningUITests)
         }
     }
 }

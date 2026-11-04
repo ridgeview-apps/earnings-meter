@@ -11,6 +11,7 @@ struct MeterSettingsScreen: View {
     private var userPreferences: UserPreferences = .empty
 
     @Environment(\.dismiss) var dismiss
+    @Environment(\.clock) private var clock
 
     @State private var inputForm: MeterSettingsInputForm = .welcomeMode()
     @State private var initialInputFormSnapshot: InputFormSnapshot?
@@ -59,10 +60,11 @@ struct MeterSettingsScreen: View {
         guard !userPreferences.needsOnboarding,
             let savedMeterSettings = userPreferences.meterSettings
         else {
+            inputForm = .welcomeMode(today: clock.now)
             initialInputFormSnapshot = .init(inputForm)
             return
         }
-        inputForm = .updateMode(with: savedMeterSettings)
+        inputForm = .updateMode(with: savedMeterSettings, today: clock.now)
         initialInputFormSnapshot = .init(inputForm)
     }
 

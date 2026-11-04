@@ -10,8 +10,11 @@ struct MeterScreen: View {
 
     let style: MeterView.Style
 
+    @Environment(\.clock) private var clock
+
     @State private var meterTimer: Timer?
-    @State private var selectedDate: Date = Self.defaultSelectionDate
+    /// `nil` until a date is picked or restored, so the default can come from the environment's clock.
+    @State private var selectedDate: Date?
     @State private var currentReading: MeterReading?
 
     @AppStorage(UserDefaults.Keys.userPreferences.rawValue, store: .sharedTargetStorage)
@@ -19,7 +22,8 @@ struct MeterScreen: View {
 
     private var savedMeterSettings: MeterSettings? { userPreferences.meterSettings }
 
-    private static var defaultSelectionDate: Date { Calendar.current.startOfDay(for: .now) }
+    /// The date accumulated earnings count from: the one picked, or else today.
+    private var earningsSinceDate: Date { selectedDate ?? Calendar.current.startOfDay(for: clock.now) }
 
     private var navigationTitle: LocalizedStringResource {
         switch style {
@@ -65,7 +69,10 @@ struct MeterScreen: View {
                 style: style,
                 settings: savedMeterSettings,
                 reading: currentReading,
-                selectedDate: $selectedDate
+                selectedDate: Binding(
+                    get: { earningsSinceDate },
+                    set: { selectedDate = $0 }
+                )
             )
         }
     }
@@ -75,6 +82,7 @@ struct MeterScreen: View {
 
         stopMeter()
         let meterCalculator = MeterCalculator(meterSettings: savedMeterSettings)
+        let clock = clock
         meterTimer = Timer.scheduledTimer(
             withTimeInterval: savedMeterSettings.defaultMeterSpeed,
             repeats: true
@@ -82,9 +90,9 @@ struct MeterScreen: View {
             Task { @MainActor in
                 switch style {
                 case .today:
-                    currentReading = meterCalculator.dailyReading(at: .now)
+                    currentReading = meterCalculator.dailyReading(at: clock.now)
                 case .accumulated:
-                    currentReading = meterCalculator.accumulatedReading(at: .now, since: selectedDate)
+                    currentReading = meterCalculator.accumulatedReading(at: clock.now, since: earningsSinceDate)
                 }
             }
 
