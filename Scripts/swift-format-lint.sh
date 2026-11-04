@@ -16,5 +16,5 @@ cd "$REPO_ROOT"
 find EarningsMeter EarningsMeterWidget Packages EarningsMeterTests EarningsMeterUITests \
     -path "*/.build" -prune -o \
     -name "*.swift" \
-    ! -path "EarningsMeterUITests/SnapshotHelper.swift" \
+    ! -path "EarningsMeterUITests/Support/SnapshotHelper.swift" \
     -print0 | xargs -0 "$SWIFT_FORMAT" lint --configuration "$REPO_ROOT/.swift-format" --parallel

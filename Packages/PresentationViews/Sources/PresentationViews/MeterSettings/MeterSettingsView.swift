@@ -1,5 +1,6 @@
 import Foundation
 import Models
+import Shared
 import SwiftUI
 
 public struct MeterSettingsView: View {
@@ -24,13 +25,13 @@ public struct MeterSettingsView: View {
                     .padding([.top, .bottom], 12)
                 ExpandableTimePicker(
                     title: .settingsWorkingHoursStartTimeTitle,
-                    accessibilityIdentifier: "acc.id.start.time.disclosure",
+                    accessibilityIdentifier: AccessibilityID.MeterSettings.startTime,
                     selectedTime: $inputForm.startTime,
                     isExpanded: $isStartTimeExpanded
                 )
                 ExpandableTimePicker(
                     title: .settingsWorkingHoursEndTimeTitle,
-                    accessibilityIdentifier: "acc.id.end.time.disclosure",
+                    accessibilityIdentifier: AccessibilityID.MeterSettings.endTime,
                     selectedTime: $inputForm.endTime,
                     isExpanded: $isEndTimeExpanded
                 )
@@ -38,6 +39,7 @@ public struct MeterSettingsView: View {
                 runAtWeekendsToggle
             }
         }
+        .accessibilityIdentifier(AccessibilityID.MeterSettings.list)
         .scrollDismissesKeyboard(.interactively)
         .onChange(of: isStartTimeExpanded) { _, isExpanded in
             if isExpanded {
@@ -141,7 +143,7 @@ public struct MeterSettingsView: View {
                 TextField(text: $inputForm.rateAmountFieldText) {
                     Text(.settingsRatePlaceholder)
                 }
-                .accessibilityIdentifier("acc.id.rate.textfield")
+                .accessibilityIdentifier(AccessibilityID.MeterSettings.rateField)
                 .keyboardType(.decimalPad)
                 .focused($isRateTextFieldFocused)
                 .onChange(of: inputForm.rateAmountFieldText) { _, updatedText in
@@ -178,7 +180,7 @@ public struct MeterSettingsView: View {
                     .foregroundColor(.redThree)
                 Spacer()
             }
-            .accessibilityIdentifier("acc.id.rate.validation.error")
+            .accessibilityIdentifier(AccessibilityID.MeterSettings.rateValidationError)
         }
     }
 
@@ -191,7 +193,7 @@ public struct MeterSettingsView: View {
         .pickerStyle(.segmented)
         .accessibilityLabel(Text(.settingsRatePickerAccessibilityLabel))
         .accessibilityHint(Text(.settingsRatePickerAccessibilityHint))
-        .accessibilityIdentifier("acc.id.rate.type.picker")
+        .accessibilityIdentifier(AccessibilityID.MeterSettings.rateTypePicker)
     }
 
     private var runAtWeekendsToggle: some View {
@@ -200,7 +202,7 @@ public struct MeterSettingsView: View {
         }
         .toggleStyle(SwitchToggleStyle(tint: .redOne))
         .accessibilityHint(Text(.settingsRunAtWeekendsAccessibilityHint))
-        .accessibilityIdentifier("acc.id.run.at.weekends.toggle")
+        .accessibilityIdentifier(AccessibilityID.MeterSettings.runAtWeekendsToggle)
     }
 
     private var shouldShowRateValidationError: Bool {
@@ -245,7 +247,7 @@ public struct MeterSettingsView: View {
                     .foregroundColor(.redThree)
                 Spacer()
             }
-            .accessibilityIdentifier("acc.id.working.hours.invalid")
+            .accessibilityIdentifier(AccessibilityID.MeterSettings.workingHoursInvalid)
         } else if inputForm.hasOvernightWorkingHours {
             HStack(spacing: 8) {
                 Image(systemName: "moon.stars.fill")
@@ -255,7 +257,7 @@ public struct MeterSettingsView: View {
                     .foregroundColor(.redThree)
                 Spacer()
             }
-            .accessibilityIdentifier("acc.id.working.hours.overnight")
+            .accessibilityIdentifier(AccessibilityID.MeterSettings.workingHoursOvernight)
         }
     }
 }

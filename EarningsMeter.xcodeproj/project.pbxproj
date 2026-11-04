@@ -14,6 +14,7 @@
 		312DED3D2AFE92FE0070956A /* DataStores in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED3C2AFE92FE0070956A /* DataStores */; };
 		312DED3F2AFE93050070956A /* DataStores in Frameworks */ = {isa = PBXBuildFile; productRef = 312DED3E2AFE93050070956A /* DataStores */; };
 		31658F9F28D3775A005466C2 /* EarningsMeterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		31A7D1E12FD9A00100C0FFEE /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 31A7D1E02FD9A00100C0FFEE /* Shared */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,17 +83,12 @@
 			);
 			target = 312821C323D0B95E00975F66 /* EarningsMeter */;
 		};
-		31E068B72FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				UITestScenario.swift,
-			);
-			target = 312821C323D0B95E00975F66 /* EarningsMeter */;
-		};
 		31E068B82FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				TestPlans/Screenshots.xctestplan,
+				TestPlans/UIFunctional.xctestplan,
 			);
 			target = 314A715725BAF8F80062D050 /* EarningsMeterUITests */;
 		};
@@ -109,7 +105,7 @@
 		3131C6E82FD70F28008CB26A /* Config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Config; sourceTree = "<group>"; };
 		31E068982FD6CDD100FED06D /* EarningsMeter */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068AA2FD6CDD200FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeter; sourceTree = "<group>"; };
 		31E068AC2FD6CEEB00FED06D /* EarningsMeterTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterTests; sourceTree = "<group>"; };
-		31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068B72FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 31E068B82FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterUITests; sourceTree = "<group>"; };
+		31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068B82FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterUITests; sourceTree = "<group>"; };
 		31E068C22FD6CEF300FED06D /* EarningsMeterWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068CA2FD6CEF400FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterWidget; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -128,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A7D1E12FD9A00100C0FFEE /* Shared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +263,9 @@
 				31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */,
 			);
 			name = EarningsMeterUITests;
+			packageProductDependencies = (
+				31A7D1E02FD9A00100C0FFEE /* Shared */,
+			);
 			productName = EarningsMeterUITests;
 			productReference = 314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -851,6 +851,10 @@
 		312DED3E2AFE93050070956A /* DataStores */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DataStores;
+		};
+		31A7D1E02FD9A00100C0FFEE /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

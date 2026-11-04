@@ -1,4 +1,5 @@
 import PresentationViews
+import Shared
 import SwiftUI
 
 // MARK: - Settings button
@@ -11,6 +12,7 @@ struct ToolbarSettingsButton: ToolbarContent {
     var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
             ImageButton(imageName: "gearshape", action: action)
+                .accessibilityIdentifier(AccessibilityID.Toolbar.settingsButton)
         }
     }
 }
@@ -25,6 +27,7 @@ struct ToolbarInfoButton: ToolbarContent {
     var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
             ImageButton(imageName: "info.circle", action: action)
+                .accessibilityIdentifier(AccessibilityID.Toolbar.infoButton)
         }
     }
 }
@@ -52,6 +55,7 @@ struct ToolbarCloseButton: ToolbarContent {
             }
             .accessibilityLabel(Text(L10n.toolbarCloseButtonAccessibilityLabel))
             .accessibilityHint(Text(L10n.toolbarCloseButtonAccessibilityHint))
+            .accessibilityIdentifier(AccessibilityID.Toolbar.closeButton)
         }
     }
 }

@@ -1,4 +1,5 @@
 import Models
+import Shared
 import SwiftUI
 
 public struct MeterView: View {
@@ -85,8 +86,10 @@ public struct MeterView: View {
             switch style {
             case .today:
                 Text(.meterHeaderEarningsTodayTitle)
+                    .accessibilityIdentifier(AccessibilityID.Meter.earningsTodayHeader)
             case .accumulated:
                 Text(.meterHeaderEarningsSinceTitle(formattedSelectedDate))
+                    .accessibilityIdentifier(AccessibilityID.Meter.accumulatedEarningsHeader)
             }
         }
         .instrumentLabel(.headline)

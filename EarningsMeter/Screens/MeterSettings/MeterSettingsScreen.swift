@@ -43,6 +43,7 @@ struct MeterSettingsScreen: View {
                     } label: {
                         Text(L10n.settingsDiscardChangesConfirmButton)
                     }
+                    .accessibilityIdentifier(AccessibilityID.MeterSettings.discardChangesButton)
                     Button(role: .cancel) {
                     } label: {
                         Text(L10n.settingsDiscardChangesCancelButton)
@@ -95,7 +96,7 @@ struct MeterSettingsScreen: View {
         } label: {
             saveButtonText
         }
-        .accessibilityIdentifier("acc.id.save.button")
+        .accessibilityIdentifier(AccessibilityID.MeterSettings.saveButton)
         .disabled(!inputForm.isValid)
     }
 
