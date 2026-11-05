@@ -23,10 +23,6 @@ public extension UserDefaults {
             set(newValue?.rawValue, forKey: Keys.userPreferences.rawValue)
         }
     }
-
-    func resetPreferences() {
-        userPreferences = .empty
-    }
 }
 
 public extension UserDefaults {

@@ -12,7 +12,7 @@ public struct MeterHireStatusView: View {
 
 
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.appAnimationsEnabled) private var appAnimationsEnabled
+    @Environment(\.pausesRepeatingAnimations) private var pausesRepeatingAnimations
 
 
     // MARK: - Properties
@@ -37,7 +37,7 @@ public struct MeterHireStatusView: View {
                     .symbolEffect(
                         .pulse,
                         options: .repeating,
-                        isActive: appAnimationsEnabled
+                        isActive: !pausesRepeatingAnimations
                     )
             }
         }

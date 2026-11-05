@@ -43,6 +43,14 @@ extension AppConfig {
 extension UserDefaults {
 
     @MainActor static let sharedTargetStorage: UserDefaults = {
+        #if DEBUG
+            // UI tests start from the state they ask for, whatever an earlier run saved
+            if let seed = UITestLaunch.configuration?.scenario.seed {
+                let defaults = UserDefaults.emptiedUITestSuite(named: "UITests")
+                seed.write(to: defaults)
+                return defaults
+            }
+        #endif
         let appGroupName = AppConfig.main.appGroupName
         guard let sharedTargetDefaults = UserDefaults(suiteName: appGroupName) else {
             fatalError("Unable to load UserDefaults for app group name \(appGroupName)")

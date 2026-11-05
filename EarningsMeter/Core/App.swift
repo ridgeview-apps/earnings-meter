@@ -1,6 +1,7 @@
 import DataStores
 import Foundation
 import PresentationViews
+import Shared
 import SwiftUI
 
 @main
@@ -9,15 +10,15 @@ struct AppScene: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
-        if ProcessInfo.resetUserPreferences {
-            UserDefaults.sharedTargetStorage.resetPreferences()
-        }
+        UITestLaunch.configuration?.applyProcessSettings()
     }
 
     var body: some Scene {
         WindowGroup {
             RootScreen()
-                .appAnimationsEnabled(ProcessInfo.animationsEnabled)
+                .appAnimationsEnabled(!UITestLaunch.disablesAnimations)
+                .environment(\.clock, UITestLaunch.clock)
+                .environment(\.pausesRepeatingAnimations, ProcessInfo.isRunningUITests)
         }
     }
 }

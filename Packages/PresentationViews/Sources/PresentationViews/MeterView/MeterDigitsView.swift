@@ -1,5 +1,6 @@
 import Foundation
 import Models
+import Shared
 import SwiftUI
 
 public struct MeterDigitsView: View {
@@ -50,6 +51,7 @@ public struct MeterDigitsView: View {
         ZStack(alignment: .trailing) {
             faintBackgroundAmount
             Text(amount, format: amountFormatStyle)
+                .accessibilityIdentifier(AccessibilityID.Meter.amount)
                 .contentTransition(
                     appAnimationsEnabled ? .numericText(value: amount) : .identity
                 )

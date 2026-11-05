@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "910CE457-1287-41BD-B1A8-8DA903F5A227",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en-GB",
+    "region" : "GB",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "ScreenshotTests"
+      ],
+      "target" : {
+        "containerPath" : "container:EarningsMeter.xcodeproj",
+        "identifier" : "314A715725BAF8F80062D050",
+        "name" : "EarningsMeterUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

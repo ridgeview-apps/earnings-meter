@@ -11,6 +11,7 @@ struct MeterSettingsScreen: View {
     private var userPreferences: UserPreferences = .empty
 
     @Environment(\.dismiss) var dismiss
+    @Environment(\.clock) private var clock
 
     @State private var inputForm: MeterSettingsInputForm = .welcomeMode()
     @State private var initialInputFormSnapshot: InputFormSnapshot?
@@ -42,6 +43,7 @@ struct MeterSettingsScreen: View {
                     } label: {
                         Text(L10n.settingsDiscardChangesConfirmButton)
                     }
+                    .accessibilityIdentifier(AccessibilityID.MeterSettings.discardChangesButton)
                     Button(role: .cancel) {
                     } label: {
                         Text(L10n.settingsDiscardChangesCancelButton)
@@ -59,10 +61,11 @@ struct MeterSettingsScreen: View {
         guard !userPreferences.needsOnboarding,
             let savedMeterSettings = userPreferences.meterSettings
         else {
+            inputForm = .welcomeMode(today: clock.now)
             initialInputFormSnapshot = .init(inputForm)
             return
         }
-        inputForm = .updateMode(with: savedMeterSettings)
+        inputForm = .updateMode(with: savedMeterSettings, today: clock.now)
         initialInputFormSnapshot = .init(inputForm)
     }
 
@@ -93,7 +96,7 @@ struct MeterSettingsScreen: View {
         } label: {
             saveButtonText
         }
-        .accessibilityIdentifier("acc.id.save.button")
+        .accessibilityIdentifier(AccessibilityID.MeterSettings.saveButton)
         .disabled(!inputForm.isValid)
     }
 

@@ -2,6 +2,7 @@ import DataStores
 import SwiftUI
 import Models
 import PresentationViews
+import Shared
 
 enum TabContentSheetItem: Identifiable {
     var id: Self { self }
@@ -47,7 +48,7 @@ struct RootScreen: View {
                 systemImage: "gauge.with.dots.needle.bottom.50percent"
             )
         }
-        .accessibilityIdentifier("acc.id.tab.title.earnings.today")
+        .accessibilityIdentifier(AccessibilityID.Tab.earningsToday)
     }
 
     private var accumulatedEarningsTab: some TabContent<Never> {
@@ -60,7 +61,7 @@ struct RootScreen: View {
                 systemImage: "chart.line.uptrend.xyaxis"
             )
         }
-        .accessibilityIdentifier("acc.id.tab.title.accumulated.earnings")
+        .accessibilityIdentifier(AccessibilityID.Tab.accumulatedEarnings)
     }
 }
 
