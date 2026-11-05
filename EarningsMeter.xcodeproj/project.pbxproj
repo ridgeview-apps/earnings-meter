@@ -347,6 +347,8 @@
 				Base,
 				fr,
 				es,
+				"es-MX",
+				"fr-CA",
 			);
 			mainGroup = 312821BB23D0B95E00975F66;
 			packageReferences = (

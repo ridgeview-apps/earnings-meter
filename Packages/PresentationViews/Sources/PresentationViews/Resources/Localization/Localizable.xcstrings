@@ -9,7 +9,19 @@
             "value" : ""
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -32,7 +44,19 @@
             "value" : "Versión"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
@@ -55,7 +79,19 @@
             "value" : "Contáctanos"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contáctanos"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous contacter"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nous contacter"
@@ -78,7 +114,19 @@
             "value" : "Acerca de esta app"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de esta app"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de cette app"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos de cette app"
@@ -101,7 +149,19 @@
             "value" : "Valorar la aplicación"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calificar la app"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noter cette app"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Noter cette app"
@@ -124,7 +184,19 @@
             "value" : "Versión"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
@@ -147,7 +219,19 @@
             "value" : "Dispositivo"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Appareil"
@@ -170,7 +254,19 @@
             "value" : "Esta información puede ayudarnos a responder a tus preguntas:"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta información puede ayudarnos a responder a tus preguntas:"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les informations ci-dessous peuvent nous aider à répondre à vos questions :"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les informations ci-dessous peuvent nous aider à répondre à vos questions :"
@@ -193,7 +289,19 @@
             "value" : "Idioma/Región"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma/Región"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue/Région"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Langue/Région"
@@ -216,7 +324,19 @@
             "value" : "Versión del sistema"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión del sistema"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version du système"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version du système"
@@ -239,7 +359,19 @@
             "value" : "Comentarios sobre %@"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comentarios sobre %@"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentaires sur %@"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Commentaires sur %@"
@@ -262,7 +394,19 @@
             "value" : ""
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -285,7 +429,19 @@
             "value" : ""
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -308,7 +464,19 @@
             "value" : "Ganancias acumuladas"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganancias acumuladas"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenus cumulés"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revenus cumulés"
@@ -331,7 +499,19 @@
             "value" : "Ganancias hoy"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganancias hoy"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenus du jour"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revenus du jour"
@@ -354,7 +534,19 @@
             "value" : "La app Mail no está disponible."
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La app Mail no está disponible."
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'app Mail n'est pas disponible."
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "L'app Mail n'est pas disponible."
@@ -377,7 +569,19 @@
             "value" : "Desde"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depuis"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Depuis"
@@ -400,7 +604,19 @@
             "value" : "Restablecer"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser"
@@ -423,7 +639,19 @@
             "value" : "Cancelar"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler"
@@ -446,7 +674,19 @@
             "value" : "¿Restablecer a la fecha de hoy?"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Restablecer a la fecha de hoy?"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser à la date d'aujourd'hui ?"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser à la date d'aujourd'hui ?"
@@ -469,7 +709,19 @@
             "value" : "Desde %@"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde %@"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depuis %@"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Depuis %@"
@@ -492,7 +744,19 @@
             "value" : "Ganancias hoy"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganancias hoy"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenus du jour"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revenus du jour"
@@ -515,7 +779,19 @@
             "value" : "Trabajando"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabajando"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Au travail"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Au travail"
@@ -538,7 +814,19 @@
             "value" : "Libre"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libre"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libre"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Libre"
@@ -571,7 +859,19 @@
             "value" : "Guardar"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enregistrer"
@@ -594,7 +894,19 @@
             "value" : "Empezar"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarrer"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Démarrer"
@@ -617,7 +929,19 @@
             "value" : "Seguir editando"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguir editando"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer à modifier"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuer à modifier"
@@ -640,7 +964,19 @@
             "value" : "Descartar cambios"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descartar cambios"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer les modifications"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ignorer les modifications"
@@ -663,7 +999,19 @@
             "value" : "Tienes cambios sin guardar. Si cierras ahora, perderás tus ediciones."
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tienes cambios sin guardar. Si cierras ahora, perderás tus ediciones."
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez des modifications non enregistrées. Si vous fermez maintenant, elles seront perdues."
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous avez des modifications non enregistrées. Si vous fermez maintenant, elles seront perdues."
@@ -686,7 +1034,19 @@
             "value" : "¿Descartar cambios?"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Descartar cambios?"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer les modifications ?"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ignorer les modifications ?"
@@ -709,7 +1069,19 @@
             "value" : "Listo"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terminé"
@@ -732,7 +1104,19 @@
             "value" : "Ajustes"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages"
@@ -755,7 +1139,19 @@
             "value" : "Empecemos"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empecemos"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenue"
@@ -778,7 +1174,19 @@
             "value" : "Ganas aproximadamente %@ al día"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganas aproximadamente %@ al día"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous gagnez %@ par jour (approx.)"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous gagnez %@ par jour (approx.)"
@@ -801,7 +1209,19 @@
             "value" : "Ganas %@ al día"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganas %@ al día"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous gagnez %@ par jour"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous gagnez %@ par jour"
@@ -824,7 +1244,19 @@
             "value" : "Elige si la cantidad es anual, diaria o por hora"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige si la cantidad es anual, diaria o por hora"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez si le montant est annuel, journalier ou horaire"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choisissez si le montant est annuel, journalier ou horaire"
@@ -847,7 +1279,19 @@
             "value" : "Periodo de tarifa"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periodo de tarifa"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Période de tarif"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Période de tarif"
@@ -870,7 +1314,19 @@
             "value" : "Por año"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por año"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par an"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Par an"
@@ -893,7 +1349,19 @@
             "value" : "Por día"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por día"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par jour"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Par jour"
@@ -916,7 +1384,19 @@
             "value" : "Por hora"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por hora"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par heure"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Par heure"
@@ -939,7 +1419,19 @@
             "value" : "Salario o tarifa"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salario o tarifa"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salaire ou tarif"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salaire ou tarif"
@@ -962,7 +1454,19 @@
             "value" : "Gano"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gano"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je gagne"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je gagne"
@@ -985,7 +1489,19 @@
             "value" : "Introduce una cantidad válida"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresa una cantidad válida"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saisissez un montant valide"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saisissez un montant valide"
@@ -1008,7 +1524,19 @@
             "value" : "Actívalo si también trabajas sábados y domingos"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actívalo si también trabajas sábados y domingos"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activez si vous travaillez aussi le samedi et le dimanche"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Activez si vous travaillez aussi le samedi et le dimanche"
@@ -1031,10 +1559,22 @@
             "value" : "Trabajo los fines de semana"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabajo los fines de semana"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je travaille le week-end"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je travaille la fin de semaine"
           }
         }
       }
@@ -1054,7 +1594,19 @@
             "value" : "Introduce tus datos y toca Empezar"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresa tus datos y toca Empezar"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saisissez vos informations, puis touchez Démarrer"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saisissez vos informations, puis touchez Démarrer"
@@ -1077,7 +1629,19 @@
             "value" : "Toca dos veces para contraer el selector de hora"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca dos veces para contraer el selector de hora"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez deux fois pour réduire le sélecteur d’heure"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Touchez deux fois pour réduire le sélecteur d’heure"
@@ -1100,7 +1664,19 @@
             "value" : "Hora de fin"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora de fin"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de fin"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure de fin"
@@ -1123,7 +1699,19 @@
             "value" : "Toca dos veces para expandir y editar la hora"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca dos veces para expandir y editar la hora"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez deux fois pour développer et modifier l’heure"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Touchez deux fois pour développer et modifier l’heure"
@@ -1146,7 +1734,19 @@
             "value" : "La hora de inicio y la de fin no pueden ser iguales"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La hora de inicio y la de fin no pueden ser iguales"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’heure de début et l’heure de fin ne peuvent pas être identiques"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "L’heure de début et l’heure de fin ne peuvent pas être identiques"
@@ -1169,10 +1769,22 @@
             "value" : "Turno nocturno: la hora de fin se considera del día siguiente"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turno nocturno: la hora de fin se considera del día siguiente"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Service de nuit : l’heure de fin correspond au lendemain"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quart de nuit : l’heure de fin correspond au lendemain"
           }
         }
       }
@@ -1192,7 +1804,19 @@
             "value" : "Hora de inicio"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora de inicio"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de début"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure de début"
@@ -1215,7 +1839,19 @@
             "value" : "Acumulado"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acumulado"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumulé"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cumulé"
@@ -1238,7 +1874,19 @@
             "value" : "Hoy"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd'hui"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aujourd'hui"
@@ -1261,7 +1909,19 @@
             "value" : "Cerrar esta pantalla"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar esta pantalla"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer cet écran"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fermer cet écran"
@@ -1284,7 +1944,19 @@
             "value" : "Cerrar"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fermer"
@@ -1307,7 +1979,19 @@
             "value" : "Ver mis ganancias de hoy hasta ahora"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver mis ganancias de hoy hasta ahora"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir mes revenus du jour jusqu'à présent"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir mes revenus du jour jusqu'à présent"
@@ -1330,7 +2014,19 @@
             "value" : "Ganancias"
           }
         },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganancias"
+          }
+        },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenus"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revenus"
