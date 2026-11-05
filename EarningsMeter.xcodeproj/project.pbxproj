@@ -57,20 +57,25 @@
 
 /* Begin PBXFileReference section */
 		31003EBC2BF253E600643FB8 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Shared; sourceTree = "<group>"; };
-		311FD6DD2FF929D20089C709 /* beta.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = beta.yml; sourceTree = "<group>"; };
-		311FD6DE2FF929D20089C709 /* feature-branch-checks.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "feature-branch-checks.yml"; sourceTree = "<group>"; };
-		311FD6DF2FF929D20089C709 /* prod.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = prod.yml; sourceTree = "<group>"; };
 		312821C423D0B95E00975F66 /* Earnings Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Earnings Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		312DED152AF966220070956A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Models; sourceTree = "<group>"; };
 		312DED1A2AFA47860070956A /* PresentationViews */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PresentationViews; sourceTree = "<group>"; };
 		312DED3B2AFE92500070956A /* DataStores */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataStores; sourceTree = "<group>"; };
 		314A715825BAF8F90062D050 /* EarningsMeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		316576B62FD18E0800CABBB4 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3190F6DA24CF0B6A004303F0 /* EarningsMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		31E068D02FD6CF0D00FED06D /* screenshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = screenshots.sh; sourceTree = "<group>"; };
-		31E068D22FD6CF0D00FED06D /* submit-for-review.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "submit-for-review.sh"; sourceTree = "<group>"; };
-		31E068D32FD6CF0D00FED06D /* swift-format-lint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "swift-format-lint.sh"; sourceTree = "<group>"; };
+		319E9BD3309CCB66009DEEC6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		319E9C29309CCB98009DEEC6 /* Appfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
+		319E9C2A309CCB98009DEEC6 /* Deliverfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Deliverfile; sourceTree = "<group>"; };
+		319E9C2B309CCB98009DEEC6 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
+		319E9C2C309CCB98009DEEC6 /* Pluginfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pluginfile; sourceTree = "<group>"; };
+		319E9C2F309CCB98009DEEC6 /* Snapfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
+		319E9C92309CCC07009DEEC6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		319E9C93309CCC07009DEEC6 /* .ruby-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".ruby-version"; sourceTree = "<group>"; };
+		319E9C94309CCC07009DEEC6 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
+		319E9C95309CCC07009DEEC6 /* .xcode-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".xcode-version"; sourceTree = "<group>"; };
+		319E9C96309CCC07009DEEC6 /* AGENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENTS.md; sourceTree = "<group>"; };
+		319E9C97309CCC14009DEEC6 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -102,6 +107,9 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3131C6E82FD70F28008CB26A /* Config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Config; sourceTree = "<group>"; };
+		319E9C84309CCBAD009DEEC6 /* metadata */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = metadata; sourceTree = "<group>"; };
+		319E9C8D309CCBC8009DEEC6 /* .github */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = .github; sourceTree = "<group>"; };
+		319E9C91309CCBDC009DEEC6 /* Scripts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scripts; sourceTree = "<group>"; };
 		31E068982FD6CDD100FED06D /* EarningsMeter */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068AA2FD6CDD200FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeter; sourceTree = "<group>"; };
 		31E068AC2FD6CEEB00FED06D /* EarningsMeterTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterTests; sourceTree = "<group>"; };
 		31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (31E068B82FD6CEF000FED06D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EarningsMeterUITests; sourceTree = "<group>"; };
@@ -147,36 +155,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		311FD6E02FF929D20089C709 /* workflows */ = {
-			isa = PBXGroup;
-			children = (
-				311FD6DD2FF929D20089C709 /* beta.yml */,
-				311FD6DE2FF929D20089C709 /* feature-branch-checks.yml */,
-				311FD6DF2FF929D20089C709 /* prod.yml */,
-			);
-			path = workflows;
-			sourceTree = "<group>";
-		};
-		311FD6E12FF929D20089C709 /* .github */ = {
-			isa = PBXGroup;
-			children = (
-				311FD6E02FF929D20089C709 /* workflows */,
-			);
-			path = .github;
-			sourceTree = "<group>";
-		};
 		312821BB23D0B95E00975F66 = {
 			isa = PBXGroup;
 			children = (
-				311FD6E12FF929D20089C709 /* .github */,
-				316576B62FD18E0800CABBB4 /* .swift-format */,
+				319E9BD3309CCB66009DEEC6 /* README.md */,
+				319E9BD4309CCB7E009DEEC6 /* Tooling */,
 				316520A12AF95F9400E44FF5 /* Packages */,
 				3131C6E82FD70F28008CB26A /* Config */,
 				31E068982FD6CDD100FED06D /* EarningsMeter */,
 				31E068AC2FD6CEEB00FED06D /* EarningsMeterTests */,
 				31E068B12FD6CEEF00FED06D /* EarningsMeterUITests */,
 				31E068C22FD6CEF300FED06D /* EarningsMeterWidget */,
-				31E068D42FD6CF0D00FED06D /* Scripts */,
 				312821C523D0B95E00975F66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -203,14 +192,33 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
-		31E068D42FD6CF0D00FED06D /* Scripts */ = {
+		319E9BD4309CCB7E009DEEC6 /* Tooling */ = {
 			isa = PBXGroup;
 			children = (
-				31E068D02FD6CF0D00FED06D /* screenshots.sh */,
-				31E068D22FD6CF0D00FED06D /* submit-for-review.sh */,
-				31E068D32FD6CF0D00FED06D /* swift-format-lint.sh */,
+				319E9C8D309CCBC8009DEEC6 /* .github */,
+				319E9C30309CCB98009DEEC6 /* fastlane */,
+				319E9C91309CCBDC009DEEC6 /* Scripts */,
+				319E9C92309CCC07009DEEC6 /* .gitignore */,
+				319E9C93309CCC07009DEEC6 /* .ruby-version */,
+				319E9C94309CCC07009DEEC6 /* .swift-format */,
+				319E9C95309CCC07009DEEC6 /* .xcode-version */,
+				319E9C96309CCC07009DEEC6 /* AGENTS.md */,
+				319E9C97309CCC14009DEEC6 /* Gemfile */,
 			);
-			path = Scripts;
+			name = Tooling;
+			sourceTree = "<group>";
+		};
+		319E9C30309CCB98009DEEC6 /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				319E9C84309CCBAD009DEEC6 /* metadata */,
+				319E9C29309CCB98009DEEC6 /* Appfile */,
+				319E9C2A309CCB98009DEEC6 /* Deliverfile */,
+				319E9C2B309CCB98009DEEC6 /* Fastfile */,
+				319E9C2C309CCB98009DEEC6 /* Pluginfile */,
+				319E9C2F309CCB98009DEEC6 /* Snapfile */,
+			);
+			path = fastlane;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
