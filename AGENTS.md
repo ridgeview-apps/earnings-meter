@@ -1,5 +1,13 @@
 # AGENTS.md
 
+## Comments
+
+Write self-documenting code. This applies to every file: Swift, Ruby, YAML, shell scripts.
+
+- **Explain in code first:** before writing a comment, try a clearer name, or extract the expression into an explaining variable, e.g. `let isStillProcessing = …`.
+- **Comment only what the code can't say:** a non-obvious *why*, a quirk of an external system, or an alternative that was rejected. Never restate what the code does.
+- **Keep it short:** a line or so, above the code it explains.
+
 ## UI Tests (EarningsMeterUITests)
 
 UI tests drive the app through page objects in `EarningsMeterUITests/Pages/`, one per screen, built on the generic `EarningsMeterUITests/Support/` layer. Each test launches the app with a `UITestLaunchConfiguration` (`Shared/UITesting/`), which fixes the clock and time zone and chooses the saved state (`UITestScenario.Seed`) the app starts with.
