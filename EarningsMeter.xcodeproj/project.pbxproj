@@ -68,7 +68,7 @@
 		316576B62FD18E0800CABBB4 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
 		31658F8F28D37759005466C2 /* EarningsMeterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EarningsMeterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3190F6DA24CF0B6A004303F0 /* EarningsMeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarningsMeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		31E068D02FD6CF0D00FED06D /* screenshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "screenshots.sh"; sourceTree = "<group>"; };
+		31E068D02FD6CF0D00FED06D /* screenshots.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = screenshots.sh; sourceTree = "<group>"; };
 		31E068D22FD6CF0D00FED06D /* submit-for-review.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "submit-for-review.sh"; sourceTree = "<group>"; };
 		31E068D32FD6CF0D00FED06D /* swift-format-lint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "swift-format-lint.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
