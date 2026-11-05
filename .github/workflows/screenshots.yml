@@ -11,10 +11,11 @@ name: Screenshots
 # Only the upload job gets the App Store Connect key.
 #
 # Each device generates on its own runner: a standard runner (3 cores, 7 GB)
-# froze when it started a second simulator (seen in tube-service). Languages
-# aren't split across runners: each runner builds from scratch, and at most
-# about 5 macOS jobs run at once, so 12 device-language jobs would take longer
-# than 2 device jobs.
+# froze when it started a second simulator (seen in tube-service). Each runner
+# also takes only 2 languages: memory runs low as a runner goes through
+# languages, and with all 6 an iPad run swapped until its 4th language's app
+# failed to launch. Only about 5 macOS jobs run at once, so one of the 6 waits,
+# but each builds once and takes 2 languages, so the run takes about as long.
 
 on:
   workflow_dispatch:
@@ -43,13 +44,18 @@ jobs:
   generate:
     runs-on: xcode-27
     strategy:
-      # Lets the other device finish, so one run shows how both are doing
+      # Lets the other jobs finish, so one run shows how they're all doing
       fail-fast: false
       matrix:
         # The Snapfile's devices
         device:
           - iPhone 18 Pro Max
           - iPad Pro 13-inch (M5)
+        # The Snapfile's languages, 2 to a runner
+        language-group:
+          - { name: en, languages: 'en-GB,en-US' }
+          - { name: es, languages: 'es-ES,es-MX' }
+          - { name: fr, languages: 'fr-CA,fr-FR' }
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
@@ -62,12 +68,14 @@ jobs:
       - name: Generate screenshots
         # Fails a hung run long before GitHub's 6 hours. On the step rather than
         # the job, so the logs still upload: a job timeout cancels the job, and
-        # failure() steps don't run. Sized for 1 device in 6 languages: one full
-        # build, then each language re-localizes the simulator and rebuilds
-        # incrementally (locally 69s for the first language, 54s for each other)
-        timeout-minutes: 60
+        # failure() steps don't run. Sized for 1 device in 2 languages: one full
+        # build, then the other language re-localizes the simulator and rebuilds
+        # incrementally (on CI with 6 languages, the iPad took 13 minutes for
+        # the first and 5 for each other)
+        timeout-minutes: 30
         env:
           DEVICE: ${{ matrix.device }}
+          LANGUAGES: ${{ matrix.language-group.languages }}
         # Prints memory use every 30 seconds among snapshot's output, so if the
         # runner freezes, the live log shows whether it ran out of memory first
         run: |
@@ -76,11 +84,11 @@ jobs:
             sleep 30
           done &
           trap "kill $!" EXIT
-          bundle exec fastlane screenshots output_directory:"$RUNNER_TEMP/screenshots" device:"$DEVICE"
+          bundle exec fastlane screenshots output_directory:"$RUNNER_TEMP/screenshots" device:"$DEVICE" languages:"$LANGUAGES"
       - name: Upload screenshots
         uses: actions/upload-artifact@v7
         with:
-          name: screenshots-${{ matrix.device }}
+          name: screenshots-${{ matrix.device }}-${{ matrix.language-group.name }}
           path: ${{ runner.temp }}/screenshots
           if-no-files-found: error
       # snapshot deletes its derived data, result bundle included, so its
@@ -89,7 +97,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v7
         with:
-          name: snapshot-logs-${{ matrix.device }}
+          name: snapshot-logs-${{ matrix.device }}-${{ matrix.language-group.name }}
           path: ~/Library/Logs/snapshot
 
   # Manual approval job
@@ -109,7 +117,7 @@ jobs:
       - name: Download screenshots
         uses: actions/download-artifact@v8
         with:
-          # Every device's, into one folder
+          # Every job's, into one folder
           pattern: screenshots-*
           merge-multiple: true
           path: ${{ runner.temp }}/screenshots
