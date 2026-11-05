@@ -24,14 +24,6 @@ on:
         description: 'Upload to App Store Connect (after approval)'
         type: boolean
         default: false
-  # Temporary: dry-runs the workflow before it's on main. A push leaves
-  # inputs.upload empty, so the upload job is skipped
-  push:
-    branches: [feature/ui-test-overhaul]
-    paths:
-      - .github/workflows/screenshots.yml
-      - fastlane/Fastfile
-      - fastlane/Snapfile
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
