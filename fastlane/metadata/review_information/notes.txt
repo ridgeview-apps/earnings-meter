@@ -1,3 +1,4 @@
-- No demo user required
-- Type in your daily rate or annual salary and tap Start 
-- Watch your earnings meter to see how much you've earned today
+- No account or demo login needed.
+- Enter a salary or rate (per year, day or hour) and your working hours, then tap Start.
+- The meter shows what you've earned so far today. Switch to Accumulated for the total since a chosen date.
+- A Home Screen widget shows the same.

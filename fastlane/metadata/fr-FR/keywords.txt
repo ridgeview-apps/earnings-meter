@@ -1,1 +1,1 @@
-Revenus,salaire,jour de travail,boulot,argent
+salaire,revenu,argent,travail,journée de travail,boulot,paie,taux horaire,compteur,widget,quart
