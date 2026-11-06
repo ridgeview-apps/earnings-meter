@@ -1,3 +1,8 @@
-Earnings Meter is an app to help you get through the working day. Simply enter how much you earn and the app will show you how much you've earned so far today - that's it!
+Earnings Meter shows how much you've earned so far today, ticking up in real time as you work.
 
-$$ Happy earning! $$
+• Enter your salary or rate per year, day or hour.
+• Set your working hours, including overnight shifts and weekends.
+• Watch today's earnings, or see your total since a date you choose.
+• Add the widget to your Home Screen to check at a glance.
+
+Happy earning!

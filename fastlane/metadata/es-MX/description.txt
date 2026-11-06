@@ -1,1 +1,6 @@
-Ganancias es una aplicación para mejorar su día de trabajo. Rellene su salario y su horario laboral, y la aplicacíon mostrará cuánto dinero usted ha ganado hoy, hasta el momento actual.
+Ganancias te muestra cuánto has ganado hoy, en tiempo real, mientras trabajas.
+
+• Ingresa tu salario o tarifa por año, por día o por hora.
+• Configura tu horario, incluidos los turnos de noche y los fines de semana.
+• Consulta lo que has ganado hoy o el total desde la fecha que elijas.
+• Agrega el widget a tu pantalla de inicio para verlo de un vistazo.

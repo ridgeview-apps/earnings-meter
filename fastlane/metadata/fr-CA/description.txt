@@ -1,1 +1,6 @@
-Revenus est une app qui essaie d'améliorer votre jour de travail. Remplissez votre salaire et vos heures de travail et l'app vous montre combien d'argent vous avez gagné aujhord'hui, jusqu'au moment actuel!
+Revenus vous montre combien vous avez gagné aujourd'hui, en temps réel, pendant que vous travaillez.
+
+• Entrez votre salaire ou votre taux annuel, journalier ou horaire.
+• Indiquez vos horaires, y compris le travail de nuit et la fin de semaine.
+• Suivez vos gains du jour, ou le total depuis la date de votre choix.
+• Ajoutez le widget à votre écran d'accueil pour les voir d'un coup d'œil.
