@@ -12,8 +12,17 @@ Welcome to the Earnings Meter iOS app! This is a SwiftUI app and is available on
 
 ## Getting Started
 
-1. Install Xcode.
-1. Select an iOS simulator and tap "Run"
+1. Install the Xcode version in [`.xcode-version`](.xcode-version).
+1. Open `EarningsMeter.xcodeproj`, select an iOS simulator and tap "Run".
+
+To run fastlane locally, install the Ruby version in [`.ruby-version`](.ruby-version), then:
+
+```sh
+bundle install
+bundle exec fastlane unit_tests
+```
+
+The test and screenshot lanes need no secrets (see [`Scripts/screenshots.sh`](Scripts/screenshots.sh)). The signing and App Store Connect lanes run on CI, which holds the keys.
 
 
 ## Architecture
