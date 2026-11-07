@@ -55,7 +55,7 @@ graph TD
 
 The main point to note is that the `PresentationViews` and `DataStores` packages are completely isolated from one another. The main app target itself is predominantly just composed of "screens" (which do all the heavy lifting and wire everything together - see example below).
 
-> There are many ways to modularize an app, and I strongly recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-models). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
+> There are many ways to modularize an app, and I strongly recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-modelsstores). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
 
 ### Meter Reading example
 
