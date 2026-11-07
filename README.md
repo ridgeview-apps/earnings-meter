@@ -4,9 +4,11 @@ Welcome to the Earnings Meter iOS app! This is a SwiftUI app and is available on
 
 ## Screenshots
 
+<p>
 <img width="300" alt="Setup" src="Docs/Images/Screenshots/01-Setup.png" />
 <img width="300" alt="Daily earnings" src="Docs/Images/Screenshots/02-DailyEarnings.png" />
 <img width="300" alt="Accumulated earnings" src="Docs/Images/Screenshots/03-AccumulatedEarnings.png" />
+</p>
 
 ## Getting Started
 
