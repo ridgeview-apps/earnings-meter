@@ -5,9 +5,9 @@ Welcome to the Earnings Meter iOS app! This is a SwiftUI app and is available on
 
 ## Screenshots
 
-<img width="300" alt="iPhone 17 Pro Max-01-Setup" src="https://github.com/user-attachments/assets/159db0b0-434e-4f48-8622-3401fc02cda3" />
-<img width="300" alt="iPhone 17 Pro Max-02-DailyEarnings" src="https://github.com/user-attachments/assets/1747c1da-9ea5-4eea-9b46-3f3850bb3e74" />
-<img width="300" alt="iPhone 17 Pro Max-03-AccumulatedEarnings" src="https://github.com/user-attachments/assets/f26f7730-83e3-4012-94fc-69fca3008460" />
+<img width="300" alt="Setup" src="Docs/Images/Screenshots/01-Setup.png" />
+<img width="300" alt="Daily earnings" src="Docs/Images/Screenshots/02-DailyEarnings.png" />
+<img width="300" alt="Accumulated earnings" src="Docs/Images/Screenshots/03-AccumulatedEarnings.png" />
 
 
 ## Getting Started
