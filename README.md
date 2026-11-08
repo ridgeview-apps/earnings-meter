@@ -1,20 +1,28 @@
 ## Earnings Meter
 
-Welcome to the Earnings Meter iOS app! This is a SwiftUI app and is available on [the app store](https://apps.apple.com/app/id1549867514#?platform=iphone).
-
+Welcome to the Earnings Meter iOS app! This is a SwiftUI app and is available on [the App Store](https://apps.apple.com/app/id1549867514#?platform=iphone).
 
 ## Screenshots
 
-<img width="300" alt="iPhone 17 Pro Max-01-Setup" src="https://github.com/user-attachments/assets/159db0b0-434e-4f48-8622-3401fc02cda3" />
-<img width="300" alt="iPhone 17 Pro Max-02-DailyEarnings" src="https://github.com/user-attachments/assets/1747c1da-9ea5-4eea-9b46-3f3850bb3e74" />
-<img width="300" alt="iPhone 17 Pro Max-03-AccumulatedEarnings" src="https://github.com/user-attachments/assets/f26f7730-83e3-4012-94fc-69fca3008460" />
-
+<p>
+<img width="300" alt="Setup" src="Docs/Images/Screenshots/01-Setup.png" />
+<img width="300" alt="Daily earnings" src="Docs/Images/Screenshots/02-DailyEarnings.png" />
+<img width="300" alt="Accumulated earnings" src="Docs/Images/Screenshots/03-AccumulatedEarnings.png" />
+</p>
 
 ## Getting Started
 
-1. Install Xcode.
-1. Select an iOS simulator and tap "Run"
+1. Install the Xcode version in [`.xcode-version`](.xcode-version).
+1. Open `EarningsMeter.xcodeproj`, select an iOS simulator and tap "Run".
 
+To run fastlane locally, install the Ruby version in [`.ruby-version`](.ruby-version), then:
+
+```sh
+bundle install
+bundle exec fastlane unit_tests
+```
+
+The test and screenshot lanes need no secrets (see [`Scripts/screenshots.sh`](Scripts/screenshots.sh)). The signing and App Store Connect lanes run on CI, which holds the keys.
 
 ## Architecture
 
@@ -29,33 +37,46 @@ Swift Package Manager is used to modularize the app as follows:
 * `PresentationViews` - plain ("dumb") views / reusable components. These are purely for presentation purposes (hence perfect for SwiftUI previews). The components are typically just parts of a screen and contain no business logic.
 * `Shared` - shared logic that can be used by ANY part of the app (i.e. any package or target - for example, `String`, `Date` extensions etc)
 
-![](Docs/Images/swift-package-dependencies.png)
+Each arrow points from a package to the packages and targets that use it:
+
+```mermaid
+graph TD
+    Shared --> Models
+    Shared --> PresentationViews
+    Shared --> DataStores
+    Models --> PresentationViews
+    Models --> DataStores
+    PresentationViews --> App[App target]
+    DataStores --> App
+    PresentationViews --> Widget[Widget target]
+    DataStores --> Widget
+```
 
 The main point to note is that the `PresentationViews` and `DataStores` packages are completely isolated from one another. The main app target itself is predominantly just composed of "screens" (which do all the heavy lifting and wire everything together - see example below).
 
-> There are many ways to modularize an app, and I strongly recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-models). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
+> There are many ways to modularize an app, and I strongly recommend splitting up larger apps further into [bounded contexts](https://azamsharp.com/2023/02/28/building-large-scale-apps-swiftui.html#multiple-aggregate-modelsstores). The above structure, however, is a pretty good starting point and the packages themselves can be further subdivided as the app grows.
 
 ### Meter Reading example
 
 Meter readings are a good example of data used in various parts of the app (e.g. main app screen, widgets):
 
 * The `MeterReading` model is defined in the `Models` package.
-* The `PresentationViews` package use this model to build reusable / previewable components
+* The `PresentationViews` package uses this model to build reusable / previewable components.
 * The `DataStores` package contains business logic (`MeterCalculator`) which provides reading data to the main app or widgets.
 
 > Note: The `PresentationViews` package used to be a completely standalone package with its own separate models. However I found myself frequently transforming from a `Models` "model" -> `PresentationViews` "model". So I found it much simpler to cut out the middle man and gave `PresentationViews` direct access to the `Models` package (any "presentation"-specific properties could simply be added via Swift extensions). This also makes data stubbing much simpler (for example `ModelStubs` contains lots of pre-configured data models which are perfect for SwiftUI previews and unit testing).
 
-## Previews
+## Tests
 
-App previews use stub data (see `ModelStubs.swift`) to generate the different screen states
-
-![](Docs/Images/preview-example.png)
-
-## Unit tests
+### Unit tests
 
 Unit tests are written for the key parts of the app (model layer, data stores, presentation views) and each Swift package's unit tests can either be run in isolation or all at once with the main app target.
 
 > Note: when using other approaches such as MVVM, pretty much all my tests were for view models. However, on SwiftUI, this always felt unnatural to me (i.e. view models served a great purpose in UIKit, RxSwift-world, but less so on SwiftUI). I took a closer look at what I was actually testing in the view models and found much of it was unnecessary (and the bits that *were* important could be easily extracted out & unit tested separately).
+
+### UI tests
+
+UI tests (`EarningsMeterUITests`) drive the app through page objects, and launch it with a `UITestLaunchConfiguration` that fixes the clock and saved state, so every run sees the same app. The App Store screenshots come from the same target (`ScreenshotTests`). See [AGENTS.md](AGENTS.md#ui-tests-earningsmeteruitests) for how they're structured, and run them with `bundle exec fastlane ui_tests`.
 
 ## Config
 
@@ -63,35 +84,38 @@ My preferred approach to config is to use `.xcconfig` files since they make it e
 
 The app's config files are set up as follows:
 
-1. Debug (see [`Debug.xcconfig`](Config/Debug.xcconfig)). This is used for previews, unit tests and debugging the app on the simulator or a device and uses AUTOMATIC code-signing.
-1. Release (see [`Release.xcconfig`](Config/Release.xcconfig)). This is used for CI  / App Store builds and uses MANUAL code-signing (see [Fastlane/CI](#fastlane-/-CI) below).
-1. Additional xcconfig files are used to build the app for specific environments (e.g. `Beta.xcconfig`)
+1. Base (see [`Base.xcconfig`](Config/Base.xcconfig)). This holds the app version and the values every build shares, and the others include it.
+1. Debug (see [`Debug.xcconfig`](Config/Debug.xcconfig)). This is used for previews, tests and debugging the app on the simulator or a device and uses AUTOMATIC code-signing.
+1. Release (see [`Release.xcconfig`](Config/Release.xcconfig)). This is used for CI / App Store builds and uses MANUAL code-signing (see [fastlane](#fastlane) below).
+1. CI builds add an environment on top of Release: [`CI/Beta.xcconfig`](Config/CI/Beta.xcconfig) for TestFlight betas (with their own bundle ID) or [`CI/Prod.xcconfig`](Config/CI/Prod.xcconfig) for the App Store. The workflow picks one with `XCODE_CONFIG`.
 
-Note that the Xcconfig files themselves contain two "kinds" of config:
+Note that the xcconfig files themselves contain two "kinds" of config:
 
-1. Build & Archive settings (e.g. code signing settings, compilation settings, bundle ID)
-1. App config properties (API urls etc)
+1. Build & Archive settings (e.g. code signing settings, bundle ID)
+1. App config properties (e.g. the App Group name, contact email)
 
-The app config properties are exposed in the `Info.plist` file and are loaded / referenced from Swift code (e.g. `AppConfig`, `WidgetConfig`).
+The app config properties are exposed in the `Info.plist` file and are loaded / referenced from Swift code (see [`AppConfig`](EarningsMeter/Core/AppConfig.swift) and [`WidgetConfig`](EarningsMeterWidget/WidgetConfig.swift)).
 
+## fastlane
 
-## Fastlane / CI
+* [fastlane](https://fastlane.tools) is used to build and distribute the app.
+* fastlane's [`match`](https://docs.fastlane.tools/actions/match/) is used to handle provisioning of CI builds. Although Apple has greatly improved its tools in recent years (e.g. automatic provisioning), I still find `match` to be a more mature and reliable solution, particularly in CI environments. For example, Apple's automatic provisioning still relies on having a user signed into Xcode via its Settings, which can be flaky in a CI environment.
+* Since [fastlane now uses the App Store Connect API for most of its actions](https://docs.fastlane.tools/app-store-connect-api/), I have found it to be MUCH faster and easier to use (i.e. no longer need to worry about username/password credentials and all the headaches of 2-factor authentication in a CI environment).
+* fastlane's [`snapshot`](https://docs.fastlane.tools/actions/snapshot/) is used to generate the App Store screenshots, and [`deliver`](https://docs.fastlane.tools/actions/deliver/) uploads them to App Store Connect.
 
-* [`Fastlane`](https://fastlane.tools) is used to build and distribute the app.
-* [`Fastlane match`](https://docs.fastlane.tools/actions/match/) is used to handle provisioning of CI builds. Although Apple has greatly improved its tools in recent years (e.g. automatic provisioning), I still find `match` to be a more mature and reliable solution, particularly in CI environments. For example, Apple's automatic provisioning still relies on having a user signed into Xcode via the Preferences pane, which can be flaky in a CI environment.
-* Since [`Fastlane` now uses the App Store Connect API for most of its actions](https://docs.fastlane.tools/app-store-connect-api/), I have found it to be MUCH faster and easier to use (i.e. no longer need to worry about username/password credentials and all the headaches of 2-factor authentication in a CI environment).
-* [`Fastlane snapshot`](https://docs.fastlane.tools/actions/snapshot/) is used to generate / upload screenshots to App Store Connect
-* `Release` builds are used for uploading to [Testflight](https://www.google.com/search?client=safari&rls=en&q=testflight&ie=UTF-8&oe=UTF-8) and are eventually submitted for review.
+The lanes are listed in [`fastlane/README.md`](fastlane/README.md), which fastlane generates from the [`Fastfile`](fastlane/Fastfile).
 
-Command examples
+## CI and releases
 
-```ruby
-fastlane unit_tests           # Run unit tests
-fastlane add_badge_overlay    # Add a 'Beta' badge overlay
-fastlane build                # Build / archive the app
-fastlane distribute           # Distribute the app via TestFlight
-fastlane screenshots output_directory:/tmp/shots  # Generate App Store screenshots
-fastlane upload_screenshots screenshots_path:/tmp/shots  # Upload screenshots to App Store Connect (CI: Screenshots workflow)
-fastlane submit_for_review    # Submit the app for review (CI: App Store workflow's Submit for review gate)
-fastlane publish              # Release the approved version to the App Store (CI: App Store workflow's Publish gate)
-```
+GitHub Actions workflows build, test and release the app. Their comments explain the details.
+
+* [Branch checks](.github/workflows/branch-checks.yml) lints and runs the unit tests on every push to a `feature/**` or `hotfix/**` branch.
+* [Beta](.github/workflows/beta.yml) lints, tests and builds every push to `main` with the Beta config, and uploads it to [TestFlight](https://developer.apple.com/testflight/).
+* [Screenshots](.github/workflows/screenshots.yml) generates the App Store screenshots when run by hand, and can upload them once approved.
+
+To release a version:
+
+1. Run [Start release](.github/workflows/start-release.yml) on `main`. It's a dry run unless you untick it. It creates `release/<version>` for the version in `Base.xcconfig`, bumps `main` to the next version, and starts the App Store workflow on the release branch and Beta on `main`.
+1. The [App Store](.github/workflows/app-store.yml) workflow's **Build and upload** job builds with the Prod config, uploads to TestFlight and syncs the App Store metadata.
+1. Approve **Submit for review** to send the build to App Review. It also tags the commit with the version and creates the GitHub release.
+1. Once Apple approves the version, approve **Publish** to release it on the App Store. It also deletes the release branch.
