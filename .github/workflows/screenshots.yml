@@ -77,7 +77,7 @@ jobs:
           done &
           trap "kill $!" EXIT
           bundle exec fastlane screenshots output_directory:"$RUNNER_TEMP/screenshots" device:"$DEVICE" languages:"$LANGUAGES"
-      - name: Upload screenshots
+      - name: Upload screenshots artifact
         uses: actions/upload-artifact@v7
         with:
           name: screenshots-${{ matrix.device }}-${{ matrix.language-group.name }}
@@ -85,7 +85,7 @@ jobs:
           if-no-files-found: error
       # snapshot deletes its derived data, result bundle included, so its
       # xcodebuild logs are what's left to debug a failure with
-      - name: Upload logs
+      - name: Upload logs artifact
         if: failure()
         uses: actions/upload-artifact@v7
         with:
@@ -94,6 +94,7 @@ jobs:
 
   # Manual approval job
   upload:
+    name: Upload to App Store Connect
     if: inputs.upload
     runs-on: xcode-27
     needs: generate
@@ -106,7 +107,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
-      - name: Download screenshots
+      - name: Download screenshots artifacts
         uses: actions/download-artifact@v8
         with:
           # Every job's, into one folder
@@ -115,6 +116,6 @@ jobs:
           path: ${{ runner.temp }}/screenshots
       - name: Install gems
         run: bundle install
-      - name: Upload screenshots
+      - name: Upload screenshots to App Store Connect
         timeout-minutes: 60
         run: bundle exec fastlane upload_screenshots screenshots_path:"$RUNNER_TEMP/screenshots"
