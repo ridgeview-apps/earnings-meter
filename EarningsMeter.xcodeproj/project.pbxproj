@@ -611,7 +611,7 @@
 		312821E423D0B96100975F66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(MAIN_TARGET_APP_ICON_NAME)";
 				CODE_SIGN_ENTITLEMENTS = Config/Entitlements/EarningsMeter.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_ASSET_PATHS = "\"EarningsMeter/Preview Content\"";
@@ -634,7 +634,7 @@
 		312821E523D0B96100975F66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(MAIN_TARGET_APP_ICON_NAME)";
 				CODE_SIGN_ENTITLEMENTS = Config/Entitlements/EarningsMeter.entitlements;
 				DEVELOPMENT_ASSET_PATHS = "\"EarningsMeter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;

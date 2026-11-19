@@ -2,6 +2,7 @@
 
 // Build/archive settings
 MAIN_TARGET_BUNDLE_ID = com.ridgeviewapps.earnings-meter.beta
+MAIN_TARGET_APP_ICON_NAME = AppIconBeta
 ENTITLEMENTS_APP_GROUP_NAME = group.com.ridgeviewapps.earnings-meter.beta.sharedData
 
 // App config / Info.plist values
